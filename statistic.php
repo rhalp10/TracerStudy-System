@@ -1,6 +1,6 @@
 
 <?php 
-$page = 'forum';
+$page = 'statistic';
 ?>
 <!DOCTYPE html>
 <html>  

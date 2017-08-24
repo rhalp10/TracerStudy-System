@@ -1,6 +1,6 @@
 
 <?php 
-$page = 'forum';
+$page = 'batchmates';
 ?>
 <!DOCTYPE html>
 <html>  

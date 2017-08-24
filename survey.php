@@ -1,12 +1,13 @@
 
 <?php 
-$page = 'forum';
+$page = 'survey';
 ?>
 <!DOCTYPE html>
 <html>  
   <head>
     <?php include('meta.php');?>
     <?php include('style_css.php');?>
+
     <title></title>
   </head>
         <body class=" menu-affix">

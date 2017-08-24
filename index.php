@@ -59,16 +59,40 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b2e1ff', end
     </style>
 
 </head>
-
 <body class="login custombody" >
 
-      <div class="form-signin">
+    <div class="form-signin">
     <div class="text-center">
         <img src="assets/img/logo.png" alt="Metis Logo" style="width: 100px;">
+
+    </div>
+
+    <hr>
+
+    <div class="text-center">
+        <ul class="list-inline">
+            <li><a class="text-muted " href="#login-student" data-toggle="tab">Login as Student</a></li> |
+            <li><a class="text-muted" href="#login-teacher" data-toggle="tab">Login as Teacher</a></li>
+        </ul>
     </div>
     <hr>
     <div class="tab-content">
-        <div id="login" class="tab-pane active">
+        <div id="login-student" class="tab-pane active">
+            <form action="index.html">
+                <p class="text-muted text-center">
+                    Enter your username and password
+                </p>
+                <input type="text" placeholder="Student Number" class="form-control top">
+                <input type="password" placeholder="Password" class="form-control bottom">
+                <div class="checkbox">
+		  <label>
+		    <input type="checkbox"> Remember Me
+		  </label>
+		</div>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+            </form>
+        </div>
+        <div id="login-teacher" class="tab-pane ">
             <form action="index.html">
                 <p class="text-muted text-center">
                     Enter your username and password
@@ -76,10 +100,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b2e1ff', end
                 <input type="text" placeholder="Username" class="form-control top">
                 <input type="password" placeholder="Password" class="form-control bottom">
                 <div class="checkbox">
-		  <label>
-		    <input type="checkbox"> Remember Me
-		  </label>
-		</div>
+          <label>
+            <input type="checkbox"> Remember Me
+          </label>
+        </div>
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
             </form>
         </div>
@@ -100,11 +124,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b2e1ff', end
                 <button class="btn btn-lg btn-success btn-block" type="submit">Register</button>
             </form>
         </div>
+
     </div>
     <hr>
     <div class="text-center">
         <ul class="list-inline">
-            <li><a class="text-muted" href="#login" data-toggle="tab">Login</a></li>
             <li><a class="text-muted" href="#forgot" data-toggle="tab">Forgot Password</a></li>
             <li><a class="text-muted" href="#signup" data-toggle="tab">Signup</a></li>
         </ul>

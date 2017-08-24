@@ -1,5 +1,4 @@
 
-
                     <div id="left">
                         <div class="media user-media bg-dark dker" >
                             <div class="user-media-toggleHover">
@@ -26,94 +25,72 @@
                         <ul id="menu" class="bg-blue dker" style="background-color: #444444 !important;">
                                   <li class="nav-header">Menu</li>
                                   <li class="nav-divider"></li>
-                                  <?php 
-                                  if ($page == 'batchmates')
-                                  {
-                                    ?>
-                                     <li class="active">
-                                    <?php
-                                  }
-                                  else
-                                  {
-                                    ?>
-                                   <li class="">
-                                  <?php
-                                  }
-                                   ?>
-                                    <a href="batchmates.php">
+                                  <li class="">
+                                    <a href="javascript:;">
                                       <i class="fa fa-pencil"></i>
                                       <span class="link-title">
                                     My Batchmates
-                                  </span>
+                            </span>
                                       <span class="fa arrow"></span>
                                     </a>
                                     
                                   </li>
-                                  <?php 
-                                  if ($page == 'forum')
-                                  {
-                                    ?>
-                                     <li class="active">
-                                    <?php
-                                  }
-                                  else
-                                  {
-                                    ?>
-                                   <li class="">
-                                  <?php
-                                  }
-                                   ?>
-                                    <a href="forum.php">
+                                  <li class="">
+                                    <a href="javascript:;">
+                                      <i class="fa fa-pencil"></i>
+                                      <span class="link-title">
+                                    Account Notification
+                            </span>
+                                      <span class="fa arrow"></span>
+                                    </a>
+                                    
+                                  </li>
+                                  <li class="">
+                                    <a href="javascript:;">
+                                      <i class="fa fa-pencil"></i>
+                                      <span class="link-title">
+                                    Messages
+                            </span>
+                                      <span class="fa arrow"></span>
+                                    </a>
+                                    
+                                  </li>
+                                  <li class="">
+                                    <a href="javascript:;">
+                                      <i class="fa fa-pencil"></i>
+                                      <span class="link-title">
+                                    Portal
+                            </span>
+                                      <span class="fa arrow"></span>
+                                    </a>
+                                    
+                                  </li>
+                                  <li class="active">
+                                    <a href="javascript:;">
                                       <i class="fa fa-pencil"></i>
                                       <span class="link-title">
                                     Forum
-                                  </span>
+                            </span>
                                       <span class="fa arrow"></span>
                                     </a>
                                     
                                   </li>
-                                  <?php 
-                                  if ($page == 'survey')
-                                  {
-                                    ?>
-                                     <li class="active">
-                                    <?php
-                                  }
-                                  else
-                                  {
-                                    ?>
-                                   <li class="">
-                                  <?php
-                                  }
-                                   ?>
-                                    <a href="survey.php">
+                                  <li class="">
+                                    <a href="javascript:;">
                                       <i class="fa fa-pencil"></i>
                                       <span class="link-title">
                                     Survey
-                                  </span>
-                                  <span class="fa arrow"></span>
+                            </span>
+                                      <span class="fa arrow"></span>
                                     </a>
                                     
                                   </li>
-                                  <?php 
-                                  if ($page == 'statistic')
-                                  {
-                                    ?>
-                                     <li class="active">
-                                    <?php
-                                  }
-                                  else
-                                  {
-                                    ?>
-                                   <li class="">
-                                  <?php
-                                  }
-                                   ?>
-                                    <a href="statistic.php">
+                                  <li class="">
+                                    <a href="javascript:;">
                                       <i class="fa fa-pencil"></i>
                                       <span class="link-title">
                                     Statistic
-                                  </span>
+                            </span>
                                       <span class="fa arrow"></span>
                                     </a>
                                     
