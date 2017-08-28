@@ -13,5 +13,3 @@ ErrorDocument 500 ErrorPages/500.php
 //Custom 503 errors
 ErrorDocument 503 ErrorPages/503.php
 
-
- rhalp10:$apr1$4wq6hp2t$2GM54omUk1EeSwjfFcQKm1 
