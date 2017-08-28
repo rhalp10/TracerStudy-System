@@ -6,7 +6,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     
     
-    <meta name="description" content="Free Admin Template Based On Twitter Bootstrap 3.x">
+    <meta name="description" content="Trace System Study">
     <meta name="author" content="">
     
     <meta name="msapplication-TileColor" content="#5bc0de" />

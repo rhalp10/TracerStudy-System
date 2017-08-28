@@ -1,0 +1,17 @@
+//Custom 403 errors
+ErrorDocument 403 ErrorPages/403.php
+
+//Custom 404 errors
+ErrorDocument 404 ErrorPages/404.php
+
+//Custom 405 errors
+ErrorDocument 500 ErrorPages/405.php
+
+//Custom 500 errors
+ErrorDocument 500 ErrorPages/500.php
+
+//Custom 503 errors
+ErrorDocument 503 ErrorPages/503.php
+
+
+ rhalp10:$apr1$4wq6hp2t$2GM54omUk1EeSwjfFcQKm1 
