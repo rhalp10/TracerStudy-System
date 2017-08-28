@@ -2,11 +2,10 @@
 <html lang="en">
 
 <head>
-     <?php 
-    include('../meta.php');
-    ?>
     <title>404</title>
-    <?php include('../style_css.php');?>
+    <?php 
+    include('head.php');
+    ?>
 </head>
 
 <body class="error">
