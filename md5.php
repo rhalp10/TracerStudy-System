@@ -1,6 +1,5 @@
 <?php 
 
- $input = "student";
 
 
  $encrypted = encryptIt( $input );

@@ -1,4 +1,31 @@
 
+<?php 
+include('session.php'); 
+include('db.php');
+$page = 'forum';
+
+if ($login_level == '1')
+{
+    $result = mysql_query("SELECT * FROM `user_student_detail` WHERE student_userID = $login_id");
+    $data = mysql_fetch_array($result);
+    $data_img = $data['student_img']; 
+}
+else if ($login_level == '2')
+{
+    $result = mysql_query("SELECT * FROM `user_teacher_detail` WHERE teacher_userID = $login_id");
+    $data = mysql_fetch_array($result);
+    $data_img = $data['teacher_img']; 
+}
+else if ($login_level == '3')
+{
+    $result = mysql_query("SELECT * FROM `user_admin_detail` WHERE admin_userID = $login_id");
+    $data = mysql_fetch_array($result);
+    $data_img = $data['admin_img']; 
+}
+else
+{
+}
+?>
 <!DOCTYPE html>
 <html>  
   <head>
@@ -12,7 +39,23 @@
                     <?php include ('top_navbar.php');?>
                 </div>
                 <!-- /#top -->
-                <?php include ('sidebar_student.php');?>
+                    <?php  
+                    if ($login_level == '1')
+                    {
+                        include('sidebar_student.php');
+                    }
+                    if ($login_level == '2')
+                    {
+                        include('sidebar_teacher.php');
+                    }
+                    elseif ($login_level == '3')
+                    {
+                        include('sidebar_admin.php');
+                    }
+                    else
+                    {
+                    }
+                    ?>    
                     <!-- /#left -->
                 <div id="content">
                     <div class="outer">

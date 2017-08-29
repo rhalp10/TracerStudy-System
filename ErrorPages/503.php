@@ -16,16 +16,7 @@
             </div>
             <p class="lead text-muted">Oops, an error has occurred. Service unavailable!</p>
             <div class="clearfix"></div>
-            <div class="col-lg-6 col-lg-offset-3">
-                <form action="index.html">
-                    <div class="input-group">
-                        <input type="text" placeholder="search ..." class="form-control">
-                        <span class="input-group-btn">
-              <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
-            </span>
-                    </div>
-                </form>
-            </div>
+            
             <div class="clearfix"></div>
             <div class="sr-only">
                 &nbsp;
@@ -33,8 +24,8 @@
             <br>
             <div class="col-lg-6 col-lg-offset-3">
                 <div class="btn-group btn-group-justified">
-                    <a href="dashboard.html" class="btn btn-info">Return Dashboard</a>
-                    <a href="index.html" class="btn btn-warning">Return Website</a>
+                    <a onclick="goBack()" class="btn btn-info">Return Back</a>
+                    <a href="../index.php" class="btn btn-warning">Return Dashboard</a>
                 </div>
             </div>
         </div>
@@ -43,3 +34,6 @@
 </body>
 
 </html>
+<?php 
+   include('back_history.php');
+   ?>

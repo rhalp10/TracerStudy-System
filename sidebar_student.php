@@ -7,14 +7,14 @@
                             </div>
                             <div class="user-wrapper bg-dark">
                                 <a class="user-link" href="">
-                                    <img class="media-object img-thumbnail user-img" alt="User Picture" src="assets/img/user.gif">
+                                    <img class="media-object img-thumbnail user-img" alt="User Picture" src="assets/img/profile_img/<?php echo $data_img?>">
                                     <span class="label label-danger user-label">16</span>
                                 </a>
                         
                                 <div class="media-body">
                                     <h5 class="media-heading">Archie</h5>
                                     <ul class="list-unstyled user-info">
-                                        <li>Administrator</li>
+                                        <li>Student</li>
                                         <li>Last Access : <br>
                                             <small><i class="fa fa-calendar"></i>&nbsp;16 Mar 16:32</small>
                                         </li>
@@ -26,6 +26,30 @@
                         <ul id="menu" class="bg-blue dker" style="background-color: #444444 !important;">
                                   <li class="nav-header">Menu</li>
                                   <li class="nav-divider"></li>
+                                  <?php 
+                                  if ($page == 'dashboard')
+                                  {
+                                    ?>
+                                     <li class="active">
+                                    <?php
+                                  }
+                                  else
+                                  {
+                                    ?>
+                                   <li class="">
+                                  <?php
+                                  }
+                                   ?>
+                                    <a href="dashboard.php">
+
+                                  <i class="fa fa-pencil"></i>
+                                      <span class="link-title">
+                                    Dashboard
+                                  </span>
+                                      <span class="fa arrow"></span>
+                                    </a>
+                                    
+                                  </li>
                                   <?php 
                                   if ($page == 'batchmates')
                                   {
@@ -41,7 +65,8 @@
                                   }
                                    ?>
                                     <a href="batchmates.php">
-                                      <i class="fa fa-pencil"></i>
+
+                                  <i class="fa fa-pencil"></i>
                                       <span class="link-title">
                                     My Batchmates
                                   </span>
@@ -120,4 +145,5 @@
                                   </li>
                                 </ul>
                         <!-- /#menu -->
+                      
                     </div>

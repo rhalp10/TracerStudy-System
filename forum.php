@@ -1,6 +1,30 @@
 
 <?php 
+include('session.php'); 
+include('db.php');
 $page = 'forum';
+
+if ($login_level == '1')
+{
+    $result = mysql_query("SELECT * FROM `user_student_detail` WHERE student_userID = $login_id");
+    $data = mysql_fetch_array($result);
+    $data_img = $data['student_img']; 
+}
+else if ($login_level == '2')
+{
+    $result = mysql_query("SELECT * FROM `user_teacher_detail` WHERE teacher_userID = $login_id");
+    $data = mysql_fetch_array($result);
+    $data_img = $data['teacher_img']; 
+}
+else if ($login_level == '3')
+{
+    $result = mysql_query("SELECT * FROM `user_admin_detail` WHERE admin_userID = $login_id");
+    $data = mysql_fetch_array($result);
+    $data_img = $data['admin_img']; 
+}
+else
+{
+}
 ?>
 <!DOCTYPE html>
 <html>  
@@ -9,14 +33,30 @@ $page = 'forum';
     <?php include('style_css.php');?>
     <title></title>
   </head>
-        <body class=" menu-affix">
+        <body class="menu-affix">
             <div class="bg-dark dk" id="wrap">
                 <div id="top">
                     <?php include ('top_navbar.php');?>
                 </div>
                 <!-- /#top -->
-                <?php include ('sidebar_student.php');?>
-                    <!-- /#left -->
+                    <?php  
+                    if ($login_level == '1')
+                    {
+                        include('sidebar_student.php');
+                    }
+                    if ($login_level == '2')
+                    {
+                        include('sidebar_teacher.php');
+                    }
+                    elseif ($login_level == '3')
+                    {
+                        include('sidebar_admin.php');
+                    }
+                    else
+                    {
+                    }
+                    ?>                    
+                      <!-- /#left -->
                 <div id="content">
                     <div class="outer">
                         <header class="head">
@@ -29,26 +69,122 @@ $page = 'forum';
                             <!-- /.main-bar -->
                         </header>
                         <div class="inner bg-light lter">
-                           <?php 
-                           $input = "student";
+                           <table id=""  class="table table-bordered table-advance table-hover  dataTable">
+                                  <thead>
+                                    <tr>
+                                      <th><h3>Pinned Topics</h3></th>
+                                    </tr>
+                                  </thead>
+                                  <tfoot>
+                                    <tr>
+                                      <th></th>
+                                    </tr>
+                                  </tfoot>
+                                  <tbody>
+                                  <?php 
+                                  for ($i=0; $i < 10; $i++) { 
+                                    
+                                  
+                                  ?>
+                                  <tr onclick="self.location.href='content.php'">
+                                  <td class="forum-td" >
+                                  <div class="forum-list-hover col-sm-1" >
+                                  <i class="fa fa-comment"></i>
+                                    </div>
+                                    <div class="col-sm-6 forum-list-content">
+                                   <strong><a href="content.php">Sample <?php echo $i; ?>
+                                    </a></strong>
+                                    <br>
+                                    by <a href="">Rhalp</a>
+                                    </div>
+                                    <div class="col-sm-2 forum-list-content-stat">
+                                    9,877 <i class="fa fa-eye"></i>
+                                    <br>
+                                    2 <i class="fa fa-comment"></i>
+                                    </div>
+                                    <div class="col-sm-3" style="background-color: #444444;color: white;">
+                                    latest reply by <strong><a class="user"> user</a></strong><br>
+                                    7 minutes ago 
+                                    </div>
 
-                            $encrypted = encryptIt( $input );
-                            $decrypted = decryptIt( $encrypted );
+                                    </td>
+                                  </tr>
+                                  <?php 
+                                  }?>
+                                  </tbody>
+                                  <script type="text/javascript">
+                                    
+                                  </script>
+                              </table>
+                              <table id="myData"  class="table table-bordered table-advance table-hover  dataTable">
+                                  <thead>
+                                    <tr>
+                                      <th><h3>Topic</h3></th>
+                                    </tr>
+                                    <tr onclick="self.location.href='forum_topic_create.php'">
+                                  <td class="forum-td" >
+                                  <div class="forum-list-hover col-sm-1" >
+                                  <i class="fa fa-plus"></i>
+                                    </div>
+                                    <div class="col-sm-6 forum-list-content">
+                                   <strong><a href="content.php">Post new topic</a>
+                                   <br>&nbsp;</strong>
+                                    </div>
+                                    <div class="col-sm-2 forum-list-content-stat">
+                                    &nbsp;
+                                    <br>
+                                    &nbsp;
+                                    </div>
+                                    <div class="col-sm-3" style="background-color: #444444;color: white;">
+                                   &nbsp;<br>&nbsp;
+                                    </div>
 
-                            echo $encrypted . '<br />' . $decrypted;
+                                    </td>
+                                  </tr>
+                                  </thead>
+                                  <tfoot>
+                                    <tr>
+                                      <th></th>
+                                    </tr>
+                                  </tfoot>
+                                  <tbody>
+                                  
+                                  <?php 
+                                  for ($i=0; $i < 10; $i++) { 
+                                    
+                                  
+                                  ?>
+                                  <tr onclick="self.location.href='content.php'">
+                                  <td class="forum-td" >
+                                  <div class="forum-list-hover col-sm-1" >
+                                  <i class="fa fa-comment"></i>
 
-                            function encryptIt( $q ) {
-                                $cryptKey  = 'qJB0rGtIn5UB1xG03efyCp';
-                                $qEncoded      = base64_encode( mcrypt_encrypt( MCRYPT_RIJNDAEL_256, md5( $cryptKey ), $q, MCRYPT_MODE_CBC, md5( md5( $cryptKey ) ) ) );
-                                return( $qEncoded );
-                            }
+                                    </div>
+                                    <div class="col-sm-6 forum-list-content">
+                                   <strong><a href="content.php">Sample <?php echo $i; ?>
+                                    </a></strong>
+                                    <br>
+                                    by <a href="">Rhalp</a>
+                                    </div>
+                                    <div class="col-sm-2 forum-list-content-stat">
+                                    9,877 <i class="fa fa-eye"></i>
+                                    <br>
+                                    2 <i class="fa fa-comment"></i>
+                                    </div>
+                                    <div class="col-sm-3" style="background-color: #444444;color: white;">
+                                    latest reply by <strong><a class="user"> user</a></strong><br>
+                                    7 minutes ago 
+                                    </div>
 
-                            function decryptIt( $q ) {
-                                $cryptKey  = 'qJB0rGtIn5UB1xG03efyCp';
-                                $qDecoded      = rtrim( mcrypt_decrypt( MCRYPT_RIJNDAEL_256, md5( $cryptKey ), base64_decode( $q ), MCRYPT_MODE_CBC, md5( md5( $cryptKey ) ) ), "\0");
-                                return( $qDecoded );
-                            }
-                           ?>
+                                    </td>
+                                  </tr>
+                                  <?php 
+                                  }?>
+                                  </tbody>
+                                  <script type="text/javascript">
+                                    
+                                  </script>
+                              </table>
                         </div>
                         <!-- /.inner -->
                     </div>
@@ -118,5 +254,35 @@ $page = 'forum';
             <!-- /#footer -->
             <?php include ('script.php');?>
         </body>
+        <script type="text/javascript">
+            $( document ).ready(function() {
+  console.log( "document ready!" );
+
+  var $sticky = $('.sticky');
+  var $stickyrStopper = $('.sticky-stopper');
+  if (!!$sticky.offset()) { // make sure ".sticky" element exists
+
+    var generalSidebarHeight = $sticky.innerHeight();
+    var stickyTop = $sticky.offset().top;
+    var stickOffset = 0;
+    var stickyStopperPosition = $stickyrStopper.offset().top;
+    var stopPoint = stickyStopperPosition - generalSidebarHeight - stickOffset;
+    var diff = stopPoint + stickOffset;
+
+    $(window).scroll(function(){ // scroll event
+      var windowTop = $(window).scrollTop(); // returns number
+
+      if (stopPoint < windowTop) {
+          $sticky.css({ position: 'absolute', top: diff });
+      } else if (stickyTop < windowTop+stickOffset) {
+          $sticky.css({ position: 'fixed', top: stickOffset });
+      } else {
+          $sticky.css({position: 'absolute', top: 'initial'});
+      }
+    });
+
+  }
+});
+        </script>
 
 </html>

@@ -1,3 +1,34 @@
+<?php 
+if(isset($_SESSION['login_user']))
+{           
+            $user=$_SESSION['login_user'];// passing the session user to new user variable
+            $connection = mysql_connect("localhost", "root", ""); // Establishing Connection with Server by passing server_name, user_id and password as a parameter
+            $db = mysql_select_db("tracerdata", $connection);// Selecting Database
+            $query = mysql_query("SELECT * FROM `user_account` WHERE `user_name`= '$user'", $connection); //SQL query to fetch information of registerd users and finds user match.
+            $rows = mysql_fetch_assoc($query);
+                if ($rows['user_level'] == '1') //checking if acclevel is equal to 0
+                {   
+                    header("location: dashboard.php");// retain to admin level 
+                }
+                elseif ($rows['user_level'] == '2')  //checking if acclevel is equal to 1
+                {
+                   
+                    header("location: dashboard.php"); // retain to student Level
+                    
+                } 
+                elseif ($rows['user_level'] == '3')  //checking if acclevel is equal to 2
+                {
+                     header("location: dashboard.php"); // retain to teacher Level
+                }
+                else
+                {
+
+                }
+    
+            
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -78,50 +109,52 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b2e1ff', end
     <hr>
     <div class="tab-content">
         <div id="login-student" class="tab-pane active">
-            <form action="index.html">
+            <form  method="POST" action="action/login_action.php" role="form">
                 <p class="text-muted text-center">
                     Enter your username and password
                 </p>
-                <input type="text" placeholder="Student Number" class="form-control top">
-                <input type="password" placeholder="Password" class="form-control bottom">
+                <input name="username" type="text" placeholder="Student Number" class="form-control top">
+                <input name="password" type="password" placeholder="Password" class="form-control bottom">
                 <div class="checkbox">
 		  <label>
 		    <input type="checkbox"> Remember Me
 		  </label>
 		</div>
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                
+                <input class="btn btn-lg btn-primary btn-block"  type="submit" name="submit-student" value="Sign in">
+
             </form>
         </div>
         <div id="login-teacher" class="tab-pane ">
-            <form action="index.html">
+            <form method="POST" action="action/login_action.php" role="form">
                 <p class="text-muted text-center">
                     Enter your username and password
                 </p>
-                <input type="text" placeholder="Username" class="form-control top">
-                <input type="password" placeholder="Password" class="form-control bottom">
+                <input name="username" type="text" placeholder="Username" class="form-control top">
+                <input name="password" type="password" placeholder="Password" class="form-control bottom">
                 <div class="checkbox">
           <label>
             <input type="checkbox"> Remember Me
           </label>
         </div>
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                 <input class="btn btn-lg btn-primary btn-block"  type="submit" name="submit-teacher" value="Sign in">
             </form>
         </div>
         <div id="forgot" class="tab-pane">
-            <form action="index.html">
+            <form action="action/recovery_action.php">
                 <p class="text-muted text-center">Enter your valid e-mail</p>
                 <input type="email" placeholder="mail@domain.com" class="form-control">
                 <br>
-                <button class="btn btn-lg btn-danger btn-block" type="submit">Recover Password</button>
+                <input class="btn btn-lg btn-danger btn-block" type="submit" name="submit" value="Recover Password">
             </form>
         </div>
         <div id="signup" class="tab-pane">
-            <form action="index.html">
+            <form action="action/register_action.php">
                 <input type="text" placeholder="username" class="form-control top">
                 <input type="email" placeholder="mail@domain.com" class="form-control middle">
                 <input type="password" placeholder="password" class="form-control middle">
                 <input type="password" placeholder="re-password" class="form-control bottom">
-                <button class="btn btn-lg btn-success btn-block" type="submit">Register</button>
+                <input class="btn btn-lg btn-success btn-block"  type="submit" name="submit" value="Register">
             </form>
         </div>
 
@@ -134,7 +167,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b2e1ff', end
         </ul>
     </div>
   </div>
-
 
     <!--jQuery -->
     <script src="assets/lib/jquery/jquery.js"></script>
@@ -157,7 +189,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b2e1ff', end
                 });
             });
         })(jQuery);
+
+
     </script>
+
 </body>
 
 </html>
