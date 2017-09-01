@@ -69,26 +69,179 @@ else
                             <!-- /.main-bar -->
                         </header>
                         <div class="inner bg-light lter">
-                           <?php 
-                           $input = "student";
+                            <div class="box col-sm-5">
+                             <header>
+                              <h5>Add Student Record</h5>
+                             </header>
+                             <div class="body">
+                                <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label for="text1" class="control-label col-lg-4">ID Number</label>
 
-                            $encrypted = encryptIt( $input );
-                            $decrypted = decryptIt( $encrypted );
+                                    <div class="col-lg-8">
+                                        <input type="text" id="text1" placeholder="ID Number" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="text1" class="control-label col-lg-4">First Name</label>
 
-                            echo $encrypted . '<br />' . $decrypted;
+                                    <div class="col-lg-8">
+                                        <input type="text" id="text1" placeholder="First Name" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="text1" class="control-label col-lg-4">Middle Name</label>
 
-                            function encryptIt( $q ) {
-                                $cryptKey  = 'qJB0rGtIn5UB1xG03efyCp';
-                                $qEncoded      = base64_encode( mcrypt_encrypt( MCRYPT_RIJNDAEL_256, md5( $cryptKey ), $q, MCRYPT_MODE_CBC, md5( md5( $cryptKey ) ) ) );
-                                return( $qEncoded );
-                            }
+                                    <div class="col-lg-8">
+                                        <input type="text" id="text1" placeholder="Middle Name" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="text1" class="control-label col-lg-4">Last Name</label>
 
-                            function decryptIt( $q ) {
-                                $cryptKey  = 'qJB0rGtIn5UB1xG03efyCp';
-                                $qDecoded      = rtrim( mcrypt_decrypt( MCRYPT_RIJNDAEL_256, md5( $cryptKey ), base64_decode( $q ), MCRYPT_MODE_CBC, md5( md5( $cryptKey ) ) ), "\0");
-                                return( $qDecoded );
-                            }
-                           ?>
+                                    <div class="col-lg-8">
+                                        <input type="text" id="text1" placeholder="Last Name" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="text1" class="control-label col-lg-4">Address</label>
+
+                                    <div class="col-lg-8">
+                                        <input type="text" id="text1" placeholder="Address" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="text1" class="control-label col-lg-4">Department</label>
+
+                                    <div class="col-lg-8">
+                                        <select class="form-control">
+                                            <option>1</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="text1" class="control-label col-lg-4">Year Admission</label>
+
+                                    <div class="col-lg-8">
+                                    <div class="input-group date" id="">
+                                        <input type="date" class="form-control">
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span>
+                                      </span>
+                                    </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="text1" class="control-label col-lg-4">Year Graduate</label>
+
+                                    <div class="col-lg-8">
+                                    <div class="input-group date" id="">
+                                        <input type="date" class="form-control">
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span>
+                                      </span>
+                                    </div>
+                                    </div>
+                                </div>
+                                <!-- /.form-group -->
+                                <input class="btn btn-success" type="submit" name="Submit" value="Submit">
+                            </form>
+                             </div>
+                            </div>
+                            <div class="box col-sm-7">
+                             <header>
+                              <h5>List</h5>
+                             </header>
+                             <div class="body">
+                                <table id="myData"  class="table table-bordered table-advance table-hover  dataTable">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Department</th>
+                                        <th>Year Admitted</th>
+                                        <th>Year graduated</th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                      <th></th>
+                                      <th></th>
+                                      <th></th>
+                                      <th></th>
+                                    </tr>
+                                  </tfoot>
+                                  <tbody>
+                                  <tr>
+                                      <td>Rhalp Darren Cabrera</td>
+                                      <td>DIT</td>
+                                      <td>04/30/2017</td>
+                                      <td>04/30/2017</td>
+                                  </tr>
+                                  <tr>
+                                      <td>Rhalp Darren Cabrera</td>
+                                      <td>DIT</td>
+                                      <td>04/30/2017</td>
+                                      <td>04/30/2017</td>
+                                  </tr>
+                                  <tr>
+                                      <td>Rhalp Darren Cabrera</td>
+                                      <td>DIT</td>
+                                      <td>04/30/2017</td>
+                                      <td>04/30/2017</td>
+                                  </tr>
+                                  <tr>
+                                      <td>Rhalp Darren Cabrera</td>
+                                      <td>DIT</td>
+                                      <td>04/30/2017</td>
+                                      <td>04/30/2017</td>
+                                  </tr>
+                                  <tr>
+                                      <td>Rhalp Darren Cabrera</td>
+                                      <td>DIT</td>
+                                      <td>04/30/2017</td>
+                                      <td>04/30/2017</td>
+                                  </tr>
+                                  <tr>
+                                      <td>Rhalp Darren Cabrera</td>
+                                      <td>DIT</td>
+                                      <td>04/30/2017</td>
+                                      <td>04/30/2017</td>
+                                  </tr>
+                                  <tr>
+                                      <td>Rhalp Darren Cabrera</td>
+                                      <td>DIT</td>
+                                      <td>04/30/2017</td>
+                                      <td>04/30/2017</td>
+                                  </tr>
+                                  <tr>
+                                      <td>Rhalp Darren Cabrera</td>
+                                      <td>DIT</td>
+                                      <td>04/30/2017</td>
+                                      <td>04/30/2017</td>
+                                  </tr>
+                                  <tr>
+                                      <td>Rhalp Darren Cabrera</td>
+                                      <td>DIT</td>
+                                      <td>04/30/2017</td>
+                                      <td>04/30/2017</td>
+                                  </tr>
+                                  <tr>
+                                      <td>Rhalp Darren Cabrera</td>
+                                      <td>DIT</td>
+                                      <td>04/30/2017</td>
+                                      <td>04/30/2017</td>
+                                  </tr>
+                                  <tr>
+                                      <td>Rhalp Darren Cabrera</td>
+                                      <td>DIT</td>
+                                      <td>04/30/2017</td>
+                                      <td>04/30/2017</td>
+                                  </tr>
+
+
+                                  </tbody>
+
+                                </table>
+                             </div>
+                            </div>
                         </div>
                         <!-- /.inner -->
                     </div>

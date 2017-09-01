@@ -69,26 +69,53 @@ else
                             <!-- /.main-bar -->
                         </header>
                         <div class="inner bg-light lter">
-                           <?php 
-                           $input = "student";
+                           <div class="box">
+                             <header>
+                              <h5 class="pull-right">
+                                  <button class="btn btn-success">Add Batch</button>
+                                  <button class="btn btn-info">Print</button>
+                              </h5>
+                             </header>
+                             <div class="body col-sm-12">
+                                <div class="box col-sm-3">
+                                 <header>
+                                  <h5>2009</h5>
+                                 </header>
+                                 <div class="body">
+                                    <div>
+                                     <img src="">
+                                    </div>
 
-                            $encrypted = encryptIt( $input );
-                            $decrypted = decryptIt( $encrypted );
+                                 </div>
+                                </div>
+                                <div class="box col-sm-3">
+                                 <header>
+                                  <h5>2010</h5>
+                                 </header>
+                                 <div class="body">Content;</div>
+                                </div>
+                                <div class="box col-sm-3">
+                                 <header>
+                                  <h5>2011</h5>
+                                 </header>
+                                 <div class="body">Content;</div>
+                                </div>
+                                <div class="box col-sm-3">
+                                 <header>
+                                  <h5>2016</h5>
+                                 </header>
+                                 <div class="body">Content;</div>
+                                </div>
+                                <div class="box col-sm-3">
+                                 <header>
+                                  <h5>2017</h5>
+                                 </header>
+                                 <div class="body">Content;</div>
+                                </div>
 
-                            echo $encrypted . '<br />' . $decrypted;
+                             </div>
+                            </div>
 
-                            function encryptIt( $q ) {
-                                $cryptKey  = 'qJB0rGtIn5UB1xG03efyCp';
-                                $qEncoded      = base64_encode( mcrypt_encrypt( MCRYPT_RIJNDAEL_256, md5( $cryptKey ), $q, MCRYPT_MODE_CBC, md5( md5( $cryptKey ) ) ) );
-                                return( $qEncoded );
-                            }
-
-                            function decryptIt( $q ) {
-                                $cryptKey  = 'qJB0rGtIn5UB1xG03efyCp';
-                                $qDecoded      = rtrim( mcrypt_decrypt( MCRYPT_RIJNDAEL_256, md5( $cryptKey ), base64_decode( $q ), MCRYPT_MODE_CBC, md5( md5( $cryptKey ) ) ), "\0");
-                                return( $qDecoded );
-                            }
-                           ?>
                         </div>
                         <!-- /.inner -->
                     </div>

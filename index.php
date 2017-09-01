@@ -39,8 +39,8 @@ if(isset($_SESSION['login_user']))
     <!--Mobile first-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Login Page</title>
-    
+    <title>Index</title>
+    <link rel="shortcut icon" href="assets/img/logo.ico"/>
     <meta name="description" content="Free Admin Template Based On Twitter Bootstrap 3.x">
     <meta name="author" content="">
     
@@ -87,14 +87,27 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b2e1ff', end
         a{
             color:#ff9800;
         }
+        .navbar .navbar-nav {
+  display: inline-block;
+  float: none;
+  vertical-align: top;
+}
+
+.navbar .navbar-collapse {
+  text-align: center;
+}
+
     </style>
 
 </head>
+
 <body class="login custombody" >
 
     <div class="form-signin">
     <div class="text-center">
         <img src="assets/img/logo.png" alt="Metis Logo" style="width: 100px;">
+                <h5>Cavite State Univeristy</h5>
+        <h3>CVSU-CEIT DIT ONLINE TRACER STUDY</h3>
 
     </div>
 
@@ -106,6 +119,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b2e1ff', end
             <li><a class="text-muted" href="#login-teacher" data-toggle="tab">Login as Teacher</a></li>
         </ul>
     </div>
+    
     <hr>
     <div class="tab-content">
         <div id="login-student" class="tab-pane active">
@@ -168,7 +182,35 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b2e1ff', end
     </div>
   </div>
 
+        <nav class="navbar navbar-default navbar-fixed-bottom">
+      <div class="container">
+
+        <div class="navbar-header">
+          <img src="assets/img/logo.png" alt=" CvSU Tracer Study" style="width: 40px; margin-top: 6px; ">
+          <a class="navbar-brand" href="#">Tracer Study</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav list-inline">
+            <li class="active"><a href="#login-student" data-toggle="tab">Log-in</a></li>
+            <li><a href="#" data-toggle="modal" data-target="#objective">Department Objective</a></li>
+            <li><a href="#" data-toggle="modal" data-target="#goal">Department Goal</a></li>
+            <li><a href="#" data-toggle="modal" data-target="#Overview">Overview</a></li>
+            <li><a href="#" data-toggle="modal" data-target="#SystemDeveloper">System Developer</a></li>
+          </ul>
+          </div><!--/.nav-collapse -->
+      </div>
+      <div class="bg-dark dker">
+      <center>
+          CVSU-CEIT DIT ONLINE TRACER STUDY <br>
+All Rights Reserved<br>Copyright 2017
+      </center>
+      </div>
+
+    </nav>
     <!--jQuery -->
+    <?php 
+    include('modal.php');
+    ?>
     <script src="assets/lib/jquery/jquery.js"></script>
 
     <!--Bootstrap -->
@@ -196,3 +238,4 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b2e1ff', end
 </body>
 
 </html>
+

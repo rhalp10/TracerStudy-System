@@ -1,4 +1,3 @@
-
 <?php 
 include('session.php'); 
 include('db.php');
@@ -68,26 +67,32 @@ else
                             <!-- /.main-bar -->
                         </header>
                         <div class="inner bg-light lter">
-                           <?php 
-                           $input = "student";
+                            <div class="col-sm-6">
+                              <canvas id="canvas" height="250" width="250"></canvas>
+                                <div class="row">
+                                  <div class="col-sm-12">
+                                 <?php 
+                                  echo "Admin: <b>totaladmin</b> &nbsp;";
+                                  echo "Employee: <b>totalemp</b>&nbsp;";
+                                  echo "Total Registered Account: <b>totalAcc</b>";
+                                 ?>
+                                 </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                              <canvas id="canvas1" height="250" width="250"></canvas>
+                                <div class="row">
+                                  <div class="col-sm-12">
+                                 <?php 
+                                  echo "Admin: <b>totaladmin</b> &nbsp;";
+                                  echo "Employee: <b>totalemp</b>&nbsp;";
+                                  echo "Total Registered Account: <b>totalAcc</b>";
+                                 ?>
+                                 </div>
+                                </div>
+                            </div>
+                        </div>
 
-                            $encrypted = encryptIt( $input );
-                            $decrypted = decryptIt( $encrypted );
-
-                            echo $encrypted . '<br />' . $decrypted;
-
-                            function encryptIt( $q ) {
-                                $cryptKey  = 'qJB0rGtIn5UB1xG03efyCp';
-                                $qEncoded      = base64_encode( mcrypt_encrypt( MCRYPT_RIJNDAEL_256, md5( $cryptKey ), $q, MCRYPT_MODE_CBC, md5( md5( $cryptKey ) ) ) );
-                                return( $qEncoded );
-                            }
-
-                            function decryptIt( $q ) {
-                                $cryptKey  = 'qJB0rGtIn5UB1xG03efyCp';
-                                $qDecoded      = rtrim( mcrypt_decrypt( MCRYPT_RIJNDAEL_256, md5( $cryptKey ), base64_decode( $q ), MCRYPT_MODE_CBC, md5( md5( $cryptKey ) ) ), "\0");
-                                return( $qDecoded );
-                            }
-                           ?>
                         </div>
                         <!-- /.inner -->
                     </div>
@@ -156,6 +161,57 @@ else
             <?php include('footer.php');?>
             <!-- /#footer -->
             <?php include ('script.php');?>
+            <script>
+
+        var doughnutData = [
+                {
+                    value: 30,
+                    color:"#F7464A"
+                },
+                {
+                    value : 50,
+                    color : "#46BFBD"
+                },
+                {
+                    value : 100,
+                    color : "#FDB45C"
+                },
+                {
+                    value : 40,
+                    color : "#949FB1"
+                },
+                {
+                    value : 120,
+                    color : "#4D5360"
+                }
+            
+            ];
+
+    var myDoughnut = new Chart(document.getElementById("canvas").getContext("2d")).Doughnut(doughnutData);
+    
+    </script>
+    <script>
+
+        var barChartData = {
+            labels : ["January","February","March","April","May","June","July"],
+            datasets : [
+                {
+                    fillColor : "rgba(220,220,220,0.5)",
+                    strokeColor : "rgba(220,220,220,1)",
+                    data : [65,59,90,81,56,55,40]
+                },
+                {
+                    fillColor : "rgba(151,187,205,0.5)",
+                    strokeColor : "rgba(151,187,205,1)",
+                    data : [28,48,40,19,96,27,100]
+                }
+            ]
+            
+        }
+
+    var myLine = new Chart(document.getElementById("canvas1").getContext("2d")).Bar(barChartData);
+    
+    </script>
         </body>
 
 </html>

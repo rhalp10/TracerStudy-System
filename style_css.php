@@ -57,3 +57,4 @@
     
     <link rel="stylesheet/less" type="text/css" href="assets/less/theme.less">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.7.1/less.js"></script>
+    <script src="assets/lib/chart-master/Chart.js"></script>

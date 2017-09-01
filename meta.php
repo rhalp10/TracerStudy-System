@@ -11,3 +11,5 @@
     
     <meta name="msapplication-TileColor" content="#5bc0de" />
     <meta name="msapplication-TileImage" content="assets/img/metis-tile.png" />
+    
+    <link rel="shortcut icon" href="assets/img/logo.ico"/>
