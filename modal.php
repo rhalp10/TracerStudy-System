@@ -1,6 +1,30 @@
 
-
-
+<style type="text/css">
+  a > .fa-facebook-square
+  {
+    color: #3b5998;
+  }
+  a > .fa-facebook-square:hover
+  {
+    color: #0084ff;
+  }
+  a > .fa-google-plus-square
+  {
+    color: #dd4b39;
+  }
+  a > .fa-google-plus-square:hover
+  {
+    color: #cd201f;
+  }
+  a > .fa-twitter-square
+  {
+    color: #55acee;
+  }
+  a > .fa-twitter-square:hover
+  {
+    color: #007ee5;
+  }
+</style>
 
 <!-- Modal For University Objective-->
 <div id="objective" class="modal fade" role="dialog">
@@ -121,33 +145,33 @@ To accommodate IT courses offerings; the College was renamed as the <strong>Coll
 
                     </p>
                     <p>
-                       <a href="https://www.facebook.com/rhalp10"><i class="fa fa-facebook-square fa-2x color-facebook"></i></a>
+                       <a  href="https://www.facebook.com/rhalp10"><i class="fa fa-facebook-square fa-2x color-facebook"></i></a>
                         <a href="#"><i class="fa fa-twitter-square fa-2x color-twitter"></i></a>
                         <a href="#"><i class="fa fa-google-plus-square fa-2x color-google-plus"></i></a>
-                        <a href="#"><img class="fa fa-linkedin-square fa-2x color-deviant" src="assets/img/deviant.jpg"></a>
-                        
-      <a href="#"><i class="fa fa-deviantart-square fa-2x color-deviantart"></i></a>
-
-
+                       
                     </p>
 
                 </div>
-             
+                <h3>Introduction of Authors</h3>
+             <hr>
                 <div class="col-md-8 col-sm-8 text-justify">
-                    <h3> Introduction Of My Self</h3>
+                    
                     <p class="lead" style=" text-indent: 50px;">
-                        asdasd
+                        The author was born in dasmariñas cavite on January 27,1993. She is  the youngest  among the two children of Mr.Antonio D. Bulanhagui and Mrs. Shirley R. Bulanhagui. 
+  She finished her primary education at the Dasmariñas II Central School(formerly DBBES-B) in 2005. She obtained her secondary education from DNHS-Main in 2009. In 2010, she then enrolled and graduate in Associate Degree of Computer Science(2 years) at the AISAT Dasmarinas. And decide to enrolled in the bachelor’s degree to continue and pursue the degree of Computer Science at the Cavite State University-Main in 2013 up to present.
+
                     </p>
                 </div>
 
             </div>
             <div class="row main-low-margin text-center">
                 
-             
+              <hr>
                 <div class="col-md-8 col-sm-8 text-justify">
-                    <h3> Introduction Of My Self</h3>
+                   
                     <p class="lead" style=" text-indent: 50px;">
-                         asdasd
+                         The author was born in Naic Cavite on September 27, 1996. He is  the eldest  among the four children of Mr. Herman P. Villadolid and Mrs. Alpha N. Villadolid. 
+  He finished her primary education at the Naic Elementary School  in 2009. She obtained her secondary education from Cavite Community Academy in 2013. And decide to enrolled in the bachelor’s degree of Computer Science at the Cavite State University-Main in 2013 up to present.
 
                     </p>
                 </div>
@@ -159,12 +183,11 @@ To accommodate IT courses offerings; the College was renamed as the <strong>Coll
                     </p>
                     <p>
                        <a href="https://www.facebook.com/rhalp10"><i class="fa fa-facebook-square fa-2x color-facebook"></i></a>
+
+                      
                         <a href="#"><i class="fa fa-twitter-square fa-2x color-twitter"></i></a>
                         <a href="#"><i class="fa fa-google-plus-square fa-2x color-google-plus"></i></a>
-                        <a href="#"><img class="fa fa-linkedin-square fa-2x color-deviant" src="assets/img/deviant.jpg"></a>
                         
-      <a href="#"><i class="fa fa-deviantart-square fa-2x color-deviantart"></i></a>
-
 
                     </p>
 
@@ -183,32 +206,27 @@ To accommodate IT courses offerings; the College was renamed as the <strong>Coll
                        <a href="https://www.facebook.com/rhalp10"><i class="fa fa-facebook-square fa-2x color-facebook"></i></a>
                         <a href="#"><i class="fa fa-twitter-square fa-2x color-twitter"></i></a>
                         <a href="#"><i class="fa fa-google-plus-square fa-2x color-google-plus"></i></a>
-                        <a href="#"><img class="fa fa-linkedin-square fa-2x color-deviant" src="assets/img/deviant.jpg"></a>
                         
-      <a href="#"><i class="fa fa-deviantart-square fa-2x color-deviantart"></i></a>
-
-
                     </p>
 
                 </div>
-             
+             <hr>
                 <div class="col-md-8 col-sm-8 text-justify">
-                    <h3> Introduction Of My Self</h3>
+                    
                     <p class="lead" style=" text-indent: 50px;">
-                         asdasd
+                         She finished the bachelor’s degree of computer science at the cavite state university-main in april 2011, she then enrolled in masteral’s degree of computer science at the AMA University-Makati. She is currently the instructor of computer science student of department of information technology.
 
                     </p>
                 </div>
 
             </div>
+            <hr>
             <div class="row main-low-margin text-center">
                 
              
                 <div class="col-md-8 col-sm-8 text-justify">
-                    <h3> Introduction Of My Self</h3>
                     <p class="lead" style=" text-indent: 50px;">
-                        asdasd
-
+                        She finished the bachelor’s degree of computer science at the Cavite State University-Main in april 2010, she then enrolled in masteral’s degree of information technology at the Cavite State University- Main. She is currently the instructor of computer science student of department of information technology.
                     </p>
                 </div>
                 <div class="col-md-3 ">
@@ -222,11 +240,7 @@ To accommodate IT courses offerings; the College was renamed as the <strong>Coll
                        <a href="https://www.facebook.com/rhalp10"><i class="fa fa-facebook-square fa-2x color-facebook"></i></a>
                         <a href="#"><i class="fa fa-twitter-square fa-2x color-twitter"></i></a>
                         <a href="#"><i class="fa fa-google-plus-square fa-2x color-google-plus"></i></a>
-                        <a href="#"><img class="fa fa-linkedin-square fa-2x color-deviant" src="assets/img/deviant.jpg"></a>
                         
-      <a href="#"><i class="fa fa-deviantart-square fa-2x color-deviantart"></i></a>
-
-
                     </p>
 
                 </div>
@@ -237,24 +251,21 @@ To accommodate IT courses offerings; the College was renamed as the <strong>Coll
                     <img class="img-circle" src="assets/img/creator/webcreator.jpg" alt="">
                     <h4><strong>Rhalp Darren Cabrera</strong> </h4>
                     <p>
-                        Bachelor Of Science In Information Technology ( BSIT ) at<br> Cavite State University (CvSU)
+                        Bachelor Of Science In Information Technology<br>( BSIT )<br> Cavite State University (CvSU)
 
                     </p>
                     <p>
                        <a href="https://www.facebook.com/rhalp10"><i class="fa fa-facebook-square fa-2x color-facebook"></i></a>
                         <a href="#"><i class="fa fa-twitter-square fa-2x color-twitter"></i></a>
                         <a href="#"><i class="fa fa-google-plus-square fa-2x color-google-plus"></i></a>
-                        <a href="#"><img class="fa fa-linkedin-square fa-2x color-deviant" src="assets/img/deviant.jpg"></a>
-                        
-      <a href="#"><i class="fa fa-deviantart-square fa-2x color-deviantart"></i></a>
 
 
                     </p>
 
                 </div>
-             
+             <hr>
                 <div class="col-md-8 col-sm-8 text-justify">
-                    <h3> Introduction Of My Self</h3>
+                    
                     <p class="lead" style=" text-indent: 50px;">
                          I'm A CaVite State University(CVSU) 3rd Year Student Taking Up Bachelor Of Science In Information Technology ( BSIT ) ,Wasting Time On The Front Of Computer Making Random Things Like Programming I Know (C++, Netbean Java, HTML, CSS, PHP, JSCRIPT, Visual Basic, Assembly, Storyboard Scirpting), About On Arts And Music? I Used The Following Tools (Paint,Paint Tool Sai, Photoshop CC) And Used Them To Make Digital Art, Background, Cover, Editing  Images And Also Edit Video, Sounds/Remix But Literally Not EXPERT Morethan Of My Skill Learned By My Self Study. 
 

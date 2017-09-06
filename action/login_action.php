@@ -59,28 +59,28 @@ function login(){
 				{	
 					$_SESSION['login_user']=$username; // Initializing Session
 
-					header("location: ../dashboard.php"); //admin Level
+					header("location: ../dashboard.php"); //go to dashboard
 				} 
 				elseif ($rows['user_level'] == '1') 
 				{
 					$_SESSION['login_user']=$username; // Initializing Session
-					header("location: ../dashboard.php"); // student Level
+					header("location: ../dashboard.php"); //go to dashboard
 					
 				} 
 				elseif ($rows['user_level'] == '2') 
 				{
 					$_SESSION['login_user']=$username; // Initializing Session
-					header("location: ../dashboard.php"); // teacher level
+					header("location: ../dashboard.php"); //go to dashboard
 				} 
 				elseif ($rows['user_level'] == '3') 
 				{
 					$_SESSION['login_user']=$username; // Initializing Session
-					header("location: ../dashboard.php"); // teacher level
+					header("location: ../dashboard.php"); //go to dashboard
 				} 
 				else 
 				{
 					echo "<script>alert('Access Denied!	');
-										window.location='../public/index.php';
+										window.location='../index.php';
 									</script>";
 					include('alert/success.php');
 									// Change this to bootstrap alert
@@ -90,41 +90,5 @@ function login(){
 
 
 
-function mySelf()
-{
-	myLove1($request_chance);
-}
-function myLove1($posibility){
-	$percent_given = 999999;
-	relationship($percent_given)
-}
-
-
-function relationship($percent_given){
-
-		if ($percent_given >= 25 && $percent_given < 0);
-		{
-			echo "Friend";
-		}
-		else if ($percent_given >= 50 && $percent_given < 25);
-		{
-			echo "Best Friend";
-		}
-		
-		else if ($percent_given >= 75 && $percent_given < 50);
-		{
-			echo "Complicated";
-		}
-		else if ($percent_given >= 100 && $percent_given < 75);
-		{
-			echo "Inrelationship";
-		}
-		else
-		{
-			//if percent_given is over 100
-			echo "Kapatid Lang";
-		}
-	}
-}
 
 ?>

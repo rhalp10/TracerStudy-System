@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 29, 2017 at 06:34 PM
+-- Generation Time: Sep 06, 2017 at 03:34 AM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.11
 
@@ -227,7 +227,7 @@ CREATE TABLE IF NOT EXISTS `user_admin_detail` (
 --
 
 INSERT INTO `user_admin_detail` (`admin_ID`, `admin_userID`, `admin_img`, `admin_fName`, `admin_mName`, `admin_lName`, `admin_address`) VALUES
-(1, 0, 'temp.gif', '', '', '', '');
+(1, 3, 'temp.gif', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -299,7 +299,7 @@ CREATE TABLE IF NOT EXISTS `user_student_detail` (
 --
 
 INSERT INTO `user_student_detail` (`student_ID`, `student_userID`, `student_img`, `student_IDNumber`, `student_fName`, `student_lName`, `student_address`, `student_acc_stat`, `student_admission`, `student_year_grad`) VALUES
-(1, 1, 'temp.gif', 201310656, 'Rhalp Darren', 'Cabrera', 'Blk 38 Lot 11 Phase 2 b Southville 2 TMC', 'Register', '0000-00-00', '0000-00-00'),
+(1, 1, 'temp.gif', 201310656, 'Rhalp Darren', 'Cabrera', 'Blk 38 Lot 11 Phase 2 b Southville 2 TMC', 'Register', '2013-10-05', '2018-03-30'),
 (2, 0, 'temp.gif', 201410209, 'Mardical', 'del Mundo', 'Indang', 'Unregister', '0000-00-00', '0000-00-00');
 
 -- --------------------------------------------------------

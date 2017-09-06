@@ -69,7 +69,17 @@ else
                             <!-- /.main-bar -->
                         </header>
                         <div class="inner bg-light lter">
-                           asdasd
+                           <div class="col-sm-12">
+                              <form class="form-group">
+                              <br>
+                              <input type="text" class="form-control" placeholder="Click here to set title">
+                              <br>
+                              <textarea id="ckeditor" class="ckeditor" placeholder="Type post content here"></textarea>
+                              <br>
+                              <input class="btn btn-primary pull-right" type="Submit" name="Submit" value="POST">
+                              <br><br>
+                              </form>
+                            </div>
                         </div>
                         <!-- /.inner -->
                     </div>
