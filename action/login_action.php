@@ -10,7 +10,6 @@ if (isset($_POST['submit-student'])) {
 				// Change this to bootstrap alert
 			
 			}
-		
 		else
 		{
 			login();
@@ -35,7 +34,7 @@ if (isset($_POST['submit-teacher'])) {
 
 function login(){
 
-	// Define $username and $password
+			// Define $username and $password
 			$username=$_POST['username'];
 			$password=$_POST['password'];
 			// To protect MySQL injection for Security purpose
@@ -54,7 +53,15 @@ function login(){
 			// SQL query to fetch information of registerd users and finds user match.
 			$query = mysql_query("SELECT * FROM `user_account` WHERE `user_name` = '$username' AND `user_password` = '$encrypted'", $connection);
 			$rows = mysql_fetch_assoc($query);
-			
+			if ($rows['user_status'] == 'unregister') {
+				echo "<script>alert('You must register first');
+										window.location='../index.php';
+									</script>";
+					include('alert/success.php');
+									
+			}
+			else
+			{
 				if ($rows['user_level'] == '0') 
 				{	
 					$_SESSION['login_user']=$username; // Initializing Session
@@ -85,6 +92,7 @@ function login(){
 					include('alert/success.php');
 									// Change this to bootstrap alert
 				}
+			}
 			mysql_close($connection); // Closing Connection
 }
 

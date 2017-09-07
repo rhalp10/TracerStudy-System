@@ -42,5 +42,24 @@
     } );
 } );
       
-      
+   //NUMBER ONLY
+  function numberInputOnly(elem) {
+                var validChars = /[0-9]/;
+                var strIn = elem.value;
+                var strOut = '';
+                for(var i=0; i < strIn.length; i++) {
+                  strOut += (validChars.test(strIn.charAt(i)))? strIn.charAt(i) : '';
+                }
+                elem.value = strOut;
+            }
+  //LETTER ONLY
+   function letterInputOnly(elem) {
+                var validChars = /[a-zA-ZñÑ .]+/;
+                var strIn = elem.value;
+                var strOut = '';
+                for(var i=0; i < strIn.length; i++) {
+                  strOut += (validChars.test(strIn.charAt(i)))? strIn.charAt(i) : '';
+                }
+                elem.value = strOut;
+            }
     </script>

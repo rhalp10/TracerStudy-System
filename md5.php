@@ -6,7 +6,6 @@
 
  $decrypted = decryptIt( $encrypted );
 
- echo $encrypted . '<br />' . $decrypted;
 
  function encryptIt( $q ) 
  {

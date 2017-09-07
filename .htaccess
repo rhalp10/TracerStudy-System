@@ -5,15 +5,15 @@ RewriteRule ^([^\.]+)$ $1.php [NC,L]
 
 
 #Custom Error 403 
-ErrorDocument 403 http://localhost/TracerStudy-System/ErrorPages/403.php
+ErrorDocument 403 http://localhost/Tracer_UI/public//ErrorPages/403.php
 #Custom Error 404 
-ErrorDocument 404 http://localhost/TracerStudy-System/ErrorPages/404.php
+ErrorDocument 404 http://localhost/Tracer_UI/public//ErrorPages/404.php
 #Custom Error 405 
-ErrorDocument 405 http://localhost/TracerStudy-System/ErrorPages/405.php
+ErrorDocument 405 http://localhost/Tracer_UI/public//ErrorPages/405.php
 #Custom Error 500 
-ErrorDocument 500 http://localhost/TracerStudy-System/ErrorPages/500.php
+ErrorDocument 500 http://localhost/Tracer_UI/public//ErrorPages/500.php
 #Custom Error 503 
-ErrorDocument 503 http://localhost/TracerStudy-System/ErrorPages/503.php
+ErrorDocument 503 http://localhost/Tracer_UI/public//ErrorPages/503.php
 
 
 

@@ -82,8 +82,12 @@ else
                                   </tfoot>
                                   <tbody>
                                   <?php 
-                                  for ($i=0; $i < 10; $i++) { 
-                                    
+                                  $query = mysql_query("SELECT * FROM `forum_topic` WHERE `post_status` = 'PIN'");
+                                  while ($res = mysql_fetch_array($query)) {
+
+                                   $query1 =  mysql_query("SELECT * FROM `user_student_detail` WHERE `student_userID` = ".$res['post_owner_id']);
+                                   $res1 = mysql_fetch_assoc($query1);
+
                                   
                                   ?>
                                   <tr onclick="self.location.href='content.php'">
@@ -92,10 +96,10 @@ else
                                   <i class="fa fa-comment"></i>
                                     </div>
                                     <div class="col-sm-6 forum-list-content">
-                                   <strong><a href="content.php">Sample <?php echo $i; ?>
+                                   <strong><a href="content.php"><?php echo $res['post_title']; ?>
                                     </a></strong>
                                     <br>
-                                    by <a href="">Rhalp</a>
+                                    by <a href=""><?php echo $res1['student_fName'].' '.$res1['student_mName'].' '.$res1['student_lName'] ?></a>
                                     </div>
                                     <div class="col-sm-2 forum-list-content-stat">
                                     9,877 <i class="fa fa-eye"></i>
@@ -150,21 +154,24 @@ else
                                   <tbody>
                                   
                                   <?php 
-                                  for ($i=0; $i < 10; $i++) { 
-                                    
+                                  $query3 = mysql_query("SELECT * FROM `forum_topic`");
+                                  while ($res3 = mysql_fetch_array($query3)) {
+
+                                   $query1 =  mysql_query("SELECT * FROM `user_student_detail` WHERE `student_userID` = ".$res3['post_owner_id']);
+                                   $res1 = mysql_fetch_assoc($query1);
+
                                   
                                   ?>
                                   <tr onclick="self.location.href='content.php'">
                                   <td class="forum-td" >
                                   <div class="forum-list-hover col-sm-1" >
                                   <i class="fa fa-comment"></i>
-
                                     </div>
                                     <div class="col-sm-6 forum-list-content">
-                                   <strong><a href="content.php">Sample <?php echo $i; ?>
+                                   <strong><a href="content.php"><?php echo $res3['post_title']; ?>
                                     </a></strong>
                                     <br>
-                                    by <a href="">Rhalp</a>
+                                    by <a href=""><?php echo $res1['student_fName'].' '.$res1['student_mName'].' '.$res1['student_lName'] ?></a>
                                     </div>
                                     <div class="col-sm-2 forum-list-content-stat">
                                     9,877 <i class="fa fa-eye"></i>

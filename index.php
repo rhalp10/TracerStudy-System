@@ -127,7 +127,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b2e1ff', end
                 <p class="text-muted text-center">
                     Enter your username and password
                 </p>
-                <input name="username" type="text" placeholder="Student Number" class="form-control top">
+                <input name="username" type="text" placeholder="Student Number" class="form-control top" required="" onkeyup="numberInputOnly(this);">
                 <input name="password" type="password" placeholder="Password" class="form-control bottom">
                 <div class="checkbox">
 		  <label>
@@ -155,7 +155,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b2e1ff', end
             </form>
         </div>
         <div id="forgot" class="tab-pane">
-            <form action="action/recovery_action.php">
+            <form method="POST" action="action/recovery_action.php">
                 <p class="text-muted text-center">Enter your valid e-mail</p>
                 <input type="email" placeholder="mail@domain.com" class="form-control">
                 <br>
@@ -163,12 +163,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b2e1ff', end
             </form>
         </div>
         <div id="signup" class="tab-pane">
-            <form action="action/register_action.php">
-                <input type="text" placeholder="username" class="form-control top">
-                <input type="email" placeholder="mail@domain.com" class="form-control middle">
-                <input type="password" placeholder="password" class="form-control middle">
-                <input type="password" placeholder="re-password" class="form-control bottom">
-                <input class="btn btn-lg btn-success btn-block"  type="submit" name="submit" value="Register">
+            <form method="POST" action="action/signup_action.php">
+                <input type="text" placeholder="Student Number" class="form-control top"  required="" onkeyup="numberInputOnly(this);" name="student_number">
+                <input type="password" placeholder="Password" class="form-control middle" required="" name="password">
+                <input type="password" placeholder="Re-password" class="form-control bottom" required="" name="re_password">
+                <input class="btn btn-lg btn-success btn-block"  type="submit" name="submit-signup_student" value="Register">
             </form>
         </div>
 
@@ -232,7 +231,26 @@ All Rights Reserved<br>Copyright 2017
             });
         })(jQuery);
 
-
+   //NUMBER ONLY
+  function numberInputOnly(elem) {
+                var validChars = /[0-9]/;
+                var strIn = elem.value;
+                var strOut = '';
+                for(var i=0; i < strIn.length; i++) {
+                  strOut += (validChars.test(strIn.charAt(i)))? strIn.charAt(i) : '';
+                }
+                elem.value = strOut;
+            }
+  //LETTER ONLY
+   function letterInputOnly(elem) {
+                var validChars = /[a-zA-ZñÑ .]+/;
+                var strIn = elem.value;
+                var strOut = '';
+                for(var i=0; i < strIn.length; i++) {
+                  strOut += (validChars.test(strIn.charAt(i)))? strIn.charAt(i) : '';
+                }
+                elem.value = strOut;
+            }
     </script>
 
 </body>

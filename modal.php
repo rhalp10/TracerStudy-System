@@ -1,30 +1,4 @@
 
-<style type="text/css">
-  a > .fa-facebook-square
-  {
-    color: #3b5998;
-  }
-  a > .fa-facebook-square:hover
-  {
-    color: #0084ff;
-  }
-  a > .fa-google-plus-square
-  {
-    color: #dd4b39;
-  }
-  a > .fa-google-plus-square:hover
-  {
-    color: #cd201f;
-  }
-  a > .fa-twitter-square
-  {
-    color: #55acee;
-  }
-  a > .fa-twitter-square:hover
-  {
-    color: #007ee5;
-  }
-</style>
 
 <!-- Modal For University Objective-->
 <div id="objective" class="modal fade" role="dialog">
