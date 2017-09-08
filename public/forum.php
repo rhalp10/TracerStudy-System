@@ -88,6 +88,9 @@ else
                                    $query1 =  mysql_query("SELECT * FROM `user_student_detail` WHERE `student_userID` = ".$res['post_owner_id']);
                                    $res1 = mysql_fetch_assoc($query1);
 
+                                    $query2 = mysql_query("SELECT `view_count` FROM `view_counter` WHERE `view_topicID` = ".$res['topic_ID']);
+                                   $res2 = mysql_fetch_assoc($query2);
+
                                   
                                   ?>
                                   <tr onclick="self.location.href='content.php'">
@@ -102,7 +105,7 @@ else
                                     by <a href=""><?php echo $res1['student_fName'].' '.$res1['student_mName'].' '.$res1['student_lName'] ?></a>
                                     </div>
                                     <div class="col-sm-2 forum-list-content-stat">
-                                    9,877 <i class="fa fa-eye"></i>
+                                    <?php echo $res2['view_count'] ;?> <i class="fa fa-eye"></i>
                                     <br>
                                     2 <i class="fa fa-comment"></i>
                                     </div>
@@ -154,11 +157,15 @@ else
                                   <tbody>
                                   
                                   <?php 
-                                  $query3 = mysql_query("SELECT * FROM `forum_topic`");
+                                  $query3 = mysql_query("SELECT * FROM `forum_topic` WHERE `post_status` = 'UNPIN'");
                                   while ($res3 = mysql_fetch_array($query3)) {
 
                                    $query1 =  mysql_query("SELECT * FROM `user_student_detail` WHERE `student_userID` = ".$res3['post_owner_id']);
                                    $res1 = mysql_fetch_assoc($query1);
+
+                                   $query4 = mysql_query("SELECT `view_count` FROM `view_counter` WHERE `view_topicID` = ".$res3['topic_ID']);
+                                   $res4 = mysql_fetch_assoc($query4);
+                                   
 
                                   
                                   ?>
@@ -171,10 +178,10 @@ else
                                    <strong><a href="content.php"><?php echo $res3['post_title']; ?>
                                     </a></strong>
                                     <br>
-                                    by <a href=""><?php echo $res1['student_fName'].' '.$res1['student_mName'].' '.$res1['student_lName'] ?></a>
+                                    by <a href="profile.php"><?php echo $res1['student_fName'].' '.$res1['student_mName'].' '.$res1['student_lName'] ?></a>
                                     </div>
                                     <div class="col-sm-2 forum-list-content-stat">
-                                    9,877 <i class="fa fa-eye"></i>
+                                    <?php echo $res4['view_count'] ;?> <i class="fa fa-eye"></i>
                                     <br>
                                     2 <i class="fa fa-comment"></i>
                                     </div>

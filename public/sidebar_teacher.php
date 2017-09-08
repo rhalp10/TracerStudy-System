@@ -1,4 +1,7 @@
-
+<?php 
+$query_sidebar = mysql_query("SELECT * FROM `user_teacher_detail` WHERE `teacher_userID` = $login_id");
+$res_sidebar = mysql_fetch_assoc($query_sidebar);
+?>
 
                     <div id="left">
                         <div class="media user-media bg-dark dker" >
@@ -8,11 +11,10 @@
                             <div class="user-wrapper bg-dark">
                                 <a class="user-link" href="">
                                     <img class="media-object img-thumbnail user-img" alt="User Picture" src="assets/img/profile_img/<?php echo $data_img?>">
-                                    <span class="label label-danger user-label">16</span>
                                 </a>
                         
                                 <div class="media-body">
-                                    <h5 class="media-heading">Archie</h5>
+                                    <h5 class="media-heading"><?php echo $res_sidebar['teacher_fName'];?></h5>
                                     <ul class="list-unstyled user-info">
                                         <li>Teacher</li>
                                         <li>Last Access : <br>

@@ -1,4 +1,5 @@
 <?php 
+include('action/login_action.php');
 if(isset($_SESSION['login_user']))
 {           
             $user=$_SESSION['login_user'];// passing the session user to new user variable
@@ -6,24 +7,15 @@ if(isset($_SESSION['login_user']))
             $db = mysql_select_db("tracerdata", $connection);// Selecting Database
             $query = mysql_query("SELECT * FROM `user_account` WHERE `user_name`= '$user'", $connection); //SQL query to fetch information of registerd users and finds user match.
             $rows = mysql_fetch_assoc($query);
-                if ($rows['user_level'] == '1') //checking if acclevel is equal to 0
+                if ($rows['user_level'] == '1' || $rows['user_level'] == '2' || $rows['user_level'] == '3') //checking if acclevel is equal to 0
                 {   
-                    header("location: dashboard.php");// retain to admin level 
-                }
-                elseif ($rows['user_level'] == '2')  //checking if acclevel is equal to 1
-                {
-                   
-                    header("location: dashboard.php"); // retain to student Level
-                    
-                } 
-                elseif ($rows['user_level'] == '3')  //checking if acclevel is equal to 2
-                {
-                     header("location: dashboard.php"); // retain to teacher Level
+                    header("location: dashboard.php");// retain to dashboard 
                 }
                 else
                 {
-
+                     header("location: index.php");
                 }
+
     
             
 }
@@ -123,7 +115,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b2e1ff', end
     <hr>
     <div class="tab-content">
         <div id="login-student" class="tab-pane active">
-            <form  method="POST" action="action/login_action.php" role="form">
+            <form  method="POST"  role="form">
                 <p class="text-muted text-center">
                     Enter your username and password
                 </p>
@@ -140,7 +132,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b2e1ff', end
             </form>
         </div>
         <div id="login-teacher" class="tab-pane ">
-            <form method="POST" action="action/login_action.php" role="form">
+            <form method="POST"  role="form">
                 <p class="text-muted text-center">
                     Enter your username and password
                 </p>

@@ -63,7 +63,7 @@ else
                             <div class="main-bar">
                             <ol class="breadcrumb">
                               <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-                              <li class="breadcrumb-item active"> Forum</li>
+                              <li class="breadcrumb-item active"> Record Student Detail</li>
                             </ol>
                             </div>
                             <!-- /.main-bar -->
@@ -74,48 +74,58 @@ else
                               <h5>Add Student Record</h5>
                              </header>
                              <div class="body">
-                                <form class="form-horizontal">
+                                <form class="form-horizontal" method="POST" action="action/recordstudent_action.php">
                                 <div class="form-group">
                                     <label for="text1" class="control-label col-lg-4">ID Number</label>
 
                                     <div class="col-lg-8">
-                                        <input type="text" id="text1" placeholder="ID Number" class="form-control">
+                                        <input type="text" id="text1" placeholder="ID Number" class="form-control" name="student_sinumber">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="text1" class="control-label col-lg-4">First Name</label>
 
                                     <div class="col-lg-8">
-                                        <input type="text" id="text1" placeholder="First Name" class="form-control">
+                                        <input type="text" id="text1" placeholder="First Name" class="form-control" name="student_firstname">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="text1" class="control-label col-lg-4">Middle Name</label>
 
                                     <div class="col-lg-8">
-                                        <input type="text" id="text1" placeholder="Middle Name" class="form-control">
+                                        <input type="text" id="text1" placeholder="Middle Name" class="form-control" name="student_middlename">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="text1" class="control-label col-lg-4">Last Name</label>
 
                                     <div class="col-lg-8">
-                                        <input type="text" id="text1" placeholder="Last Name" class="form-control">
+                                        <input type="text" id="text1" placeholder="Last Name" class="form-control" name="student_lastname">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="text1" class="control-label col-lg-4">Address</label>
 
                                     <div class="col-lg-8">
-                                        <input type="text" id="text1" placeholder="Address" class="form-control">
+                                        <input type="text" id="text1" placeholder="Address" class="form-control" name="student_adress">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="text1" class="control-label col-lg-4">Department</label>
 
                                     <div class="col-lg-8">
-                                        <select class="form-control">
-                                            <option>1</option>
+                                    <?php 
+                                    $query_dep = mysql_query("SELECT * FROM `cvsu_department`");
+                                    ?>
+                                        <select class="form-control" name="student_department">
+                                        <?php
+                                        while ($res_dep = mysql_fetch_array($query_dep)) {
+                                        
+                                        ?>
+                                            <option><?php echo $res_dep['department_name'];?></option>
+                                        <?php 
+                                        }
+                                        ?>
                                         </select>
                                     </div>
                                 </div>
@@ -124,7 +134,7 @@ else
 
                                     <div class="col-lg-8">
                                     <div class="input-group date" id="">
-                                        <input type="date" class="form-control">
+                                        <input type="date" class="form-control" name="student_year_admission">
                                         <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span>
                                       </span>
                                     </div>
@@ -135,14 +145,14 @@ else
 
                                     <div class="col-lg-8">
                                     <div class="input-group date" id="">
-                                        <input type="date" class="form-control">
+                                        <input type="date" class="form-control" name="student_year_grad">
                                         <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span>
                                       </span>
                                     </div>
                                     </div>
                                 </div>
                                 <!-- /.form-group -->
-                                <input class="btn btn-success" type="submit" name="Submit" value="Submit">
+                                <input class="btn btn-success" type="submit" name="submit_recordstudent" value="Submit">
                             </form>
                              </div>
                             </div>
@@ -169,72 +179,20 @@ else
                                     </tr>
                                   </tfoot>
                                   <tbody>
-                                  <tr>
-                                      <td>Rhalp Darren Cabrera</td>
-                                      <td>DIT</td>
-                                      <td>04/30/2017</td>
-                                      <td>04/30/2017</td>
-                                  </tr>
-                                  <tr>
-                                      <td>Rhalp Darren Cabrera</td>
-                                      <td>DIT</td>
-                                      <td>04/30/2017</td>
-                                      <td>04/30/2017</td>
-                                  </tr>
-                                  <tr>
-                                      <td>Rhalp Darren Cabrera</td>
-                                      <td>DIT</td>
-                                      <td>04/30/2017</td>
-                                      <td>04/30/2017</td>
-                                  </tr>
-                                  <tr>
-                                      <td>Rhalp Darren Cabrera</td>
-                                      <td>DIT</td>
-                                      <td>04/30/2017</td>
-                                      <td>04/30/2017</td>
-                                  </tr>
-                                  <tr>
-                                      <td>Rhalp Darren Cabrera</td>
-                                      <td>DIT</td>
-                                      <td>04/30/2017</td>
-                                      <td>04/30/2017</td>
-                                  </tr>
-                                  <tr>
-                                      <td>Rhalp Darren Cabrera</td>
-                                      <td>DIT</td>
-                                      <td>04/30/2017</td>
-                                      <td>04/30/2017</td>
-                                  </tr>
-                                  <tr>
-                                      <td>Rhalp Darren Cabrera</td>
-                                      <td>DIT</td>
-                                      <td>04/30/2017</td>
-                                      <td>04/30/2017</td>
-                                  </tr>
-                                  <tr>
-                                      <td>Rhalp Darren Cabrera</td>
-                                      <td>DIT</td>
-                                      <td>04/30/2017</td>
-                                      <td>04/30/2017</td>
-                                  </tr>
-                                  <tr>
-                                      <td>Rhalp Darren Cabrera</td>
-                                      <td>DIT</td>
-                                      <td>04/30/2017</td>
-                                      <td>04/30/2017</td>
-                                  </tr>
-                                  <tr>
-                                      <td>Rhalp Darren Cabrera</td>
-                                      <td>DIT</td>
-                                      <td>04/30/2017</td>
-                                      <td>04/30/2017</td>
-                                  </tr>
-                                  <tr>
-                                      <td>Rhalp Darren Cabrera</td>
-                                      <td>DIT</td>
-                                      <td>04/30/2017</td>
-                                      <td>04/30/2017</td>
-                                  </tr>
+                                  <?php 
+                                  $query_student_detail = mysql_query("SELECT * FROM user_student_detail");
+                                  while ($result_student_detail = mysql_fetch_array($query_student_detail)) 
+                                    {
+                                    ?>
+                                    <tr>
+                                        <td><?php echo $result_student_detail['student_fName']." ".$result_student_detail['student_mName']." ".$result_student_detail['student_lName']; ?></td>
+                                        <td class="text-center"><?php echo $result_student_detail['student_department'] ;?></td>
+                                        <td class="text-center"><?php echo $result_student_detail['student_admission'] ;?></td>
+                                        <td class="text-center"><?php echo $result_student_detail['student_year_grad'] ;?></td>
+                                    </tr>
+                                  <?php
+                                    }
+                                  ?>
 
 
                                   </tbody>
