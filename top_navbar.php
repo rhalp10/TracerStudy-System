@@ -45,7 +45,7 @@ $res['student_img'];
                                     <a href="#" id="nbAcctDD" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><i class="icon-user"></i><?php echo $login_session;?><i class="icon-sort-down"></i></a>
                                     <ul class="dropdown-menu pull-right">
 
-                                        <li><a href="#">Profile</a></li>
+                                        <li><a href="profile.php">Profile</a></li>
                                         <li><a href="logout.php">Log Out</a></li>
                                     </ul>
                                 </li>

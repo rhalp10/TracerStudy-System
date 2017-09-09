@@ -1,6 +1,9 @@
 <?php 
 $query_sidebar = mysql_query("SELECT * FROM `user_teacher_detail` WHERE `teacher_userID` = $login_id");
 $res_sidebar = mysql_fetch_assoc($query_sidebar);
+
+$query_count_post = mysql_query("SELECT `post_owner_id` FROM `forum_topic` WHERE `post_owner_id` = $login_id");
+$res_count_post = mysql_num_rows($query_count_post);
 ?>
 
                     <div id="left">
@@ -19,6 +22,9 @@ $res_sidebar = mysql_fetch_assoc($query_sidebar);
                                         <li>Teacher</li>
                                         <li>Last Access : <br>
                                             <small><i class="fa fa-calendar"></i>&nbsp;16 Mar 16:32</small>
+                                        </li>
+                                        <li>
+                                            <small><i class="fa fa-edit"></i>&nbsp;Posts: <a href="" style="color: white;"><?php echo $res_count_post?></a></small>
                                         </li>
                                     </ul>
                                 </div>

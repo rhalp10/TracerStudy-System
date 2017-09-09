@@ -59,7 +59,7 @@ $result_viewcount = mysql_fetch_assoc($query_viewcount);
   <head>
     <?php include('meta.php');?>
     <?php include('style_css.php');?>
-    <title></title>
+    <title><?php $post_title ;?></title>
   </head>
         <body class=" menu-affix">
             <div class="bg-dark dk" id="wrap">
@@ -107,53 +107,27 @@ $result_viewcount = mysql_fetch_assoc($query_viewcount);
                         <br>
                         <div class="well well-small dark">
                             <ul class="list-unstyled">
-                                <li>Visitor <span class="inlinesparkline pull-right">1,4,4,7,5,9,10</span></li>
-                                <li>Online Visitor <span class="dynamicsparkline pull-right">Loading..</span></li>
+                                <li>Total User <span class="inlinesparkline pull-right">1,4,4,7,5,9,10</span></li>
+                                <li>Online User <span class="dynamicsparkline pull-right">Loading..</span></li>
                                 <li>Popularity <span class="dynamicbar pull-right">Loading..</span></li>
                                 <li>New Users <span class="inlinebar pull-right">1,3,4,5,3,5</span></li>
                             </ul>
                         </div>
                         <!-- /.well well-small -->
                         <!-- .well well-small -->
-                        <div class="well well-small dark">
-                            <button class="btn btn-block">Default</button>
-                            <button class="btn btn-primary btn-block">Primary</button>
-                            <button class="btn btn-info btn-block">Info</button>
-                            <button class="btn btn-success btn-block">Success</button>
-                            <button class="btn btn-danger btn-block">Danger</button>
-                            <button class="btn btn-warning btn-block">Warning</button>
-                            <button class="btn btn-inverse btn-block">Inverse</button>
-                            <button class="btn btn-metis-1 btn-block">btn-metis-1</button>
-                            <button class="btn btn-metis-2 btn-block">btn-metis-2</button>
-                            <button class="btn btn-metis-3 btn-block">btn-metis-3</button>
-                            <button class="btn btn-metis-4 btn-block">btn-metis-4</button>
-                            <button class="btn btn-metis-5 btn-block">btn-metis-5</button>
-                            <button class="btn btn-metis-6 btn-block">btn-metis-6</button>
+                         <div class="well well-small dark">
+                         <div class="panel panel-default" >
+                          <div class="panel-heading">Message</div>
+                          <div class="panel-body">
+                            <form class="form-horizontal">
+                                <input type="text" class="form-control" placeholder="Recipient">
+                                <textarea  class="form-control" placeholder="Message.." style="height: 200px;">
+                                </textarea>
+                            </form>
+                          </div>
+                          </div>
                         </div>
-                        <!-- /.well well-small -->
-                        <!-- .well well-small -->
-                        <div class="well well-small dark">
-                            <span>Default</span><span class="pull-right"><small>20%</small></span>
                         
-                            <div class="progress xs">
-                                <div class="progress-bar progress-bar-info" style="width: 20%"></div>
-                            </div>
-                            <span>Success</span><span class="pull-right"><small>40%</small></span>
-                        
-                            <div class="progress xs">
-                                <div class="progress-bar progress-bar-success" style="width: 40%"></div>
-                            </div>
-                            <span>warning</span><span class="pull-right"><small>60%</small></span>
-                        
-                            <div class="progress xs">
-                                <div class="progress-bar progress-bar-warning" style="width: 60%"></div>
-                            </div>
-                            <span>Danger</span><span class="pull-right"><small>80%</small></span>
-                        
-                            <div class="progress xs">
-                                <div class="progress-bar progress-bar-danger" style="width: 80%"></div>
-                            </div>
-                        </div>
                     </div>
                     <!-- /#right -->
             </div>

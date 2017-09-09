@@ -38,6 +38,15 @@
 
                               <!-- Date/Time -->
                               <p><strong> Posted on</strong> <?php echo date("M jS, Y", strtotime("$post_date")). "<strong> at </strong>".date('h:i A', strtotime("$post_date")); ?> <strong>View<?php if ($result_viewcount['view_count'] != 0 ){ echo "s";}else {}?>: </strong><?php echo $result_viewcount['view_count'] ?></p>
+                              <br>
+                              <?php 
+                              if ($post_owner == $login_id ) {
+                                ?>
+                                <div class="pull-right" style="margin-top: -50px;"><a class="btn btn-primary"> Edit post</a></div>
+                                <?php
+                              }
+                              ?>
+                              
 
                               <hr>
                               <hr>

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 08, 2017 at 05:08 PM
+-- Generation Time: Sep 09, 2017 at 06:47 AM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.11
 
@@ -148,7 +148,7 @@ CREATE TABLE IF NOT EXISTS `forum_topic` (
   `post_status` varchar(25) NOT NULL DEFAULT 'UNPIN',
   PRIMARY KEY (`topic_ID`),
   KEY `post_owner_id` (`post_owner_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=28 ;
 
 --
 -- Dumping data for table `forum_topic`
@@ -156,11 +156,17 @@ CREATE TABLE IF NOT EXISTS `forum_topic` (
 
 INSERT INTO `forum_topic` (`topic_ID`, `post_title`, `post_owner_id`, `post_date`, `post_content`, `post_status`) VALUES
 (1, 'Project Grimoire - Caliburne ~Story of the Legendary sword~', 1, '2017-09-08 13:17:24', 'asdasdasdsad', 'PIN'),
-(2, '	Harada Hitomi, Kayano Ai & Ogura Yui - Maware! Setsugekka (T', 1, '2017-09-08 13:17:19', '<blockquote>\r\n<p>asdasd</p>\r\n</blockquote>\r\n', 'UNPIN'),
+(2, 'Harada Hitomi, Kayano Ai & Ogura Yui - Maware! Setsugekka', 1, '2017-09-09 01:52:44', '<blockquote>\r\n<p>asdasd</p>\r\n</blockquote>\r\n', 'UNPIN'),
 (3, 'Trans-Siberian Orchestra - Wizards In Winter', 1, '2017-09-08 13:17:41', '<p style="text-align:center"><span style="font-size:36px"><span style="color:#ffffff"><span style="background-color:#3498db">asdasdasd</span></span></span></p>\n\n<blockquote>\n<ul>\n	<li style="text-align: center;"><span style="font-size:36px"><span style="color:#ffffff"><span style="background-color:#3498db">asdasdasdasdasd</span></span></span></li>\n	<li style="text-align: center;"><span style="font-size:36px"><span style="color:#ffffff"><span style="background-color:#3498db">asdasd</span></span></span></li>\n	<li style="text-align: center;"><span style="font-size:36px"><span style="color:#ffffff"><span style="background-color:#3498db">asd</span></span></span></li>\n	<li style="text-align: center;"><br />\n	&nbsp;</li>\n</ul>\n</blockquote>\n', 'UNPIN'),
 (4, 'Lia - Saya''s Song Remix', 1, '2017-09-08 13:17:52', '<blockquote>\r\n<p>asdasd</p>\r\n\r\n<p>daarren</p>\r\n</blockquote>\r\n\r\n<p>asdasdasdasd</p>\r\n\r\n<p>asdasdsad</p>\r\n\r\n<p>asd</p>\r\n\r\n<blockquote>\r\n<p>adawd</p>\r\n\r\n<p>awdawd</p>\r\n\r\n<p>awdawd</p>\r\n\r\n<p>awd</p>\r\n\r\n<p>&nbsp;</p>\r\n</blockquote>\r\n', 'UNPIN'),
-(5, 'Horie Yui - The World''s End', 1, '2017-09-08 13:16:28', '<blockquote>\n<p>asdasd</p>\n\n<p>daarren</p>\n</blockquote>\n\n<p>asdasdasdasd</p>\n\n<p>asdasdsad</p>\n\n<p>asd</p>\n\n<blockquote>\n<p>adawd</p>\n\n<p>awdawd</p>\n\n<p>awdawd</p>\n\n<p>awd</p>\n\n<p>&nbsp;</p>\n</blockquote>\n', 'PIN'),
-(6, 'ETIA. - Kagami no Mary Sue', 1, '2017-09-08 13:18:05', '<p style="text-align:center"><span style="font-size:22px"><strong>SAMPLE</strong></span></p>\r\n\r\n<hr />\r\n<p><img alt="" src="https://cdn.colorlib.com/wp/wp-content/uploads/sites/2/free-bootstrap-blog-templates.jpg" style="float:left; height:192px; width:275px" /></p>\r\n\r\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi semper, dui eu interdum volutpat, lectus justo placerat neque, quis vulputate tellus lorem ac mauris. Phasellus quis nibh quis magna porta tempor varius ut velit. Donec ipsum lorem, tincidunt sit amet pellentesque eu, porttitor a sapien. Aliquam eu mauris nulla. Duis efficitur eros sed sapien convallis, nec vulputate mauris congue. In viverra enim dolor, sit amet consectetur mauris pharetra ac. Praesent id est sodales dui viverra tempus at sed quam. Duis eget rutrum nibh. Nam vel facilisis nunc, vel molestie felis. Ut sit amet sodales nunc, quis aliquet nisl.</p>\r\n\r\n<p>Etiam pharetra arcu eget tincidunt placerat. Cras commodo nulla dolor, in pharetra sapien maximus vel. Nullam egestas, urna non fermentum accumsan, turpis tellus blandit nulla, eu convallis tortor erat vel sapien. Maecenas non pretium risus. Ut placerat nunc vitae pharetra condimentum. Vestibulum dolor orci, malesuada eget laoreet a, congue quis velit. Aenean sit amet volutpat nisl, vel luctus nibh. Vivamus non magna non felis malesuada ornare eleifend eu velit. Pellentesque tempus tristique est in cursus. Fusce a sagittis nulla, id suscipit arcu. Morbi condimentum id sem vitae maximus. Mauris ultricies nunc a nulla lacinia, eu convallis risus aliquet. Phasellus efficitur auctor nibh vel tempus. Fusce semper neque a nisi malesuada laoreet.</p>\r\n\r\n<p>Vivamus finibus aliquet lacus. Curabitur viverra maximus nisl sed tempor. Morbi vel neque at metus laoreet lacinia. Donec id massa commodo, auctor sapien sit amet, fermentum magna. Phasellus ultrices, nunc vel luctus vestibulum, leo lorem vulputate lorem, nec dictum nisi ex in ipsum. Nulla lobortis dolor a blandit dapibus. Sed fringilla ut nisl efficitur tincidunt. In a nunc elit.</p>\r\n\r\n<p>Vivamus convallis justo vitae libero finibus, eu venenatis est egestas. Etiam pretium nibh augue, accumsan porttitor purus tincidunt ut. Ut quis egestas lorem, ut vulputate nisi. Donec rhoncus sem velit. Nulla imperdiet pulvinar erat, sit amet tristique orci dignissim nec. Curabitur eleifend nunc nec metus molestie, ac imperdiet tellus feugiat. Nullam consequat felis sit amet ligula ullamcorper, vitae accumsan augue commodo. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce rutrum quis eros at lobortis.</p>\r\n\r\n<p>Nulla facilisi. In nec consectetur dui, blandit venenatis mauris. Nullam lacus erat, porttitor ac tempor sit amet, euismod et libero. In tempus interdum lectus eu tincidunt. Nulla in magna a massa commodo congue. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque gravida ante orci. In laoreet interdum urna, ac imperdiet ligula lacinia sed. Etiam felis sem, mattis ac lacus id, feugiat vestibulum nisi. Phasellus malesuada nunc eget nunc facilisis ultrices. Praesent placerat cursus venenatis.</p>\r\n', 'UNPIN');
+(5, 'Horie Yui - The World''s End', 3, '2017-09-09 04:18:37', '<blockquote>\n<p>asdasd</p>\n\n<p>daarren</p>\n</blockquote>\n\n<p>asdasdasdasd</p>\n\n<p>asdasdsad</p>\n\n<p>asd</p>\n\n<blockquote>\n<p>adawd</p>\n\n<p>awdawd</p>\n\n<p>awdawd</p>\n\n<p>awd</p>\n\n<p>&nbsp;</p>\n</blockquote>\n', 'PIN'),
+(6, 'ETIA. - Kagami no Mary Sue', 1, '2017-09-08 13:18:05', '<p style="text-align:center"><span style="font-size:22px"><strong>SAMPLE</strong></span></p>\r\n\r\n<hr />\r\n<p><img alt="" src="https://cdn.colorlib.com/wp/wp-content/uploads/sites/2/free-bootstrap-blog-templates.jpg" style="float:left; height:192px; width:275px" /></p>\r\n\r\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi semper, dui eu interdum volutpat, lectus justo placerat neque, quis vulputate tellus lorem ac mauris. Phasellus quis nibh quis magna porta tempor varius ut velit. Donec ipsum lorem, tincidunt sit amet pellentesque eu, porttitor a sapien. Aliquam eu mauris nulla. Duis efficitur eros sed sapien convallis, nec vulputate mauris congue. In viverra enim dolor, sit amet consectetur mauris pharetra ac. Praesent id est sodales dui viverra tempus at sed quam. Duis eget rutrum nibh. Nam vel facilisis nunc, vel molestie felis. Ut sit amet sodales nunc, quis aliquet nisl.</p>\r\n\r\n<p>Etiam pharetra arcu eget tincidunt placerat. Cras commodo nulla dolor, in pharetra sapien maximus vel. Nullam egestas, urna non fermentum accumsan, turpis tellus blandit nulla, eu convallis tortor erat vel sapien. Maecenas non pretium risus. Ut placerat nunc vitae pharetra condimentum. Vestibulum dolor orci, malesuada eget laoreet a, congue quis velit. Aenean sit amet volutpat nisl, vel luctus nibh. Vivamus non magna non felis malesuada ornare eleifend eu velit. Pellentesque tempus tristique est in cursus. Fusce a sagittis nulla, id suscipit arcu. Morbi condimentum id sem vitae maximus. Mauris ultricies nunc a nulla lacinia, eu convallis risus aliquet. Phasellus efficitur auctor nibh vel tempus. Fusce semper neque a nisi malesuada laoreet.</p>\r\n\r\n<p>Vivamus finibus aliquet lacus. Curabitur viverra maximus nisl sed tempor. Morbi vel neque at metus laoreet lacinia. Donec id massa commodo, auctor sapien sit amet, fermentum magna. Phasellus ultrices, nunc vel luctus vestibulum, leo lorem vulputate lorem, nec dictum nisi ex in ipsum. Nulla lobortis dolor a blandit dapibus. Sed fringilla ut nisl efficitur tincidunt. In a nunc elit.</p>\r\n\r\n<p>Vivamus convallis justo vitae libero finibus, eu venenatis est egestas. Etiam pretium nibh augue, accumsan porttitor purus tincidunt ut. Ut quis egestas lorem, ut vulputate nisi. Donec rhoncus sem velit. Nulla imperdiet pulvinar erat, sit amet tristique orci dignissim nec. Curabitur eleifend nunc nec metus molestie, ac imperdiet tellus feugiat. Nullam consequat felis sit amet ligula ullamcorper, vitae accumsan augue commodo. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce rutrum quis eros at lobortis.</p>\r\n\r\n<p>Nulla facilisi. In nec consectetur dui, blandit venenatis mauris. Nullam lacus erat, porttitor ac tempor sit amet, euismod et libero. In tempus interdum lectus eu tincidunt. Nulla in magna a massa commodo congue. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque gravida ante orci. In laoreet interdum urna, ac imperdiet ligula lacinia sed. Etiam felis sem, mattis ac lacus id, feugiat vestibulum nisi. Phasellus malesuada nunc eget nunc facilisis ultrices. Praesent placerat cursus venenatis.</p>\r\n', 'UNPIN'),
+(22, 'xcc', 3, '2017-09-09 04:18:34', '<p>ssssww</p>\r\n', 'UNPIN'),
+(23, 'xcc', 1, '2017-09-09 03:30:30', '<p>ssssww</p>\r\n', 'UNPIN'),
+(24, 'asdasdasdasdwwww', 1, '2017-09-09 03:31:53', '<p>asdasd</p>\r\n', 'UNPIN'),
+(25, 'asdasdasdasdwwww', 1, '2017-09-09 03:33:59', '<p>asdasd</p>\r\n', 'UNPIN'),
+(26, 'zxcbhyqekl2o48765784385739485793847589', 1, '2017-09-09 03:34:58', '<p>sdgjaejhaweawe</p>\r\n\r\n<hr />\r\n<p><img alt="devil" src="http://localhost/Tracer_UI/assets/lib/ckeditor/plugins/smiley/images/devil_smile.png" style="height:23px; width:23px" title="devil" /></p>\r\n\r\n<table border="1" cellpadding="1" cellspacing="1" style="width:500px">\r\n	<tbody>\r\n		<tr>\r\n			<td><strong>zxzx</strong></td>\r\n			<td><strong>zzxc</strong></td>\r\n		</tr>\r\n		<tr>\r\n			<td>xc</td>\r\n			<td>zxc</td>\r\n		</tr>\r\n		<tr>\r\n			<td>zxczxc</td>\r\n			<td>zxc</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n\r\n<h1><br />\r\n<br />\r\n<span style="font-size:72px"><span style="font-family:Trebuchet MS,Helvetica,sans-serif">asdasdasd</span></span></h1>\r\n', 'UNPIN'),
+(27, 'teacher', 2, '2017-09-09 04:09:04', '<p>teacher</p>\r\n\r\n<p>&nbsp;</p>\r\n', 'UNPIN');
 
 -- --------------------------------------------------------
 
@@ -256,7 +262,7 @@ CREATE TABLE IF NOT EXISTS `user_account` (
   `user_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`user_ID`),
   KEY `user_level` (`user_level`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `user_account`
@@ -266,7 +272,8 @@ INSERT INTO `user_account` (`user_ID`, `user_level`, `user_name`, `user_password
 (0, 0, 'unregister', 'unregister', '2017-09-06 10:18:39'),
 (1, 1, '201310656', 'M8+Cpt+zltZs3QpomFLRjEFCGvI0VGC+jjJzXH32Mtw=', '2017-09-06 11:37:31'),
 (2, 2, 'teacher', '6Bgzqn4mnCPjx432mpfOVbU87Mi3sy29KRe8A1l+2X0=', '2017-09-06 10:18:33'),
-(3, 3, 'admin', 'QrUgcNdRjaE74hfEIeThKa/RaqA9N/KpBI+X7VeiyfE=', '2017-09-06 10:23:49');
+(3, 3, 'admin', 'QrUgcNdRjaE74hfEIeThKa/RaqA9N/KpBI+X7VeiyfE=', '2017-09-06 10:23:49'),
+(4, 1, '$student_number', '$encrypted', '2017-09-09 03:18:26');
 
 -- --------------------------------------------------------
 
@@ -431,19 +438,25 @@ CREATE TABLE IF NOT EXISTS `view_counter` (
   `view_topicID` int(11) NOT NULL,
   `view_count` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`view_ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=25 ;
 
 --
 -- Dumping data for table `view_counter`
 --
 
 INSERT INTO `view_counter` (`view_ID`, `view_topicID`, `view_count`) VALUES
-(1, 1, 5),
-(2, 2, 0),
-(3, 3, 2),
-(4, 4, 0),
-(5, 5, 15),
-(6, 6, 1);
+(1, 1, 10),
+(2, 2, 143),
+(3, 3, 12),
+(4, 4, 5),
+(5, 5, 52),
+(6, 6, 90),
+(19, 22, 0),
+(20, 23, 0),
+(21, 24, 0),
+(22, 25, 2),
+(23, 26, 15),
+(24, 27, 1);
 
 --
 -- Constraints for dumped tables
