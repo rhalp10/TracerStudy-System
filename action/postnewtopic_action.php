@@ -18,7 +18,7 @@ if (isset($_POST['submit_postnewtopic']))
 	//insert query for add new topic 
  	$res = mysqli_query($con,"INSERT INTO `forum_topic` (post_title, post_owner_id, post_date, post_content, post_status) VALUES ('$post_title', '$post_owner_id', CURRENT_TIMESTAMP, '$post_content', 'UNPIN')");
 	// geting the last insert created account
-	$last_id = mysqli_insert_id();
+	$last_id = mysqli_insert_id($con);
 	// insert view counter
  	$res1 = mysqli_query($con,"INSERT INTO `view_counter` (view_ID, view_topicID, view_count)  VALUES (NULL, '$last_id', '0')");
  	$post_ID  = password_hash($last_id, PASSWORD_DEFAULT); 

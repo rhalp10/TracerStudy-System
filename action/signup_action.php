@@ -34,7 +34,6 @@
 					$result = mysqli_query($con,"INSERT INTO `user_account` (user_level, user_name, user_password) VALUES ('1','$student_number','$encrypted')");
 					// geting the last insert created account
 					$last_id = mysqli_insert_id($con);
-					echo $last_id;
 					//update of the student info as register
 					$result1 = mysqli_query($con,"UPDATE `user_student_detail` SET `student_status` = 'register',`student_userID` = '$last_id' WHERE `student_IDNumber` = '$student_number'");
 					echo "<script>alert('Register Successfully !');
