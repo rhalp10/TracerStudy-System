@@ -122,7 +122,7 @@ else
                                         while ($res_dep = mysql_fetch_array($query_dep)) {
                                         
                                         ?>
-                                            <option><?php echo $res_dep['department_name'];?></option>
+                                            <option value="<?php echo $res_dep['department_acronym'] ?>"><?php echo $res_dep['department_name'];?></option>
                                         <?php 
                                         }
                                         ?>
@@ -270,34 +270,43 @@ else
             <?php include ('script.php');?>
         </body>
         <script type="text/javascript">
-            $( document ).ready(function() {
-  console.log( "document ready!" );
+        $(document).ready(function() {
+        console.log("document ready!");
 
-  var $sticky = $('.sticky');
-  var $stickyrStopper = $('.sticky-stopper');
-  if (!!$sticky.offset()) { // make sure ".sticky" element exists
+        var $sticky = $('.sticky');
+        var $stickyrStopper = $('.sticky-stopper');
+        if (!!$sticky.offset()) { // make sure ".sticky" element exists
 
-    var generalSidebarHeight = $sticky.innerHeight();
-    var stickyTop = $sticky.offset().top;
-    var stickOffset = 0;
-    var stickyStopperPosition = $stickyrStopper.offset().top;
-    var stopPoint = stickyStopperPosition - generalSidebarHeight - stickOffset;
-    var diff = stopPoint + stickOffset;
+            var generalSidebarHeight = $sticky.innerHeight();
+            var stickyTop = $sticky.offset().top;
+            var stickOffset = 0;
+            var stickyStopperPosition = $stickyrStopper.offset().top;
+            var stopPoint = stickyStopperPosition - generalSidebarHeight - stickOffset;
+            var diff = stopPoint + stickOffset;
 
-    $(window).scroll(function(){ // scroll event
-      var windowTop = $(window).scrollTop(); // returns number
+            $(window).scroll(function() { // scroll event
+                var windowTop = $(window).scrollTop(); // returns number
 
-      if (stopPoint < windowTop) {
-          $sticky.css({ position: 'absolute', top: diff });
-      } else if (stickyTop < windowTop+stickOffset) {
-          $sticky.css({ position: 'fixed', top: stickOffset });
-      } else {
-          $sticky.css({position: 'absolute', top: 'initial'});
-      }
-    });
+                if (stopPoint < windowTop) {
+                    $sticky.css({
+                        position: 'absolute',
+                        top: diff
+                    });
+                } else if (stickyTop < windowTop + stickOffset) {
+                    $sticky.css({
+                        position: 'fixed',
+                        top: stickOffset
+                    });
+                } else {
+                    $sticky.css({
+                        position: 'absolute',
+                        top: 'initial'
+                    });
+                }
+            });
 
-  }
-});
+        }
+        });
         </script>
 
 </html>

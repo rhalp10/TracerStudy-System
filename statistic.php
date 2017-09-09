@@ -1,29 +1,28 @@
 <?php 
-include('session.php'); 
+include('session.php');
 include('db.php');
 $page = 'statistic';
-
 if ($login_level == '1')
 {
-    $result = mysql_query("SELECT * FROM `user_student_detail` WHERE student_userID = $login_id");
-    $data = mysql_fetch_array($result);
-    $data_img = $data['student_img']; 
+  $result = mysql_query("SELECT * FROM `user_student_detail` WHERE student_userID = $login_id");
+  $data = mysql_fetch_array($result);
+  $data_img = $data['student_img'];
 }
 else if ($login_level == '2')
 {
-    $result = mysql_query("SELECT * FROM `user_teacher_detail` WHERE teacher_userID = $login_id");
-    $data = mysql_fetch_array($result);
-    $data_img = $data['teacher_img']; 
+  $result = mysql_query("SELECT * FROM `user_teacher_detail` WHERE teacher_userID = $login_id");
+  $data = mysql_fetch_array($result);
+  $data_img = $data['teacher_img'];
 }
 else if ($login_level == '3')
 {
-    $result = mysql_query("SELECT * FROM `user_admin_detail` WHERE admin_userID = $login_id");
-    $data = mysql_fetch_array($result);
-    $data_img = $data['admin_img']; 
+  $result = mysql_query("SELECT * FROM `user_admin_detail` WHERE admin_userID = $login_id");
+  $data = mysql_fetch_array($result);
+  $data_img = $data['admin_img'];
 }
 else
-{
-}
+{}
+
 ?><!DOCTYPE html>
 <html>  
   <head>
@@ -40,19 +39,19 @@ else
                     <?php  
                     if ($login_level == '1')
                     {
-                        include('sidebar_student.php');
+                      include('sidebar_student.php');
                     }
                     if ($login_level == '2')
                     {
-                        include('sidebar_teacher.php');
+                      include('sidebar_teacher.php');
                     }
-                    elseif ($login_level == '3')
+                    elseif($login_level == '3')
                     {
-                        include('sidebar_admin.php');
+                      include('sidebar_admin.php');
                     }
                     else
-                    {
-                    }
+                    {}
+
                     ?>    
                     <!-- /#left -->
                 <div id="content">
@@ -162,55 +161,43 @@ else
             <!-- /#footer -->
             <?php include ('script.php');?>
             <script>
+var doughnutData = [{
+        value: 30,
+        color: "#F7464A"
+    }, {
+        value: 50,
+        color: "#46BFBD"
+    }, {
+        value: 100,
+        color: "#FDB45C"
+    }, {
+        value: 40,
+        color: "#949FB1"
+    }, {
+        value: 120,
+        color: "#4D5360"
+    }
 
-        var doughnutData = [
-                {
-                    value: 30,
-                    color:"#F7464A"
-                },
-                {
-                    value : 50,
-                    color : "#46BFBD"
-                },
-                {
-                    value : 100,
-                    color : "#FDB45C"
-                },
-                {
-                    value : 40,
-                    color : "#949FB1"
-                },
-                {
-                    value : 120,
-                    color : "#4D5360"
-                }
-            
-            ];
+];
 
-    var myDoughnut = new Chart(document.getElementById("canvas").getContext("2d")).Doughnut(doughnutData);
-    
-    </script>
-    <script>
+var myDoughnut = new Chart(document.getElementById("canvas").getContext("2d")).Doughnut(doughnutData);
 
-        var barChartData = {
-            labels : ["January","February","March","April","May","June","July"],
-            datasets : [
-                {
-                    fillColor : "rgba(220,220,220,0.5)",
-                    strokeColor : "rgba(220,220,220,1)",
-                    data : [65,59,90,81,56,55,40]
-                },
-                {
-                    fillColor : "rgba(151,187,205,0.5)",
-                    strokeColor : "rgba(151,187,205,1)",
-                    data : [28,48,40,19,96,27,100]
-                }
-            ]
-            
-        }
 
-    var myLine = new Chart(document.getElementById("canvas1").getContext("2d")).Bar(barChartData);
-    
+var barChartData = {
+    labels: ["January", "February", "March", "April", "May", "June", "July"],
+    datasets: [{
+        fillColor: "rgba(220,220,220,0.5)",
+        strokeColor: "rgba(220,220,220,1)",
+        data: [65, 59, 90, 81, 56, 55, 40]
+    }, {
+        fillColor: "rgba(151,187,205,0.5)",
+        strokeColor: "rgba(151,187,205,1)",
+        data: [28, 48, 40, 19, 96, 27, 100]
+    }]
+
+}
+
+var myLine = new Chart(document.getElementById("canvas1").getContext("2d")).Bar(barChartData);
     </script>
         </body>
 

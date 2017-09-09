@@ -1,30 +1,24 @@
 
 <?php 
-include('session.php'); 
+include('session.php');
 include('db.php');
 $page = 'forum';
-
-if ($login_level == '1')
-{
-    $result = mysql_query("SELECT * FROM `user_student_detail` WHERE student_userID = $login_id");
-    $data = mysql_fetch_array($result);
-    $data_img = $data['student_img']; 
+if($login_level == '1') {
+   $result = mysql_query("SELECT * FROM `user_student_detail` WHERE student_userID = $login_id");
+   $data = mysql_fetch_array($result);
+   $data_img = $data['student_img'];
 }
-else if ($login_level == '2')
-{
-    $result = mysql_query("SELECT * FROM `user_teacher_detail` WHERE teacher_userID = $login_id");
-    $data = mysql_fetch_array($result);
-    $data_img = $data['teacher_img']; 
+else if($login_level == '2') {
+   $result = mysql_query("SELECT * FROM `user_teacher_detail` WHERE teacher_userID = $login_id");
+   $data = mysql_fetch_array($result);
+   $data_img = $data['teacher_img'];
 }
-else if ($login_level == '3')
-{
-    $result = mysql_query("SELECT * FROM `user_admin_detail` WHERE admin_userID = $login_id");
-    $data = mysql_fetch_array($result);
-    $data_img = $data['admin_img']; 
+else if($login_level == '3') {
+   $result = mysql_query("SELECT * FROM `user_admin_detail` WHERE admin_userID = $login_id");
+   $data = mysql_fetch_array($result);
+   $data_img = $data['admin_img'];
 }
-else
-{
-}
+else {}
 ?>
 <!DOCTYPE html>
 <html>  
@@ -40,21 +34,16 @@ else
                 </div>
                 <!-- /#top -->
                     <?php  
-                    if ($login_level == '1')
-                    {
-                        include('sidebar_student.php');
+                    if($login_level == '1') {
+                       include('sidebar_student.php');
                     }
-                    if ($login_level == '2')
-                    {
-                        include('sidebar_teacher.php');
+                    if($login_level == '2') {
+                       include('sidebar_teacher.php');
                     }
-                    elseif ($login_level == '3')
-                    {
-                        include('sidebar_admin.php');
+                    elseif($login_level == '3') {
+                       include('sidebar_admin.php');
                     }
-                    else
-                    {
-                    }
+                    else {}
                     ?>                    
                       <!-- /#left -->
                 <div id="content">
@@ -83,11 +72,9 @@ else
                                   <tbody>
                                   <?php 
                                   $query = mysql_query("SELECT * FROM `forum_topic` WHERE `post_status` = 'PIN' ORDER BY `post_date` DESC;");
-                                  while ($res = mysql_fetch_array($query)) 
-                                  {
-
-                                  $query2 = mysql_query("SELECT `view_count` FROM `view_counter` WHERE `view_topicID` = ".$res['topic_ID']);
-                                   $res2 = mysql_fetch_assoc($query2);
+                                  while($res = mysql_fetch_array($query)) {
+                                     $query2 = mysql_query("SELECT `view_count` FROM `view_counter` WHERE `view_topicID` = ".$res['topic_ID']);
+                                     $res2 = mysql_fetch_assoc($query2);
                                   
                                   ?>
                                   <tr onclick="self.location.href='forum_view.php?post_ID=<?php echo password_hash($res['topic_ID'], PASSWORD_DEFAULT);?>'">
@@ -101,21 +88,24 @@ else
                                     <br>
                                     by <a href=""><?php 
                                     $post_owner = $res['post_owner_id'];
-                                    if ($query_postowner =  mysql_query("SELECT student_fName,student_mName,student_lName FROM `user_student_detail` WHERE `student_userID` = '$post_owner'")) 
-                                      {
+                                    if($query_postowner = mysql_query("SELECT student_fName,student_mName,student_lName FROM `user_student_detail` WHERE `student_userID` = '$post_owner'")) {
                                        $res_postowner = mysql_fetch_assoc($query_postowner);
-                                      echo $res_postowner['student_fName']." ".$res_postowner['student_mName']." ".$res_postowner['student_lName'];
-                                      }
-                                      if ($query_postowner =  mysql_query("SELECT teacher_fName,teacher_mName,teacher_lName FROM `user_teacher_detail` WHERE `teacher_userID` = '$post_owner'")) 
-                                      {
+                                       echo $res_postowner['student_fName'].
+                                       " ".$res_postowner['student_mName'].
+                                       " ".$res_postowner['student_lName'];
+                                    }
+                                    if($query_postowner = mysql_query("SELECT teacher_fName,teacher_mName,teacher_lName FROM `user_teacher_detail` WHERE `teacher_userID` = '$post_owner'")) {
                                        $res_postowner = mysql_fetch_assoc($query_postowner);
-                                      echo $res_postowner['teacher_fName']." ".$res_postowner['teacher_mName']." ".$res_postowner['teacher_lName'];
-                                      }
-                                      if ($query_postowner =  mysql_query("SELECT admin_fName,admin_mName,admin_lName FROM `user_admin_detail` WHERE `admin_userID` = '$post_owner'")) 
-                                      {
+                                       echo $res_postowner['teacher_fName'].
+                                       " ".$res_postowner['teacher_mName'].
+                                       " ".$res_postowner['teacher_lName'];
+                                    }
+                                    if($query_postowner = mysql_query("SELECT admin_fName,admin_mName,admin_lName FROM `user_admin_detail` WHERE `admin_userID` = '$post_owner'")) {
                                        $res_postowner = mysql_fetch_assoc($query_postowner);
-                                      echo $res_postowner['admin_fName']." ".$res_postowner['admin_mName']." ".$res_postowner['admin_lName'];
-                                      }?></a>
+                                       echo $res_postowner['admin_fName'].
+                                       " ".$res_postowner['admin_mName'].
+                                       " ".$res_postowner['admin_lName'];
+                                    } ?></a>
                                     </div>
                                     <div class="col-sm-2 forum-list-content-stat">
                                     <?php echo $res2['view_count'] ;?> <i class="fa fa-eye"></i>
@@ -170,15 +160,10 @@ else
                                   <tbody>
                                   
                                   <?php 
-
-
                                   $query3 = mysql_query("SELECT * FROM `forum_topic` WHERE `post_status` = 'UNPIN'");
-                                  while ($res3 = mysql_fetch_array($query3)) {
-
-
-                                   $query4 = mysql_query("SELECT `view_count` FROM `view_counter` WHERE `view_topicID` = ".$res3['topic_ID']);
-                                   $res4 = mysql_fetch_assoc($query4);
-
+                                  while($res3 = mysql_fetch_array($query3)) {
+                                     $query4 = mysql_query("SELECT `view_count` FROM `view_counter` WHERE `view_topicID` = ".$res3['topic_ID']);
+                                     $res4 = mysql_fetch_assoc($query4);
                                   ?>
                                   <tr onclick="self.location.href='forum_view.php?post_ID=<?php echo password_hash($res3['topic_ID'], PASSWORD_DEFAULT);?>'">
                                   <td class="forum-td" >
@@ -191,21 +176,24 @@ else
                                     <br>
                                     by <a href="profile.php"><?php 
                                     $post_owner = $res3['post_owner_id'];
-                                    if ($query_postowner =  mysql_query("SELECT student_fName,student_mName,student_lName FROM `user_student_detail` WHERE `student_userID` = '$post_owner'")) 
-                                      {
+                                    if($query_postowner = mysql_query("SELECT student_fName,student_mName,student_lName FROM `user_student_detail` WHERE `student_userID` = '$post_owner'")) {
                                        $res_postowner = mysql_fetch_assoc($query_postowner);
-                                      echo $res_postowner['student_fName']." ".$res_postowner['student_mName']." ".$res_postowner['student_lName'];
-                                      }
-                                      if ($query_postowner =  mysql_query("SELECT teacher_fName,teacher_mName,teacher_lName FROM `user_teacher_detail` WHERE `teacher_userID` = '$post_owner'")) 
-                                      {
+                                       echo $res_postowner['student_fName'].
+                                       " ".$res_postowner['student_mName'].
+                                       " ".$res_postowner['student_lName'];
+                                    }
+                                    if($query_postowner = mysql_query("SELECT teacher_fName,teacher_mName,teacher_lName FROM `user_teacher_detail` WHERE `teacher_userID` = '$post_owner'")) {
                                        $res_postowner = mysql_fetch_assoc($query_postowner);
-                                      echo $res_postowner['teacher_fName']." ".$res_postowner['teacher_mName']." ".$res_postowner['teacher_lName'];
-                                      }
-                                      if ($query_postowner =  mysql_query("SELECT admin_fName,admin_mName,admin_lName FROM `user_admin_detail` WHERE `admin_userID` = '$post_owner'")) 
-                                      {
+                                       echo $res_postowner['teacher_fName'].
+                                       " ".$res_postowner['teacher_mName'].
+                                       " ".$res_postowner['teacher_lName'];
+                                    }
+                                    if($query_postowner = mysql_query("SELECT admin_fName,admin_mName,admin_lName FROM `user_admin_detail` WHERE `admin_userID` = '$post_owner'")) {
                                        $res_postowner = mysql_fetch_assoc($query_postowner);
-                                      echo $res_postowner['admin_fName']." ".$res_postowner['admin_mName']." ".$res_postowner['admin_lName'];
-                                      }?></a>
+                                       echo $res_postowner['admin_fName'].
+                                       " ".$res_postowner['admin_mName'].
+                                       " ".$res_postowner['admin_lName'];
+                                    }?></a>
                                     </div>
                                     <div class="col-sm-2 forum-list-content-stat">
                                     <?php echo $res4['view_count'] ;?> <i class="fa fa-eye"></i>
@@ -298,34 +286,43 @@ else
             <?php include ('script.php');?>
         </body>
         <script type="text/javascript">
-            $( document ).ready(function() {
-  console.log( "document ready!" );
+            $(document).ready(function() {
+        console.log("document ready!");
 
-  var $sticky = $('.sticky');
-  var $stickyrStopper = $('.sticky-stopper');
-  if (!!$sticky.offset()) { // make sure ".sticky" element exists
+        var $sticky = $('.sticky');
+        var $stickyrStopper = $('.sticky-stopper');
+        if (!!$sticky.offset()) { // make sure ".sticky" element exists
 
-    var generalSidebarHeight = $sticky.innerHeight();
-    var stickyTop = $sticky.offset().top;
-    var stickOffset = 0;
-    var stickyStopperPosition = $stickyrStopper.offset().top;
-    var stopPoint = stickyStopperPosition - generalSidebarHeight - stickOffset;
-    var diff = stopPoint + stickOffset;
+            var generalSidebarHeight = $sticky.innerHeight();
+            var stickyTop = $sticky.offset().top;
+            var stickOffset = 0;
+            var stickyStopperPosition = $stickyrStopper.offset().top;
+            var stopPoint = stickyStopperPosition - generalSidebarHeight - stickOffset;
+            var diff = stopPoint + stickOffset;
 
-    $(window).scroll(function(){ // scroll event
-      var windowTop = $(window).scrollTop(); // returns number
+            $(window).scroll(function() { // scroll event
+                var windowTop = $(window).scrollTop(); // returns number
 
-      if (stopPoint < windowTop) {
-          $sticky.css({ position: 'absolute', top: diff });
-      } else if (stickyTop < windowTop+stickOffset) {
-          $sticky.css({ position: 'fixed', top: stickOffset });
-      } else {
-          $sticky.css({position: 'absolute', top: 'initial'});
-      }
+                if (stopPoint < windowTop) {
+                    $sticky.css({
+                        position: 'absolute',
+                        top: diff
+                    });
+                } else if (stickyTop < windowTop + stickOffset) {
+                    $sticky.css({
+                        position: 'fixed',
+                        top: stickOffset
+                    });
+                } else {
+                    $sticky.css({
+                        position: 'absolute',
+                        top: 'initial'
+                    });
+                }
+            });
+
+        }
     });
-
-  }
-});
 
 
         </script>

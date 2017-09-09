@@ -1,30 +1,29 @@
 
 <?php 
-include('session.php'); 
+include('session.php');
 include('db.php');
 $page = 'alumni';
-
 if ($login_level == '1')
 {
-    $result = mysql_query("SELECT * FROM `user_student_detail` WHERE student_userID = $login_id");
-    $data = mysql_fetch_array($result);
-    $data_img = $data['student_img']; 
+  $result = mysql_query("SELECT * FROM `user_student_detail` WHERE student_userID = $login_id");
+  $data = mysql_fetch_array($result);
+  $data_img = $data['student_img'];
 }
 else if ($login_level == '2')
 {
-    $result = mysql_query("SELECT * FROM `user_teacher_detail` WHERE teacher_userID = $login_id");
-    $data = mysql_fetch_array($result);
-    $data_img = $data['teacher_img']; 
+  $result = mysql_query("SELECT * FROM `user_teacher_detail` WHERE teacher_userID = $login_id");
+  $data = mysql_fetch_array($result);
+  $data_img = $data['teacher_img'];
 }
 else if ($login_level == '3')
 {
-    $result = mysql_query("SELECT * FROM `user_admin_detail` WHERE admin_userID = $login_id");
-    $data = mysql_fetch_array($result);
-    $data_img = $data['admin_img']; 
+  $result = mysql_query("SELECT * FROM `user_admin_detail` WHERE admin_userID = $login_id");
+  $data = mysql_fetch_array($result);
+  $data_img = $data['admin_img'];
 }
 else
-{
-}
+{}
+
 ?>
 <!DOCTYPE html>
 <html>  
@@ -42,19 +41,18 @@ else
                     <?php  
                     if ($login_level == '1')
                     {
-                        include('sidebar_student.php');
+                      include('sidebar_student.php');
                     }
                     if ($login_level == '2')
                     {
-                        include('sidebar_teacher.php');
+                      include('sidebar_teacher.php');
                     }
-                    elseif ($login_level == '3')
+                    elseif($login_level == '3')
                     {
-                        include('sidebar_admin.php');
+                      include('sidebar_admin.php');
                     }
                     else
-                    {
-                    }
+                    {}
                     ?>                    
                       <!-- /#left -->
                 <div id="content">
@@ -186,34 +184,43 @@ else
             <?php include ('script.php');?>
         </body>
         <script type="text/javascript">
-            $( document ).ready(function() {
-  console.log( "document ready!" );
+        $(document).ready(function() {
+            console.log("document ready!");
 
-  var $sticky = $('.sticky');
-  var $stickyrStopper = $('.sticky-stopper');
-  if (!!$sticky.offset()) { // make sure ".sticky" element exists
+            var $sticky = $('.sticky');
+            var $stickyrStopper = $('.sticky-stopper');
+            if (!!$sticky.offset()) { // make sure ".sticky" element exists
 
-    var generalSidebarHeight = $sticky.innerHeight();
-    var stickyTop = $sticky.offset().top;
-    var stickOffset = 0;
-    var stickyStopperPosition = $stickyrStopper.offset().top;
-    var stopPoint = stickyStopperPosition - generalSidebarHeight - stickOffset;
-    var diff = stopPoint + stickOffset;
+                var generalSidebarHeight = $sticky.innerHeight();
+                var stickyTop = $sticky.offset().top;
+                var stickOffset = 0;
+                var stickyStopperPosition = $stickyrStopper.offset().top;
+                var stopPoint = stickyStopperPosition - generalSidebarHeight - stickOffset;
+                var diff = stopPoint + stickOffset;
 
-    $(window).scroll(function(){ // scroll event
-      var windowTop = $(window).scrollTop(); // returns number
+                $(window).scroll(function() { // scroll event
+                    var windowTop = $(window).scrollTop(); // returns number
 
-      if (stopPoint < windowTop) {
-          $sticky.css({ position: 'absolute', top: diff });
-      } else if (stickyTop < windowTop+stickOffset) {
-          $sticky.css({ position: 'fixed', top: stickOffset });
-      } else {
-          $sticky.css({position: 'absolute', top: 'initial'});
-      }
-    });
+                    if (stopPoint < windowTop) {
+                        $sticky.css({
+                            position: 'absolute',
+                            top: diff
+                        });
+                    } else if (stickyTop < windowTop + stickOffset) {
+                        $sticky.css({
+                            position: 'fixed',
+                            top: stickOffset
+                        });
+                    } else {
+                        $sticky.css({
+                            position: 'absolute',
+                            top: 'initial'
+                        });
+                    }
+                });
 
-  }
-});
+            }
+        });
         </script>
 
 </html>

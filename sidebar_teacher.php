@@ -49,8 +49,6 @@ $res_count_post = mysql_num_rows($query_count_post);
                                   }
                                    ?>
                                     <a href="dashboard.php">
-
-                                  <i class="fa fa-pencil"></i>
                                       <span class="link-title">
                                     Dashboard
                                   </span>
@@ -73,8 +71,6 @@ $res_count_post = mysql_num_rows($query_count_post);
                                   }
                                    ?>
                                     <a href="alumni.php">
-
-                                  <i class="fa fa-pencil"></i>
                                       <span class="link-title">
                                     Alumni
                                   </span>
@@ -97,7 +93,6 @@ $res_count_post = mysql_num_rows($query_count_post);
                                   }
                                    ?>
                                     <a href="forum.php">
-                                      <i class="fa fa-pencil"></i>
                                       <span class="link-title">
                                     Forum
                                   </span>
@@ -120,7 +115,6 @@ $res_count_post = mysql_num_rows($query_count_post);
                                   }
                                    ?>
                                     <a href="survey.php">
-                                      <i class="fa fa-pencil"></i>
                                       <span class="link-title">
                                     Survey Report
                                   </span>
@@ -143,7 +137,6 @@ $res_count_post = mysql_num_rows($query_count_post);
                                   }
                                    ?>
                                     <a href="statistic.php">
-                                      <i class="fa fa-pencil"></i>
                                       <span class="link-title">
                                     Statistic
                                   </span>
@@ -166,7 +159,6 @@ $res_count_post = mysql_num_rows($query_count_post);
                                   }
                                    ?>
                                     <a href="recordstudent.php">
-                                      <i class="fa fa-pencil"></i>
                                       <span class="link-title">
                                     Record Student
                                   </span>

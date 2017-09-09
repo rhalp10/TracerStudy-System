@@ -17,28 +17,30 @@
                               <!-- Author -->
                               <p class="lead">
                                   by <a href="profile.php?id"><?php  
-                                      if ($query_postowner =  mysql_query("SELECT student_fName,student_mName,student_lName FROM `user_student_detail` WHERE `student_userID` = '$post_owner'")) 
-                                      {
-                                       $res_postowner = mysql_fetch_assoc($query_postowner);
-                                      echo $res_postowner['student_fName']." ".$res_postowner['student_mName']." ".$res_postowner['student_lName'];
-                                      }
-                                      if ($query_postowner =  mysql_query("SELECT teacher_fName,teacher_mName,teacher_lName FROM `user_teacher_detail` WHERE `teacher_userID` = '$post_owner'")) 
-                                      {
-                                       $res_postowner = mysql_fetch_assoc($query_postowner);
-                                      echo $res_postowner['teacher_fName']." ".$res_postowner['teacher_mName']." ".$res_postowner['teacher_lName'];
-                                      }
-                                      if ($query_postowner =  mysql_query("SELECT admin_fName,admin_mName,admin_lName FROM `user_admin_detail` WHERE `admin_userID` = '$post_owner'")) 
-                                      {
-                                       $res_postowner = mysql_fetch_assoc($query_postowner);
-                                      echo $res_postowner['admin_fName']." ".$res_postowner['admin_mName']." ".$res_postowner['admin_lName'];
-                                      }
-                                      
-                                ?></a></p>
+                                  if($query_postowner = mysql_query("SELECT student_fName,student_mName,student_lName FROM `user_student_detail` WHERE `student_userID` = '$post_owner'")) {
+                                     $res_postowner = mysql_fetch_assoc($query_postowner);
+                                     echo $res_postowner['student_fName'].
+                                     " ".$res_postowner['student_mName'].
+                                     " ".$res_postowner['student_lName'];
+                                  }
+                                  if($query_postowner = mysql_query("SELECT teacher_fName,teacher_mName,teacher_lName FROM `user_teacher_detail` WHERE `teacher_userID` = '$post_owner'")) {
+                                     $res_postowner = mysql_fetch_assoc($query_postowner);
+                                     echo $res_postowner['teacher_fName'].
+                                     " ".$res_postowner['teacher_mName'].
+                                     " ".$res_postowner['teacher_lName'];
+                                  }
+                                  if($query_postowner = mysql_query("SELECT admin_fName,admin_mName,admin_lName FROM `user_admin_detail` WHERE `admin_userID` = '$post_owner'")) {
+                                     $res_postowner = mysql_fetch_assoc($query_postowner);
+                                     echo $res_postowner['admin_fName'].
+                                     " ".$res_postowner['admin_mName'].
+                                     " ".$res_postowner['admin_lName'];
+                                  }?></a></p>
 
                               <hr>
 
                               <!-- Date/Time -->
-                              <p><strong> Posted on</strong> <?php echo date("M jS, Y", strtotime("$post_date")). "<strong> at </strong>".date('h:i A', strtotime("$post_date")); ?> <strong>View<?php if ($result_viewcount['view_count'] != 0 ){ echo "s";}else {}?>: </strong><?php echo $result_viewcount['view_count'] ?></p>
+                              <p><strong> Posted on</strong> <?php echo date( "M jS, Y", strtotime( "$post_date")). "<strong> at </strong>".date( 'h:i A', strtotime( "$post_date")); ?> <strong>View<?php if ($result_viewcount['view_count'] != 0 ){ echo "s";}else {}?>: </strong>
+                                <?php echo $result_viewcount[ 'view_count'] ?></p>
                               <br>
                               <?php 
                               if ($post_owner == $login_id ) {
