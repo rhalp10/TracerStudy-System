@@ -82,15 +82,12 @@ else
                                   </tfoot>
                                   <tbody>
                                   <?php 
-                                  $query = mysql_query("SELECT * FROM `forum_topic` WHERE `post_status` = 'PIN'");
-                                  while ($res = mysql_fetch_array($query)) {
+                                  $query = mysql_query("SELECT * FROM `forum_topic` WHERE `post_status` = 'PIN' ORDER BY `post_date` DESC;");
+                                  while ($res = mysql_fetch_array($query)) 
+                                  {
 
-                                   $query1 =  mysql_query("SELECT * FROM `user_student_detail` WHERE `student_userID` = ".$res['post_owner_id']);
-                                   $res1 = mysql_fetch_assoc($query1);
-
-                                    $query2 = mysql_query("SELECT `view_count` FROM `view_counter` WHERE `view_topicID` = ".$res['topic_ID']);
+                                  $query2 = mysql_query("SELECT `view_count` FROM `view_counter` WHERE `view_topicID` = ".$res['topic_ID']);
                                    $res2 = mysql_fetch_assoc($query2);
-
                                   
                                   ?>
                                   <tr onclick="self.location.href='forum_view.php?post_ID=<?php echo password_hash($res['topic_ID'], PASSWORD_DEFAULT);?>'">
@@ -102,7 +99,23 @@ else
                                    <strong><a href="forum_view.php?post_ID=<?php echo password_hash($res['topic_ID'], PASSWORD_DEFAULT);?>"><?php echo $res['post_title']; ?>
                                     </a></strong>
                                     <br>
-                                    by <a href=""><?php echo $res1['student_fName'].' '.$res1['student_mName'].' '.$res1['student_lName'] ?></a>
+                                    by <a href=""><?php 
+                                    $post_owner = $res['post_owner_id'];
+                                    if ($query_postowner =  mysql_query("SELECT student_fName,student_mName,student_lName FROM `user_student_detail` WHERE `student_userID` = '$post_owner'")) 
+                                      {
+                                       $res_postowner = mysql_fetch_assoc($query_postowner);
+                                      echo $res_postowner['student_fName']." ".$res_postowner['student_mName']." ".$res_postowner['student_lName'];
+                                      }
+                                      if ($query_postowner =  mysql_query("SELECT teacher_fName,teacher_mName,teacher_lName FROM `user_teacher_detail` WHERE `teacher_userID` = '$post_owner'")) 
+                                      {
+                                       $res_postowner = mysql_fetch_assoc($query_postowner);
+                                      echo $res_postowner['teacher_fName']." ".$res_postowner['teacher_mName']." ".$res_postowner['teacher_lName'];
+                                      }
+                                      if ($query_postowner =  mysql_query("SELECT admin_fName,admin_mName,admin_lName FROM `user_admin_detail` WHERE `admin_userID` = '$post_owner'")) 
+                                      {
+                                       $res_postowner = mysql_fetch_assoc($query_postowner);
+                                      echo $res_postowner['admin_fName']." ".$res_postowner['admin_mName']." ".$res_postowner['admin_lName'];
+                                      }?></a>
                                     </div>
                                     <div class="col-sm-2 forum-list-content-stat">
                                     <?php echo $res2['view_count'] ;?> <i class="fa fa-eye"></i>
@@ -162,8 +175,6 @@ else
                                   $query3 = mysql_query("SELECT * FROM `forum_topic` WHERE `post_status` = 'UNPIN'");
                                   while ($res3 = mysql_fetch_array($query3)) {
 
-                                   $query1 =  mysql_query("SELECT * FROM `user_student_detail` WHERE `student_userID` = ".$res3['post_owner_id']);
-                                   $res1 = mysql_fetch_assoc($query1);
 
                                    $query4 = mysql_query("SELECT `view_count` FROM `view_counter` WHERE `view_topicID` = ".$res3['topic_ID']);
                                    $res4 = mysql_fetch_assoc($query4);
@@ -178,7 +189,23 @@ else
                                    <strong><a href="forum_view.php?post_ID=<?php echo password_hash($res3['topic_ID'], PASSWORD_DEFAULT);?>"><?php echo $res3['post_title']; ?>
                                     </a></strong>
                                     <br>
-                                    by <a href="profile.php"><?php echo $res1['student_fName'].' '.$res1['student_mName'].' '.$res1['student_lName'] ?></a>
+                                    by <a href="profile.php"><?php 
+                                    $post_owner = $res3['post_owner_id'];
+                                    if ($query_postowner =  mysql_query("SELECT student_fName,student_mName,student_lName FROM `user_student_detail` WHERE `student_userID` = '$post_owner'")) 
+                                      {
+                                       $res_postowner = mysql_fetch_assoc($query_postowner);
+                                      echo $res_postowner['student_fName']." ".$res_postowner['student_mName']." ".$res_postowner['student_lName'];
+                                      }
+                                      if ($query_postowner =  mysql_query("SELECT teacher_fName,teacher_mName,teacher_lName FROM `user_teacher_detail` WHERE `teacher_userID` = '$post_owner'")) 
+                                      {
+                                       $res_postowner = mysql_fetch_assoc($query_postowner);
+                                      echo $res_postowner['teacher_fName']." ".$res_postowner['teacher_mName']." ".$res_postowner['teacher_lName'];
+                                      }
+                                      if ($query_postowner =  mysql_query("SELECT admin_fName,admin_mName,admin_lName FROM `user_admin_detail` WHERE `admin_userID` = '$post_owner'")) 
+                                      {
+                                       $res_postowner = mysql_fetch_assoc($query_postowner);
+                                      echo $res_postowner['admin_fName']." ".$res_postowner['admin_mName']." ".$res_postowner['admin_lName'];
+                                      }?></a>
                                     </div>
                                     <div class="col-sm-2 forum-list-content-stat">
                                     <?php echo $res4['view_count'] ;?> <i class="fa fa-eye"></i>

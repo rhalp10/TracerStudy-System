@@ -17,21 +17,22 @@
                               <!-- Author -->
                               <p class="lead">
                                   by <a href="profile.php?id"><?php  
-                                if ($login_level == '1')
-                                {
-                                    echo  $res_sidebar['student_fName']." ".$res_sidebar['student_mName']." ".$res_sidebar['student_lName'];
-                                }
-                                if ($login_level == '2')
-                                {
-                                    echo  $res_sidebar['teacher_fName']." ".$res_sidebar['teacher_mName']." ".$res_sidebar['teacher_lName'];
-                                }
-                                elseif ($login_level == '3')
-                                {
-                                    echo  $res_sidebar['admin_fName']." ".$res_sidebar['admin_mName']." ".$res_sidebar['admin_lName'];
-                                }
-                                else
-                                {
-                                }
+                                      if ($query_postowner =  mysql_query("SELECT student_fName,student_mName,student_lName FROM `user_student_detail` WHERE `student_userID` = '$post_owner'")) 
+                                      {
+                                       $res_postowner = mysql_fetch_assoc($query_postowner);
+                                      echo $res_postowner['student_fName']." ".$res_postowner['student_mName']." ".$res_postowner['student_lName'];
+                                      }
+                                      if ($query_postowner =  mysql_query("SELECT teacher_fName,teacher_mName,teacher_lName FROM `user_teacher_detail` WHERE `teacher_userID` = '$post_owner'")) 
+                                      {
+                                       $res_postowner = mysql_fetch_assoc($query_postowner);
+                                      echo $res_postowner['teacher_fName']." ".$res_postowner['teacher_mName']." ".$res_postowner['teacher_lName'];
+                                      }
+                                      if ($query_postowner =  mysql_query("SELECT admin_fName,admin_mName,admin_lName FROM `user_admin_detail` WHERE `admin_userID` = '$post_owner'")) 
+                                      {
+                                       $res_postowner = mysql_fetch_assoc($query_postowner);
+                                      echo $res_postowner['admin_fName']." ".$res_postowner['admin_mName']." ".$res_postowner['admin_lName'];
+                                      }
+                                      
                                 ?></a></p>
 
                               <hr>
