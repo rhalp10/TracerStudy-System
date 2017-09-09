@@ -2,7 +2,7 @@
 <?php 
 include('session.php'); 
 include('db.php');
-$page = 'forum';
+$page = 'survey';
 
 if ($login_level == '1')
 {
@@ -25,12 +25,14 @@ else if ($login_level == '3')
 else
 {
 }
-?><!DOCTYPE html>
+?>
+<!DOCTYPE html>
 <html>  
   <head>
     <?php include('meta.php');?>
     <?php include('style_css.php');?>
-    <title></title>
+
+    <title>Survey</title>
   </head>
         <body class=" menu-affix">
             <div class="bg-dark dk" id="wrap">
@@ -54,7 +56,7 @@ else
                     else
                     {
                     }
-                    ?>      
+                    ?>    
                     <!-- /#left -->
                 <div id="content">
                     <div class="outer">
@@ -62,24 +64,32 @@ else
                             <div class="main-bar">
                             <ol class="breadcrumb">
                               <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-                              <li class="breadcrumb-item"><a href="forum.php">Forum</a></li>
-                              <li class="breadcrumb-item active"> Create New Topic Post</li>
+                              <li class="breadcrumb-item active"> Forum</li>
                             </ol>
                             </div>
                             <!-- /.main-bar -->
                         </header>
                         <div class="inner bg-light lter">
-                           <div class="col-sm-12">
-                              <form class="form-group">
-                              <br>
-                              <input type="text" class="form-control" placeholder="Click here to set title">
-                              <br>
-                              <textarea id="ckeditor" class="ckeditor" placeholder="Type post content here"></textarea>
-                              <br>
-                              <input class="btn btn-primary pull-right" type="Submit" name="Submit" value="POST">
-                              <br><br>
-                              </form>
-                            </div>
+                           <?php 
+                           $input = "student";
+
+                            $encrypted = encryptIt( $input );
+                            $decrypted = decryptIt( $encrypted );
+
+                            echo $encrypted . '<br />' . $decrypted;
+
+                            function encryptIt( $q ) {
+                                $cryptKey  = 'qJB0rGtIn5UB1xG03efyCp';
+                                $qEncoded      = base64_encode( mcrypt_encrypt( MCRYPT_RIJNDAEL_256, md5( $cryptKey ), $q, MCRYPT_MODE_CBC, md5( md5( $cryptKey ) ) ) );
+                                return( $qEncoded );
+                            }
+
+                            function decryptIt( $q ) {
+                                $cryptKey  = 'qJB0rGtIn5UB1xG03efyCp';
+                                $qDecoded      = rtrim( mcrypt_decrypt( MCRYPT_RIJNDAEL_256, md5( $cryptKey ), base64_decode( $q ), MCRYPT_MODE_CBC, md5( md5( $cryptKey ) ) ), "\0");
+                                return( $qDecoded );
+                            }
+                           ?>
                         </div>
                         <!-- /.inner -->
                     </div>
@@ -143,6 +153,7 @@ else
                     </div>
                     <!-- /#right -->
             </div>
+
             <!-- /#wrap -->
             <?php include('footer.php');?>
             <!-- /#footer -->

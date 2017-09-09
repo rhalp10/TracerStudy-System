@@ -1,7 +1,8 @@
+
 <?php 
 include('session.php'); 
 include('db.php');
-$page = 'statistic';
+$page = 'forum';
 
 if ($login_level == '1')
 {
@@ -53,7 +54,7 @@ else
                     else
                     {
                     }
-                    ?>    
+                    ?>      
                     <!-- /#left -->
                 <div id="content">
                     <div class="outer">
@@ -61,38 +62,24 @@ else
                             <div class="main-bar">
                             <ol class="breadcrumb">
                               <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-                              <li class="breadcrumb-item active"> Forum</li>
+                              <li class="breadcrumb-item"><a href="forum.php">Forum</a></li>
+                              <li class="breadcrumb-item active"> Create New Topic Post</li>
                             </ol>
                             </div>
                             <!-- /.main-bar -->
                         </header>
                         <div class="inner bg-light lter">
-                            <div class="col-sm-6">
-                              <canvas id="canvas" height="250" width="250"></canvas>
-                                <div class="row">
-                                  <div class="col-sm-12">
-                                 <?php 
-                                  echo "Admin: <b>totaladmin</b> &nbsp;";
-                                  echo "Employee: <b>totalemp</b>&nbsp;";
-                                  echo "Total Registered Account: <b>totalAcc</b>";
-                                 ?>
-                                 </div>
-                                </div>
+                           <div class="col-sm-12">
+                              <form class="form-group" method="post" action="action/postnewtopic_action.php?userID=<?php echo $login_id ?>">
+                              <br>
+                              <input type="text" class="form-control" placeholder="Click here to set title" name="post_title">
+                              <br>
+                              <textarea id="ckeditor" class="ckeditor" placeholder="Type post content here" name="post_content"></textarea>
+                              <br>
+                              <input class="btn btn-primary pull-right" type="Submit" name="submit_postnewtopic" value="POST">
+                              <br><br>
+                              </form>
                             </div>
-                            <div class="col-sm-6">
-                              <canvas id="canvas1" height="250" width="250"></canvas>
-                                <div class="row">
-                                  <div class="col-sm-12">
-                                 <?php 
-                                  echo "Admin: <b>totaladmin</b> &nbsp;";
-                                  echo "Employee: <b>totalemp</b>&nbsp;";
-                                  echo "Total Registered Account: <b>totalAcc</b>";
-                                 ?>
-                                 </div>
-                                </div>
-                            </div>
-                        </div>
-
                         </div>
                         <!-- /.inner -->
                     </div>
@@ -156,62 +143,10 @@ else
                     </div>
                     <!-- /#right -->
             </div>
-
             <!-- /#wrap -->
             <?php include('footer.php');?>
             <!-- /#footer -->
             <?php include ('script.php');?>
-            <script>
-
-        var doughnutData = [
-                {
-                    value: 30,
-                    color:"#F7464A"
-                },
-                {
-                    value : 50,
-                    color : "#46BFBD"
-                },
-                {
-                    value : 100,
-                    color : "#FDB45C"
-                },
-                {
-                    value : 40,
-                    color : "#949FB1"
-                },
-                {
-                    value : 120,
-                    color : "#4D5360"
-                }
-            
-            ];
-
-    var myDoughnut = new Chart(document.getElementById("canvas").getContext("2d")).Doughnut(doughnutData);
-    
-    </script>
-    <script>
-
-        var barChartData = {
-            labels : ["January","February","March","April","May","June","July"],
-            datasets : [
-                {
-                    fillColor : "rgba(220,220,220,0.5)",
-                    strokeColor : "rgba(220,220,220,1)",
-                    data : [65,59,90,81,56,55,40]
-                },
-                {
-                    fillColor : "rgba(151,187,205,0.5)",
-                    strokeColor : "rgba(151,187,205,1)",
-                    data : [28,48,40,19,96,27,100]
-                }
-            ]
-            
-        }
-
-    var myLine = new Chart(document.getElementById("canvas1").getContext("2d")).Bar(barChartData);
-    
-    </script>
         </body>
 
 </html>

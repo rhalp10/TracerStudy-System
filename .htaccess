@@ -1,0 +1,19 @@
+
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
+
+
+#Custom Error 403 
+ErrorDocument 403 http://localhost/Tracer_UI/ErrorPages/403.php
+#Custom Error 404 
+ErrorDocument 404 http://localhost/Tracer_UI/ErrorPages/404.php
+#Custom Error 405 
+ErrorDocument 405 http://localhost/Tracer_UI/ErrorPages/405.php
+#Custom Error 500 
+ErrorDocument 500 http://localhost/Tracer_UI/ErrorPages/500.php
+#Custom Error 503 
+ErrorDocument 503 http://localhost/Tracer_UI/ErrorPages/503.php
+
+
+

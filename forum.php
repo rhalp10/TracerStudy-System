@@ -31,7 +31,7 @@ else
   <head>
     <?php include('meta.php');?>
     <?php include('style_css.php');?>
-    <title></title>
+    <title>Forum</title>
   </head>
         <body class="menu-affix">
             <div class="bg-dark dk" id="wrap">
@@ -93,13 +93,13 @@ else
 
                                   
                                   ?>
-                                  <tr onclick="self.location.href='content.php'">
+                                  <tr onclick="self.location.href='forum_view.php?post_ID=<?php echo password_hash($res['topic_ID'], PASSWORD_DEFAULT);?>'">
                                   <td class="forum-td" >
                                   <div class="forum-list-hover col-sm-1" >
                                   <i class="fa fa-comment"></i>
                                     </div>
                                     <div class="col-sm-6 forum-list-content">
-                                   <strong><a href="content.php"><?php echo $res['post_title']; ?>
+                                   <strong><a href="forum_view.php?post_ID=<?php echo password_hash($res['topic_ID'], PASSWORD_DEFAULT);?>"><?php echo $res['post_title']; ?>
                                     </a></strong>
                                     <br>
                                     by <a href=""><?php echo $res1['student_fName'].' '.$res1['student_mName'].' '.$res1['student_lName'] ?></a>
@@ -157,6 +157,8 @@ else
                                   <tbody>
                                   
                                   <?php 
+
+
                                   $query3 = mysql_query("SELECT * FROM `forum_topic` WHERE `post_status` = 'UNPIN'");
                                   while ($res3 = mysql_fetch_array($query3)) {
 
@@ -165,17 +167,15 @@ else
 
                                    $query4 = mysql_query("SELECT `view_count` FROM `view_counter` WHERE `view_topicID` = ".$res3['topic_ID']);
                                    $res4 = mysql_fetch_assoc($query4);
-                                   
 
-                                  
                                   ?>
-                                  <tr onclick="self.location.href='content.php'">
+                                  <tr onclick="self.location.href='forum_view.php?post_ID=<?php echo password_hash($res3['topic_ID'], PASSWORD_DEFAULT);?>'">
                                   <td class="forum-td" >
                                   <div class="forum-list-hover col-sm-1" >
                                   <i class="fa fa-comment"></i>
                                     </div>
                                     <div class="col-sm-6 forum-list-content">
-                                   <strong><a href="content.php"><?php echo $res3['post_title']; ?>
+                                   <strong><a href="forum_view.php?post_ID=<?php echo password_hash($res3['topic_ID'], PASSWORD_DEFAULT);?>"><?php echo $res3['post_title']; ?>
                                     </a></strong>
                                     <br>
                                     by <a href="profile.php"><?php echo $res1['student_fName'].' '.$res1['student_mName'].' '.$res1['student_lName'] ?></a>
@@ -193,7 +193,9 @@ else
                                     </td>
                                   </tr>
                                   <?php 
-                                  }?>
+                                  }
+
+                                  ?>
                                   </tbody>
                                   <script type="text/javascript">
                                     
@@ -297,6 +299,8 @@ else
 
   }
 });
+
+
         </script>
 
 </html>

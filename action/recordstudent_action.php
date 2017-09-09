@@ -20,7 +20,6 @@
 		$student_middlename = stripslashes($student_middlename);
 		$student_lastname = stripslashes($student_lastname);
 		$student_adress = stripslashes($student_adress);
-
 		$student_year_grad = stripslashes($student_year_grad);
 		$student_year_admission = stripslashes($student_year_admission);
 		$student_department = stripslashes($student_department);
@@ -34,7 +33,7 @@
 		$student_year_admission = mysql_real_escape_string($student_year_admission);
 		$student_department = mysql_real_escape_string($student_department);
 
-
+		//insert query
 		$sql = "INSERT INTO `user_student_detail` (student_ID, student_userID, student_img, student_IDNumber, student_fName, student_mName, student_lName, student_address, student_admission, student_year_grad, student_department, student_status) ";
 		$sql.= " VALUES (NULL, '0', 'temp.gif', '$student_sinumber', '$student_firstname', '$student_middlename', '$student_lastname', '$student_adress', '$student_year_grad', '$student_year_admission', '$student_department', 'unregister')";
 		$res = mysql_query($sql);

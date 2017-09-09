@@ -33,7 +33,7 @@ else
   <head>
     <?php include('meta.php');?>
     <?php include('style_css.php');?>
-    <title><?php echo "$data_img"; ?></title>
+    <title>Dashboard</title>
   </head>
         <body class=" menu-affix">
             <div class="bg-dark dk" id="wrap">

@@ -30,7 +30,7 @@ else
   <head>
     <?php include('meta.php');?>
     <?php include('style_css.php');?>
-    <title></title>
+    <title>Batchmates</title>
   </head>
         <body class=" menu-affix">
             <div class="bg-dark dk" id="wrap">

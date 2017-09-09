@@ -119,9 +119,8 @@ To accommodate IT courses offerings; the College was renamed as the <strong>Coll
 
                     </p>
                     <p>
-                       <a  href="https://www.facebook.com/rhalp10"><i class="fa fa-facebook-square fa-2x color-facebook"></i></a>
-                        <a href="#"><i class="fa fa-twitter-square fa-2x color-twitter"></i></a>
-                        <a href="#"><i class="fa fa-google-plus-square fa-2x color-google-plus"></i></a>
+                       <a  href="https://web.facebook.com/yhanapaula"><i class="fa fa-facebook-square fa-2x color-facebook"></i></a>
+                        
                        
                     </p>
 
@@ -156,13 +155,7 @@ To accommodate IT courses offerings; the College was renamed as the <strong>Coll
                         Bachelor Of Science In Computer Science ( BSCS )<br> Cavite State University (CvSU)
                     </p>
                     <p>
-                       <a href="https://www.facebook.com/rhalp10"><i class="fa fa-facebook-square fa-2x color-facebook"></i></a>
-
-                      
-                        <a href="#"><i class="fa fa-twitter-square fa-2x color-twitter"></i></a>
-                        <a href="#"><i class="fa fa-google-plus-square fa-2x color-google-plus"></i></a>
-                        
-
+                       <a href="https://web.facebook.com/The.OtherProtagonist"><i class="fa fa-facebook-square fa-2x color-facebook"></i></a>
                     </p>
 
                 </div>
