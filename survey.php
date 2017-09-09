@@ -5,20 +5,20 @@ include('db.php');
 $page = 'survey';
 if ($login_level == '1')
 {
-  $result = mysql_query("SELECT * FROM `user_student_detail` WHERE student_userID = $login_id");
-  $data = mysql_fetch_array($result);
+  $result = mysqli_query($con,"SELECT * FROM `user_student_detail` WHERE student_userID = $login_id");
+  $data = mysqli_fetch_array($result);
   $data_img = $data['student_img'];
 }
 else if ($login_level == '2')
 {
-  $result = mysql_query("SELECT * FROM `user_teacher_detail` WHERE teacher_userID = $login_id");
-  $data = mysql_fetch_array($result);
+  $result = mysqli_query($con,"SELECT * FROM `user_teacher_detail` WHERE teacher_userID = $login_id");
+  $data = mysqli_fetch_array($result);
   $data_img = $data['teacher_img'];
 }
 else if ($login_level == '3')
 {
-  $result = mysql_query("SELECT * FROM `user_admin_detail` WHERE admin_userID = $login_id");
-  $data = mysql_fetch_array($result);
+  $result = mysqli_query($con,"SELECT * FROM `user_admin_detail` WHERE admin_userID = $login_id");
+  $data = mysqli_fetch_array($result);
   $data_img = $data['admin_img'];
 }
 else

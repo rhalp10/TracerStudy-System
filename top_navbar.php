@@ -1,8 +1,8 @@
 <!-- .navbar -->
 <?php 
 
-$qry = mysql_query("SELECT * FROM user_student_detail WHERE student_userID = '$login_id'");
-$res = mysql_fetch_assoc($qry);
+$qry = mysqli_query($con,"SELECT * FROM user_student_detail WHERE student_userID = '$login_id'");
+$res = mysqli_fetch_assoc($qry);
 $res['student_fName'];
 $res['student_lName'];
 $res['student_img'];

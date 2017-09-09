@@ -34,23 +34,21 @@ if (isset($_POST['submit-teacher'])) {
 
 function login(){
 
+			$con = mysqli_connect('localhost','root','','tracerdata') or die("ERROR");
 			// Define $username and $password
 			$username=$_POST['username'];
 			$password=$_POST['password'];
 			// To protect MySQL injection for Security purpose
 			$username = stripslashes($username);
 			$password = stripslashes($password);
-			$username = mysql_real_escape_string($username);
-			$password = mysql_real_escape_string($password);
-			// Establishing Connection with Server by passing server_name, user_id and password as a parameter
-			$connection = mysql_connect("localhost", "root", "");
-			// Selecting Database
-			$db = mysql_select_db("tracerdata", $connection);
+			$username = mysqli_real_escape_string($con,$username);
+			$password = mysqli_real_escape_string($con,$password);
+			
  			$input = "$password";
 			include('md5.php');
 			// SQL query to fetch information of registerd users and finds user match.
-			$query = mysql_query("SELECT * FROM `user_account` WHERE `user_name` = '$username' AND `user_password` = '$encrypted'", $connection);
-			$rows = mysql_fetch_assoc($query);
+			$query = mysqli_query($con,"SELECT * FROM `user_account` WHERE `user_name` = '$username' AND `user_password` = '$encrypted'");
+			$rows = mysqli_fetch_assoc($query);
 
 			if ($rows['user_level'] == '0') 
 			{	
@@ -87,7 +85,7 @@ function login(){
 					include('alert/success.php');
 									
 			}
-			mysql_close($connection); // Closing Connection
+			mysql_close($con); // Closing Connection
 }
 
 

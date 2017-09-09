@@ -1,9 +1,9 @@
 <?php 
-$query_sidebar = mysql_query("SELECT * FROM `user_teacher_detail` WHERE `teacher_userID` = $login_id");
-$res_sidebar = mysql_fetch_assoc($query_sidebar);
+$query_sidebar = mysqli_query($con,"SELECT * FROM `user_teacher_detail` WHERE `teacher_userID` = $login_id");
+$res_sidebar = mysqli_fetch_assoc($query_sidebar);
 
-$query_count_post = mysql_query("SELECT `post_owner_id` FROM `forum_topic` WHERE `post_owner_id` = $login_id");
-$res_count_post = mysql_num_rows($query_count_post);
+$query_count_post = mysqli_query($con,"SELECT `post_owner_id` FROM `forum_topic` WHERE `post_owner_id` = $login_id");
+$res_count_post = mysqli_num_rows($query_count_post);
 ?>
 
                     <div id="left">

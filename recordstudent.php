@@ -6,20 +6,20 @@ $page = 'recordstudent';
 
 if ($login_level == '1')
 {
-    $result = mysql_query("SELECT * FROM `user_student_detail` WHERE student_userID = $login_id");
-    $data = mysql_fetch_array($result);
+    $result = mysqli_query($con,"SELECT * FROM `user_student_detail` WHERE student_userID = $login_id");
+    $data = mysqli_fetch_array($result);
     $data_img = $data['student_img']; 
 }
 else if ($login_level == '2')
 {
-    $result = mysql_query("SELECT * FROM `user_teacher_detail` WHERE teacher_userID = $login_id");
-    $data = mysql_fetch_array($result);
+    $result = mysqli_query($con,"SELECT * FROM `user_teacher_detail` WHERE teacher_userID = $login_id");
+    $data = mysqli_fetch_array($result);
     $data_img = $data['teacher_img']; 
 }
 else if ($login_level == '3')
 {
-    $result = mysql_query("SELECT * FROM `user_admin_detail` WHERE admin_userID = $login_id");
-    $data = mysql_fetch_array($result);
+    $result = mysqli_query($con,"SELECT * FROM `user_admin_detail` WHERE admin_userID = $login_id");
+    $data = mysqli_fetch_array($result);
     $data_img = $data['admin_img']; 
 }
 else
@@ -115,11 +115,11 @@ else
 
                                     <div class="col-lg-8">
                                     <?php 
-                                    $query_dep = mysql_query("SELECT * FROM `cvsu_department`");
+                                    $query_dep = mysqli_query($con,"SELECT * FROM `cvsu_department`");
                                     ?>
                                         <select class="form-control" name="student_department">
                                         <?php
-                                        while ($res_dep = mysql_fetch_array($query_dep)) {
+                                        while ($res_dep = mysqli_fetch_array($query_dep)) {
                                         
                                         ?>
                                             <option value="<?php echo $res_dep['department_acronym'] ?>"><?php echo $res_dep['department_name'];?></option>
@@ -180,8 +180,8 @@ else
                                   </tfoot>
                                   <tbody>
                                   <?php 
-                                  $query_student_detail = mysql_query("SELECT * FROM user_student_detail");
-                                  while ($result_student_detail = mysql_fetch_array($query_student_detail)) 
+                                  $query_student_detail = mysqli_query($con,"SELECT * FROM user_student_detail");
+                                  while ($result_student_detail = mysqli_fetch_array($query_student_detail)) 
                                     {
                                     ?>
                                     <tr>

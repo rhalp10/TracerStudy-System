@@ -14,15 +14,7 @@
                            
                           <div class="col-lg-12"><!-- CONTENT START HERE-->
                             <h1 class="text-center" style="height: 500px;">TOPIC NOT FOUND</h1>
-                            <?php 
-                             $hash = password_hash("rasmuslerdorf", PASSWORD_DEFAULT);
-                          if (password_verify('rasmuslerdorf', $hash)) {
-                                echo 'Password is valid!';
-                                echo "asdasd";
-                            } else {
-                                echo 'Invalid password.';
-                            }
-                            ?>
+                            
                           </div>
                         </div>
                         <!-- /.inner -->

@@ -1,8 +1,5 @@
 <?php 
-	// Establishing Connection with Server by passing server_name, user_id and password as a parameter
-	$connection = mysql_connect("localhost", "root", "");
-	// Selecting Database
-	$db = mysql_select_db("tracerdata", $connection);
+	$con = mysqli_connect('localhost','root','','tracerdata') or die("ERROR");
 	if (isset($_POST['submit_recordstudent'])) {
 
 		// Defining post variable names 
@@ -24,19 +21,19 @@
 		$student_year_admission = stripslashes($student_year_admission);
 		$student_department = stripslashes($student_department);
 
-		$student_sinumber = mysql_real_escape_string($student_sinumber);
-		$student_firstname = mysql_real_escape_string($student_firstname);
-		$student_middlename = mysql_real_escape_string($student_middlename);
-		$student_lastname = mysql_real_escape_string($student_lastname);
-		$student_adress = mysql_real_escape_string($student_adress);
-		$student_year_grad = mysql_real_escape_string($student_year_grad);
-		$student_year_admission = mysql_real_escape_string($student_year_admission);
-		$student_department = mysql_real_escape_string($student_department);
+		$student_sinumber = mysqli_real_escape_string($con,$student_sinumber);
+		$student_firstname = mysqli_real_escape_string($con,$student_firstname);
+		$student_middlename = mysqli_real_escape_string($con,$student_middlename);
+		$student_lastname = mysqli_real_escape_string($con,$student_lastname);
+		$student_adress = mysqli_real_escape_string($con,$student_adress);
+		$student_year_grad = mysqli_real_escape_string($con,$student_year_grad);
+		$student_year_admission = mysqli_real_escape_string($con,$student_year_admission);
+		$student_department = mysqli_real_escape_string($con,$student_department);
 
 		//insert query
 		$sql = "INSERT INTO `user_student_detail` (student_ID, student_userID, student_img, student_IDNumber, student_fName, student_mName, student_lName, student_address, student_admission, student_year_grad, student_department, student_status) ";
 		$sql.= " VALUES (NULL, '0', 'temp.gif', '$student_sinumber', '$student_firstname', '$student_middlename', '$student_lastname', '$student_adress', '$student_year_grad', '$student_year_admission', '$student_department', 'unregister')";
-		$res = mysql_query($sql);
+		$res = mysqli_query($con,$sql);
 		echo "<script>alert('Successfully Added!');
 												window.location='../recordstudent.php';
 											</script>";

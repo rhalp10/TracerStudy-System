@@ -4,18 +4,18 @@ include('session.php');
 include('db.php');
 $page = 'forum';
 if($login_level == '1') {
-   $result = mysql_query("SELECT * FROM `user_student_detail` WHERE student_userID = $login_id");
-   $data = mysql_fetch_array($result);
+   $result = mysqli_query($con,"SELECT * FROM `user_student_detail` WHERE student_userID = $login_id");
+   $data = mysqli_fetch_array($result);
    $data_img = $data['student_img'];
 }
 else if($login_level == '2') {
-   $result = mysql_query("SELECT * FROM `user_teacher_detail` WHERE teacher_userID = $login_id");
-   $data = mysql_fetch_array($result);
+   $result = mysqli_query($con,"SELECT * FROM `user_teacher_detail` WHERE teacher_userID = $login_id");
+   $data = mysqli_fetch_array($result);
    $data_img = $data['teacher_img'];
 }
 else if($login_level == '3') {
-   $result = mysql_query("SELECT * FROM `user_admin_detail` WHERE admin_userID = $login_id");
-   $data = mysql_fetch_array($result);
+   $result = mysqli_query($con,"SELECT * FROM `user_admin_detail` WHERE admin_userID = $login_id");
+   $data = mysqli_fetch_array($result);
    $data_img = $data['admin_img'];
 }
 else {}
@@ -71,10 +71,10 @@ else {}
                                   </tfoot>
                                   <tbody>
                                   <?php 
-                                  $query = mysql_query("SELECT * FROM `forum_topic` WHERE `post_status` = 'PIN' ORDER BY `post_date` DESC;");
-                                  while($res = mysql_fetch_array($query)) {
-                                     $query2 = mysql_query("SELECT `view_count` FROM `view_counter` WHERE `view_topicID` = ".$res['topic_ID']);
-                                     $res2 = mysql_fetch_assoc($query2);
+                                  $query = mysqli_query($con,"SELECT * FROM `forum_topic` WHERE `post_status` = 'PIN' ORDER BY `post_date` DESC;");
+                                  while($res = mysqli_fetch_array($query)) {
+                                     $query2 = mysqli_query($con,"SELECT `view_count` FROM `view_counter` WHERE `view_topicID` = ".$res['topic_ID']);
+                                     $res2 = mysqli_fetch_assoc($query2);
                                   
                                   ?>
                                   <tr onclick="self.location.href='forum_view.php?post_ID=<?php echo password_hash($res['topic_ID'], PASSWORD_DEFAULT);?>'">
@@ -88,20 +88,20 @@ else {}
                                     <br>
                                     by <a href=""><?php 
                                     $post_owner = $res['post_owner_id'];
-                                    if($query_postowner = mysql_query("SELECT student_fName,student_mName,student_lName FROM `user_student_detail` WHERE `student_userID` = '$post_owner'")) {
-                                       $res_postowner = mysql_fetch_assoc($query_postowner);
+                                    if($query_postowner = mysqli_query($con,"SELECT student_fName,student_mName,student_lName FROM `user_student_detail` WHERE `student_userID` = '$post_owner'")) {
+                                       $res_postowner = mysqli_fetch_assoc($query_postowner);
                                        echo $res_postowner['student_fName'].
                                        " ".$res_postowner['student_mName'].
                                        " ".$res_postowner['student_lName'];
                                     }
-                                    if($query_postowner = mysql_query("SELECT teacher_fName,teacher_mName,teacher_lName FROM `user_teacher_detail` WHERE `teacher_userID` = '$post_owner'")) {
-                                       $res_postowner = mysql_fetch_assoc($query_postowner);
+                                    if($query_postowner = mysqli_query($con,"SELECT teacher_fName,teacher_mName,teacher_lName FROM `user_teacher_detail` WHERE `teacher_userID` = '$post_owner'")) {
+                                       $res_postowner = mysqli_fetch_assoc($query_postowner);
                                        echo $res_postowner['teacher_fName'].
                                        " ".$res_postowner['teacher_mName'].
                                        " ".$res_postowner['teacher_lName'];
                                     }
-                                    if($query_postowner = mysql_query("SELECT admin_fName,admin_mName,admin_lName FROM `user_admin_detail` WHERE `admin_userID` = '$post_owner'")) {
-                                       $res_postowner = mysql_fetch_assoc($query_postowner);
+                                    if($query_postowner = mysqli_query($con,"SELECT admin_fName,admin_mName,admin_lName FROM `user_admin_detail` WHERE `admin_userID` = '$post_owner'")) {
+                                       $res_postowner = mysqli_fetch_assoc($query_postowner);
                                        echo $res_postowner['admin_fName'].
                                        " ".$res_postowner['admin_mName'].
                                        " ".$res_postowner['admin_lName'];
@@ -160,10 +160,10 @@ else {}
                                   <tbody>
                                   
                                   <?php 
-                                  $query3 = mysql_query("SELECT * FROM `forum_topic` WHERE `post_status` = 'UNPIN'");
-                                  while($res3 = mysql_fetch_array($query3)) {
-                                     $query4 = mysql_query("SELECT `view_count` FROM `view_counter` WHERE `view_topicID` = ".$res3['topic_ID']);
-                                     $res4 = mysql_fetch_assoc($query4);
+                                  $query3 = mysqli_query($con,"SELECT * FROM `forum_topic` WHERE `post_status` = 'UNPIN'");
+                                  while($res3 = mysqli_fetch_array($query3)) {
+                                     $query4 = mysqli_query($con,"SELECT `view_count` FROM `view_counter` WHERE `view_topicID` = ".$res3['topic_ID']);
+                                     $res4 = mysqli_fetch_assoc($query4);
                                   ?>
                                   <tr onclick="self.location.href='forum_view.php?post_ID=<?php echo password_hash($res3['topic_ID'], PASSWORD_DEFAULT);?>'">
                                   <td class="forum-td" >
@@ -176,20 +176,20 @@ else {}
                                     <br>
                                     by <a href="profile.php"><?php 
                                     $post_owner = $res3['post_owner_id'];
-                                    if($query_postowner = mysql_query("SELECT student_fName,student_mName,student_lName FROM `user_student_detail` WHERE `student_userID` = '$post_owner'")) {
-                                       $res_postowner = mysql_fetch_assoc($query_postowner);
+                                    if($query_postowner = mysqli_query($con,"SELECT student_fName,student_mName,student_lName FROM `user_student_detail` WHERE `student_userID` = '$post_owner'")) {
+                                       $res_postowner = mysqli_fetch_assoc($query_postowner);
                                        echo $res_postowner['student_fName'].
                                        " ".$res_postowner['student_mName'].
                                        " ".$res_postowner['student_lName'];
                                     }
-                                    if($query_postowner = mysql_query("SELECT teacher_fName,teacher_mName,teacher_lName FROM `user_teacher_detail` WHERE `teacher_userID` = '$post_owner'")) {
-                                       $res_postowner = mysql_fetch_assoc($query_postowner);
+                                    if($query_postowner = mysqli_query($con,"SELECT teacher_fName,teacher_mName,teacher_lName FROM `user_teacher_detail` WHERE `teacher_userID` = '$post_owner'")) {
+                                       $res_postowner = mysqli_fetch_assoc($query_postowner);
                                        echo $res_postowner['teacher_fName'].
                                        " ".$res_postowner['teacher_mName'].
                                        " ".$res_postowner['teacher_lName'];
                                     }
-                                    if($query_postowner = mysql_query("SELECT admin_fName,admin_mName,admin_lName FROM `user_admin_detail` WHERE `admin_userID` = '$post_owner'")) {
-                                       $res_postowner = mysql_fetch_assoc($query_postowner);
+                                    if($query_postowner = mysqli_query($con,"SELECT admin_fName,admin_mName,admin_lName FROM `user_admin_detail` WHERE `admin_userID` = '$post_owner'")) {
+                                       $res_postowner = mysqli_fetch_assoc($query_postowner);
                                        echo $res_postowner['admin_fName'].
                                        " ".$res_postowner['admin_mName'].
                                        " ".$res_postowner['admin_lName'];
