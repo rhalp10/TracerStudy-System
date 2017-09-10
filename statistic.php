@@ -23,6 +23,62 @@ else if ($login_level == '3')
 else
 {}
 
+
+$totalresult = mysqli_query($con,"SELECT * FROM `user_account`");
+$totalAcc_register = mysqli_num_rows($totalresult);
+
+$totalresult_ofStudent = mysqli_query($con,"SELECT * FROM `user_student_detail` WHERE `student_status` = 'register'");
+$totalAcc_register_asStudent = mysqli_num_rows($totalresult_ofStudent);
+
+$totalresult_ofTeacher = mysqli_query($con,"SELECT * FROM `user_teacher_detail` WHERE `teacher_status` = 'register'");
+$totalAcc_register_asTeacher = mysqli_num_rows($totalresult_ofTeacher);
+
+$totalresult_ofAdmin = mysqli_query($con,"SELECT * FROM `user_admin_detail` WHERE `admin_status` = 'register'");
+$totalAcc_register_asAdmin = mysqli_num_rows($totalresult_ofAdmin);
+
+$StudentPercentage=($totalAcc_register_asStudent / $totalAcc_register) * 100; 
+$TeacherPercentage=($totalAcc_register_asTeacher / $totalAcc_register) * 100; 
+$AdminPercentage=($totalAcc_register_asAdmin / $totalAcc_register) * 100; 
+
+$StudentPercentage_RegisterJS="$totalAcc_register_asStudent";
+$js_outStudent_Register = json_encode($StudentPercentage_RegisterJS);
+
+$TeacherPercentage_RegisterJS="$totalAcc_register_asTeacher";
+$js_outTeacher_Register = json_encode($TeacherPercentage_RegisterJS);
+
+$AdminPercentage_RegisterJS="$totalAcc_register_asAdmin";
+$js_outAdmin_Register = json_encode($AdminPercentage_RegisterJS);
+
+
+
+
+
+$totalresult_ofStudent_unregister = mysqli_query($con,"SELECT * FROM `user_student_detail` WHERE `student_status` = 'unregister'");
+$totalAcc_unregister_asStudent = mysqli_num_rows($totalresult_ofStudent_unregister);
+
+$totalresult_ofTeacher_unregister = mysqli_query($con,"SELECT * FROM `user_teacher_detail` WHERE `teacher_status` = 'unregister'");
+$totalAcc_unregister_asTeacher = mysqli_num_rows($totalresult_ofTeacher_unregister);
+
+$totalresult_ofAdmin_unregister = mysqli_query($con,"SELECT * FROM `user_admin_detail` WHERE `admin_status` = 'unregister'");
+$totalAcc_unregister_asAdmin = mysqli_num_rows($totalresult_ofAdmin_unregister);
+
+$totalAcc_unregister = ($totalAcc_unregister_asStudent + $totalAcc_unregister_asTeacher + $totalAcc_unregister_asAdmin);
+
+$StudentPercentage_unregister = ($totalAcc_unregister_asStudent / $totalAcc_unregister) * 100; 
+$TeacherPercentage_unregister = ($totalAcc_unregister_asTeacher / $totalAcc_unregister) * 100; 
+$AdminPercentage_unregister = ($totalAcc_unregister_asAdmin / $totalAcc_unregister) * 100; 
+
+$StudentPercentage_UnRegisterJS="$StudentPercentage_unregister";
+$js_outStudent_UnRegister = json_encode($StudentPercentage_UnRegisterJS);
+
+$TeacherPercentage_RegisterJS="$TeacherPercentage_unregister";
+$js_outTeacher_UnRegister = json_encode($TeacherPercentage_UnRegisterJS);
+
+$AdminPercentage_UnRegisterJS="$AdminPercentage_unregister";
+$js_outAdmin_UnRegister = json_encode($AdminPercentage_UnRegisterJS);
+
+
+
 ?><!DOCTYPE html>
 <html>  
   <head>
@@ -67,13 +123,15 @@ else
                         </header>
                         <div class="inner bg-light lter">
                             <div class="col-sm-6">
+
                               <canvas id="canvas" height="250" width="250"></canvas>
                                 <div class="row">
                                   <div class="col-sm-12">
                                  <?php 
-                                  echo "Admin: <b>totaladmin</b> &nbsp;";
-                                  echo "Employee: <b>totalemp</b>&nbsp;";
-                                  echo "Total Registered Account: <b>totalAcc</b>";
+                                  echo "Student: <b>$totalAcc_register_asStudent</b> &nbsp;";
+                                  echo "Teacher: <b>$totalAcc_register_asTeacher</b> &nbsp;";
+                                  echo "Admin: <b>$totalAcc_register_asAdmin</b> &nbsp;";
+                                  echo "Total Registered Account: <b>$totalAcc_register</b>";
                                  ?>
                                  </div>
                                 </div>
@@ -83,9 +141,10 @@ else
                                 <div class="row">
                                   <div class="col-sm-12">
                                  <?php 
-                                  echo "Admin: <b>totaladmin</b> &nbsp;";
-                                  echo "Employee: <b>totalemp</b>&nbsp;";
-                                  echo "Total Registered Account: <b>totalAcc</b>";
+                                  echo "Student: <b>$StudentPercentage_unregister</b> &nbsp;";
+                                  echo "Teacher: <b>$TeacherPercentage_unregister</b> &nbsp;";
+                                  echo "Admin: <b>$AdminPercentage_unregister</b> &nbsp;";
+                                  echo "Total Unregistered Account: <b>$totalAcc_unregister</b>";
                                  ?>
                                  </div>
                                 </div>
@@ -161,27 +220,58 @@ else
             <!-- /#footer -->
             <?php include ('script.php');?>
             <script>
+    // REGISTERED VALUE Declaration of variable 
+    var student_Percent = <?php echo $js_outStudent_Register; ?>;
+    var Teacher_Percent = <?php echo $js_outTeacher_Register; ?>;
+    var Admin_Percent = <?php echo $js_outAdmin_Register; ?>;
+    // REGISTERED VALUE Parsing of variable
+    var student_Parse = parseInt(student_Percent);
+    var teacher_Parse = parseInt(Teacher_Percent);
+    var admin_Parse = parseInt(Admin_Percent);
+    //REGISTERED VALUE Parsed Data passed on variable
+    var a = student_Parse;
+    var b = teacher_Parse;
+    var c = admin_Parse;
+    //UNREGISTERD VALUE Declaration of variable
+    var student_Percent_unregister = <?php echo $js_outStudent_UnRegister; ?>;
+    var Teacher_Percent_unregister = <?php echo $js_outTeacher_UnRegister; ?>;
+    var Admin_Percent_unregister = <?php echo $js_outAdmin_UnRegister; ?>;
+    //UNREGISTERD VALUE Parsing of variable
+    var student_Parse_unregister = parseInt(student_Percent_unregister);
+    var teacher_Parse_unregister = parseInt(Teacher_Percent_unregister);
+    var admin_Parse_unregistere = parseInt(Admin_Percent_unregister);
+    //UNREGISTERD VALUE Parsed Data passed on variable
+    var d = student_Parse_unregister;
+    var e = teacher_Parse_unregister;
+    var f = admin_Parse_unregistere;
 var doughnutData = [{
-        value: 30,
+        value: a,
         color: "#F7464A"
     }, {
-        value: 50,
+        value: b,
         color: "#46BFBD"
     }, {
-        value: 100,
+        value: c,
         color: "#FDB45C"
+    }, 
+
+];
+var doughnutData1 = [{
+        value: a,
+        color: "#F7464A"
     }, {
-        value: 40,
-        color: "#949FB1"
+        value: b,
+        color: "#46BFBD"
     }, {
-        value: 120,
-        color: "#4D5360"
-    }
+        value: c,
+        color: "#FDB45C"
+    }, 
 
 ];
 
 var myDoughnut = new Chart(document.getElementById("canvas").getContext("2d")).Doughnut(doughnutData);
 
+var myDoughnut = new Chart(document.getElementById("canvas1").getContext("2d")).Doughnut(doughnutData1);
 
 var barChartData = {
     labels: ["January", "February", "March", "April", "May", "June", "July"],
@@ -197,7 +287,7 @@ var barChartData = {
 
 }
 
-var myLine = new Chart(document.getElementById("canvas1").getContext("2d")).Bar(barChartData);
+var myLine = new Chart(document.getElementById("canvas2").getContext("2d")).Bar(barChartData);
     </script>
         </body>
 
