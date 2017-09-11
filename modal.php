@@ -1,5 +1,4 @@
 
-
 <!-- Modal For University Objective-->
 <div id="objective" class="modal fade" role="dialog">
   <div class="modal-dialog">
@@ -119,7 +118,7 @@ To accommodate IT courses offerings; the College was renamed as the <strong>Coll
 
                     </p>
                     <p>
-                       <a  href="https://web.facebook.com/yhanapaula"><i class="fa fa-facebook-square fa-2x color-facebook"></i></a>
+                       <a  href="https://web.facebook.com/yhanapaula" target="_blank"><i class="fa fa-facebook-square fa-2x color-facebook"></i></a>
                         
                        
                     </p>
@@ -155,7 +154,7 @@ To accommodate IT courses offerings; the College was renamed as the <strong>Coll
                         Bachelor Of Science In Computer Science ( BSCS )<br> Cavite State University (CvSU)
                     </p>
                     <p>
-                       <a href="https://web.facebook.com/The.OtherProtagonist"><i class="fa fa-facebook-square fa-2x color-facebook"></i></a>
+                       <a href="https://web.facebook.com/The.OtherProtagonist" target="_blank"><i class="fa fa-facebook-square fa-2x color-facebook"></i></a>
                     </p>
 
                 </div>
@@ -170,9 +169,7 @@ To accommodate IT courses offerings; the College was renamed as the <strong>Coll
 
                     </p>
                     <p>
-                       <a href="https://www.facebook.com/rhalp10"><i class="fa fa-facebook-square fa-2x color-facebook"></i></a>
-                        <a href="#"><i class="fa fa-twitter-square fa-2x color-twitter"></i></a>
-                        <a href="#"><i class="fa fa-google-plus-square fa-2x color-google-plus"></i></a>
+                       <a href="" target="_blank"><i class="fa fa-facebook-square fa-2x color-facebook"></i></a>
                         
                     </p>
 
@@ -204,9 +201,7 @@ To accommodate IT courses offerings; the College was renamed as the <strong>Coll
 
                     </p>
                     <p>
-                       <a href="https://www.facebook.com/rhalp10"><i class="fa fa-facebook-square fa-2x color-facebook"></i></a>
-                        <a href="#"><i class="fa fa-twitter-square fa-2x color-twitter"></i></a>
-                        <a href="#"><i class="fa fa-google-plus-square fa-2x color-google-plus"></i></a>
+                       <a href="" target="_blank"><i class="fa fa-facebook-square fa-2x color-facebook"></i></a>
                         
                     </p>
 
@@ -222,9 +217,9 @@ To accommodate IT courses offerings; the College was renamed as the <strong>Coll
 
                     </p>
                     <p>
-                       <a href="https://www.facebook.com/rhalp10"><i class="fa fa-facebook-square fa-2x color-facebook"></i></a>
-                        <a href="#"><i class="fa fa-twitter-square fa-2x color-twitter"></i></a>
-                        <a href="#"><i class="fa fa-google-plus-square fa-2x color-google-plus"></i></a>
+                       <a href="https://www.facebook.com/rhalp10" target="_blank"><i class="fa fa-facebook-square fa-2x color-facebook"></i></a>
+                        <a href="https://mobile.twitter.com/rhalp10" target="_blank"><i class="fa fa-twitter-square fa-2x color-twitter"></i></a>
+                        <a href="https://github.com/rhalp10" target="_blank"><i class="fa fa-github-square fa-2x color-github"></i></a>
 
 
                     </p>
@@ -234,7 +229,7 @@ To accommodate IT courses offerings; the College was renamed as the <strong>Coll
                 <div class="col-md-8 col-sm-8 text-justify">
                     
                     <p class="lead" style=" text-indent: 50px;">
-                         I'm A CaVite State University(CVSU) 3rd Year Student Taking Up Bachelor Of Science In Information Technology ( BSIT ) ,Wasting Time On The Front Of Computer Making Random Things Like Programming I Know (C++, Netbean Java, HTML, CSS, PHP, JSCRIPT, Visual Basic, Assembly, Storyboard Scirpting), About On Arts And Music? I Used The Following Tools (Paint,Paint Tool Sai, Photoshop CC) And Used Them To Make Digital Art, Background, Cover, Editing  Images And Also Edit Video, Sounds/Remix But Literally Not EXPERT Morethan Of My Skill Learned By My Self Study. 
+                         I’m Taking Up Bachelor of Science in Information Technology (BSIT), Like to Waste Time on The Front of Computer Making Random Things Like Programming I Know (C++, NetBeans Java, HTML, CSS, PHP, JSCRIPT, Visual Basic, Assembly, Storyboard Scripting), About on Arts and Music? I Used the Following Tools (Paint, Paint Tool Sai, Photoshop CC) And Used Them to Make Digital Art, Background, Cover, Editing Images and Also Edit Video, Sounds/Remix but Literally Not EXPERT More than Of My Skill Learned by My Self Study, My Psychology Friends say “Jack-of-all-trades, Master Of None”.
 
                     </p>
                 </div>

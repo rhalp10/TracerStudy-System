@@ -23,7 +23,7 @@ else if ($login_level == '3')
 else
 {}
 
-
+//REGISTER ACCOUNT QUERY AND PARSING
 $totalresult = mysqli_query($con,"SELECT * FROM `user_account`");
 $totalAcc_register = mysqli_num_rows($totalresult);
 
@@ -39,17 +39,17 @@ $totalAcc_register_asAdmin = mysqli_num_rows($totalresult_ofAdmin);
 $StudentPercentage=($totalAcc_register_asStudent / $totalAcc_register) * 100; 
 $TeacherPercentage=($totalAcc_register_asTeacher / $totalAcc_register) * 100; 
 $AdminPercentage=($totalAcc_register_asAdmin / $totalAcc_register) * 100; 
-
+//parsing student php to j_script value
 $StudentPercentage_RegisterJS="$totalAcc_register_asStudent";
 $js_outStudent_Register = json_encode($StudentPercentage_RegisterJS);
-
+//parsing teacher php to j_script value
 $TeacherPercentage_RegisterJS="$totalAcc_register_asTeacher";
 $js_outTeacher_Register = json_encode($TeacherPercentage_RegisterJS);
-
+//parsing admin php to j_script value
 $AdminPercentage_RegisterJS="$totalAcc_register_asAdmin";
 $js_outAdmin_Register = json_encode($AdminPercentage_RegisterJS);
 
-
+//END OF REGISTER ACCOUNT QUERY AND PARSING
 
 
 
@@ -71,7 +71,7 @@ $AdminPercentage_unregister = ($totalAcc_unregister_asAdmin / $totalAcc_unregist
 $StudentPercentage_UnRegisterJS="$StudentPercentage_unregister";
 $js_outStudent_UnRegister = json_encode($StudentPercentage_UnRegisterJS);
 
-$TeacherPercentage_RegisterJS="$TeacherPercentage_unregister";
+$TeacherPercentage_UnRegisterJS="$TeacherPercentage_unregister";
 $js_outTeacher_UnRegister = json_encode($TeacherPercentage_UnRegisterJS);
 
 $AdminPercentage_UnRegisterJS="$AdminPercentage_unregister";
@@ -141,9 +141,9 @@ $js_outAdmin_UnRegister = json_encode($AdminPercentage_UnRegisterJS);
                                 <div class="row">
                                   <div class="col-sm-12">
                                  <?php 
-                                  echo "Student: <b>$StudentPercentage_unregister</b> &nbsp;";
-                                  echo "Teacher: <b>$TeacherPercentage_unregister</b> &nbsp;";
-                                  echo "Admin: <b>$AdminPercentage_unregister</b> &nbsp;";
+                                  echo "Student: <b>$totalAcc_unregister_asStudent</b> &nbsp;";
+                                  echo "Teacher: <b>$totalAcc_unregister_asTeacher</b> &nbsp;";
+                                  echo "Admin: <b>$totalAcc_unregister_asAdmin</b> &nbsp;";
                                   echo "Total Unregistered Account: <b>$totalAcc_unregister</b>";
                                  ?>
                                  </div>
@@ -244,50 +244,42 @@ $js_outAdmin_UnRegister = json_encode($AdminPercentage_UnRegisterJS);
     var d = student_Parse_unregister;
     var e = teacher_Parse_unregister;
     var f = admin_Parse_unregistere;
-var doughnutData = [{
-        value: a,
-        color: "#F7464A"
-    }, {
-        value: b,
-        color: "#46BFBD"
-    }, {
-        value: c,
-        color: "#FDB45C"
-    }, 
+var pieData = [
+                {
+                    value: a,
+                    color:"#F38630"
+                },
+                {
+                    value : b,
+                    color : "#E0E4CC"
+                },
+                {
+                    value : c,
+                    color : "#69D2E7"
+                }
+            
+            ];
+var pieData1 = [
+    {
+        value: d,
+        color:"#F7464A"
+    },
+    {
+        value : e,
+        color : "#46BFBD"
+    },
+    {
+        value : f,
+        color : "#949FB1"
+    }
 
 ];
-var doughnutData1 = [{
-        value: a,
-        color: "#F7464A"
-    }, {
-        value: b,
-        color: "#46BFBD"
-    }, {
-        value: c,
-        color: "#FDB45C"
-    }, 
 
-];
+var myPie = new Chart(document.getElementById("canvas").getContext("2d")).Pie(pieData);
+var myPie = new Chart(document.getElementById("canvas1").getContext("2d")).Pie(pieData);
 
-var myDoughnut = new Chart(document.getElementById("canvas").getContext("2d")).Doughnut(doughnutData);
 
-var myDoughnut = new Chart(document.getElementById("canvas1").getContext("2d")).Doughnut(doughnutData1);
 
-var barChartData = {
-    labels: ["January", "February", "March", "April", "May", "June", "July"],
-    datasets: [{
-        fillColor: "rgba(220,220,220,0.5)",
-        strokeColor: "rgba(220,220,220,1)",
-        data: [65, 59, 90, 81, 56, 55, 40]
-    }, {
-        fillColor: "rgba(151,187,205,0.5)",
-        strokeColor: "rgba(151,187,205,1)",
-        data: [28, 48, 40, 19, 96, 27, 100]
-    }]
-
-}
-
-var myLine = new Chart(document.getElementById("canvas2").getContext("2d")).Bar(barChartData);
     </script>
         </body>
 

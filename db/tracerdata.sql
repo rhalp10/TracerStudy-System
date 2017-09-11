@@ -1,20 +1,22 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.12
--- http://www.phpmyadmin.net
+-- version 4.7.0
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 09, 2017 at 02:05 PM
--- Server version: 5.6.16
--- PHP Version: 5.5.11
+-- Generation Time: Sep 11, 2017 at 02:15 AM
+-- Server version: 10.1.26-MariaDB
+-- PHP Version: 7.1.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `tracerdata`
@@ -26,12 +28,11 @@ SET time_zone = "+00:00";
 -- Table structure for table `cvsu_college`
 --
 
-CREATE TABLE IF NOT EXISTS `cvsu_college` (
-  `colleges_ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `cvsu_college` (
+  `colleges_ID` int(11) NOT NULL,
   `college_name` varchar(150) NOT NULL,
-  `college_acronym` varchar(25) NOT NULL,
-  PRIMARY KEY (`colleges_ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+  `college_acronym` varchar(25) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `cvsu_college`
@@ -47,13 +48,11 @@ INSERT INTO `cvsu_college` (`colleges_ID`, `college_name`, `college_acronym`) VA
 -- Table structure for table `cvsu_course`
 --
 
-CREATE TABLE IF NOT EXISTS `cvsu_course` (
-  `course_ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `cvsu_course` (
+  `course_ID` int(11) NOT NULL,
   `course_departmentID` int(11) NOT NULL,
   `course_name` varchar(100) NOT NULL,
-  `course_acronym` varchar(10) NOT NULL,
-  PRIMARY KEY (`course_ID`),
-  KEY `course_departmentID` (`course_departmentID`)
+  `course_acronym` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -71,13 +70,11 @@ INSERT INTO `cvsu_course` (`course_ID`, `course_departmentID`, `course_name`, `c
 -- Table structure for table `cvsu_department`
 --
 
-CREATE TABLE IF NOT EXISTS `cvsu_department` (
-  `department_ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `cvsu_department` (
+  `department_ID` int(11) NOT NULL,
   `department_collegeID` int(11) NOT NULL,
   `department_name` varchar(100) NOT NULL,
-  `department_acronym` varchar(25) NOT NULL,
-  PRIMARY KEY (`department_ID`),
-  KEY `department_collegeID` (`department_collegeID`)
+  `department_acronym` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -95,14 +92,13 @@ INSERT INTO `cvsu_department` (`department_ID`, `department_collegeID`, `departm
 -- Table structure for table `forum_comment`
 --
 
-CREATE TABLE IF NOT EXISTS `forum_comment` (
-  `comment_ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `forum_comment` (
+  `comment_ID` int(11) NOT NULL,
   `comment_topicID` int(11) NOT NULL,
   `comment_userID` int(11) NOT NULL,
   `comment_content` varchar(500) NOT NULL,
-  `comment_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`comment_ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+  `comment_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `forum_comment`
@@ -117,13 +113,12 @@ INSERT INTO `forum_comment` (`comment_ID`, `comment_topicID`, `comment_userID`, 
 -- Table structure for table `forum_comment_reply`
 --
 
-CREATE TABLE IF NOT EXISTS `forum_comment_reply` (
-  `comment_reply_ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `forum_comment_reply` (
+  `comment_reply_ID` int(11) NOT NULL,
   `comment_reply_parentID` int(11) NOT NULL,
   `comment_reply_userID` int(50) NOT NULL,
   `comment_reply_content` varchar(500) NOT NULL,
-  `comment_reply_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`comment_reply_ID`)
+  `comment_reply_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -139,15 +134,14 @@ INSERT INTO `forum_comment_reply` (`comment_reply_ID`, `comment_reply_parentID`,
 -- Table structure for table `forum_topic`
 --
 
-CREATE TABLE IF NOT EXISTS `forum_topic` (
-  `topic_ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `forum_topic` (
+  `topic_ID` int(11) NOT NULL,
   `post_title` varchar(150) NOT NULL,
   `post_owner_id` int(11) NOT NULL,
   `post_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `post_content` varchar(50000) NOT NULL,
-  `post_status` varchar(25) NOT NULL DEFAULT 'UNPIN',
-  PRIMARY KEY (`topic_ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+  `post_status` varchar(25) NOT NULL DEFAULT 'UNPIN'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `forum_topic`
@@ -159,7 +153,13 @@ INSERT INTO `forum_topic` (`topic_ID`, `post_title`, `post_owner_id`, `post_date
 (3, 'xcvxcvxcv', 1, '2017-09-09 12:04:08', '<p>xcvxv</p>\r\n', 'UNPIN'),
 (4, 'xcxcv', 1, '2017-09-09 12:04:24', '<p>xcvrerwerwer</p>\r\n\r\n<hr />\r\n<p>&nbsp;</p>\r\n', 'UNPIN'),
 (5, 'sadasdasd', 1, '2017-09-09 12:05:03', '<p>dsd</p>\r\n', 'PIN'),
-(6, 'xczxczcxzcxz', 2, '2017-09-09 12:05:37', '<p>zxxczxcz</p>\r\n', 'UNPIN');
+(6, 'xczxczcxzcxz', 2, '2017-09-09 12:05:37', '<p>zxxczxcz</p>\r\n', 'UNPIN'),
+(7, 'asdasd', 1, '2017-09-09 15:45:52', '<p>asdasdasd</p>\r\n', 'UNPIN'),
+(8, 'xx', 3, '2017-09-09 16:11:28', '<p>xx</p>\r\n', 'UNPIN'),
+(9, '89', 3, '2017-09-09 16:14:46', '<p>987</p>\r\n', 'UNPIN'),
+(10, 'sdfsdfsdf', 3, '2017-09-09 16:17:24', '<p>fsdf</p>\r\n', 'UNPIN'),
+(11, 'sdfsdfsdf', 3, '2017-09-09 16:17:32', '<p>fsdf</p>\r\n', 'UNPIN'),
+(12, 'sdfsdfsdf', 3, '2017-09-09 16:18:28', '<p>fsdf</p>\r\n', 'UNPIN');
 
 -- --------------------------------------------------------
 
@@ -167,10 +167,9 @@ INSERT INTO `forum_topic` (`topic_ID`, `post_title`, `post_owner_id`, `post_date
 -- Table structure for table `forum_topic_likes`
 --
 
-CREATE TABLE IF NOT EXISTS `forum_topic_likes` (
-  `topic_likes_ID` int(11) NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`topic_likes_ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+CREATE TABLE `forum_topic_likes` (
+  `topic_likes_ID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `forum_topic_likes`
@@ -185,9 +184,8 @@ INSERT INTO `forum_topic_likes` (`topic_likes_ID`) VALUES
 -- Table structure for table `message_read`
 --
 
-CREATE TABLE IF NOT EXISTS `message_read` (
-  `read_ID` int(11) NOT NULL,
-  PRIMARY KEY (`read_ID`)
+CREATE TABLE `message_read` (
+  `read_ID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -203,15 +201,14 @@ INSERT INTO `message_read` (`read_ID`) VALUES
 -- Table structure for table `message_send`
 --
 
-CREATE TABLE IF NOT EXISTS `message_send` (
+CREATE TABLE `message_send` (
   `send_ID` int(11) NOT NULL,
   `send_mThread` int(11) NOT NULL,
   `send_content` varchar(1500) NOT NULL,
   `send_receiverID` int(11) NOT NULL,
   `send_userID` int(11) NOT NULL,
   `send_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `send_status` varchar(6) NOT NULL,
-  PRIMARY KEY (`send_ID`)
+  `send_status` varchar(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -227,12 +224,11 @@ INSERT INTO `message_send` (`send_ID`, `send_mThread`, `send_content`, `send_rec
 -- Table structure for table `message_thread`
 --
 
-CREATE TABLE IF NOT EXISTS `message_thread` (
-  `thread_ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `message_thread` (
+  `thread_ID` int(11) NOT NULL,
   `thread_participant` varchar(250) NOT NULL,
-  `thread_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`thread_ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+  `thread_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `message_thread`
@@ -247,15 +243,13 @@ INSERT INTO `message_thread` (`thread_ID`, `thread_participant`, `thread_created
 -- Table structure for table `user_account`
 --
 
-CREATE TABLE IF NOT EXISTS `user_account` (
-  `user_ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `user_account` (
+  `user_ID` int(11) NOT NULL,
   `user_level` int(11) NOT NULL,
   `user_name` varchar(25) NOT NULL,
   `user_password` varchar(50) NOT NULL,
-  `user_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`user_ID`),
-  KEY `user_level` (`user_level`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+  `user_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user_account`
@@ -266,7 +260,7 @@ INSERT INTO `user_account` (`user_ID`, `user_level`, `user_name`, `user_password
 (1, 1, '201310656', 'M8+Cpt+zltZs3QpomFLRjEFCGvI0VGC+jjJzXH32Mtw=', '2017-09-06 11:37:31'),
 (2, 2, 'teacher', '6Bgzqn4mnCPjx432mpfOVbU87Mi3sy29KRe8A1l+2X0=', '2017-09-06 10:18:33'),
 (3, 3, 'admin', 'QrUgcNdRjaE74hfEIeThKa/RaqA9N/KpBI+X7VeiyfE=', '2017-09-06 10:23:49'),
-(4, 1, '$student_number', '$encrypted', '2017-09-09 03:18:26');
+(11, 1, '555', 'cYJ67TqHIeZ2rC6+c635Ev22WdK4Nf6SMoSQMInVEoM=', '2017-09-09 16:09:10');
 
 -- --------------------------------------------------------
 
@@ -274,25 +268,24 @@ INSERT INTO `user_account` (`user_ID`, `user_level`, `user_name`, `user_password
 -- Table structure for table `user_admin_detail`
 --
 
-CREATE TABLE IF NOT EXISTS `user_admin_detail` (
-  `admin_ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `user_admin_detail` (
+  `admin_ID` int(11) NOT NULL,
   `admin_userID` int(11) NOT NULL,
   `admin_img` varchar(50) NOT NULL DEFAULT 'temp.gif',
   `admin_fName` varchar(100) NOT NULL,
   `admin_mName` varchar(25) NOT NULL,
   `admin_lName` varchar(50) NOT NULL,
   `admin_address` varchar(250) NOT NULL,
-  `admin_status` varchar(10) NOT NULL DEFAULT 'unregister',
-  PRIMARY KEY (`admin_ID`),
-  KEY `admin_userID` (`admin_userID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+  `admin_status` varchar(10) NOT NULL DEFAULT 'unregister'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user_admin_detail`
 --
 
 INSERT INTO `user_admin_detail` (`admin_ID`, `admin_userID`, `admin_img`, `admin_fName`, `admin_mName`, `admin_lName`, `admin_address`, `admin_status`) VALUES
-(1, 3, 'temp.gif', 'admin', 'admin', 'admin', 'Blk 38 Lot 11 Phase 2 b Southville 2 TMC', 'register');
+(1, 3, 'temp.gif', 'admin', 'admin', 'admin', 'Blk 38 Lot 11 Phase 2 b Southville 2 TMC', 'register'),
+(2, 0, 'temp.gif', '', '', '', '', 'unregister');
 
 -- --------------------------------------------------------
 
@@ -300,11 +293,10 @@ INSERT INTO `user_admin_detail` (`admin_ID`, `admin_userID`, `admin_img`, `admin
 -- Table structure for table `user_level`
 --
 
-CREATE TABLE IF NOT EXISTS `user_level` (
-  `level_ID` int(11) NOT NULL AUTO_INCREMENT,
-  `level_name` varchar(50) NOT NULL,
-  PRIMARY KEY (`level_ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+CREATE TABLE `user_level` (
+  `level_ID` int(11) NOT NULL,
+  `level_name` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user_level`
@@ -322,14 +314,13 @@ INSERT INTO `user_level` (`level_ID`, `level_name`) VALUES
 -- Table structure for table `user_notification`
 --
 
-CREATE TABLE IF NOT EXISTS `user_notification` (
-  `notif_ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `user_notification` (
+  `notif_ID` int(11) NOT NULL,
   `notif_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `notif_typeID` int(11) NOT NULL,
   `notif_userID` int(11) NOT NULL,
-  `notif_receiverID` int(11) NOT NULL,
-  PRIMARY KEY (`notif_ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+  `notif_receiverID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user_notification`
@@ -344,11 +335,10 @@ INSERT INTO `user_notification` (`notif_ID`, `notif_date`, `notif_typeID`, `noti
 -- Table structure for table `user_notif_type`
 --
 
-CREATE TABLE IF NOT EXISTS `user_notif_type` (
-  `type_ID` int(11) NOT NULL AUTO_INCREMENT,
-  `type_Name` varchar(50) NOT NULL,
-  PRIMARY KEY (`type_ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+CREATE TABLE `user_notif_type` (
+  `type_ID` int(11) NOT NULL,
+  `type_Name` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user_notif_type`
@@ -366,8 +356,8 @@ INSERT INTO `user_notif_type` (`type_ID`, `type_Name`) VALUES
 -- Table structure for table `user_student_detail`
 --
 
-CREATE TABLE IF NOT EXISTS `user_student_detail` (
-  `student_ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `user_student_detail` (
+  `student_ID` int(11) NOT NULL,
   `student_userID` int(11) NOT NULL,
   `student_img` varchar(50) NOT NULL DEFAULT 'temp.gif',
   `student_IDNumber` int(11) NOT NULL,
@@ -378,10 +368,8 @@ CREATE TABLE IF NOT EXISTS `user_student_detail` (
   `student_admission` date NOT NULL,
   `student_year_grad` date NOT NULL,
   `student_department` varchar(100) NOT NULL,
-  `student_status` varchar(10) NOT NULL DEFAULT 'unregister',
-  PRIMARY KEY (`student_ID`),
-  KEY `student_userID` (`student_userID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+  `student_status` varchar(10) NOT NULL DEFAULT 'unregister'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user_student_detail`
@@ -390,7 +378,9 @@ CREATE TABLE IF NOT EXISTS `user_student_detail` (
 INSERT INTO `user_student_detail` (`student_ID`, `student_userID`, `student_img`, `student_IDNumber`, `student_fName`, `student_mName`, `student_lName`, `student_address`, `student_admission`, `student_year_grad`, `student_department`, `student_status`) VALUES
 (1, 1, 'temp.gif', 201310656, 'student', 's', 'student', 'Blk 38 Lot 11 Phase 2 b Southville 2 TMC', '2013-10-05', '2018-03-30', 'DIT', 'register'),
 (2, 0, 'temp.gif', 201410209, 'Mardical', '', 'del Mundo', 'Indang', '0000-00-00', '0000-00-00', 'DIT', 'register'),
-(13, 0, 'temp.gif', 3, '3', '3', '3', '32', '2017-09-30', '2017-09-02', 'IT', 'unregister');
+(13, 0, 'temp.gif', 3, '3', '3', '3', '32', '2017-09-30', '2017-09-02', 'IT', 'unregister'),
+(14, 11, 'temp.gif', 555, 'asdasd', 'ddd', 'xxx', 'wwwwwwwwwwwwww', '0000-00-00', '0000-00-00', 'COMSCI', 'register'),
+(15, 0, 'temp.gif', 0, '', '', '', '', '0000-00-00', '0000-00-00', '', 'unregister');
 
 -- --------------------------------------------------------
 
@@ -398,8 +388,8 @@ INSERT INTO `user_student_detail` (`student_ID`, `student_userID`, `student_img`
 -- Table structure for table `user_teacher_detail`
 --
 
-CREATE TABLE IF NOT EXISTS `user_teacher_detail` (
-  `teacher_ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `user_teacher_detail` (
+  `teacher_ID` int(11) NOT NULL,
   `teacher_userID` int(11) NOT NULL,
   `teacher_img` varchar(250) NOT NULL DEFAULT 'temp.gif',
   `teacher_facultyID` varchar(50) NOT NULL,
@@ -408,17 +398,16 @@ CREATE TABLE IF NOT EXISTS `user_teacher_detail` (
   `teacher_lName` varchar(50) NOT NULL,
   `teacher_address` varchar(250) NOT NULL,
   `teacher_department` int(11) NOT NULL,
-  `teacher_status` varchar(10) NOT NULL DEFAULT 'unregister',
-  PRIMARY KEY (`teacher_ID`),
-  KEY `teacher_userID` (`teacher_userID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+  `teacher_status` varchar(10) NOT NULL DEFAULT 'unregister'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user_teacher_detail`
 --
 
 INSERT INTO `user_teacher_detail` (`teacher_ID`, `teacher_userID`, `teacher_img`, `teacher_facultyID`, `teacher_fName`, `teacher_mName`, `teacher_lName`, `teacher_address`, `teacher_department`, `teacher_status`) VALUES
-(1, 2, 'temp.gif', 'a12s3d', 'teacher', 't', 'teacher', 'Blk 38 Lot 11 Phase 2 b Southville 2 TMC', 2, 'register');
+(1, 2, 'temp.gif', 'a12s3d', 'teacher', 't', 'teacher', 'Blk 38 Lot 11 Phase 2 b Southville 2 TMC', 2, 'register'),
+(2, 0, 'temp.gif', '', '', '', '', '', 0, 'unregister');
 
 -- --------------------------------------------------------
 
@@ -426,48 +415,255 @@ INSERT INTO `user_teacher_detail` (`teacher_ID`, `teacher_userID`, `teacher_img`
 -- Table structure for table `view_counter`
 --
 
-CREATE TABLE IF NOT EXISTS `view_counter` (
-  `view_ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `view_counter` (
+  `view_ID` int(11) NOT NULL,
   `view_topicID` int(11) NOT NULL,
-  `view_count` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`view_ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=42 ;
+  `view_count` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `view_counter`
 --
 
 INSERT INTO `view_counter` (`view_ID`, `view_topicID`, `view_count`) VALUES
-(1, 1, 15),
+(1, 1, 17),
 (2, 2, 152),
 (3, 3, 17),
 (4, 4, 7),
 (5, 5, 59),
-(6, 6, 92),
+(6, 6, 93),
 (19, 22, 8),
 (20, 23, 0),
 (21, 24, 1),
 (22, 25, 2),
 (23, 26, 16),
 (24, 27, 24),
-(25, 0, 16),
-(26, 0, 15),
-(27, 0, 13),
-(28, 0, 12),
-(29, 0, 9),
-(30, 0, 6),
-(31, 0, 5),
-(32, 0, 3),
-(33, 0, 2),
+(25, 0, 32),
+(26, 0, 31),
+(27, 0, 29),
+(28, 0, 28),
+(29, 0, 25),
+(30, 0, 22),
+(31, 0, 21),
+(32, 0, 19),
+(33, 0, 18),
 (34, 29, 1),
-(35, 0, 1),
-(36, 1, 1),
+(35, 0, 17),
+(36, 1, 3),
 (37, 2, 1),
 (38, 3, 1),
 (39, 4, 1),
 (40, 5, 1),
-(41, 6, 1);
+(41, 6, 2),
+(42, 0, 16),
+(43, 0, 14),
+(44, 0, 10),
+(45, 0, 3),
+(46, 0, 2),
+(47, 12, 1);
 
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `cvsu_college`
+--
+ALTER TABLE `cvsu_college`
+  ADD PRIMARY KEY (`colleges_ID`);
+
+--
+-- Indexes for table `cvsu_course`
+--
+ALTER TABLE `cvsu_course`
+  ADD PRIMARY KEY (`course_ID`),
+  ADD KEY `course_departmentID` (`course_departmentID`);
+
+--
+-- Indexes for table `cvsu_department`
+--
+ALTER TABLE `cvsu_department`
+  ADD PRIMARY KEY (`department_ID`),
+  ADD KEY `department_collegeID` (`department_collegeID`);
+
+--
+-- Indexes for table `forum_comment`
+--
+ALTER TABLE `forum_comment`
+  ADD PRIMARY KEY (`comment_ID`);
+
+--
+-- Indexes for table `forum_comment_reply`
+--
+ALTER TABLE `forum_comment_reply`
+  ADD PRIMARY KEY (`comment_reply_ID`);
+
+--
+-- Indexes for table `forum_topic`
+--
+ALTER TABLE `forum_topic`
+  ADD PRIMARY KEY (`topic_ID`);
+
+--
+-- Indexes for table `forum_topic_likes`
+--
+ALTER TABLE `forum_topic_likes`
+  ADD PRIMARY KEY (`topic_likes_ID`);
+
+--
+-- Indexes for table `message_read`
+--
+ALTER TABLE `message_read`
+  ADD PRIMARY KEY (`read_ID`);
+
+--
+-- Indexes for table `message_send`
+--
+ALTER TABLE `message_send`
+  ADD PRIMARY KEY (`send_ID`);
+
+--
+-- Indexes for table `message_thread`
+--
+ALTER TABLE `message_thread`
+  ADD PRIMARY KEY (`thread_ID`);
+
+--
+-- Indexes for table `user_account`
+--
+ALTER TABLE `user_account`
+  ADD PRIMARY KEY (`user_ID`),
+  ADD KEY `user_level` (`user_level`);
+
+--
+-- Indexes for table `user_admin_detail`
+--
+ALTER TABLE `user_admin_detail`
+  ADD PRIMARY KEY (`admin_ID`),
+  ADD KEY `admin_userID` (`admin_userID`);
+
+--
+-- Indexes for table `user_level`
+--
+ALTER TABLE `user_level`
+  ADD PRIMARY KEY (`level_ID`);
+
+--
+-- Indexes for table `user_notification`
+--
+ALTER TABLE `user_notification`
+  ADD PRIMARY KEY (`notif_ID`);
+
+--
+-- Indexes for table `user_notif_type`
+--
+ALTER TABLE `user_notif_type`
+  ADD PRIMARY KEY (`type_ID`);
+
+--
+-- Indexes for table `user_student_detail`
+--
+ALTER TABLE `user_student_detail`
+  ADD PRIMARY KEY (`student_ID`),
+  ADD KEY `student_userID` (`student_userID`);
+
+--
+-- Indexes for table `user_teacher_detail`
+--
+ALTER TABLE `user_teacher_detail`
+  ADD PRIMARY KEY (`teacher_ID`),
+  ADD KEY `teacher_userID` (`teacher_userID`);
+
+--
+-- Indexes for table `view_counter`
+--
+ALTER TABLE `view_counter`
+  ADD PRIMARY KEY (`view_ID`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `cvsu_college`
+--
+ALTER TABLE `cvsu_college`
+  MODIFY `colleges_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `cvsu_course`
+--
+ALTER TABLE `cvsu_course`
+  MODIFY `course_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `cvsu_department`
+--
+ALTER TABLE `cvsu_department`
+  MODIFY `department_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `forum_comment`
+--
+ALTER TABLE `forum_comment`
+  MODIFY `comment_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `forum_comment_reply`
+--
+ALTER TABLE `forum_comment_reply`
+  MODIFY `comment_reply_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `forum_topic`
+--
+ALTER TABLE `forum_topic`
+  MODIFY `topic_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+--
+-- AUTO_INCREMENT for table `forum_topic_likes`
+--
+ALTER TABLE `forum_topic_likes`
+  MODIFY `topic_likes_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `message_thread`
+--
+ALTER TABLE `message_thread`
+  MODIFY `thread_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `user_account`
+--
+ALTER TABLE `user_account`
+  MODIFY `user_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+--
+-- AUTO_INCREMENT for table `user_admin_detail`
+--
+ALTER TABLE `user_admin_detail`
+  MODIFY `admin_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `user_level`
+--
+ALTER TABLE `user_level`
+  MODIFY `level_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `user_notification`
+--
+ALTER TABLE `user_notification`
+  MODIFY `notif_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `user_notif_type`
+--
+ALTER TABLE `user_notif_type`
+  MODIFY `type_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `user_student_detail`
+--
+ALTER TABLE `user_student_detail`
+  MODIFY `student_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+--
+-- AUTO_INCREMENT for table `user_teacher_detail`
+--
+ALTER TABLE `user_teacher_detail`
+  MODIFY `teacher_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `view_counter`
+--
+ALTER TABLE `view_counter`
+  MODIFY `view_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 --
 -- Constraints for dumped tables
 --
@@ -476,8 +672,8 @@ INSERT INTO `view_counter` (`view_ID`, `view_topicID`, `view_count`) VALUES
 -- Constraints for table `cvsu_course`
 --
 ALTER TABLE `cvsu_course`
-  ADD CONSTRAINT `cvsu_course_ibfk_1` FOREIGN KEY (`course_departmentID`) REFERENCES `cvsu_department` (`department_id`),
-  ADD CONSTRAINT `cvsu_course_ibfk_2` FOREIGN KEY (`course_departmentID`) REFERENCES `cvsu_department` (`department_id`);
+  ADD CONSTRAINT `cvsu_course_ibfk_1` FOREIGN KEY (`course_departmentID`) REFERENCES `cvsu_department` (`department_ID`),
+  ADD CONSTRAINT `cvsu_course_ibfk_2` FOREIGN KEY (`course_departmentID`) REFERENCES `cvsu_department` (`department_ID`);
 
 --
 -- Constraints for table `cvsu_department`
@@ -501,14 +697,15 @@ ALTER TABLE `user_admin_detail`
 -- Constraints for table `user_student_detail`
 --
 ALTER TABLE `user_student_detail`
-  ADD CONSTRAINT `user_student_detail_ibfk_1` FOREIGN KEY (`student_userID`) REFERENCES `user_account` (`user_id`),
-  ADD CONSTRAINT `user_student_detail_ibfk_2` FOREIGN KEY (`student_userID`) REFERENCES `user_account` (`user_id`);
+  ADD CONSTRAINT `user_student_detail_ibfk_1` FOREIGN KEY (`student_userID`) REFERENCES `user_account` (`user_ID`),
+  ADD CONSTRAINT `user_student_detail_ibfk_2` FOREIGN KEY (`student_userID`) REFERENCES `user_account` (`user_ID`);
 
 --
 -- Constraints for table `user_teacher_detail`
 --
 ALTER TABLE `user_teacher_detail`
-  ADD CONSTRAINT `user_teacher_detail_ibfk_1` FOREIGN KEY (`teacher_userID`) REFERENCES `user_account` (`user_id`);
+  ADD CONSTRAINT `user_teacher_detail_ibfk_1` FOREIGN KEY (`teacher_userID`) REFERENCES `user_account` (`user_ID`);
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

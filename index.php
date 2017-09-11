@@ -75,10 +75,10 @@ background: linear-gradient(135deg, #b2e1ff 0%,#60c2ff 13%,#bce6ff 29%,#82cfff 4
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b2e1ff', endColorstr='#66b6fc',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 /*End of Body Background*/
         }
-        a{
-            color:#ff9800;
-        }
-        .navbar .navbar-nav {
+ a{
+     color:#ff9800;
+ }
+ .navbar .navbar-nav {
   display: inline-block;
   float: none;
   vertical-align: top;
@@ -87,6 +87,41 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b2e1ff', end
 .navbar .navbar-collapse {
   text-align: center;
 }
+
+
+
+  a > .fa-facebook-square
+  {
+    color: #3b5998;
+  }
+  a > .fa-facebook-square:hover
+  {
+    color: #0084ff;
+  }
+  a > .fa-google-plus-square
+  {
+    color: #dd4b39;
+  }
+  a > .fa-google-plus-square:hover
+  {
+    color: #cd201f;
+  }
+  a > .fa-twitter-square
+  {
+    color: #55acee;
+  }
+  a > .fa-twitter-square:hover
+  {
+    color: #007ee5;
+  }
+  a > .fa-github-square
+  {
+    color: #24292e;
+  }
+  a > .fa-github-square:hover
+  {
+    color: #41464c;
+  }
 
     </style>
 

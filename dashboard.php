@@ -73,25 +73,26 @@ else
                         </header>
                         <div class="inner bg-light lter">
                            <?php 
-                           echo $data_img;
-                           $input = "student";
+                           $thread_participant  = "1 2 3 4 5 6";
+                            $pieces = explode(" ", $thread_participant);
+                            echo "<br>";
+                            $query_participant = "SELECT * FROM user_student_detail WHERE ";
 
-                            $encrypted = encryptIt( $input );
-                            $decrypted = decryptIt( $encrypted );
+                            $numItems = count($pieces);
+                            $i = 0;
+                            foreach($pieces as $participant) {
+                                $participant = trim($participant);
+                                if(++$i === $numItems) {
+                                  $query_participant.="student_ID=".$participant;
+                                }
+                                else
+                                {
+                                  $query_participant.="student_ID=".$participant." OR ";
+                                }
 
-                            echo $encrypted . '<br />' . $decrypted;
-
-                            function encryptIt( $q ) {
-                                $cryptKey  = 'qJB0rGtIn5UB1xG03efyCp';
-                                $qEncoded      = base64_encode( mcrypt_encrypt( MCRYPT_RIJNDAEL_256, md5( $cryptKey ), $q, MCRYPT_MODE_CBC, md5( md5( $cryptKey ) ) ) );
-                                return( $qEncoded );
                             }
+                            echo $query_participant;
 
-                            function decryptIt( $q ) {
-                                $cryptKey  = 'qJB0rGtIn5UB1xG03efyCp';
-                                $qDecoded      = rtrim( mcrypt_decrypt( MCRYPT_RIJNDAEL_256, md5( $cryptKey ), base64_decode( $q ), MCRYPT_MODE_CBC, md5( md5( $cryptKey ) ) ), "\0");
-                                return( $qDecoded );
-                            }
                            ?>
                         </div>
                         <!-- /.inner -->

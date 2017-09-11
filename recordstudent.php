@@ -168,10 +168,12 @@ else
                                         <th>Department</th>
                                         <th>Year Admitted</th>
                                         <th>Year graduated</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tfoot>
                                     <tr>
+                                      <th></th>
                                       <th></th>
                                       <th></th>
                                       <th></th>
@@ -189,6 +191,11 @@ else
                                         <td class="text-center"><?php echo $result_student_detail['student_department'] ;?></td>
                                         <td class="text-center"><?php echo $result_student_detail['student_admission'] ;?></td>
                                         <td class="text-center"><?php echo $result_student_detail['student_year_grad'] ;?></td>
+                                        <td class="text-center"><div class="btn-group">
+
+                                          <button type="button" class="btn btn-metis-5"><i class="fa fa-edit"></i></button>
+                                          <button type="button" class="btn btn-metis-1"><i class="fa fa-close"></i></button>
+                                        </div></td>
                                     </tr>
                                   <?php
                                     }

@@ -85,7 +85,7 @@ function login(){
 					include('alert/success.php');
 									
 			}
-			mysql_close($con); // Closing Connection
+			mysqli_close($con); // Closing Connection
 }
 
 
