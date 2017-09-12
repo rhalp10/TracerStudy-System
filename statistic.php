@@ -64,9 +64,9 @@ $totalAcc_unregister_asAdmin = mysqli_num_rows($totalresult_ofAdmin_unregister);
 
 $totalAcc_unregister = ($totalAcc_unregister_asStudent + $totalAcc_unregister_asTeacher + $totalAcc_unregister_asAdmin);
 
-$StudentPercentage_unregister = ($totalAcc_unregister_asStudent / $totalAcc_unregister) * 100; 
-$TeacherPercentage_unregister = ($totalAcc_unregister_asTeacher / $totalAcc_unregister) * 100; 
-$AdminPercentage_unregister = ($totalAcc_unregister_asAdmin / $totalAcc_unregister) * 100; 
+$StudentPercentage_unregister = $totalAcc_unregister_asStudent; 
+$TeacherPercentage_unregister = $totalAcc_unregister_asTeacher; 
+$AdminPercentage_unregister = $totalAcc_unregister_asAdmin; 
 
 $StudentPercentage_UnRegisterJS="$StudentPercentage_unregister";
 $js_outStudent_UnRegister = json_encode($StudentPercentage_UnRegisterJS);
@@ -76,6 +76,9 @@ $js_outTeacher_UnRegister = json_encode($TeacherPercentage_UnRegisterJS);
 
 $AdminPercentage_UnRegisterJS="$AdminPercentage_unregister";
 $js_outAdmin_UnRegister = json_encode($AdminPercentage_UnRegisterJS);
+
+
+
 
 
 
@@ -122,33 +125,27 @@ $js_outAdmin_UnRegister = json_encode($AdminPercentage_UnRegisterJS);
                             <!-- /.main-bar -->
                         </header>
                         <div class="inner bg-light lter">
-                            <div class="col-sm-6">
-
-                              <canvas id="canvas" height="250" width="250"></canvas>
-                                <div class="row">
-                                  <div class="col-sm-12">
-                                 <?php 
-                                  echo "Student: <b>$totalAcc_register_asStudent</b> &nbsp;";
-                                  echo "Teacher: <b>$totalAcc_register_asTeacher</b> &nbsp;";
-                                  echo "Admin: <b>$totalAcc_register_asAdmin</b> &nbsp;";
-                                  echo "Total Registered Account: <b>$totalAcc_register</b>";
-                                 ?>
-                                 </div>
+                            <div class="col-sm-6" style="border:solid 1px;">
+                                <div id="canvas-holder">
+                                    <canvas id="chart-area" />
                                 </div>
                             </div>
-                            <div class="col-sm-6">
-                              <canvas id="canvas1" height="250" width="250"></canvas>
-                                <div class="row">
-                                  <div class="col-sm-12">
-                                 <?php 
-                                  echo "Student: <b>$totalAcc_unregister_asStudent</b> &nbsp;";
-                                  echo "Teacher: <b>$totalAcc_unregister_asTeacher</b> &nbsp;";
-                                  echo "Admin: <b>$totalAcc_unregister_asAdmin</b> &nbsp;";
-                                  echo "Total Unregistered Account: <b>$totalAcc_unregister</b>";
-                                 ?>
-                                 </div>
+                            <div class="col-sm-6" style="border:solid 1px;">
+                              <div id="canvas-holder">
+                                    <canvas id="chart-area1" />
                                 </div>
                             </div>
+                            <div class="col-sm-6" style="border:solid 1px;">
+                                <div id="canvas-holder">
+                                    <canvas id="bar-chart" />
+                                </div>
+                            </div>
+                            <div class="col-sm-6" style="border:solid 1px;">
+                              <div id="canvas-holder">
+                                    <canvas id="bar-chart1" />
+                                </div>
+                            </div>
+                            
                         </div>
 
                         </div>
@@ -232,6 +229,7 @@ $js_outAdmin_UnRegister = json_encode($AdminPercentage_UnRegisterJS);
     var a = student_Parse;
     var b = teacher_Parse;
     var c = admin_Parse;
+    var total_register = a+b+c;
     //UNREGISTERD VALUE Declaration of variable
     var student_Percent_unregister = <?php echo $js_outStudent_UnRegister; ?>;
     var Teacher_Percent_unregister = <?php echo $js_outTeacher_UnRegister; ?>;
@@ -244,39 +242,118 @@ $js_outAdmin_UnRegister = json_encode($AdminPercentage_UnRegisterJS);
     var d = student_Parse_unregister;
     var e = teacher_Parse_unregister;
     var f = admin_Parse_unregistere;
-var pieData = [
-                {
-                    value: a,
-                    color:"#F38630"
-                },
-                {
-                    value : b,
-                    color : "#E0E4CC"
-                },
-                {
-                    value : c,
-                    color : "#69D2E7"
-                }
-            
-            ];
-var pieData1 = [
-    {
-        value: d,
-        color:"#F7464A"
+
+
+
+    var config = {
+        type: 'pie',
+        data: {
+            datasets: [{
+                data: [
+                    a,
+                    b,
+                    c
+                ],
+                backgroundColor: [
+                    window.chartColors.red,
+                    window.chartColors.orange,
+                    window.chartColors.blue,
+                ],
+                label: 'Dataset 1'
+            }],
+            labels: [
+                "Student: "+a,
+                "Teacher: "+b,
+                "Admin: "+c,
+
+            ]
+        },
+        options: {
+           title: {
+             display: true,
+             text: 'Total Account Register: '+total_register
+           }
+         }
+    };
+    var config1 = {
+        type: 'pie',
+        data: {
+            datasets: [{
+                data: [
+                    d,
+                    e,
+                    f
+                ],
+                backgroundColor: [
+                    window.chartColors.red,
+                    window.chartColors.orange,
+                    window.chartColors.blue,
+                ],
+                label: 'Dataset 2'
+            }],
+            labels: [
+                "Student",
+                "Teacher",
+                "Admin"
+            ]
+        },
+        options: {
+           title: {
+             display: true,
+             text: 'Total Account(Unregister)'
+           }
+         }
+    };
+
+    window.onload = function() {
+        var ctx = document.getElementById("chart-area").getContext("2d");
+        window.myPie = new Chart(ctx, config);
+
+        var ctx1 = document.getElementById("chart-area1").getContext("2d");
+        window.myPie = new Chart(ctx1, config1);
+    };
+
+new Chart(document.getElementById("bar-chart"), {
+    type: 'bar',
+    data: {
+      labels: ["Student", "Teacher", "Admin"],
+      datasets: [
+        {
+          label: "Population",
+          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f"],
+          data: [a,b,c]
+        }
+      ]
     },
-    {
-        value : e,
-        color : "#46BFBD"
-    },
-    {
-        value : f,
-        color : "#949FB1"
+    options: {
+      legend: { display: false },
+      title: {
+        display: true,
+        text: 'Population of Registered Account'
+      }
     }
+});
+new Chart(document.getElementById("bar-chart1"), {
+    type: 'bar',
+    data: {
+      labels: ["Student", "Teacher", "Admin"],
+      datasets: [
+        {
+          label: "Population",
+          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f"],
+          data: [d,e,f]
+        }
+      ]
+    },
+    options: {
+      legend: { display: false },
+      title: {
+        display: true,
+        text: 'Population of Unregistered Account'
+      }
+    }
+});
 
-];
-
-var myPie = new Chart(document.getElementById("canvas").getContext("2d")).Pie(pieData);
-var myPie = new Chart(document.getElementById("canvas1").getContext("2d")).Pie(pieData);
 
 
 
