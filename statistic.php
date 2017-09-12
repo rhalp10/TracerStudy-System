@@ -243,6 +243,8 @@ $js_outAdmin_UnRegister = json_encode($AdminPercentage_UnRegisterJS);
     var e = teacher_Parse_unregister;
     var f = admin_Parse_unregistere;
 
+    var total_unregister = d+e+f;
+
 
 
     var config = {
@@ -262,9 +264,9 @@ $js_outAdmin_UnRegister = json_encode($AdminPercentage_UnRegisterJS);
                 label: 'Dataset 1'
             }],
             labels: [
-                "Student: "+a,
-                "Teacher: "+b,
-                "Admin: "+c,
+                "Student ",
+                "Teacher ",
+                "Admin ",
 
             ]
         },
@@ -292,15 +294,15 @@ $js_outAdmin_UnRegister = json_encode($AdminPercentage_UnRegisterJS);
                 label: 'Dataset 2'
             }],
             labels: [
-                "Student",
-                "Teacher",
-                "Admin"
+                "Student ",
+                "Teacher ",
+                "Admin "
             ]
         },
         options: {
            title: {
              display: true,
-             text: 'Total Account(Unregister)'
+             text: 'Total Account Unregister: '+total_unregister
            }
          }
     };
