@@ -19,7 +19,7 @@ if (isset($_POST['submit-student'])) {
 if (isset($_POST['submit-teacher'])) {
 		if (empty($_POST['username']) || empty($_POST['password'])) 
 			{
-				echo "<script>alert('Username or Password is empty !');
+				echo "<script>alert.render('Username or Password is empty !');
 										window.location='index.php';
 									</script>";
 				// Change this to bootstrap alert
@@ -72,17 +72,16 @@ function login(){
 			} 
 			else 
 			{
-				echo "<script>alert('Access Denied!	');
+				echo "<script>swal('Good job!', 'You clicked the button!', 'success');
 									window.location='index.php';
 								</script>";
-				include('alert/success.php');
 								// Change this to bootstrap alert
 			}
 			if ($rows['user_status'] == 'unregister') {
-				echo "<script>alert('You must register first');
-										window.location='index.php';
-									</script>";
-					include('alert/success.php');
+				echo "<script>alert.render('');
+									window.location='index.php';
+								</script>";
+				include('alert/danger.php');
 									
 			}
 			mysqli_close($con); // Closing Connection

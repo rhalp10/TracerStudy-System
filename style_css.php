@@ -56,8 +56,13 @@
     <link rel="stylesheet" href="assets/css/style-switcher.css">-->
     
     <link rel="stylesheet/less" type="text/css" href="assets/less/theme.less">
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.7.1/less.js"></script>
     <script src="assets/lib/chart-master/dist/Chart.bundle.js"></script>
     <script src="assets/lib/chart-master/samples/utils.js"></script>
 
-    
+
+<script src="sweetalert-master/sweetalert.min.js"></script>
+<link rel="stylesheet" type="text/css" href="sweetalert-master/sweetalert.css">
+
+ 

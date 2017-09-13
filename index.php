@@ -124,11 +124,17 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b2e1ff', end
   }
 
     </style>
-
 </head>
 
 <body class="login custombody" >
-
+<div id="dialogoverlay"></div>
+<div id="dialogbox">
+  <div>
+    <div id="dialogboxhead"></div>
+    <div id="dialogboxbody"></div>
+    <div id="dialogboxfoot"></div>
+  </div>
+</div>
     <div class="form-signin">
     <div class="text-center">
         <img src="assets/img/logo.png" alt="Metis Logo" style="width: 100px;">

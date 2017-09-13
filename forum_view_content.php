@@ -1,4 +1,4 @@
-
+  
                       <div class="outer">
                         <header class="head">
                             <div class="main-bar">
@@ -44,8 +44,11 @@
                               <br>
                               <?php 
                               if ($post_owner == $login_id ) {
-                                ?>
-                                <div class="pull-right" style="margin-top: -50px;"><a class="btn btn-primary"> Edit post</a></div>
+                                ?>  
+                                <div class="btn-group pull-right"  style="margin-top: -50px;">
+                                  <button type="button" class="btn btn-primary" href="forum_topic_update.php?req_encypted_postID=<?php echo $req_encypted_postID ?>"> Edit</button>
+                                  <button type="button" class="btn btn-metis-1" href="delete.php">Delete</button>
+                                </div>
                                 <?php
                               }
                               ?>
@@ -160,3 +163,4 @@
                         <!-- /.inner -->
                     </div>
                     <!-- /.outer -->
+

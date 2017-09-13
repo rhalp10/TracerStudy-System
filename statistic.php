@@ -145,6 +145,11 @@ $js_outAdmin_UnRegister = json_encode($AdminPercentage_UnRegisterJS);
                                     <canvas id="bar-chart1" />
                                 </div>
                             </div>
+                            <div class="col-sm-6" style="border:solid 1px;">
+                              <div id="canvas-holder">
+                                    <canvas id="chart-line" />
+                                </div>
+                            </div>
                             
                         </div>
 
@@ -307,12 +312,74 @@ $js_outAdmin_UnRegister = json_encode($AdminPercentage_UnRegisterJS);
          }
     };
 
+        var MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        var config2 = {
+            type: 'line',
+            data: {
+                labels: ["January", "February", "March", "April", "May", "June", "July"],
+                datasets: [{
+                    label: "Unregister",
+                    backgroundColor: window.chartColors.red,
+                    borderColor: window.chartColors.red,
+                    data: [
+                        a,
+                        b,
+                        c
+                    ],
+                    fill: false,
+                }, {
+                    label: "Register",
+                    fill: false,
+                    backgroundColor: window.chartColors.blue,
+                    borderColor: window.chartColors.blue,
+                    data: [
+                        d,
+                        e+1,
+                        f,
+                    ],
+                }]
+            },
+            options: {
+                responsive: true,
+                title:{
+                    display:true,
+                    text:'Account Record Line Chart'
+                },
+                tooltips: {
+                    mode: 'index',
+                    intersect: false,
+                },
+                hover: {
+                    mode: 'nearest',
+                    intersect: true
+                },
+                scales: {
+                    xAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Month'
+                        }
+                    }],
+                    yAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Value'
+                        }
+                    }]
+                }
+            }
+        };
     window.onload = function() {
         var ctx = document.getElementById("chart-area").getContext("2d");
         window.myPie = new Chart(ctx, config);
 
         var ctx1 = document.getElementById("chart-area1").getContext("2d");
         window.myPie = new Chart(ctx1, config1);
+
+            var ctx2 = document.getElementById("chart-line").getContext("2d");
+            window.myLine = new Chart(ctx2, config2);
     };
 
 new Chart(document.getElementById("bar-chart"), {
@@ -355,6 +422,9 @@ new Chart(document.getElementById("bar-chart1"), {
       }
     }
 });
+
+
+
 
 
 

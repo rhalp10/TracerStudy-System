@@ -93,6 +93,7 @@ $result_viewcount = mysqli_fetch_assoc($query_viewcount);
                         if (password_verify($post_ID, $req_encypted_postID)) 
                           {
                             include('forum_view_content.php');
+                            
                           } 
                         else 
                           {
