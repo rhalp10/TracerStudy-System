@@ -1,8 +1,7 @@
 <?php 
-
-$post_owner_id = $_REQUEST['userID'];
 // Establishing Connection with Server by passing server_name, user_id and password as a parameter
 $con = mysqli_connect('localhost','root','','tracerdata') or die("ERROR");
+$post_owner_id = $_REQUEST['userID'];
 
 if (isset($_POST['submit_postnewtopic']))
  {

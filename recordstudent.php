@@ -185,6 +185,7 @@ else
                                   $query_student_detail = mysqli_query($con,"SELECT * FROM user_student_detail");
                                   while ($result_student_detail = mysqli_fetch_array($query_student_detail)) 
                                     {
+                                        $student_ID = $result_student_detail['student_ID'];
                                     ?>
                                     <tr>
                                         <td><?php echo $result_student_detail['student_fName']." ".$result_student_detail['student_mName']." ".$result_student_detail['student_lName']; ?></td>
@@ -193,15 +194,44 @@ else
                                         <td class="text-center"><?php echo $result_student_detail['student_year_grad'] ;?></td>
                                         <td class="text-center"><div class="btn-group">
 
-                                          <button type="button" class="btn btn-metis-5"><i class="fa fa-edit"></i></button>
-                                          <button type="button" class="btn btn-metis-1"><i class="fa fa-close"></i></button>
+                                          <button type="button" class="btn btn-metis-5" onclick="editFunction(<?php echo $student_ID ?>)"><i class="fa fa-edit"></i></button>
+                                          <button type="button" class="btn btn-metis-1" onclick="deleteFunction(<?php echo $student_ID ?>)"><i class="fa fa-close"></i></button>
                                         </div></td>
                                     </tr>
+                                    <!-- Modal -->
+                                               
                                   <?php
                                     }
                                   ?>
+<script type="text/javascript">
+
+function editFunction(student_ID){
+    var txt;
+    var r = confirm("Are you sure do you want to edit ?");
+    if (r == true) {
+        
+     window.location.href = "recordstudent.php?modal=" + student_ID;
+    } else {
+       
+    }
+
+}       
+
+function deleteFunction(student_ID){
+    var txt;
+    var r = confirm("Are you sure do you want to delete?");
+    if (r == true) {
+        
+     window.location.href = "recordstudent.php?modal=" + student_ID;
+    } else {
+       
+    }
+
+}       
 
 
+</script>
+            </div>
                                   </tbody>
 
                                 </table>
