@@ -70,49 +70,57 @@ else
                            <div class="box">
                              <header>
                               <h5 class="pull-right">
-                                  <button class="btn btn-success">Add Batch</button>
-                                  <button class="btn btn-info">Print</button>
                               </h5>
                              </header>
                              <div class="body col-sm-12">
-                                <div class="box col-sm-3">
-                                 <header>
-                                  <h5>2009</h5>
-                                 </header>
-                                 <div class="body">
-                                    <div>
-                                     <img src="">
-                                    </div>
+                              <?php 
+                              $min_query = mysqli_query($con,"SELECT YEAR(MIN(student_year_grad)) AS minYear FROM user_student_detail WHERE student_department = 'IT'");
+                              $max_query = mysqli_query($con,"SELECT YEAR(MAX(student_year_grad)) AS maxYear FROM user_student_detail WHERE student_department = 'IT'");
+                              $min_res = mysqli_fetch_assoc($min_query);
+                              $max_res = mysqli_fetch_assoc($max_query);
+                              $minYear = $min_res['minYear'];
+                              $maxYear = $max_res['maxYear'];
+                              for ($i=$minYear; $i<= $maxYear; $i++) { 
+                                $query = mysqli_query($con,"SELECT student_department,student_year_grad FROM user_student_detail WHERE student_year_grad LIKE '%$i%' ");
+                                $dateStack = 0;//temporary dateStack value
+                                while ($res = mysqli_fetch_array($query)) {
+                                  //while the student_year_grad fetching we have a if statement that check
+                                  //if  student_year_grad == the same year if TRUE display nothing else
+                                  if ($res['student_year_grad'] == $dateStack) {
 
-                                 </div>
-                                </div>
-                                <div class="box col-sm-3">
-                                 <header>
-                                  <h5>2010</h5>
-                                 </header>
-                                 <div class="body">Content;</div>
-                                </div>
-                                <div class="box col-sm-3">
-                                 <header>
-                                  <h5>2011</h5>
-                                 </header>
-                                 <div class="body">Content;</div>
-                                </div>
-                                <div class="box col-sm-3">
-                                 <header>
-                                  <h5>2016</h5>
-                                 </header>
-                                 <div class="body">Content;</div>
-                                </div>
-                                <div class="box col-sm-3">
-                                 <header>
-                                  <h5>2017</h5>
-                                 </header>
-                                 <div class="body">Content;</div>
-                                </div>
+                                    $dateStack =$i;
+                                    //echo "do not repeat<br>";
+                                  }
+                                  //display YEAR date of Alumni Batches
+                                  else
+                                  {
+                                  // displaying all available date
+                                  
+                                   ?>
+                                   <div class="box col-sm-3">
+                                   <header>
+                                    <h5><?php  echo "$i";?></h5>
+                                   </header>
+                                   <div class="body">
+                                      <div>
+                                      IT ONLY
+                                       <img src="">
+                                      </div>
+
+                                   </div>
+                                  </div>
+                                   <?php
+                                   $dateStack = $i;
+                                  }
+                                }
+                              }
+                              ?>
+                                
+                              
 
                              </div>
                             </div>
+
 
                         </div>
                         <!-- /.inner -->
