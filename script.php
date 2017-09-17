@@ -41,6 +41,41 @@
         "bAutoWidth": false 
     } );
 } );
+
+      $(document).ready(function() {
+    $('#alumniIT').DataTable( {
+        //"paging":   false,
+        "ordering": false,
+        "info":     false,
+        "bLengthChange": false,
+        "bFilter": true,
+        "bInfo": false,
+        "bAutoWidth": false 
+    } );
+} );
+
+      $(document).ready(function() {
+    $('#alumniCS').DataTable( {
+        //"paging":   false,
+        "ordering": false,
+        "info":     false,
+        "bLengthChange": false,
+        "bFilter": true,
+        "bInfo": false,
+        "bAutoWidth": false 
+    } );
+} );
+       $(document).ready(function() {
+    $('#alumniOA').DataTable( {
+        //"paging":   false,
+        "ordering": false,
+        "info":     false,
+        "bLengthChange": false,
+        "bFilter": true,
+        "bInfo": false,
+        "bAutoWidth": false 
+    } );
+} );
       
    //NUMBER ONLY
   function numberInputOnly(elem) {

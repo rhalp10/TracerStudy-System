@@ -72,54 +72,174 @@ else
                               <h5 class="pull-right">
                               </h5>
                              </header>
-                             <div class="body col-sm-12">
-                              <?php 
-                              $min_query = mysqli_query($con,"SELECT YEAR(MIN(student_year_grad)) AS minYear FROM user_student_detail WHERE student_department = 'IT'");
-                              $max_query = mysqli_query($con,"SELECT YEAR(MAX(student_year_grad)) AS maxYear FROM user_student_detail WHERE student_department = 'IT'");
-                              $min_res = mysqli_fetch_assoc($min_query);
-                              $max_res = mysqli_fetch_assoc($max_query);
-                              $minYear = $min_res['minYear'];
-                              $maxYear = $max_res['maxYear'];
-                              for ($i=$minYear; $i<= $maxYear; $i++) { 
-                                $query = mysqli_query($con,"SELECT student_department,student_year_grad FROM user_student_detail WHERE student_year_grad LIKE '%$i%' ");
-                                $dateStack = 0;//temporary dateStack value
-                                while ($res = mysqli_fetch_array($query)) {
-                                  //while the student_year_grad fetching we have a if statement that check
-                                  //if  student_year_grad == the same year if TRUE display nothing else
-                                  if ($res['student_year_grad'] == $dateStack) {
+                             
 
-                                    $dateStack =$i;
-                                    //echo "do not repeat<br>";
+                              <ul class="nav nav-tabs">
+                                <li class="dropdown">
+                                  <a class="dropdown-toggle btn btn-primary" data-toggle="dropdown" href="#">Course menu
+                                  <span class="caret"></span></a>
+                                  <ul class="dropdown-menu">
+                                    <li><a data-toggle="tab" data-target="#IT">IT</a></li>
+                                    <li><a data-toggle="tab" data-target="#CS">CS</a></li>
+                                    <li><a data-toggle="tab" data-target="#OA">OA</a></li> 
+                                  </ul>
+                                </li>
+                              </ul>
+
+                              
+                            </div>
+                             <div class="tab-content">
+                                <div id="IT" class="tab-pane fade in active">
+                                  <div class="body col-sm-12">
+                                  <?php 
+                                  $min_query = mysqli_query($con,"SELECT YEAR(MIN(student_year_grad)) AS minYear FROM user_student_detail WHERE student_department = 'IT'");
+                                  $max_query = mysqli_query($con,"SELECT YEAR(MAX(student_year_grad)) AS maxYear FROM user_student_detail WHERE student_department = 'IT'");
+                                  $min_res = mysqli_fetch_assoc($min_query);
+                                  $max_res = mysqli_fetch_assoc($max_query);
+                                  $minYear = $min_res['minYear'];
+                                  $maxYear = $max_res['maxYear'];
+                                  ?>
+                                    <table  id="alumniIT" class="table table-bordered table-advance table-hover  dataTable">
+                                      <thead>
+                                        <tr>
+                                          <th><h3>Information Technology Alumni List</h3></th>
+                                        </tr>
+                                      </thead>
+                                      <tfoot>
+                                        <tr>
+                                          <th></th>
+                                        </tr>
+                                      </tfoot>
+                                      <tbody>
+                                      <?php 
+                                       for ($i=$minYear; $i<= $maxYear; $i++) { 
+                                    $query = mysqli_query($con,"SELECT student_department,student_year_grad FROM user_student_detail WHERE student_year_grad LIKE '%$i%' ");
+                                    $dateStack = 0;//temporary dateStack value
+                                    while ($res = mysqli_fetch_array($query)) {
+                                      //while the student_year_grad fetching we have a if statement that check
+                                      //if  student_year_grad == the same year if TRUE display nothing else
+                                      if ($res['student_year_grad'] == $dateStack) {
+
+                                        $dateStack =$i;
+                                        //echo "do not repeat<br>";
+                                      }
+                                      //display YEAR date of Alumni Batches
+                                      else
+                                      {
+                                      // displaying all available date
+                                      
+                                       ?>
+                                        <tr>
+                                          <td><?php  echo "$i";?> VIEW</td>
+                                        </tr>
+                                       <?php
+                                       $dateStack = $i;
+                                      }
+                                    }
                                   }
-                                  //display YEAR date of Alumni Batches
-                                  else
-                                  {
-                                  // displaying all available date
-                                  
-                                   ?>
-                                   <div class="box col-sm-3">
-                                   <header>
-                                    <h5><?php  echo "$i";?></h5>
-                                   </header>
-                                   <div class="body">
-                                      <div>
-                                      IT ONLY
-                                       <img src="">
-                                      </div>
 
-                                   </div>
-                                  </div>
-                                   <?php
-                                   $dateStack = $i;
+                                      ?>
+                                        
+                                      </tbody>
+                                  </table>
+                                </div>
+                              </div>
+
+                              <div id="CS" class="tab-pane fade">
+                                <div class="body col-sm-12">
+                                  <table  id="alumniCS" class="table table-bordered table-advance table-hover  dataTable">
+                                      <thead>
+                                        <tr>
+                                          <th><h3>Computer Science Alumni List</h3></th>
+                                        </tr>
+                                      </thead>
+                                      <tfoot>
+                                        <tr>
+                                          <th></th>
+                                        </tr>
+                                      </tfoot>
+                                      <tbody>
+                                      <?php 
+                                       for ($i=$minYear; $i<= $maxYear; $i++) { 
+                                    $query = mysqli_query($con,"SELECT student_department,student_year_grad FROM user_student_detail WHERE student_year_grad LIKE '%$i%' ");
+                                    $dateStack = 0;//temporary dateStack value
+                                    while ($res = mysqli_fetch_array($query)) {
+                                      //while the student_year_grad fetching we have a if statement that check
+                                      //if  student_year_grad == the same year if TRUE display nothing else
+                                      if ($res['student_year_grad'] == $dateStack) {
+
+                                        $dateStack =$i;
+                                        //echo "do not repeat<br>";
+                                      }
+                                      //display YEAR date of Alumni Batches
+                                      else
+                                      {
+                                      // displaying all available date
+                                      
+                                       ?>
+                                        <tr>
+                                          <td><?php  echo "$i";?> VIEW</td>
+                                        </tr>
+                                       <?php
+                                       $dateStack = $i;
+                                      }
+                                    }
+                                  }
+
+                                      ?>
+                                        
+                                      </tbody>
+                                  </table>
+                                </div>
+                              </div>
+                              <div id="OA" class="tab-pane fade">
+                                <div class="body col-sm-12">
+                                  <table  id="alumniOA" class="table table-bordered table-advance table-hover  dataTable">
+                                    <thead>
+                                      <tr>
+                                        <th><h3>Office Administration Alumni List</h3></th>
+                                      </tr>
+                                    </thead>
+                                    <tfoot>
+                                      <tr>
+                                        <th></th>
+                                      </tr>
+                                    </tfoot>
+                                    <tbody>
+                                    <?php 
+                                     for ($i=$minYear; $i<= $maxYear; $i++) { 
+                                  $query = mysqli_query($con,"SELECT student_department,student_year_grad FROM user_student_detail WHERE student_year_grad LIKE '%$i%' ");
+                                  $dateStack = 0;//temporary dateStack value
+                                  while ($res = mysqli_fetch_array($query)) {
+                                    //while the student_year_grad fetching we have a if statement that check
+                                    //if  student_year_grad == the same year if TRUE display nothing else
+                                    if ($res['student_year_grad'] == $dateStack) {
+
+                                      $dateStack =$i;
+                                      //echo "do not repeat<br>";
+                                    }
+                                    //display YEAR date of Alumni Batches
+                                    else
+                                    {
+                                    // displaying all available date
+                                    
+                                     ?>
+                                      <tr>
+                                        <td><?php  echo "$i";?> VIEW</td>
+                                      </tr>
+                                     <?php
+                                     $dateStack = $i;
+                                    }
                                   }
                                 }
-                              }
-                              ?>
-                                
-                              
 
-                             </div>
+                                    ?>
+                                      
+                                    </tbody>
+                                </table>
+                                </div>
                             </div>
+                          </div>
 
 
                         </div>
