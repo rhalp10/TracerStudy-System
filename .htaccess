@@ -1,8 +1,15 @@
-
+RewriteRule ^index$ index.php [L]
+RewriteRule ^alumni$ alumni.php [L]
+RewriteRule ^batchmates$ batchmates.php [L]
+RewriteRule ^dashboard$ dashboard.php [L]
+RewriteRule ^forum$ forum.php [L]
+RewriteRule ^survey$ survey.php [L]
+RewriteRule ^statistic$ statistic.php [L]
+RewriteRule ^profile$ profile.php [L]
 RewriteEngine On
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^([^\.]+)$ $1.php [NC,L]
-
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)$ $.php
 
 #Custom Error 403 
 ErrorDocument 403 http://localhost/Tracer_UI/ErrorPages/403.php
@@ -14,6 +21,5 @@ ErrorDocument 405 http://localhost/Tracer_UI/ErrorPages/405.php
 ErrorDocument 500 http://localhost/Tracer_UI/ErrorPages/500.php
 #Custom Error 503 
 ErrorDocument 503 http://localhost/Tracer_UI/ErrorPages/503.php
-
 
 

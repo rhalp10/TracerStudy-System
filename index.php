@@ -142,9 +142,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b2e1ff', end
         <h3>CVSU-CEIT DIT ONLINE TRACER STUDY</h3>
 
     </div>
-
     <hr>
-
     <div class="text-center">
         <ul class="list-inline">
             <li><a class="text-muted " href="#login-student" data-toggle="tab">Login as Student</a></li> |

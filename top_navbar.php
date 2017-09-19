@@ -9,6 +9,48 @@ $res['student_img'];
 
 
 ?>
+<style type="text/css">
+    
+/** =====================
+ * Top nav Customize Dropdown notif and msg
+ ========================*/
+ 
+.panel_defaul_custom
+{
+    width: 430px;
+  }
+.panel_heading_custom
+{
+    margin-top: -5px;
+  }
+.panel_body_custom
+{
+    overflow-y: scroll;
+    overflow-x: hidden; height:400px; width: 430px;
+  }
+  .panel_item_custom{
+    color: black; width: 100%; background-color: #e7eaed;
+  }
+  .panel_item_custom:hover{
+    color: black; width: 100%; background-color: #dee0e2;   
+    -webkit-transition: background-color 0.2s ease-out;
+    -moz-transition: background-color 0.2s ease-out;
+    -o-transition: background-color 0.2s ease-out;
+    transition: background-color 0.2s ease-out;
+  }
+  .panel_item_word_custom{
+    text-overflow: ellipsis;  overflow: hidden; white-space: nowrap; 
+                width: 12em;
+  }
+  .panel_footer_custom{
+    margin-bottom: -10px; color: black; height: 15px;
+  }
+
+
+/** =====================
+ * Top nav Customize Dropdown notif and msg END
+ ========================*/
+</style>
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
 
@@ -26,21 +68,27 @@ $res['student_img'];
             </a>
 
         </header>
+        <style type="text/css">
 
+        </style>
 
 
         <ul class="nav navbar-nav pull-right">
             <li class="dropdown ">
-                <a href="#right" id="nbAcctDD" class="dropdown-toggle" data-toggle="onoffcanvas" class="btn btn-default btn-sm" aria-expanded="false"><i class="icon-user"></i>Message<i class="icon-sort-down"></i><span class="fa fa-fw fa-comment"></span></a>
-
-                </a>
+                <a href="#" id="nbAcctDD" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><i class="icon-user"></i>Message<i class="icon-sort-down"></i></a>
+                <ul class="dropdown-menu pull-right" >
+                 <?php 
+                 include ("dropdown-menu_message.php");
+                 ?>
+                </ul>
             </li>
 
             <li class="dropdown ">
                 <a href="#" id="nbAcctDD" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><i class="icon-user"></i>Notification<i class="icon-sort-down"></i></a>
-                <ul class="dropdown-menu pull-right">
-                    <li><a href="#">Log Out</a>
-                    </li>
+                <ul class="dropdown-menu pull-right" >
+                 <?php 
+                 include ("dropdown-menu_notification.php");
+                 ?>
                 </ul>
             </li>
             <li class="dropdown ">
@@ -86,3 +134,11 @@ $res['student_img'];
     <!-- /.main-bar -->
 </header>
 <!-- /.head -->
+
+<!-- /.For removing color of read items -->
+<script>
+function myFunction(divObj) {
+    divObj.style.background="#f5f5f5";
+}
+</script>
+<!-- /.For removing color of read items end-->
