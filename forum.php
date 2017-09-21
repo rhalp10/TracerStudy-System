@@ -58,7 +58,7 @@ else {}
                             <!-- /.main-bar -->
                         </header>
                         <div class="inner bg-light lter">
-                           <table id=""  class="table table-bordered table-advance table-hover  dataTable">
+                           <table id="myData1"  class="table table-bordered table-advance table-hover  dataTable">
                                   <thead>
                                     <tr>
                                       <th><h3>Pinned Topics</h3></th>
@@ -112,9 +112,7 @@ else {}
                                     <br>
                                     2 <i class="fa fa-comment"></i>
                                     </div>
-                                    <div class="col-sm-3" style="background-color: #444444;color: white;">
-                                    latest reply by <strong><a class="user"> user</a></strong><br>
-                                    7 minutes ago 
+                                    <div class="col-sm-3" style="background-color: #444444;color: white;"><br>&nbsp;
                                     </div>
 
                                     </td>
@@ -126,6 +124,7 @@ else {}
                                     
                                   </script>
                               </table>
+                              <hr>
                               <table id="myData"  class="table table-bordered table-advance table-hover  dataTable">
                                   <thead>
                                     <tr>
@@ -201,8 +200,7 @@ else {}
                                     2 <i class="fa fa-comment"></i>
                                     </div>
                                     <div class="col-sm-3" style="background-color: #444444;color: white;">
-                                    latest reply by <strong><a class="user"> user</a></strong><br>
-                                    7 minutes ago 
+                                   &nbsp;<br>&nbsp;
                                     </div>
 
                                     </td>

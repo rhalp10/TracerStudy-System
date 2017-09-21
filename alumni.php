@@ -113,7 +113,7 @@ else
                                       <tbody>
                                       <?php 
                                        for ($i=$minYear; $i<= $maxYear; $i++) { 
-                                    $query = mysqli_query($con,"SELECT student_department,student_year_grad FROM user_student_detail WHERE student_year_grad LIKE '%$i%' ");
+                                    $query = mysqli_query($con,"SELECT student_department,student_year_grad FROM user_student_detail WHERE student_year_grad LIKE '%$i%' AND student_department LIKE 'IT'");
                                     $dateStack = 0;//temporary dateStack value
                                     while ($res = mysqli_fetch_array($query)) {
                                       //while the student_year_grad fetching we have a if statement that check
@@ -129,9 +129,24 @@ else
                                       // displaying all available date
                                       
                                        ?>
-                                        <tr>
-                                          <td><?php  echo "$i";?> VIEW</td>
-                                        </tr>
+                                      <tr onclick="self.location.href='alumni_view.php?course=<?php echo 'IT' ?>&year=<?php echo $i?>'">
+                                      <td class="forum-td" >
+                                      <div class="forum-list-hover col-sm-1" style="height: 20px;">
+                                      <br>
+                                        </div>
+                                        <div class="col-sm-6 forum-list-content">
+                                        <a href=""><?php  echo "$i";?></a>
+                                       <br>
+                                        </div>
+                                        <div class="col-sm-2 forum-list-content-stat">
+                                        <br>
+                                        </div>
+                                        <div class="col-sm-3" style="background-color: #444444;color: white;">
+                                        VIEW
+                                        </div>
+
+                                        </td>
+                                      </tr>
                                        <?php
                                        $dateStack = $i;
                                       }
@@ -161,7 +176,7 @@ else
                                       <tbody>
                                       <?php 
                                        for ($i=$minYear; $i<= $maxYear; $i++) { 
-                                    $query = mysqli_query($con,"SELECT student_department,student_year_grad FROM user_student_detail WHERE student_year_grad LIKE '%$i%' ");
+                                    $query = mysqli_query($con,"SELECT student_department,student_year_grad FROM user_student_detail WHERE student_year_grad LIKE '%$i%' AND student_department LIKE 'COMSCI'");
                                     $dateStack = 0;//temporary dateStack value
                                     while ($res = mysqli_fetch_array($query)) {
                                       //while the student_year_grad fetching we have a if statement that check
@@ -177,9 +192,24 @@ else
                                       // displaying all available date
                                       
                                        ?>
-                                        <tr>
-                                          <td><?php  echo "$i";?> VIEW</td>
-                                        </tr>
+                                      <tr onclick="self.location.href='alumni_view.php?course=<?php echo 'COMSCI' ?>&year=<?php echo $i?>'">
+                                      <td class="forum-td" >
+                                      <div class="forum-list-hover col-sm-1" style="height: 20px;">
+                                      <br>
+                                        </div>
+                                        <div class="col-sm-6 forum-list-content">
+                                        <?php  echo "$i";?>
+                                       <br>
+                                        </div>
+                                        <div class="col-sm-2 forum-list-content-stat">
+                                        <br>
+                                        </div>
+                                        <div class="col-sm-3" style="background-color: #444444;color: white;">
+                                        VIEW
+                                        </div>
+
+                                        </td>
+                                      </tr>
                                        <?php
                                        $dateStack = $i;
                                       }
@@ -208,7 +238,7 @@ else
                                     <tbody>
                                     <?php 
                                      for ($i=$minYear; $i<= $maxYear; $i++) { 
-                                  $query = mysqli_query($con,"SELECT student_department,student_year_grad FROM user_student_detail WHERE student_year_grad LIKE '%$i%' ");
+                                  $query = mysqli_query($con,"SELECT student_department,student_year_grad FROM user_student_detail WHERE student_year_grad LIKE '%$i%' AND student_department LIKE 'OA'");
                                   $dateStack = 0;//temporary dateStack value
                                   while ($res = mysqli_fetch_array($query)) {
                                     //while the student_year_grad fetching we have a if statement that check
@@ -224,9 +254,26 @@ else
                                     // displaying all available date
                                     
                                      ?>
-                                      <tr>
-                                        <td><?php  echo "$i";?> VIEW</td>
-                                      </tr>
+
+                                 <tr onclick="self.location.href='alumni_view.php?course=<?php echo 'OA' ?>&year=<?php echo $i?>'">
+                                  <td class="forum-td" >
+                                  <div class="forum-list-hover col-sm-1" style="height: 20px;">
+                                  <br>
+                                    </div>
+                                    <div class="col-sm-6 forum-list-content">
+                                    <?php  echo "$i";?>
+                                   <br>
+                                    </div>
+                                    <div class="col-sm-2 forum-list-content-stat">
+                                    <br>
+                                    </div>
+                                    <div class="col-sm-3" style="background-color: #444444;color: white;">
+                                    VIEW
+                                    </div>
+
+                                    </td>
+                                  </tr>
+
                                      <?php
                                      $dateStack = $i;
                                     }

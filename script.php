@@ -41,6 +41,17 @@
         "bAutoWidth": false 
     } );
 } );
+        $(document).ready(function() {
+    $('#myData1').DataTable( {
+        //"paging":   false,
+        "ordering": false,
+        "info":     false,
+        "bLengthChange": false,
+        "bFilter": true,
+        "bInfo": false,
+        "bAutoWidth": false 
+    } );
+} );
 
       $(document).ready(function() {
     $('#alumniIT').DataTable( {
