@@ -90,6 +90,8 @@ else
                                 </h2>
                                <h1 class="text-center">Batch of <?php echo $req_year?></h1>
                                <hr>
+                               <button class="btn btn-info pull-right">PRINT</button>
+                               <br><br>
                                <table class="table table-bordered table-advance table-hover ">
                                    <thead>
                                        <th>Names</th>

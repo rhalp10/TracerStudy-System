@@ -111,7 +111,7 @@ $res['student_img'];
 
             <!-- .nav -->
             <ul class="nav navbar-nav">
-                <li><a href="dashboard.html">Welcome to: CVSU-CEIT DIT ONLINE TRACER STUDY</a>
+                <li><a href="dashboard.php">Welcome to: CVSU-CEIT DIT ONLINE TRACER STUDY</a>
                 </li>
 
             </ul>
