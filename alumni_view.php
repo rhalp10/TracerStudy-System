@@ -2,7 +2,7 @@
 <?php 
 include('session.php'); 
 include('db.php');
-$page = 'dashboard';
+$page = 'alumni';
 $req_course = $_REQUEST['course'];
 $req_year = $_REQUEST['year'];
 if ($login_level == '1')

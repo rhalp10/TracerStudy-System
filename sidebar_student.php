@@ -92,13 +92,22 @@ $res_count_post = mysqli_num_rows($query_count_post);
                                   <?php
                                   }
                                    ?>
-                                    <a href="forum.php">
+                                    <a href="">
                                       <span class="link-title">
                                     Forum
                                   </span>
                                       <span class="fa arrow"></span>
                                     </a>
-                                    
+                                    <ul class="collapse">
+                                      <li>
+                                        <a href="forum.php">
+                                          <i class="fa fa-angle-right"></i>&nbsp; General Forum</a>
+                                      </li>
+                                      <li>
+                                        <a href="profile_post.php">
+                                          <i class="fa fa-angle-right"></i>&nbsp; Your Posts</a>
+                                      </li>
+                                    </ul>
                                   </li>
                                   <?php 
                                   if ($page == 'survey')
