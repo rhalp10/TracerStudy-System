@@ -33,7 +33,7 @@ else
   <head>
     <?php include('meta.php');?>
     <?php include('style_css.php');?>
-    <title>Dashboard</title>
+    <title>Message</title>
   </head>
         <body class=" menu-affix">
             <div class="bg-dark dk" id="wrap">
@@ -91,14 +91,46 @@ else
                                 }
 
                             }
-                            echo $query_participant;
+                           // echo $query_participant;
+
+
+
                            ?>
-                           <input id="car" type="text" list="colors" />
-                            <datalist id="colors">
-                                <option value="Red">
-                                <option value="Green">
-                                <option value="Yellow">
-                            </datalist>
+                           <div class="col-sm-12">
+                               <div class="col-sm-3" style="border:solid 1px;">
+                                    <div style="margin:5px;">
+                                        <button class="btn btn-danger">COMPOSE</button> 
+                                    </div>
+                                    <hr>
+                                    <div  style="overflow-y: scroll; overflow-x: hidden; height:600px; overflow; margin-top: 10px;">
+                                       <div style="background-color: #e5e9ec; margin: 1px;" class="col-sm-12">
+                                           RHALP DARREN
+                                       </div>
+                                       <div style="background-color: #e5e9ec;  margin: 1px;" class="col-sm-12">
+                                           RHALP DARREN
+                                       </div>
+                                   </div>
+                               </div>
+                               <div class="col-sm-9 " style="border:solid 1px;">
+                                <div style=" height:660px; overflow; margin-top: 10px;">
+                                    <h3 class="panel-title">Thread Title</h3>
+                                   <hr>
+                                    <div style="height: 50px; ">
+                                        
+                                        <div style="overflow-y: scroll; overflow-x: hidden;   height:550px; overflow; margin-top: 10px;"> 
+                                            <div id="msg_content"  style="margin-left: 20px;">
+                                             </div>
+                                        </div>
+                                        <form class="form-group" style="margin-top: 10px;">
+                                        <div class="input-group" style="">
+                                            <input id="message" type="text" class="form-control" name="message" placeholder="Type your message">
+                                            <span href=""  class="btn btn-primary input-group-addon " onclick="addMSGstacks(message.value)">SEND</span>
+                                        </div>
+                                        </form>
+                                    </div>
+                                </div>
+                               </div>
+                           </div>
                            
                         </div>
                         <!-- /.inner -->
@@ -117,3 +149,30 @@ else
         </body>
 
 </html>
+<style type="text/css">
+    .msg_container{
+        color: grey;
+        border:solid 1px;
+        margin: 1px;
+    }
+    .msg_owner{
+        background-color: #0f5594;
+        color: white;
+    }
+    .msg_detail{
+        margin: 5px;
+    }
+</style>
+<script type="text/javascript">
+    function addMSGstacks(txt) {
+    
+    var div = document.createElement('div');
+    div.className = '<?php if ($login_id ==1){ echo "msg_owner";}?> msg_container';
+    div.innerHTML = "<div class='msg_detail'><div></>"+txt+"</div>";
+     document.getElementById('msg_content').appendChild(div);
+
+
+    document.getElementById("message").value="";
+}
+
+</script>

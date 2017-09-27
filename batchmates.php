@@ -69,25 +69,66 @@ else
                         </header>
                         <div class="inner bg-light lter">
                            <?php 
-                           $input = "student";
 
-                            $encrypted = encryptIt( $input );
-                            $decrypted = decryptIt( $encrypted );
-
-                            echo $encrypted . '<br />' . $decrypted;
-
-                            function encryptIt( $q ) {
-                                $cryptKey  = 'qJB0rGtIn5UB1xG03efyCp';
-                                $qEncoded      = base64_encode( mcrypt_encrypt( MCRYPT_RIJNDAEL_256, md5( $cryptKey ), $q, MCRYPT_MODE_CBC, md5( md5( $cryptKey ) ) ) );
-                                return( $qEncoded );
-                            }
-
-                            function decryptIt( $q ) {
-                                $cryptKey  = 'qJB0rGtIn5UB1xG03efyCp';
-                                $qDecoded      = rtrim( mcrypt_decrypt( MCRYPT_RIJNDAEL_256, md5( $cryptKey ), base64_decode( $q ), MCRYPT_MODE_CBC, md5( md5( $cryptKey ) ) ), "\0");
-                                return( $qDecoded );
-                            }
+                            $query = mysqli_query($con,"SELECT * FROM `user_student_detail` WHERE `student_ID` = $login_id");
+                            $res = mysqli_fetch_array($query);
+                            $date = $res['student_year_grad'];
+                            $query_yr =  mysqli_query($con,"SELECT YEAR('$date') as year;");
+                            $yr_res = mysqli_fetch_array($query_yr);
+                            $req_course = $res['student_department'];
+                            $req_year = $yr_res['year'];
                            ?>
+                           <div class="col-sm-12">
+                                <h2 class="text-center">
+                                <?php 
+                                if ($req_course == 'IT') {
+                                    echo "Information Technology";
+                                }
+                                if ($req_course == 'COMSCI') {
+                                    echo "Computer Science";
+                                }
+                                if ($req_course == 'OA') {
+                                    echo "Office Addministration";
+                                }
+                                ?>
+                                </h2>
+                               <h1 class="text-center">Batch of <?php 
+                                echo $yr_res['year'];
+                                 ?></h1>
+                               <hr>
+                               <br><br>
+                               <table class="table table-bordered table-advance table-hover ">
+                                   <thead>
+                                       <th>Names</th>
+                                       <th>Student Number</th>
+                                   </thead>
+                                   <tbody>
+                                   <?php 
+
+                                   $query = mysqli_query($con,"SELECT * FROM `user_student_detail`  WHERE student_department LIKE '$req_course' AND student_year_grad LIKE '$req_year%' ORDER BY `student_fName`  ASC");
+
+                                    $no = 1;
+                                  while ($data = mysqli_fetch_array($query)) {
+                                    $data['student_fName']
+                                  
+                                   ?>
+                                       <tr>
+                                           <td><?php echo $no ?>. <?php echo   $data['student_fName']." ".$data['student_mName']." ".  $data['student_lName']?></td>
+                                           <td><?php echo $data['student_IDNumber']?></td>
+                                       </tr>
+                                       <?php 
+                                       $no = $no + 1;
+                                       }
+                                       ?>
+                                   </tbody>
+                                   <tfoot>
+                                       <tr>
+                                       <td></td>
+                                       <td></td>
+                                       </tr>
+                                   </tfoot>
+                               </table>
+                           </div>
                         </div>
                         <!-- /.inner -->
                     </div>
