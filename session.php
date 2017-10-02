@@ -12,7 +12,7 @@ $login_level = $row['user_level'];
 $login_id = $row['user_ID'];
 if (!isset($login_session))
 {
-  mysql_close($con); // Closing Connection
+  mysqli_close($con); // Closing Connection
   header('Location: index.php'); // Redirecting To Home Page
 }
 
