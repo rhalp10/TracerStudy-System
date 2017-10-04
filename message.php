@@ -27,6 +27,46 @@ else
 }
 ?>
 
+<?php 
+
+$login_name = "darren"; 
+
+$login_nameJS="$login_name";
+$js_outlogin_nameJS = json_encode($login_nameJS);
+?>
+<script>
+
+function submitChat() {
+  var login_name = <?php echo $js_outlogin_nameJS; ?>;
+  if(form1.msg.value == '') {
+    alert("Your Message Is Empty");
+    return;
+  }
+  var uname = login_name;
+  var msg = form1.msg.value;
+  var xmlhttp = new XMLHttpRequest();
+  
+  xmlhttp.onreadystatechange = function() {
+    if(xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+      document.getElementById('chatlogs').innerHTML = xmlhttp.responseText;
+    }
+  }
+  
+  xmlhttp.open('GET','insert.php?uname='+uname+'&msg='+msg,true);
+  xmlhttp.send();
+
+    document.getElementById("message").value="";
+
+}
+
+$(document).ready(function(e){
+  $.ajaxSetup({
+    cache: false
+  });
+  setInterval( function(){ $('#chatlogs').load('logs.php'); }, 2000 );
+});
+
+</script>
 
 <!DOCTYPE html>
 <html>  
@@ -118,15 +158,24 @@ else
                                     <div style="height: 50px; ">
                                         
                                         <div style="overflow-y: scroll; overflow-x: hidden;   height:550px; overflow; margin-top: 10px;"> 
-                                            <div id="msg_content"  style="margin-left: 20px;">
-                                             </div>
+                                            <form name="form1" class="form-group" style="margin-top: 10px;">
+                                            <div class="input-group" style="">
+                                                <input id="message" type="text" class="form-control" name="msg" placeholder="Type your message">
+                                                <span href="" class="btn btn-primary input-group-addon " onclick="submitChat()" >SEND</span>
+                                            </div>
+
+                                            </form>
+                                            <div id="chatlogs" style="overflow-y: scroll; overflow-x: hidden;   height:550px; overflow; margin-top: 10px;">
+                                            LOADING CHATLOG...
+                                            </div>
                                         </div>
+                                        <!-- 
                                         <form class="form-group" style="margin-top: 10px;">
                                         <div class="input-group" style="">
                                             <input id="message" type="text" class="form-control" name="message" placeholder="Type your message">
                                             <span href=""  class="btn btn-primary input-group-addon " onclick="addMSGstacks(message.value)">SEND</span>
                                         </div>
-                                        </form>
+                                        </form> -->
                                     </div>
                                 </div>
                                </div>
