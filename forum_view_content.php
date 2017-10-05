@@ -46,8 +46,8 @@
                               if ($post_owner == $login_id ) {
                                 ?>  
                                 <div class="btn-group pull-right"  style="margin-top: -50px;">
-                                  <button type="button" class="btn btn-primary" href="forum_topic_update.php?req_encypted_postID=<?php echo $req_encypted_postID ?>"> Edit</button>
-                                  <button type="button" class="btn btn-metis-1" href="delete.php">Delete</button>
+                                  <a class="btn btn-primary" href="forum_topic_update.php?req_encypted_postID=<?php echo $req_encypted_postID ;?>">EDIT</a>
+                                   <a class="btn btn-metis-1" href="action/delete_post.php?req_encypted_postID=<?php echo $req_encypted_postID ?>">DELETE</a>
                                 </div>
                                 <?php
                               }
@@ -64,8 +64,8 @@
                           <div class="panel panel-default" >
                           <div class="panel-heading">Write your comment</div>
                           <div class="panel-body">
-                              <form>
-                                  <textarea id="wysihtml5" class="form-control" rows="6"></textarea>
+                              <form action="action/comment_add_action.php?userID_comment=<?php echo $login_id;?>&comment_topicID=<?php echo $req_encypted_postID;?>" method="POST">
+                                  <textarea id="wysihtml5" class="form-control" rows="6" name="comment"></textarea>
                                   <br>
                                       <input type="submit" value="Comment" class="btn btn-primary">
                               </form>

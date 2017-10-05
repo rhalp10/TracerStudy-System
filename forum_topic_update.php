@@ -40,7 +40,7 @@ while ($res_ver_id = mysqli_fetch_array($query_verify_id))
     if (password_verify($check_id, $req_encypted_postID)) 
       {
        $verified_id = $check_id;//temporary value save to verified_id
-      } 
+      }  
       
 }
 
