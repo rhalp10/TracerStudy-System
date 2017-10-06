@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 11, 2017 at 02:15 AM
+-- Generation Time: Oct 06, 2017 at 08:14 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -94,7 +94,7 @@ INSERT INTO `cvsu_department` (`department_ID`, `department_collegeID`, `departm
 
 CREATE TABLE `forum_comment` (
   `comment_ID` int(11) NOT NULL,
-  `comment_topicID` int(11) NOT NULL,
+  `comment_topicID` varchar(150) NOT NULL,
   `comment_userID` int(11) NOT NULL,
   `comment_content` varchar(500) NOT NULL,
   `comment_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
@@ -105,7 +105,8 @@ CREATE TABLE `forum_comment` (
 --
 
 INSERT INTO `forum_comment` (`comment_ID`, `comment_topicID`, `comment_userID`, `comment_content`, `comment_date`) VALUES
-(1, 0, 0, '', '0000-00-00 00:00:00');
+(1, '$2y$10$3egLl/ZYB8SM2Ul2q.IZ1.1SxDPl3JSQ1GsL/3gcbvjrrDSq0gCkC', 0, '', '2017-10-05 18:56:51'),
+(2, '', 0, '', '2017-10-05 18:55:15');
 
 -- --------------------------------------------------------
 
@@ -159,7 +160,13 @@ INSERT INTO `forum_topic` (`topic_ID`, `post_title`, `post_owner_id`, `post_date
 (9, '89', 3, '2017-09-09 16:14:46', '<p>987</p>\r\n', 'UNPIN'),
 (10, 'sdfsdfsdf', 3, '2017-09-09 16:17:24', '<p>fsdf</p>\r\n', 'UNPIN'),
 (11, 'sdfsdfsdf', 3, '2017-09-09 16:17:32', '<p>fsdf</p>\r\n', 'UNPIN'),
-(12, 'sdfsdfsdf', 3, '2017-09-09 16:18:28', '<p>fsdf</p>\r\n', 'UNPIN');
+(12, 'sdfsdfsdf', 3, '2017-09-09 16:18:28', '<p>fsdf</p>\r\n', 'UNPIN'),
+(13, 'askjdhjkashdjkh', 2, '2017-09-12 03:29:14', '<p>aksjdhkjashd</p>\r\n\r\n<p>&nbsp;</p>\r\n', 'UNPIN'),
+(14, 'edit', 2, '2017-09-12 17:57:11', '<p>edit</p>\r\n\r\n<p>&nbsp;</p>\r\n', 'UNPIN'),
+(15, 'wazhin', 2, '2017-09-12 18:25:03', '<p>wazhing</p>\r\n\r\n<p>&nbsp;</p>\r\n', 'UNPIN'),
+(16, 'darren', 2, '2017-09-17 04:29:59', '<p>darren</p>\r\n', 'UNPIN'),
+(17, '', 1, '2017-10-05 18:32:41', '', 'UNPIN'),
+(18, '22222222222222', 3, '2017-10-05 18:44:43', '<p>ssadasdasdasd</p>\r\n', 'UNPIN');
 
 -- --------------------------------------------------------
 
@@ -181,42 +188,43 @@ INSERT INTO `forum_topic_likes` (`topic_likes_ID`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `message_read`
---
-
-CREATE TABLE `message_read` (
-  `read_ID` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `message_read`
---
-
-INSERT INTO `message_read` (`read_ID`) VALUES
-(0);
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `message_send`
 --
 
 CREATE TABLE `message_send` (
-  `send_ID` int(11) NOT NULL,
-  `send_mThread` int(11) NOT NULL,
-  `send_content` varchar(1500) NOT NULL,
-  `send_receiverID` int(11) NOT NULL,
-  `send_userID` int(11) NOT NULL,
-  `send_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `send_status` varchar(6) NOT NULL
+  `message_ID` int(11) NOT NULL,
+  `message_threadID` int(11) NOT NULL,
+  `message_sendDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `message_content` varchar(1500) NOT NULL,
+  `message_receiver` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `message_send`
 --
 
-INSERT INTO `message_send` (`send_ID`, `send_mThread`, `send_content`, `send_receiverID`, `send_userID`, `send_date`, `send_status`) VALUES
-(0, 1, 'ASDHAGSJDKGHASDJGHASDAS', 5, 0, '2017-09-08 12:58:47', 'UNREAD');
+INSERT INTO `message_send` (`message_ID`, `message_threadID`, `message_sendDate`, `message_content`, `message_receiver`) VALUES
+(1, 1, '2017-10-06 17:19:42', 'washing', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `message_send_state`
+--
+
+CREATE TABLE `message_send_state` (
+  `state_ID` int(11) NOT NULL,
+  `state_msgID` int(11) NOT NULL,
+  `state_readerID` int(11) NOT NULL,
+  `state_dateRead` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `message_send_state`
+--
+
+INSERT INTO `message_send_state` (`state_ID`, `state_msgID`, `state_readerID`, `state_dateRead`) VALUES
+(0, 0, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -226,7 +234,7 @@ INSERT INTO `message_send` (`send_ID`, `send_mThread`, `send_content`, `send_rec
 
 CREATE TABLE `message_thread` (
   `thread_ID` int(11) NOT NULL,
-  `thread_participant` varchar(250) NOT NULL,
+  `thread_name` varchar(150) NOT NULL,
   `thread_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -234,8 +242,63 @@ CREATE TABLE `message_thread` (
 -- Dumping data for table `message_thread`
 --
 
-INSERT INTO `message_thread` (`thread_ID`, `thread_participant`, `thread_created`) VALUES
-(1, '', '2017-09-08 12:51:45');
+INSERT INTO `message_thread` (`thread_ID`, `thread_name`, `thread_created`) VALUES
+(1, 'row1', '2017-10-06 18:02:55'),
+(2, 'row2', '2017-10-06 17:59:58'),
+(3, 'row3', '2017-10-06 18:02:46'),
+(4, 'row4', '2017-10-06 18:02:51');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `message_thread_participant`
+--
+
+CREATE TABLE `message_thread_participant` (
+  `participant_ID` int(11) NOT NULL,
+  `participant_threadID` int(11) NOT NULL,
+  `participant_userID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `message_thread_participant`
+--
+
+INSERT INTO `message_thread_participant` (`participant_ID`, `participant_threadID`, `participant_userID`) VALUES
+(1, 1, 1),
+(2, 1, 2),
+(3, 4, 1),
+(4, 4, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `survey_answerlog`
+--
+
+CREATE TABLE `survey_answerlog` (
+  `answerID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `survey_result`
+--
+
+CREATE TABLE `survey_result` (
+  `survey_id` int(11) NOT NULL,
+  `survey_ownerID` int(11) NOT NULL,
+  `survey_maxattemp` int(11) NOT NULL,
+  `survey_dateTaken` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `survey_result`
+--
+
+INSERT INTO `survey_result` (`survey_id`, `survey_ownerID`, `survey_maxattemp`, `survey_dateTaken`) VALUES
+(0, 0, 2, '2017-10-05 18:31:53');
 
 -- --------------------------------------------------------
 
@@ -276,16 +339,20 @@ CREATE TABLE `user_admin_detail` (
   `admin_mName` varchar(25) NOT NULL,
   `admin_lName` varchar(50) NOT NULL,
   `admin_address` varchar(250) NOT NULL,
-  `admin_status` varchar(10) NOT NULL DEFAULT 'unregister'
+  `admin_status` varchar(10) NOT NULL DEFAULT 'unregister',
+  `admin_gender` varchar(1) NOT NULL,
+  `admin_dob` date NOT NULL,
+  `admin_contact` varchar(11) NOT NULL,
+  `admin_civilStat` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user_admin_detail`
 --
 
-INSERT INTO `user_admin_detail` (`admin_ID`, `admin_userID`, `admin_img`, `admin_fName`, `admin_mName`, `admin_lName`, `admin_address`, `admin_status`) VALUES
-(1, 3, 'temp.gif', 'admin', 'admin', 'admin', 'Blk 38 Lot 11 Phase 2 b Southville 2 TMC', 'register'),
-(2, 0, 'temp.gif', '', '', '', '', 'unregister');
+INSERT INTO `user_admin_detail` (`admin_ID`, `admin_userID`, `admin_img`, `admin_fName`, `admin_mName`, `admin_lName`, `admin_address`, `admin_status`, `admin_gender`, `admin_dob`, `admin_contact`, `admin_civilStat`) VALUES
+(1, 3, 'temp.gif', 'admin', 'admin', 'admin', 'Blk 38 Lot 11 Phase 2 b Southville 2 TMC', 'register', 'M', '0000-00-00', '09999999999', 'Single'),
+(2, 0, 'temp.gif', 'admin', 'admin', 'admin', 'Blk 38 Lot 11 Phase 2 b Southville 2 TMC', 'unregister', 'M', '0000-00-00', '09999999999', 'Single');
 
 -- --------------------------------------------------------
 
@@ -365,6 +432,10 @@ CREATE TABLE `user_student_detail` (
   `student_mName` varchar(25) NOT NULL,
   `student_lName` varchar(50) NOT NULL,
   `student_address` varchar(250) NOT NULL,
+  `student_civilStat` varchar(25) NOT NULL,
+  `student_dob` date NOT NULL,
+  `student_gender` varchar(1) NOT NULL,
+  `student_contact` varchar(11) NOT NULL,
   `student_admission` date NOT NULL,
   `student_year_grad` date NOT NULL,
   `student_department` varchar(100) NOT NULL,
@@ -375,12 +446,14 @@ CREATE TABLE `user_student_detail` (
 -- Dumping data for table `user_student_detail`
 --
 
-INSERT INTO `user_student_detail` (`student_ID`, `student_userID`, `student_img`, `student_IDNumber`, `student_fName`, `student_mName`, `student_lName`, `student_address`, `student_admission`, `student_year_grad`, `student_department`, `student_status`) VALUES
-(1, 1, 'temp.gif', 201310656, 'student', 's', 'student', 'Blk 38 Lot 11 Phase 2 b Southville 2 TMC', '2013-10-05', '2018-03-30', 'DIT', 'register'),
-(2, 0, 'temp.gif', 201410209, 'Mardical', '', 'del Mundo', 'Indang', '0000-00-00', '0000-00-00', 'DIT', 'register'),
-(13, 0, 'temp.gif', 3, '3', '3', '3', '32', '2017-09-30', '2017-09-02', 'IT', 'unregister'),
-(14, 11, 'temp.gif', 555, 'asdasd', 'ddd', 'xxx', 'wwwwwwwwwwwwww', '0000-00-00', '0000-00-00', 'COMSCI', 'register'),
-(15, 0, 'temp.gif', 0, '', '', '', '', '0000-00-00', '0000-00-00', '', 'unregister');
+INSERT INTO `user_student_detail` (`student_ID`, `student_userID`, `student_img`, `student_IDNumber`, `student_fName`, `student_mName`, `student_lName`, `student_address`, `student_civilStat`, `student_dob`, `student_gender`, `student_contact`, `student_admission`, `student_year_grad`, `student_department`, `student_status`) VALUES
+(1, 1, 'temp.gif', 201310656, 'Rhalp Darren ', 'R', 'Cabrera', 'Blk 38 Lot 11 Phase 2 b Southville 2 TMC', 'Single', '1997-09-26', 'M', '09169158798', '2013-10-05', '2018-03-30', 'COMSCI', 'register'),
+(2, 0, 'temp.gif', 201410209, 'Mardical', '', 'del Mundo', 'Indang', 'Single', '1997-09-26', 'F', '09169158798', '2017-09-30', '2017-09-12', 'COMSCI', 'register'),
+(13, 0, 'temp.gif', 201410259, 'Ria', '', 'Jimenez', 'Indang', 'Single', '1997-09-26', 'F', '09169158798', '2017-09-30', '2017-09-02', 'IT', 'unregister'),
+(14, 11, 'temp.gif', 201309888, 'John Ervin', 'N', 'Villadolid', 'Naic', 'Single', '1997-09-26', 'M', '09169158798', '2017-09-30', '2016-00-00', 'COMSCI', 'register'),
+(15, 0, 'temp.gif', 201088814, 'Raouf', 'R', 'Daud', 'Indang', 'Single', '1997-09-26', 'M', '09169158798', '2017-09-30', '2016-00-00', 'IT', 'unregister'),
+(16, 0, 'temp.gif', 200901201, 'Justine', '', 'De-guzman', 'Indang', 'Single', '1997-09-26', 'M', '09169158798', '2017-09-30', '2014-00-00', 'IT', 'unregister'),
+(17, 0, 'temp.gif', 201310253, 'Andrea', 'L', 'Labbres', 'Indang', 'Single', '1997-09-26', 'F', '09169158798', '2017-09-30', '2017-00-00', 'OA', 'unregister');
 
 -- --------------------------------------------------------
 
@@ -396,7 +469,11 @@ CREATE TABLE `user_teacher_detail` (
   `teacher_fName` varchar(100) NOT NULL,
   `teacher_mName` varchar(25) NOT NULL,
   `teacher_lName` varchar(50) NOT NULL,
+  `teacher_gender` varchar(1) NOT NULL,
+  `teacher_dob` date NOT NULL,
+  `teacher_contact` varchar(11) NOT NULL,
   `teacher_address` varchar(250) NOT NULL,
+  `teacher_civilStat` varchar(25) NOT NULL,
   `teacher_department` int(11) NOT NULL,
   `teacher_status` varchar(10) NOT NULL DEFAULT 'unregister'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -405,9 +482,9 @@ CREATE TABLE `user_teacher_detail` (
 -- Dumping data for table `user_teacher_detail`
 --
 
-INSERT INTO `user_teacher_detail` (`teacher_ID`, `teacher_userID`, `teacher_img`, `teacher_facultyID`, `teacher_fName`, `teacher_mName`, `teacher_lName`, `teacher_address`, `teacher_department`, `teacher_status`) VALUES
-(1, 2, 'temp.gif', 'a12s3d', 'teacher', 't', 'teacher', 'Blk 38 Lot 11 Phase 2 b Southville 2 TMC', 2, 'register'),
-(2, 0, 'temp.gif', '', '', '', '', '', 0, 'unregister');
+INSERT INTO `user_teacher_detail` (`teacher_ID`, `teacher_userID`, `teacher_img`, `teacher_facultyID`, `teacher_fName`, `teacher_mName`, `teacher_lName`, `teacher_gender`, `teacher_dob`, `teacher_contact`, `teacher_address`, `teacher_civilStat`, `teacher_department`, `teacher_status`) VALUES
+(1, 2, 'temp.gif', 'a12s3d', 'teacher', 't', 'teacher', 'M', '1997-09-26', '09999999999', 'Blk 38 Lot 11 Phase 2 b Southville 2 TMC', 'Single', 2, 'register'),
+(2, 0, 'temp.gif', '', '', '', '', 'M', '1997-09-26', '09999999999', 'Blk 38 Lot 11 Phase 2 b Southville 2 TMC', 'Maried', 0, 'unregister');
 
 -- --------------------------------------------------------
 
@@ -426,41 +503,47 @@ CREATE TABLE `view_counter` (
 --
 
 INSERT INTO `view_counter` (`view_ID`, `view_topicID`, `view_count`) VALUES
-(1, 1, 17),
+(1, 1, 27),
 (2, 2, 152),
-(3, 3, 17),
-(4, 4, 7),
-(5, 5, 59),
-(6, 6, 93),
+(3, 3, 19),
+(4, 4, 8),
+(5, 5, 60),
+(6, 6, 94),
 (19, 22, 8),
 (20, 23, 0),
 (21, 24, 1),
 (22, 25, 2),
 (23, 26, 16),
 (24, 27, 24),
-(25, 0, 32),
-(26, 0, 31),
-(27, 0, 29),
-(28, 0, 28),
-(29, 0, 25),
-(30, 0, 22),
-(31, 0, 21),
-(32, 0, 19),
-(33, 0, 18),
+(25, 0, 45),
+(26, 0, 44),
+(27, 0, 42),
+(28, 1, 35),
+(29, 0, 38),
+(30, 0, 35),
+(31, 0, 34),
+(32, 0, 32),
+(33, 0, 31),
 (34, 29, 1),
-(35, 0, 17),
-(36, 1, 3),
+(35, 0, 30),
+(36, 1, 13),
 (37, 2, 1),
-(38, 3, 1),
-(39, 4, 1),
-(40, 5, 1),
-(41, 6, 2),
-(42, 0, 16),
-(43, 0, 14),
-(44, 0, 10),
-(45, 0, 3),
-(46, 0, 2),
-(47, 12, 1);
+(38, 3, 3),
+(39, 4, 2),
+(40, 5, 2),
+(41, 6, 3),
+(42, 0, 29),
+(43, 0, 27),
+(44, 0, 23),
+(45, 0, 16),
+(46, 0, 15),
+(47, 12, 1),
+(48, 13, 3),
+(49, 14, 6),
+(50, 15, 12),
+(51, 16, 2),
+(52, 17, 1),
+(53, 18, 14);
 
 --
 -- Indexes for dumped tables
@@ -511,22 +594,40 @@ ALTER TABLE `forum_topic_likes`
   ADD PRIMARY KEY (`topic_likes_ID`);
 
 --
--- Indexes for table `message_read`
---
-ALTER TABLE `message_read`
-  ADD PRIMARY KEY (`read_ID`);
-
---
 -- Indexes for table `message_send`
 --
 ALTER TABLE `message_send`
-  ADD PRIMARY KEY (`send_ID`);
+  ADD PRIMARY KEY (`message_ID`);
+
+--
+-- Indexes for table `message_send_state`
+--
+ALTER TABLE `message_send_state`
+  ADD PRIMARY KEY (`state_ID`);
 
 --
 -- Indexes for table `message_thread`
 --
 ALTER TABLE `message_thread`
   ADD PRIMARY KEY (`thread_ID`);
+
+--
+-- Indexes for table `message_thread_participant`
+--
+ALTER TABLE `message_thread_participant`
+  ADD PRIMARY KEY (`participant_ID`);
+
+--
+-- Indexes for table `survey_answerlog`
+--
+ALTER TABLE `survey_answerlog`
+  ADD PRIMARY KEY (`answerID`);
+
+--
+-- Indexes for table `survey_result`
+--
+ALTER TABLE `survey_result`
+  ADD PRIMARY KEY (`survey_id`);
 
 --
 -- Indexes for table `user_account`
@@ -603,7 +704,7 @@ ALTER TABLE `cvsu_department`
 -- AUTO_INCREMENT for table `forum_comment`
 --
 ALTER TABLE `forum_comment`
-  MODIFY `comment_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `comment_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `forum_comment_reply`
 --
@@ -613,17 +714,27 @@ ALTER TABLE `forum_comment_reply`
 -- AUTO_INCREMENT for table `forum_topic`
 --
 ALTER TABLE `forum_topic`
-  MODIFY `topic_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `topic_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT for table `forum_topic_likes`
 --
 ALTER TABLE `forum_topic_likes`
   MODIFY `topic_likes_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
+-- AUTO_INCREMENT for table `message_send`
+--
+ALTER TABLE `message_send`
+  MODIFY `message_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
 -- AUTO_INCREMENT for table `message_thread`
 --
 ALTER TABLE `message_thread`
-  MODIFY `thread_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `thread_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `message_thread_participant`
+--
+ALTER TABLE `message_thread_participant`
+  MODIFY `participant_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `user_account`
 --
@@ -653,7 +764,7 @@ ALTER TABLE `user_notif_type`
 -- AUTO_INCREMENT for table `user_student_detail`
 --
 ALTER TABLE `user_student_detail`
-  MODIFY `student_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `student_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT for table `user_teacher_detail`
 --
@@ -663,7 +774,7 @@ ALTER TABLE `user_teacher_detail`
 -- AUTO_INCREMENT for table `view_counter`
 --
 ALTER TABLE `view_counter`
-  MODIFY `view_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `view_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 --
 -- Constraints for dumped tables
 --
