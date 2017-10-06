@@ -198,28 +198,59 @@ window.survey = new Survey.Model({
      name: "Professional examination (s) Passed"
     },
     {
-     type: "matrix",
-     columns: [
-      "Undergraduate/AB/BS ",
-      "Graduate/MS/MA/Ph.D."
-     ],
-     name: "Reason (s) for taking the course (s) or pursuing degree (s).  You may check (/) more than one answer.",
-     rows: [
-      "High Grades in the course or subject area (s) related to the course",
-      "Good grades in high school",
-      "Influence of parents or relatives",
-      "Peer Influence",
-      "Inspired by a role model",
-      "Strong passion for the profession",
-      "Prospect for immediate employment",
-      "Status or prestige of the profession",
-      "Availability  of course offering in chosen institution",
-      "Prospect of career advancement",
-      "Affordable for the family",
-      "Prospect of attractive compensation",
-      "Opportunity for employment abroad",
-      "No particular choice or no better idea"
-     ]
+     // type: "matrix",
+     // columns: [
+     //  "Undergraduate/AB/BS ",
+     //  "Graduate/MS/MA/Ph.D."
+     // ],
+     // name: "Reason (s) for taking the course (s) or pursuing degree (s).  You may check (/) more than one answer.",
+     // rows: [
+     //  "High Grades in the course or subject area (s) related to the course",
+     //  "Good grades in high school",
+     //  "Influence of parents or relatives",
+     //  "Peer Influence",
+     //  "Inspired by a role model",
+     //  "Strong passion for the profession",
+     //  "Prospect for immediate employment",
+     //  "Status or prestige of the profession",
+     //  "Availability  of course offering in chosen institution",
+     //  "Prospect of career advancement",
+     //  "Affordable for the family",
+     //  "Prospect of attractive compensation",
+     //  "Opportunity for employment abroad",
+     //  "No particular choice or no better idea"
+     // ]
+     type: "matrixdropdown",
+        columns: [
+         {
+          name: "undergraduated",
+          title: "Undergraduate/AB/BS",
+          booleanDefaultValue: "false",
+          cellType: "boolean"
+         },
+         {
+          name: "graduated",
+          title: "Graduate/MS/MA/Ph.D.",
+          booleanDefaultValue: "false",
+          cellType: "boolean"
+         }],
+        name: "Reason (s) for taking the course (s) or pursuing degree (s).  You may check (/) more than one answer.",
+        rows: [
+         "High Grades in the course or subject area (s) related to the course",
+         "Good grades in high school",
+         "Influence of parents or relatives",
+         "Peer Influence",
+         "Inspired by a role model",
+         "Strong passion for the profession",
+         "Prospect for immediate employment",
+         "Status or prestige of the profession",
+         "Availability  of course offering in chosen institution",
+         "Prospect of career advancement",
+         "Affordable for the family",
+         "Prospect of attractive compensation",
+         "Opportunity for employment abroad",
+         "No particular choice or no better idea"
+        ]
     }
    ],
    name: "page2",
@@ -539,4 +570,9 @@ survey.showProgressBar = 'bottom';
 $("#surveyElement").Survey({ 
     model: survey 
 });
+
+
+
+
 </script>
+
