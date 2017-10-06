@@ -96,7 +96,7 @@ else
                                    <strong><a href="forum_view.php?post_ID=<?php echo password_hash($res['topic_ID'], PASSWORD_DEFAULT);?>"><?php echo $data['post_title']; ?>
                                     </a></strong>
                                     <br>
-                                    by <a href=""><?php 
+                                    by <a href="profile.php"><?php 
                                     $post_owner = $login_id;
                                     if($query_postowner = mysqli_query($con,"SELECT student_fName,student_mName,student_lName FROM `user_student_detail` WHERE `student_userID` = '$post_owner'")) {
                                        $res_postowner = mysqli_fetch_assoc($query_postowner);
