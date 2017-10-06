@@ -104,16 +104,41 @@ else
                                     </div>
                                     <hr>
                                     <div  style="overflow-y: scroll; overflow-x: hidden; height:600px; overflow; margin-top: 10px;">
-                                       <div style="background-color: #e5e9ec; margin: 1px;" class="col-sm-12">
-                                           RHALP DARREN
-                                       </div>
-                                       <div style="background-color: #e5e9ec;  margin: 1px;" class="col-sm-12">
-                                           RHALP DARREN
-                                       </div>
+                                       
+ <?php 
+     //for selecting all thread that you participate
+     $q1 = mysqli_query($con,"SELECT * FROM `message_thread_participant` WHERE participant_userID = '1' ");
+     while ($participantData = mysqli_fetch_array($q1)) 
+     {
+      // echo "participant_ID:".$participantData['participant_ID'];
+      // echo "<br>";
+      // echo"P_thread:". $participantData['participant_threadID'];
+      // echo "<br>";
+      $chk_partipant = $participantData['participant_threadID'];
+
+      $q = mysqli_query($con,"SELECT * FROM `message_thread`");
+      // all thread check check wheres thread message you participate
+      while ($threadData = mysqli_fetch_array($q)) 
+      {
+          // echo "thread: ".$threadData['thread_ID'];
+          // echo "<br>";
+
+          if ($threadData['thread_ID'] == $chk_partipant) {
+              // if clicked the this divider the div of threadContent must be change showed content 
+             ?> 
+               <div style="background-color: #e5e9ec; margin: 1px;" class="col-sm-12">
+                 <?php echo $threadData['thread_name']?>
+              </div>
+               <?php
+
+          }
+      }
+     }
+?>
                                    </div>
                                </div>
                                <div class="col-sm-9 " style="border:solid 1px;">
-                                <div style=" height:660px; overflow; margin-top: 10px;">
+                                <div style=" height:660px; overflow; margin-top: 10px;" id="threadContent">
                                     <h3 class="panel-title">Thread Title</h3>
                                    <hr>
                                     <div style="height: 50px; ">
