@@ -72,7 +72,54 @@ else
                             <!-- /.main-bar -->
                         </header>
                         <div class="inner bg-light lter">
+                          <?php echo $res_sidebar[$userType.'_img'];?>
+                          <br>
+                          <?php 
+                          if ($userType == "student") {
+                            echo $res_sidebar[$userType.'_IDNumber'];
+                          }
+                          ?>
+                          <br>
+                          <?php echo $res_sidebar[$userType.'_fName'];?>
+                          <br>
+                          <?php echo $res_sidebar[$userType.'_mName'];?>
+                          <br>
+                          <?php echo $res_sidebar[$userType.'_lName'];?>
+
+                          <?php echo $res_sidebar[$userType.'_address'];?>
+                          <br>
+                          <?php echo $res_sidebar[$userType.'_civilStat'];?>
+                          <br>
+                          <?php echo $res_sidebar[$userType.'_dob'];?>
+                          <br>
+                          <?php echo $res_sidebar[$userType.'_gender'];?>
+                          <br>
+                          <?php echo $res_sidebar[$userType.'_contact'];?>
+                          <br>
+                          <?php 
+                          if ($userType == "student") 
+                          {
+                             echo $res_sidebar[$userType.'_admission'];
+                          }
+                          ?>
+                         
                           
+                          <br>
+                          <?php 
+                          if ($userType == "student") {
+                            echo $res_sidebar[$userType.'_IDNumber'];
+                          }
+                          ?>
+                          <br>
+                           <?php 
+                          if ($userType != "admin") 
+                          {
+                             echo $res_sidebar[$userType.'_department'];
+                          }
+                          ?>
+                          <br>
+                          <?php echo $res_sidebar[$userType.'_status'];?>
+                          <br>
                         </div>
                         <!-- /.inner -->
                     </div>
