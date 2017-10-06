@@ -25,7 +25,7 @@ mysqli_query($con,"DELETE * FROM `forum_topic` WHERE `topic_id` = '$verified_id'
 mysqli_query($con,"DELETE * FROM `view_counter` WHERE `view_topicID` = '$verified_id'");
 mysqli_query($con,"DELETE * FROM `forum_comment` WHERE `comment_topicID` = '$verified_id'");
 echo "<script>alert('Successfully Deleted');
-						window.location='../index.php';
+						window.location='../forum.php';
 					</script>";
 
 ?>
