@@ -17,5 +17,5 @@
         <!-- msg unread end-->
          
       </div>
-      <div class="panel-footer text-center panel_footer_custom"><a href="">See All</a></div>
+      <div class="panel-footer text-center panel_footer_custom"><a href="message.php">See All</a></div>
     </div>
