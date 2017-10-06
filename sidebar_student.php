@@ -3,7 +3,7 @@ $query_sidebar = mysqli_query($con,"SELECT * FROM `user_student_detail` WHERE `s
 $res_sidebar = mysqli_fetch_assoc($query_sidebar);
 $query_count_post = mysqli_query($con,"SELECT `post_owner_id` FROM `forum_topic` WHERE `post_owner_id` = $login_id");
 $res_count_post = mysqli_num_rows($query_count_post);
-
+$userType = "student";
 ?>
 
                     <div id="left">
@@ -19,7 +19,7 @@ $res_count_post = mysqli_num_rows($query_count_post);
                                 <div class="media-body">
                                     <h5 class="media-heading"><?php echo $res_sidebar['student_fName'];?></h5>
                                     <ul class="list-unstyled user-info">
-                                        <li>Student</li>
+                                        <li><?php echo $userType  ?></li>
                                         <li>Last Access : <br>
                                             <small><i class="fa fa-calendar"></i>&nbsp;16 Mar 16:32</small>
                                         </li>
