@@ -15,7 +15,16 @@
 
 </body>
 </html>
+<?php 
+
+// $json = $_REQUEST['result'];
+// $book = json_decode($json);
+// // access name of $survey object
+// echo $survey->name; // JavaScript: value
+
+?>
 <script>
+
 Survey.Survey.cssType = "bootstrap";
 Survey.defaultBootstrapCss.navigationButton = "btn btn-green";
 
@@ -26,19 +35,19 @@ window.survey = new Survey.Model({
     {
      type: "text",
      isRequired: true,
-     name: "name",
+     name: "Name",
      title: "Name :"
     },
     {
      type: "text",
      isRequired: true,
-     name: "paddress",
+     name: "P_Address",
      title: "Permanent Address  :"
     },
     {
      type: "text",
      isRequired: true,
-     name: "email",
+     name: "Email",
      title: "E-mail Address  :"
     },
     {
@@ -58,10 +67,9 @@ window.survey = new Survey.Model({
      choices: [
       "Single",
       "Married",
-      "Separated/Divorced",
+      "Divorced",
       "Married but not living",
-      "Single Parent born a child but not married",
-      "Widow or Widower"
+      "widowed"
      ],
      colCount: 3,
      isRequired: true,
@@ -82,7 +90,7 @@ window.survey = new Survey.Model({
      type: "text",
      inputType: "date",
      isRequired: true,
-     name: "date",
+     name: "Birthday",
      title: "Birthday :"
     },
     {
@@ -107,7 +115,7 @@ window.survey = new Survey.Model({
      ],
      colCount: 4,
      isRequired: true,
-     name: "RoO",
+     name: "Region_of_Origin",
      title: "Region of Origin"
     },
     {
@@ -122,7 +130,7 @@ window.survey = new Survey.Model({
       "Municipality"
      ],
      isRequired: true,
-     name: "Location",
+     name: "Location_of_Residence ",
      title: "Location of Residence :"
     }
    ],
@@ -142,22 +150,22 @@ window.survey = new Survey.Model({
      ],
      columns: [
       {
-       name: "d1",
+       name: "Degree_Specialization",
        title: "Degree(s) & Specialization",
        cellType: "text"
       },
       {
-       name: "d2",
+       name: "College_or_University",
        title: "College or University",
        cellType: "text"
       },
       {
-       name: "d3",
+       name: "Year_Graduate",
        title: "Year Graduate",
        cellType: "text"
       },
       {
-       name: "d4",
+       name: "Honors_Awards_Received",
        title: "Honor (s) Awards (s) Received",
        cellType: "text"
       }
@@ -180,17 +188,17 @@ window.survey = new Survey.Model({
      ],
      columns: [
       {
-       name: "Column 1",
+       name: "Name_of_Examination",
        title: "Name of Examination",
        cellType: "text"
       },
       {
-       name: "Column 2",
+       name: "Date_Taken",
        title: "Date Taken",
        cellType: "text"
       },
       {
-       name: "Column 3",
+       name: "Rating",
        title: "Rating",
        cellType: "text"
       }
@@ -198,59 +206,28 @@ window.survey = new Survey.Model({
      name: "Professional examination (s) Passed"
     },
     {
-     // type: "matrix",
-     // columns: [
-     //  "Undergraduate/AB/BS ",
-     //  "Graduate/MS/MA/Ph.D."
-     // ],
-     // name: "Reason (s) for taking the course (s) or pursuing degree (s).  You may check (/) more than one answer.",
-     // rows: [
-     //  "High Grades in the course or subject area (s) related to the course",
-     //  "Good grades in high school",
-     //  "Influence of parents or relatives",
-     //  "Peer Influence",
-     //  "Inspired by a role model",
-     //  "Strong passion for the profession",
-     //  "Prospect for immediate employment",
-     //  "Status or prestige of the profession",
-     //  "Availability  of course offering in chosen institution",
-     //  "Prospect of career advancement",
-     //  "Affordable for the family",
-     //  "Prospect of attractive compensation",
-     //  "Opportunity for employment abroad",
-     //  "No particular choice or no better idea"
-     // ]
-     type: "matrixdropdown",
-        columns: [
-         {
-          name: "undergraduated",
-          title: "Undergraduate/AB/BS",
-          booleanDefaultValue: "false",
-          cellType: "boolean"
-         },
-         {
-          name: "graduated",
-          title: "Graduate/MS/MA/Ph.D.",
-          booleanDefaultValue: "false",
-          cellType: "boolean"
-         }],
-        name: "Reason (s) for taking the course (s) or pursuing degree (s).  You may check (/) more than one answer.",
-        rows: [
-         "High Grades in the course or subject area (s) related to the course",
-         "Good grades in high school",
-         "Influence of parents or relatives",
-         "Peer Influence",
-         "Inspired by a role model",
-         "Strong passion for the profession",
-         "Prospect for immediate employment",
-         "Status or prestige of the profession",
-         "Availability  of course offering in chosen institution",
-         "Prospect of career advancement",
-         "Affordable for the family",
-         "Prospect of attractive compensation",
-         "Opportunity for employment abroad",
-         "No particular choice or no better idea"
-        ]
+     type: "matrix",
+     columns: [
+      "Undergraduate/AB/BS ",
+      "Graduate/MS/MA/Ph.D."
+     ],
+     name: "Reason (s) for taking the course (s) or pursuing degree (s).  You may check (/) more than one answer.",
+     rows: [
+      "High Grades in the course or subject area (s) related to the course",
+      "Good grades in high school",
+      "Influence of parents or relatives",
+      "Peer Influence",
+      "Inspired by a role model",
+      "Strong passion for the profession",
+      "Prospect for immediate employment",
+      "Status or prestige of the profession",
+      "Availability  of course offering in chosen institution",
+      "Prospect of career advancement",
+      "Affordable for the family",
+      "Prospect of attractive compensation",
+      "Opportunity for employment abroad",
+      "No particular choice or no better idea"
+     ]
     }
    ],
    name: "page2",
@@ -563,6 +540,9 @@ window.survey = new Survey.Model({
 });
 survey.onComplete.add(function(result) {
     document.querySelector('#surveyResult').innerHTML = "result: " + JSON.stringify(result.data);
+
+    // window.location.assign("http://localhost/Tracer_UI/survey.php?result="+JSON.stringify(result.data));
+
 });
 
 survey.showProgressBar = 'bottom';
@@ -570,9 +550,23 @@ survey.showProgressBar = 'bottom';
 $("#surveyElement").Survey({ 
     model: survey 
 });
-
-
-
-
 </script>
+<!-- 
 
+$survey->Name;
+$survey->P_Address;
+$survey->Email;
+$survey->Telephone;
+Mobile
+CivilStatus
+Gender
+Birthday
+Region_of_Origin
+Location_of_Residence
+columns{  Degree_Specialization
+  College_or_University
+  Year_Graduate
+  Honors_Awards_Received
+}
+
+ -->
