@@ -90,7 +90,7 @@ else
                                 </h2>
                                <h1 class="text-center">Batch of <?php echo $req_year?></h1>
                                <hr>
-                               <button class="btn btn-info pull-right">PRINT</button>
+                               <a class="btn btn-info pull-right" href="assets/lib/FPDF/alumnibatchprint.php?course=<?php echo $req_course?>&year=<?php echo $req_year?>" target="_BLANK">PRINT</a>
                                <br><br>
                                <table class="table table-bordered table-advance table-hover ">
                                    <thead>
