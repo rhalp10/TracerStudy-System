@@ -71,6 +71,7 @@ else {}
                                   </tfoot>
                                   <tbody>
                                   <?php 
+                                  // SELECT * FROM `forum_topic` ORDER BY `forum_topic`.`post_date` DESC
                                   $query = mysqli_query($con,"SELECT * FROM `forum_topic` WHERE `post_status` = 'PIN' ORDER BY `post_date` DESC;");
                                   while($res = mysqli_fetch_array($query)) {
                                      $query2 = mysqli_query($con,"SELECT `view_count` FROM `view_counter` WHERE `view_topicID` = ".$res['topic_ID']);
