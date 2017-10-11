@@ -12,7 +12,7 @@
                         </header>
                         <div class="inner bg-light lter">
                            
-                          <div class="col-lg-12"><!-- CONTENT START HERE-->
+                          <div class="col-lg-12" style="word-wrap: break-word;"><!-- CONTENT START HERE-->
                             <h1><?php echo $post_title ?></h1>
                               <!-- Author -->
                               <p class="lead">
@@ -46,9 +46,103 @@
                               if ($post_owner == $login_id ) {
                                 ?>  
                                 <div class="btn-group pull-right"  style="margin-top: -50px;">
-                                  <a class="btn btn-primary" href="forum_topic_update.php?req_encypted_postID=<?php echo $req_encypted_postID ;?>">EDIT</a>
-                                   <a class="btn btn-metis-1" href="action/delete_post.php?req_encypted_postID=<?php echo $req_encypted_postID ?>">DELETE</a>
+                                  <?php 
+                                  if ($login_level == "2" || $login_level == "3") {
+                                   
+                                    if ($post_status == "UNPIN") {
+                                      $pin_stat = "PIN";
+                                      ?>
+                                      <a class="btn btn-info" data-toggle="modal" data-target="#<?php echo $pin_stat?>">PIN</a>
+                                      <?php
+                                    }
+                                    else
+                                    {
+                                       $pin_stat = "UNPIN";
+                                      ?>
+                                      <a class="btn btn-info" data-toggle="modal" data-target="#<?php echo $pin_stat?>">UNPIN</a>
+                                      <?php
+                                    }
+                                   
+                                  }
+                                  ?>
+                                  <a class="btn btn-primary" data-toggle="modal" data-target="#Edit">EDIT</a>
+                                   <a class="btn btn-metis-1"  data-toggle="modal" data-target="#Delete">DELETE</a>
                                 </div>
+                                <!-- Modal for edit-->
+                                <div id="<?php echo $pin_stat?>" class="modal fade" role="dialog">
+                                  <div class="modal-dialog">
+
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                      <h4 class="modal-title"><?php echo $pin_stat?> Post</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                    <center>
+                                    <h1>Are you sure ?</h1>
+                                      <a class="btn btn-success" href=""><?php echo $pin_stat?></a>
+                                      <a class="btn btn-danger"  data-dismiss="modal">CANCEL</a>
+                                      </center>
+                                    </div>
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                  </div>
+
+                                  </div>
+                                </div>
+                                <!-- Modal for edit-->
+                                <div id="Edit" class="modal fade" role="dialog">
+                                  <div class="modal-dialog">
+
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                      <h4 class="modal-title">Edit Post</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                    <center>
+                                    <h1>Are you sure ?</h1>
+                                      <a class="btn btn-success" href="forum_topic_update.php?req_encypted_postID=<?php echo $req_encypted_postID ;?>">Edit</a>
+                                      <a class="btn btn-danger"  data-dismiss="modal">CANCEL</a>
+                                      </center>
+                                    </div>
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                  </div>
+
+                                  </div>
+                                </div>
+                                <!-- Modal for delete-->
+                                <div id="Delete" class="modal fade" role="dialog">
+                                  <div class="modal-dialog">
+                               
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                      <h4 class="modal-title">Delete Post</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                    <center>
+                                    <h1>Are you sure ?</h1>
+                                      <a class="btn btn-success" href="action/delete_post.php?req_encypted_postID=<?php echo $req_encypted_postID ?>">DELETE</a>
+                                      <a class="btn btn-danger"  data-dismiss="modal">CANCEL</a>
+                                      </center>
+                                    </div>
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                  </div>
+
+                                  </div>
+                                </div>
+
+                                 
+
                                 <?php
                               }
                               ?>
