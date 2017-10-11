@@ -51,6 +51,7 @@ $res = mysqli_fetch_array($query);
   $post_owner = $res['post_owner_id'];
   $post_date  = $res['post_date'];
   $post_content = $res['post_content'];
+  $post_status = $res['post_status'];
 //Counte view
 mysqli_query($con,"UPDATE `view_counter` SET `view_count` = `view_count`+1 WHERE `view_topicID` = '$verified_id'");
 $query_viewcount  = mysqli_query($con,"SELECT `view_count` FROM `view_counter`WHERE `view_topicID` = '$verified_id'");
