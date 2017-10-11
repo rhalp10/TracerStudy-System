@@ -15,15 +15,15 @@ while ($res_ver_id = mysqli_fetch_array($query_verify_id))
     //the requested hash checked original value if match then stored the verified value in verified_id
     if (password_verify($check_id, $req_encypted_postID)) 
       {
-       $verified_id = $check_id;//temporary value save to verified_id
+      $verified_id = $check_id;//temporary value save to verified_id
       }  
       
 }
 
 
-mysqli_query($con,"DELETE * FROM `forum_topic` WHERE `topic_id` = '$verified_id'");
-mysqli_query($con,"DELETE * FROM `view_counter` WHERE `view_topicID` = '$verified_id'");
-mysqli_query($con,"DELETE * FROM `forum_comment` WHERE `comment_topicID` = '$verified_id'");
+$result = mysqli_query($con,"DELETE  FROM `forum_topic` WHERE `topic_ID` = '$verified_id'");
+$result = mysqli_query($con,"DELETE  FROM `view_counter` WHERE `view_topicID` = '$verified_id'");
+$result = mysqli_query($con,"DELETE  FROM `forum_comment` WHERE `comment_topicID` = '$verified_id'");
 echo "<script>alert('Successfully Deleted');
 						window.location='../forum.php';
 					</script>";
