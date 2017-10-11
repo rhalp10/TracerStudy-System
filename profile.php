@@ -72,7 +72,12 @@ else
                             <!-- /.main-bar -->
                         </header>
                         <div class="inner bg-light lter">
-                          <?php echo $res_sidebar[$userType.'_img'];?>
+                         
+                         <a class="user-link" href="">
+                                    <img class="media-object img-thumbnail user-img" alt="User Picture" src="assets/img/profile_img/<?php echo $res_sidebar[$userType.'_img'];?>">
+                                </a>
+                         
+                          
                           <br>
                           <?php 
                           if ($userType == "student") {
@@ -102,8 +107,6 @@ else
                              echo $res_sidebar[$userType.'_admission'];
                           }
                           ?>
-                         
-                          
                           <br>
                           <?php 
                           if ($userType == "student") {
