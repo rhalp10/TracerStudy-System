@@ -72,7 +72,7 @@ else {}
                                   <tbody>
                                   <?php 
                                   // SELECT * FROM `forum_topic` ORDER BY `forum_topic`.`post_date` DESC
-                                  $query = mysqli_query($con,"SELECT * FROM `forum_topic` WHERE `post_status` = 'PIN' ORDER BY `post_date` DESC;");
+                                  $query = mysqli_query($con,"SELECT * FROM `forum_topic` WHERE `post_status` = 'PIN' ORDER BY `post_date` ASC;");
                                   while($res = mysqli_fetch_array($query)) {
                                      $query2 = mysqli_query($con,"SELECT `view_count` FROM `view_counter` WHERE `view_topicID` = ".$res['topic_ID']);
                                      $res2 = mysqli_fetch_assoc($query2);
@@ -160,7 +160,7 @@ else {}
                                   <tbody>
                                   
                                   <?php 
-                                  $query3 = mysqli_query($con,"SELECT * FROM `forum_topic` WHERE `post_status` = 'UNPIN'");
+                                  $query3 = mysqli_query($con,"SELECT * FROM `forum_topic` WHERE `post_status` = 'UNPIN'  ORDER BY `post_date` DESC");
                                   while($res3 = mysqli_fetch_array($query3)) {
                                      $query4 = mysqli_query($con,"SELECT `view_count` FROM `view_counter` WHERE `view_topicID` = ".$res3['topic_ID']);
                                      $res4 = mysqli_fetch_assoc($query4);
