@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 06, 2017 at 08:14 PM
+-- Generation Time: Oct 15, 2017 at 06:22 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -105,8 +105,7 @@ CREATE TABLE `forum_comment` (
 --
 
 INSERT INTO `forum_comment` (`comment_ID`, `comment_topicID`, `comment_userID`, `comment_content`, `comment_date`) VALUES
-(1, '$2y$10$3egLl/ZYB8SM2Ul2q.IZ1.1SxDPl3JSQ1GsL/3gcbvjrrDSq0gCkC', 0, '', '2017-10-05 18:56:51'),
-(2, '', 0, '', '2017-10-05 18:55:15');
+(1, '$2y$10$3egLl/ZYB8SM2Ul2q.IZ1.1SxDPl3JSQ1GsL/3gcbvjrrDSq0gCkC', 0, '', '2017-10-05 18:56:51');
 
 -- --------------------------------------------------------
 
@@ -152,21 +151,17 @@ INSERT INTO `forum_topic` (`topic_ID`, `post_title`, `post_owner_id`, `post_date
 (1, 'asdasd', 1, '2017-09-09 12:03:53', '<p>asdasd</p>\r\n', 'UNPIN'),
 (2, 'werwerewr', 1, '2017-09-09 12:04:01', '<p>wrwer</p>\r\n', 'UNPIN'),
 (3, 'xcvxcvxcv', 1, '2017-09-09 12:04:08', '<p>xcvxv</p>\r\n', 'UNPIN'),
-(4, 'xcxcv', 1, '2017-09-09 12:04:24', '<p>xcvrerwerwer</p>\r\n\r\n<hr />\r\n<p>&nbsp;</p>\r\n', 'UNPIN'),
-(5, 'sadasdasd', 1, '2017-09-09 12:05:03', '<p>dsd</p>\r\n', 'PIN'),
-(6, 'xczxczcxzcxz', 2, '2017-09-09 12:05:37', '<p>zxxczxcz</p>\r\n', 'UNPIN'),
+(4, 'heyeeee', 1, '2017-10-11 01:48:37', '<p>asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasd</p>\r\n', 'UNPIN'),
+(5, 'sadasdasd', 1, '2017-10-06 18:43:23', '<p>999999999999999999999999999999999999999999999</p>\r\n\r\n<p>&nbsp;</p>\r\n', 'UNPIN'),
+(6, '22222222222222222', 2, '2017-10-11 01:35:54', '<div style=\"background:#eeeeee; border:1px solid #cccccc; padding:5px 10px\">pop[op[op[op[op[</div>\r\n\r\n<h3 style=\"color:#aaaaaa; font-style:italic\">p[]546564sdfsdfsdf</h3>\r\n\r\n<p><strong><span dir=\"rtl\"><span style=\"background-color:#2ecc71\">cxverewr</span></span></strong></p>\r\n\r\n<table border=\"1\" cellpadding=\"1\" cellspacing=\"1\" style=\"width:500px\">\r\n	<tbody>\r\n		<tr>\r\n			<td>&nbsp;</td>\r\n			<td>&nbsp;</td>\r\n		</tr>\r\n		<tr>\r\n			<td>&nbsp;</td>\r\n			<td>&nbsp;</td>\r\n		</tr>\r\n		<tr>\r\n			<td>&nbsp;</td>\r\n			<td>&nbsp;</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n\r\n<p>&nbsp;</p>\r\n', 'UNPIN'),
 (7, 'asdasd', 1, '2017-09-09 15:45:52', '<p>asdasdasd</p>\r\n', 'UNPIN'),
 (8, 'xx', 3, '2017-09-09 16:11:28', '<p>xx</p>\r\n', 'UNPIN'),
 (9, '89', 3, '2017-09-09 16:14:46', '<p>987</p>\r\n', 'UNPIN'),
 (10, 'sdfsdfsdf', 3, '2017-09-09 16:17:24', '<p>fsdf</p>\r\n', 'UNPIN'),
 (11, 'sdfsdfsdf', 3, '2017-09-09 16:17:32', '<p>fsdf</p>\r\n', 'UNPIN'),
 (12, 'sdfsdfsdf', 3, '2017-09-09 16:18:28', '<p>fsdf</p>\r\n', 'UNPIN'),
-(13, 'askjdhjkashdjkh', 2, '2017-09-12 03:29:14', '<p>aksjdhkjashd</p>\r\n\r\n<p>&nbsp;</p>\r\n', 'UNPIN'),
-(14, 'edit', 2, '2017-09-12 17:57:11', '<p>edit</p>\r\n\r\n<p>&nbsp;</p>\r\n', 'UNPIN'),
-(15, 'wazhin', 2, '2017-09-12 18:25:03', '<p>wazhing</p>\r\n\r\n<p>&nbsp;</p>\r\n', 'UNPIN'),
-(16, 'darren', 2, '2017-09-17 04:29:59', '<p>darren</p>\r\n', 'UNPIN'),
-(17, '', 1, '2017-10-05 18:32:41', '', 'UNPIN'),
-(18, '22222222222222', 3, '2017-10-05 18:44:43', '<p>ssadasdasdasd</p>\r\n', 'UNPIN');
+(18, '22222222222222', 3, '2017-10-05 18:44:43', '<p>ssadasdasdasd</p>\r\n', 'UNPIN'),
+(20, '111111111111111111111', 2, '2017-10-11 01:44:24', '<p>wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww</p>\r\n', 'UNPIN');
 
 -- --------------------------------------------------------
 
@@ -204,7 +199,8 @@ CREATE TABLE `message_send` (
 --
 
 INSERT INTO `message_send` (`message_ID`, `message_threadID`, `message_sendDate`, `message_content`, `message_receiver`) VALUES
-(1, 1, '2017-10-06 17:19:42', 'washing', 2);
+(1, 1, '2017-10-06 18:19:33', 'waaaaaaaa', 2),
+(2, 1, '2017-10-06 18:19:28', 'meeeeeeeeeeeee', 2);
 
 -- --------------------------------------------------------
 
@@ -224,7 +220,8 @@ CREATE TABLE `message_send_state` (
 --
 
 INSERT INTO `message_send_state` (`state_ID`, `state_msgID`, `state_readerID`, `state_dateRead`) VALUES
-(0, 0, 0, NULL);
+(1, 1, 2, '0000-00-00 00:00:00'),
+(2, 2, 2, '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -277,8 +274,20 @@ INSERT INTO `message_thread_participant` (`participant_ID`, `participant_threadI
 --
 
 CREATE TABLE `survey_answerlog` (
-  `answerID` int(11) NOT NULL
+  `answerID` int(11) NOT NULL,
+  `survey_ID` int(11) NOT NULL,
+  `survey_q` int(11) NOT NULL,
+  `survey_a` varchar(150) NOT NULL,
+  `survey_stypeID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `survey_answerlog`
+--
+
+INSERT INTO `survey_answerlog` (`answerID`, `survey_ID`, `survey_q`, `survey_a`, `survey_stypeID`) VALUES
+(1, 1, 1, 'Rhalp Darren Cabrera', 1),
+(2, 1, 2, 'Degree_Specialization', 2);
 
 -- --------------------------------------------------------
 
@@ -298,7 +307,26 @@ CREATE TABLE `survey_result` (
 --
 
 INSERT INTO `survey_result` (`survey_id`, `survey_ownerID`, `survey_maxattemp`, `survey_dateTaken`) VALUES
-(0, 0, 2, '2017-10-05 18:31:53');
+(1, 1, 2, '2017-10-15 14:53:50');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `survey_type`
+--
+
+CREATE TABLE `survey_type` (
+  `stype_ID` int(11) NOT NULL,
+  `stype_name` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `survey_type`
+--
+
+INSERT INTO `survey_type` (`stype_ID`, `stype_name`) VALUES
+(1, 'single'),
+(2, 'nested');
 
 -- --------------------------------------------------------
 
@@ -439,21 +467,23 @@ CREATE TABLE `user_student_detail` (
   `student_admission` date NOT NULL,
   `student_year_grad` date NOT NULL,
   `student_department` varchar(100) NOT NULL,
-  `student_status` varchar(10) NOT NULL DEFAULT 'unregister'
+  `student_status` varchar(10) NOT NULL DEFAULT 'unregister',
+  `student_secretquestion` varchar(250) NOT NULL,
+  `student_secretanswer` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user_student_detail`
 --
 
-INSERT INTO `user_student_detail` (`student_ID`, `student_userID`, `student_img`, `student_IDNumber`, `student_fName`, `student_mName`, `student_lName`, `student_address`, `student_civilStat`, `student_dob`, `student_gender`, `student_contact`, `student_admission`, `student_year_grad`, `student_department`, `student_status`) VALUES
-(1, 1, 'temp.gif', 201310656, 'Rhalp Darren ', 'R', 'Cabrera', 'Blk 38 Lot 11 Phase 2 b Southville 2 TMC', 'Single', '1997-09-26', 'M', '09169158798', '2013-10-05', '2018-03-30', 'COMSCI', 'register'),
-(2, 0, 'temp.gif', 201410209, 'Mardical', '', 'del Mundo', 'Indang', 'Single', '1997-09-26', 'F', '09169158798', '2017-09-30', '2017-09-12', 'COMSCI', 'register'),
-(13, 0, 'temp.gif', 201410259, 'Ria', '', 'Jimenez', 'Indang', 'Single', '1997-09-26', 'F', '09169158798', '2017-09-30', '2017-09-02', 'IT', 'unregister'),
-(14, 11, 'temp.gif', 201309888, 'John Ervin', 'N', 'Villadolid', 'Naic', 'Single', '1997-09-26', 'M', '09169158798', '2017-09-30', '2016-00-00', 'COMSCI', 'register'),
-(15, 0, 'temp.gif', 201088814, 'Raouf', 'R', 'Daud', 'Indang', 'Single', '1997-09-26', 'M', '09169158798', '2017-09-30', '2016-00-00', 'IT', 'unregister'),
-(16, 0, 'temp.gif', 200901201, 'Justine', '', 'De-guzman', 'Indang', 'Single', '1997-09-26', 'M', '09169158798', '2017-09-30', '2014-00-00', 'IT', 'unregister'),
-(17, 0, 'temp.gif', 201310253, 'Andrea', 'L', 'Labbres', 'Indang', 'Single', '1997-09-26', 'F', '09169158798', '2017-09-30', '2017-00-00', 'OA', 'unregister');
+INSERT INTO `user_student_detail` (`student_ID`, `student_userID`, `student_img`, `student_IDNumber`, `student_fName`, `student_mName`, `student_lName`, `student_address`, `student_civilStat`, `student_dob`, `student_gender`, `student_contact`, `student_admission`, `student_year_grad`, `student_department`, `student_status`, `student_secretquestion`, `student_secretanswer`) VALUES
+(1, 1, 'temp.gif', 201310656, 'Rhalp Darren ', 'R', 'Cabrera', 'Blk 38 Lot 11 Phase 2 b Southville 2 TMC', 'Single', '1997-09-26', 'M', '09169158798', '2013-10-05', '2018-03-30', 'COMSCI', 'register', '', ''),
+(2, 0, 'temp.gif', 201410209, 'Mardical', '', 'del Mundo', 'Indang', 'Single', '1997-09-26', 'F', '09169158798', '2017-09-30', '2017-09-12', 'COMSCI', 'register', '', ''),
+(13, 0, 'temp.gif', 201410259, 'Ria', '', 'Jimenez', 'Indang', 'Single', '1997-09-26', 'F', '09169158798', '2017-09-30', '2017-09-02', 'IT', 'unregister', '', ''),
+(14, 11, 'temp.gif', 201309888, 'John Ervin', 'N', 'Villadolid', 'Naic', 'Single', '1997-09-26', 'M', '09169158798', '2017-09-30', '2016-00-00', 'COMSCI', 'register', '', ''),
+(15, 0, 'temp.gif', 201088814, 'Raouf', 'R', 'Daud', 'Indang', 'Single', '1997-09-26', 'M', '09169158798', '2017-09-30', '2016-00-00', 'IT', 'unregister', '', ''),
+(16, 0, 'temp.gif', 200901201, 'Justine', '', 'De-guzman', 'Indang', 'Single', '1997-09-26', 'M', '09169158798', '2017-09-30', '2014-00-00', 'IT', 'unregister', '', ''),
+(17, 0, 'temp.gif', 201310253, 'Andrea', 'L', 'Labbres', 'Indang', 'Single', '1997-09-26', 'F', '09169158798', '2017-09-30', '2017-00-00', 'OA', 'unregister', '', '');
 
 -- --------------------------------------------------------
 
@@ -503,47 +533,29 @@ CREATE TABLE `view_counter` (
 --
 
 INSERT INTO `view_counter` (`view_ID`, `view_topicID`, `view_count`) VALUES
-(1, 1, 27),
+(1, 1, 29),
 (2, 2, 152),
-(3, 3, 19),
-(4, 4, 8),
-(5, 5, 60),
-(6, 6, 94),
+(3, 3, 20),
+(4, 4, 15),
+(5, 5, 63),
+(6, 6, 119),
 (19, 22, 8),
 (20, 23, 0),
 (21, 24, 1),
 (22, 25, 2),
 (23, 26, 16),
 (24, 27, 24),
-(25, 0, 45),
-(26, 0, 44),
-(27, 0, 42),
-(28, 1, 35),
-(29, 0, 38),
-(30, 0, 35),
-(31, 0, 34),
-(32, 0, 32),
-(33, 0, 31),
+(28, 1, 37),
 (34, 29, 1),
-(35, 0, 30),
-(36, 1, 13),
+(36, 1, 15),
 (37, 2, 1),
-(38, 3, 3),
-(39, 4, 2),
-(40, 5, 2),
-(41, 6, 3),
-(42, 0, 29),
-(43, 0, 27),
-(44, 0, 23),
-(45, 0, 16),
-(46, 0, 15),
+(38, 3, 4),
+(39, 4, 9),
+(40, 5, 5),
+(41, 6, 28),
 (47, 12, 1),
-(48, 13, 3),
-(49, 14, 6),
-(50, 15, 12),
-(51, 16, 2),
-(52, 17, 1),
-(53, 18, 14);
+(53, 18, 14),
+(55, 20, 6);
 
 --
 -- Indexes for dumped tables
@@ -630,6 +642,12 @@ ALTER TABLE `survey_result`
   ADD PRIMARY KEY (`survey_id`);
 
 --
+-- Indexes for table `survey_type`
+--
+ALTER TABLE `survey_type`
+  ADD PRIMARY KEY (`stype_ID`);
+
+--
 -- Indexes for table `user_account`
 --
 ALTER TABLE `user_account`
@@ -704,7 +722,7 @@ ALTER TABLE `cvsu_department`
 -- AUTO_INCREMENT for table `forum_comment`
 --
 ALTER TABLE `forum_comment`
-  MODIFY `comment_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `comment_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `forum_comment_reply`
 --
@@ -714,7 +732,7 @@ ALTER TABLE `forum_comment_reply`
 -- AUTO_INCREMENT for table `forum_topic`
 --
 ALTER TABLE `forum_topic`
-  MODIFY `topic_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `topic_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT for table `forum_topic_likes`
 --
@@ -724,7 +742,12 @@ ALTER TABLE `forum_topic_likes`
 -- AUTO_INCREMENT for table `message_send`
 --
 ALTER TABLE `message_send`
-  MODIFY `message_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `message_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `message_send_state`
+--
+ALTER TABLE `message_send_state`
+  MODIFY `state_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `message_thread`
 --
@@ -735,6 +758,16 @@ ALTER TABLE `message_thread`
 --
 ALTER TABLE `message_thread_participant`
   MODIFY `participant_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `survey_answerlog`
+--
+ALTER TABLE `survey_answerlog`
+  MODIFY `answerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `survey_type`
+--
+ALTER TABLE `survey_type`
+  MODIFY `stype_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `user_account`
 --
@@ -774,7 +807,7 @@ ALTER TABLE `user_teacher_detail`
 -- AUTO_INCREMENT for table `view_counter`
 --
 ALTER TABLE `view_counter`
-  MODIFY `view_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `view_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 --
 -- Constraints for dumped tables
 --
