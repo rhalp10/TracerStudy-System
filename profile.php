@@ -267,7 +267,7 @@ else
         <div class="form-group">
             <label class="control-label col-lg-4">Change Picture</label>
             <div class="col-lg-4">
-                <a class="btn btn-default" data-toggle="modal" data-target="#test-modal-2">Update Picture</a>
+                <a class="btn btn-default" data-toggle="modal" data-target="#modal-changepic">Update Picture</a>
             </div>
         </div>
         <div class="form-group">
@@ -302,7 +302,7 @@ else
         <div class="form-group">
             <label class="control-label col-lg-4">Change Password</label>
             <div class="col-lg-4">
-                <a class="btn btn-default" data-toggle="modal" data-target="#test-modal-2">Update Password</a>
+                <a class="btn btn-default" data-toggle="modal" data-target="#modal-newpassword">Update Password</a>
             </div>
 
         </div>
@@ -316,27 +316,27 @@ else
          <div class="form-group">
             <label class="control-label col-lg-4">Civil Status</label>
             <div class="col-lg-4">
-                <input type="text" class="validate[required] form-control" name="lname" id="req" value="<?php echo $res_sidebar[$userType.'_lName'];?>">
+                <input type="text" class="validate[required] form-control" name="lname" id="req" value="<?php echo $res_sidebar[$userType.'_civilStat'];?>">
             </div>
 
         </div>
          <div class="form-group">
             <label class="control-label col-lg-4">Birthda Day</label>
             <div class="col-lg-4">
-                <input type="text" class="validate[required] form-control" name="lname" id="req" value="<?php echo $res_sidebar[$userType.'_lName'];?>">
+                <input type="text" class="validate[required] form-control" name="lname" id="req" value="<?php echo $res_sidebar[$userType.'_dob'];?>">
             </div>
 
         </div>
         <div class="form-group">
             <label class="control-label col-lg-4">Contact</label>
             <div class="col-lg-4">
-                <input type="text" class="validate[required] form-control" name="lname" id="req" value="<?php echo $res_sidebar[$userType.'_lName'];?>">
+                <input type="text" class="validate[required] form-control" name="lname" id="req" value="<?php echo $res_sidebar[$userType.'_contact'];?>">
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-lg-4">Secret Question</label>
             <div class="col-lg-4">
-                <input type="text" class="validate[required] form-control" name="lname" id="req" value="<?php echo $res_sidebar[$userType.'_lName'];?>">
+                <input type="text" class="validate[required] form-control" name="lname" id="req" value="<?php echo $res_sidebar[$userType.'_secretquestion'];?>">
             </div>
 
         </div>
@@ -358,7 +358,27 @@ else
 </div><!-- /.modal -->
 
 
-    <div class="modal fade" id="test-modal-2" data-modal-index="2">
+    <div class="modal fade" id="modal-changepic" data-modal-index="2" >
+  <div class="modal-dialog">
+    <div class="modal-content"  >
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Change Picture</h4>
+      </div>
+      <div class="modal-body" style="height: 250px;">
+             
+              <iframe src="http://localhost/tracer/assets/lib/image_upload/image_upload_demo.php" style="width: 100%; height: 100%;" frameBorder="0"></iframe>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+    <div class="modal fade" id="modal-newpassword" data-modal-index="2">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
