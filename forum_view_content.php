@@ -161,7 +161,7 @@
                               <form action="action/comment_add_action.php?userID_comment=<?php echo $login_id;?>&comment_topicID=<?php echo $req_encypted_postID;?>" method="POST">
                                   <textarea id="wysihtml5" class="form-control" rows="6" name="comment"></textarea>
                                   <br>
-                                      <input type="submit" value="Comment" class="btn btn-primary">
+                                      <input type="submit" name="submit-comment" value="Comment" class="btn btn-primary">
                               </form>
                           </div>
                         </div>
@@ -175,46 +175,55 @@
 
                                   <ul id="comments-list" class="comments-list">
                                     <li>
-                                      <div class="comment-main-level">
+                                      <?php 
+                                      $req_encypted_postID;
+                                      $query_verify_id = mysqli_query($con,"SELECT * FROM `forum_comment`");
+                                        //while fetching all data
+                                        while ($res_ver_id = mysqli_fetch_array($query_verify_id)) 
+                                        {
+                                          //each topic id mush be save in temp variable of check_id
+                                          $check_id = $res_ver_id['comment_topicID'];
+                                            //the requested hash checked original value if match then stored the verified value in verified_id
+                                            if (password_verify($check_id, $req_encypted_postID)) 
+                                              {
+                                               $verified_id = $check_id;//temporary value save to verified_id
+                                              }  
+                                              
+                                        }
+                                        $comment_q = mysqli_query($con,"SELECT * FROM forum_comment WHERE comment_topicID = '$verified_id' ");
+                                        while ($comment_data = mysqli_fetch_array($comment_q)) {
+                                          
+                                          ?>
+                                        <div class="comment-main-level">
                                         <!-- Avatar -->
                                         <div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg" alt=""></div>
                                         <!-- Contenedor del Comentario -->
                                         <div class="comment-box">
                                           <div class="comment-head">
-                                            <h6 class="comment-name by-author"><a href="http://creaticode.com/blog">Agustin Ortiz</a></h6>
-                                            <span>hace 20 minutos</span>
+                                            <h6 class="comment-name <?php if ($login_id == $comment_data['comment_userID']){
+                                              echo "by-author";} ?>"><a href="http://creaticode.com/blog">Agustin Ortiz</a></h6>
+                                            <span><?php echo $comment_data['comment_date']; ?></span>
                                              <i class="fa fa-reply"> Reply</i>
                                             <i class="fa fa-heart"></i>
                                           </div>
                                           <div class="comment-content">
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?
+                                            <?php echo $comment_data['comment_content']; ?>
                                           </div>
                                         </div>
-                                      </div>
+                                        </div>
+                                        <br>
+                                          <?php
+                                          }
+                                      ?>
+                                      
                                       <!-- Respuestas de los comentarios -->
-                                      <ul class="comments-list reply-list">
-                                        <li>
-                                          <!-- Avatar -->
-                                          <div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_2_zps7de12f8b.jpg" alt=""></div>
+                                     <!--  <ul class="comments-list reply-list">
+                                       
+                                        <li> -->
+                                          <!-- Avatar --><!-- 
+                                          <div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg" alt=""></div> -->
                                           <!-- Contenedor del Comentario -->
-                                          <div class="comment-box">
-                                            <div class="comment-head">
-                                              <h6 class="comment-name"><a href="http://creaticode.com/blog">Lorena Rojero</a></h6>
-                                              <span>hace 10 minutos</span>
-                                               <i class="fa fa-reply"> Reply</i>
-                                              <i class="fa fa-heart"></i>
-                                            </div>
-                                            <div class="comment-content">
-                                              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?
-                                            </div>
-                                          </div>
-                                        </li>
-
-                                        <li>
-                                          <!-- Avatar -->
-                                          <div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg" alt=""></div>
-                                          <!-- Contenedor del Comentario -->
-                                          <div class="comment-box">
+                                       <!--    <div class="comment-box">
                                             <div class="comment-head">
                                               <h6 class="comment-name by-author"><a href="http://creaticode.com/blog">Agustin Ortiz</a></h6>
                                               <span>hace 10 minutos</span>
@@ -226,26 +235,11 @@
                                             </div>
                                           </div>
                                         </li>
-                                      </ul>
+                                      </ul> -->
                                     </li>
 
                                     <li>
-                                      <div class="comment-main-level">
-                                        <!-- Avatar -->
-                                        <div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_2_zps7de12f8b.jpg" alt=""></div>
-                                        <!-- Contenedor del Comentario -->
-                                        <div class="comment-box">
-                                          <div class="comment-head">
-                                            <h6 class="comment-name"><a href="http://creaticode.com/blog">Lorena Rojero</a></h6>
-                                            <span>hace 10 minutos</span>
-                                             <i class="fa fa-reply"> Reply</i>
-                                            <i class="fa fa-heart"></i>
-                                          </div>
-                                          <div class="comment-content">
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?
-                                          </div>
-                                        </div>
-                                      </div>
+                                     
                                     </li>
                                   </ul>
                                 </div>
