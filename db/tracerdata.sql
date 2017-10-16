@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 15, 2017 at 06:22 PM
+-- Generation Time: Oct 16, 2017 at 02:30 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -105,7 +105,11 @@ CREATE TABLE `forum_comment` (
 --
 
 INSERT INTO `forum_comment` (`comment_ID`, `comment_topicID`, `comment_userID`, `comment_content`, `comment_date`) VALUES
-(1, '$2y$10$3egLl/ZYB8SM2Ul2q.IZ1.1SxDPl3JSQ1GsL/3gcbvjrrDSq0gCkC', 0, '', '2017-10-05 18:56:51');
+(4, '20', 1, 'aaaaaaaa', '2017-10-16 12:17:55'),
+(5, '20', 1, 'zxczxcxc', '2017-10-16 12:23:38'),
+(6, '20', 1, 'franz\r\n', '2017-10-16 12:24:18'),
+(7, '12', 1, 'zxczxc', '2017-10-16 12:28:07'),
+(8, '12', 1, 'zxczxczxczxc', '2017-10-16 12:28:30');
 
 -- --------------------------------------------------------
 
@@ -553,9 +557,9 @@ INSERT INTO `view_counter` (`view_ID`, `view_topicID`, `view_count`) VALUES
 (39, 4, 9),
 (40, 5, 5),
 (41, 6, 28),
-(47, 12, 1),
+(47, 12, 6),
 (53, 18, 14),
-(55, 20, 6);
+(55, 20, 39);
 
 --
 -- Indexes for dumped tables
@@ -722,7 +726,7 @@ ALTER TABLE `cvsu_department`
 -- AUTO_INCREMENT for table `forum_comment`
 --
 ALTER TABLE `forum_comment`
-  MODIFY `comment_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `comment_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `forum_comment_reply`
 --
