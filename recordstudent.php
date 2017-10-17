@@ -79,28 +79,28 @@ else
                                     <label for="text1" class="control-label col-lg-4">ID Number</label>
 
                                     <div class="col-lg-8">
-                                        <input type="text" id="text1" placeholder="ID Number" class="form-control" name="student_sinumber">
+                                        <input type="text" id="text1" placeholder="ID Number" class="form-control" name="student_sinumber" onkeyup="numberInputOnly(this);">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="text1" class="control-label col-lg-4">First Name</label>
 
                                     <div class="col-lg-8">
-                                        <input type="text" id="text1" placeholder="First Name" class="form-control" name="student_firstname">
+                                        <input type="text" id="text1" placeholder="First Name" class="form-control" name="student_firstname" onkeyup="letterInputOnly(this);">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="text1" class="control-label col-lg-4">Middle Name</label>
+                                    <label for="text1" class="control-label col-lg-4" >Middle Name</label>
 
                                     <div class="col-lg-8">
-                                        <input type="text" id="text1" placeholder="Middle Name" class="form-control" name="student_middlename">
+                                        <input type="text" id="text1" placeholder="Middle Name" class="form-control" name="student_middlename" onkeyup="letterInputOnly(this);">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="text1" class="control-label col-lg-4">Last Name</label>
 
                                     <div class="col-lg-8">
-                                        <input type="text" id="text1" placeholder="Last Name" class="form-control" name="student_lastname">
+                                        <input type="text" id="text1" placeholder="Last Name" class="form-control" name="student_lastname" onkeyup="letterInputOnly(this);">
                                     </div>
                                 </div>
                                 <div class="form-group">
