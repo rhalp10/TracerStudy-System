@@ -201,7 +201,29 @@
                                         <div class="comment-box">
                                           <div class="comment-head">
                                             <h6 class="comment-name <?php if ($login_id == $comment_data['comment_userID']){
-                                              echo "by-author";} ?>"><a href="http://creaticode.com/blog">Agustin Ortiz</a></h6>
+                                              echo "by-author";} ?>"><a href="">
+
+                                                <?php 
+                                                $cuID = $comment_data['comment_userID'];
+                                                
+                                                $q_udata = mysqli_query($con,"SELECT * FROM user_account WHERE user_ID = '$cuID'");
+                                                $r_udata = mysqli_fetch_array($q_udata);
+                                                if ($r_udata['user_level'] == '1') {
+                                                  $u_type = "student";
+                                                }
+                                                if ($r_udata['user_level'] == '2') {
+                                                  # code...teacher
+                                                  $u_type = "teacher";
+                                                }
+                                                 if ($r_udata['user_level'] == '3') {
+                                                  # code...admin
+                                                  $u_type = "admin";
+                                                }
+                                                $uID = $r_udata['user_ID'];
+                                                $q_data = mysqli_query($con,"SELECT * FROM user_".$u_type."_detail WHERE ".$u_type."_userID = '$uID'");
+                                                $r_data = mysqli_fetch_array($q_data);
+                                                echo $r_data[$u_type.'_fName']." ".$r_data[$u_type.'_mName']." ".$r_data[$u_type.'_lName'];
+                                                ?></a></h6>
                                             <span><?php echo $comment_data['comment_date']; ?></span>
                                              <i class="fa fa-reply"> Reply</i>
                                             <i class="fa fa-heart"></i>
