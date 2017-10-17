@@ -321,7 +321,7 @@ else
 
         </div>
          <div class="form-group">
-            <label class="control-label col-lg-4">Birthda Day</label>
+            <label class="control-label col-lg-4">Birth Day</label>
             <div class="col-lg-4">
                 <input type="text" class="validate[required] form-control" name="lname" id="req" value="<?php echo $res_sidebar[$userType.'_dob'];?>">
             </div>
@@ -336,7 +336,7 @@ else
         <div class="form-group">
             <label class="control-label col-lg-4">Secret Question</label>
             <div class="col-lg-4">
-                <input type="text" class="validate[required] form-control" name="lname" id="req" value="<?php echo $res_sidebar[$userType.'_secretquestion'];?>">
+                <a class="btn btn-default" data-toggle="modal" data-target="#modal-secretquestion">Update Secret Question</a>
             </div>
 
         </div>
@@ -415,6 +415,42 @@ else
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
+    <div class="modal fade" id="modal-secretquestion" data-modal-index="2">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">New Password</h4>
+      </div>
+      <div class="modal-body">
+              <form class="form-horizontal" id="updateverified" name="updateverified" action="action/update.php">
+              <div class="form-group">
+                  <label class="control-label col-lg-4">Secret Question</label>
+                  <div class="col-lg-4">
+                      <input type="text" class="validate[required] form-control" name="password" id="req" value="">
+                  </div>
+              </div>
+               <div class="form-group">
+                  <label class="control-label col-lg-4">Secret Answer</label>
+                  <div class="col-lg-4">
+                      <input type="text" class="validate[required] form-control" name="confirmpass" id="req" value="">
+                  </div>
+              </div>
+              <div class="form-group">
+              <label class="control-label col-lg-4"></label>
+              <div class="col-lg-4">
+                  <input type="Submit" class="btn btn-primary" name="update_pass" value="Submit">
+              </div>
+              </div>
+              </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 </div>
 
                           </div>
