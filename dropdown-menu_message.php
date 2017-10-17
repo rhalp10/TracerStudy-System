@@ -11,7 +11,7 @@
                 <div class="col-sm-12">Rhalp Darren Cabrera</div>
                 <div class="col-sm-11 panel_item_word_custom">mensayo sayo</div>
 
-                <div class="col-sm-1">a8:13pm</div>
+                <div class="col-sm-1">8:13pm</div>
             </div>
         </div>
         <!-- msg unread end-->
