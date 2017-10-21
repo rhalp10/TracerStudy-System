@@ -19,9 +19,9 @@ if (isset($_POST['submit-student'])) {
 if (isset($_POST['submit-teacher'])) {
 		if (empty($_POST['username']) || empty($_POST['password'])) 
 			{
-				echo "<script>alert.render('Username or Password is empty !');
-										window.location='index.php';
-									</script>";
+				echo "<script>alert('Username or Password is empty !');
+					window.location='index.php';
+				</script>";
 				// Change this to bootstrap alert
 			
 			}
