@@ -185,11 +185,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b2e1ff', end
             </form>
         </div>
         <div id="forgot" class="tab-pane">
-            <form method="POST" action="action/recovery_action.php">
-                <p class="text-muted text-center">Enter your valid e-mail</p>
-                <input type="email" placeholder="mail@domain.com" class="form-control">
+            <form method="POST" action="action/recovery_verify_user.php">
+                <p class="text-muted text-center">Enter Your Username | Student No.</p>
+                <input type="text" placeholder="Username | Student No." class="form-control" name="recovery_user">
                 <br>
-                <input class="btn btn-lg btn-danger btn-block" type="submit" name="submit" value="Recover Password">
+                <input class="btn btn-lg btn-danger btn-block" type="submit" name="recovery-submit" value="Recover Password">
             </form>
         </div>
         <div id="signup" class="tab-pane">
