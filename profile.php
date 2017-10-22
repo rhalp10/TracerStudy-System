@@ -270,33 +270,18 @@ else
                 <a class="btn btn-default" data-toggle="modal" data-target="#modal-changepic">Update Picture</a>
             </div>
         </div>
+      
         <div class="form-group">
-            <label class="control-label col-lg-4">First Name</label>
+            <label class="control-label col-lg-4">Full Name</label>
             <div class="col-lg-4">
-                <input type="text" class="validate[required] form-control" name="fname" id="req" value="<?php echo $res_sidebar[$userType.'_fName'];?>">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-lg-4">Middle Name</label>
-            <div class="col-lg-4">
-                <input type="text" class="validate[required] form-control" name="mname" id="req" value="<?php echo $res_sidebar[$userType.'_mName'];?>">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-lg-4">Last Name</label>
-            <div class="col-lg-4">
-                <input type="text" class="validate[required] form-control" name="lname" id="req" value="<?php echo $res_sidebar[$userType.'_lName'];?>">
+                <a class="btn btn-default" data-toggle="modal" data-target="#modal-name">Update Name</a>
             </div>
 
         </div>
         <div class="form-group">
             <label class="control-label col-lg-4">Gender</label>
             <div class="col-lg-4">
-                <select name="gender" id="sport" class="validate[required] form-control">
-                    <option value="">Choose a gender</option>
-                    <option value="M">Male</option>
-                    <option value="F">Female</option>
-                </select>
+              <a class="btn btn-default" data-toggle="modal" data-target="#modal-gender">Update Gender</a>
             </div>
         </div>
         <div class="form-group">
@@ -309,28 +294,28 @@ else
          <div class="form-group">
             <label class="control-label col-lg-4">Address</label>
             <div class="col-lg-4">
-                <input type="text" class="validate[required] form-control" name="lname" id="req" value="<?php echo $res_sidebar[$userType.'_lName'];?>">
+                <a class="btn btn-default" data-toggle="modal" data-target="#modal-address">Update Address</a>
             </div>
 
         </div>
          <div class="form-group">
             <label class="control-label col-lg-4">Civil Status</label>
             <div class="col-lg-4">
-                <input type="text" class="validate[required] form-control" name="lname" id="req" value="<?php echo $res_sidebar[$userType.'_civilStat'];?>">
+                <a class="btn btn-default" data-toggle="modal" data-target="#modal-cstatus">Update Status</a>
             </div>
 
         </div>
          <div class="form-group">
             <label class="control-label col-lg-4">Birth Day</label>
             <div class="col-lg-4">
-                <input type="text" class="validate[required] form-control" name="lname" id="req" value="<?php echo $res_sidebar[$userType.'_dob'];?>">
+                 <a class="btn btn-default" data-toggle="modal" data-target="#modal-bday">Update Birthday</a>
             </div>
 
         </div>
         <div class="form-group">
             <label class="control-label col-lg-4">Contact</label>
             <div class="col-lg-4">
-                <input type="text" class="validate[required] form-control" name="lname" id="req" value="<?php echo $res_sidebar[$userType.'_contact'];?>">
+                <a class="btn btn-default" data-toggle="modal" data-target="#modal-contact">Update Contact</a>
             </div>
         </div>
         <div class="form-group">
@@ -340,12 +325,6 @@ else
             </div>
 
         </div>
-         <div class="form-group">
-         <label class="control-label col-lg-4"></label>
-         <div class="col-lg-4">
-             <input type="Submit" class="btn btn-primary" name="update_detail" value="Submit">
-         </div>
-         </div>
       </form>
             
       </div>
@@ -386,17 +365,17 @@ else
         <h4 class="modal-title">New Password</h4>
       </div>
       <div class="modal-body">
-              <form class="form-horizontal" id="updateverified" name="updateverified" action="action/update.php">
+              <form class="form-horizontal" id="update_password" name="update_password" action="action/update.php">
               <div class="form-group">
                   <label class="control-label col-lg-4">Password</label>
                   <div class="col-lg-4">
-                      <input type="text" class="validate[required] form-control" name="password" id="req" value="">
+                      <input type="password" class="validate[required] form-control" name="new_password" id="req" value="">
                   </div>
               </div>
                <div class="form-group">
                   <label class="control-label col-lg-4">Confirm Password</label>
                   <div class="col-lg-4">
-                      <input type="text" class="validate[required] form-control" name="confirmpass" id="req" value="">
+                      <input type="password" class="validate[required] form-control" name="new_repassword" id="req" value="">
                   </div>
               </div>
               <div class="form-group">
@@ -420,26 +399,26 @@ else
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title">New Password</h4>
+        <h4 class="modal-title">New Recovery Secret Question and Answer</h4>
       </div>
       <div class="modal-body">
-              <form class="form-horizontal" id="updateverified" name="updateverified" action="action/update.php">
+              <form class="form-horizontal" id="update_squestion" name="update_squestion" action="action/updateprofile.php">
               <div class="form-group">
                   <label class="control-label col-lg-4">Secret Question</label>
                   <div class="col-lg-4">
-                      <input type="text" class="validate[required] form-control" name="password" id="req" value="">
+                      <input type="text" class="validate[required] form-control" name="new_squestion" id="req" value="<?php echo $res_sidebar[$userType.'_secretquestion'];?>">
                   </div>
               </div>
                <div class="form-group">
                   <label class="control-label col-lg-4">Secret Answer</label>
                   <div class="col-lg-4">
-                      <input type="text" class="validate[required] form-control" name="confirmpass" id="req" value="">
+                      <input type="text" class="validate[required] form-control" name="new_sanswer" id="req" value="<?php echo $res_sidebar[$userType.'_secretanswer'];?>">
                   </div>
               </div>
               <div class="form-group">
               <label class="control-label col-lg-4"></label>
               <div class="col-lg-4">
-                  <input type="Submit" class="btn btn-primary" name="update_pass" value="Submit">
+                  <input type="Submit" class="btn btn-primary" name="update_squestion" value="Submit">
               </div>
               </div>
               </form>
@@ -451,6 +430,223 @@ else
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+
+<div class="modal fade" id="modal-contact" data-modal-index="2">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">New Contact</h4>
+      </div>
+      <div class="modal-body">
+              <form class="form-horizontal" id="update_contact" name="update_contact" action="action/updateprofile.php">
+              <div class="form-group">
+                  <label class="control-label col-lg-4">Contact</label>
+                  <div class="col-lg-4">
+                      <input type="text" class="validate[required] form-control" name="new_contact" id="req" value="<?php echo $res_sidebar[$userType.'_contact'];?>">
+                  </div>
+              </div>
+              <div class="form-group">
+              <label class="control-label col-lg-4"></label>
+              <div class="col-lg-4">
+                  <input type="Submit" class="btn btn-primary" name="update_contact" value="Submit">
+              </div>
+              </div>
+              </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+<div class="modal fade" id="modal-bday" data-modal-index="2">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Edit Birthday</h4>
+      </div>
+      <div class="modal-body">
+              <form class="form-horizontal" id="update_bday" name="update_bday" action="action/updateprofile.php">
+              <div class="form-group">
+                  <label class="control-label col-lg-4">Birthday</label>
+                  <div class="col-lg-4">
+                      <input type="date" class="validate[required] form-control" name="new_bday" id="req" value="<?php echo $res_sidebar[$userType.'_dob'];?>">
+                  </div>
+              </div>
+              <div class="form-group">
+              <label class="control-label col-lg-4"></label>
+              <div class="col-lg-4">
+                  <input type="Submit" class="btn btn-primary" name="update_bday" value="Submit">
+              </div>
+              </div>
+              </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<div class="modal fade" id="modal-address" data-modal-index="2">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Edit Address</h4>
+      </div>
+      <div class="modal-body">
+              <form class="form-horizontal" id="update_address" name="update_address" action="action/updateprofile.php">
+              <div class="form-group">
+                  <label class="control-label col-lg-4">Address</label>
+                  <div class="col-lg-4">
+                      <input type="text" class="validate[required] form-control" name="new_address" id="req" value="<?php echo $res_sidebar[$userType.'_address'];?>">
+                  </div>
+              </div>
+              <div class="form-group">
+              <label class="control-label col-lg-4"></label>
+              <div class="col-lg-4">
+                  <input type="Submit" class="btn btn-primary" name="update_address" value="Submit">
+              </div>
+              </div>
+              </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<div class="modal fade" id="modal-cstatus" data-modal-index="2">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Edit Civil Status</h4>
+      </div>
+      <div class="modal-body">
+              <form class="form-horizontal" id="update_cstatus" name="update_cstatus" action="action/updateprofile.php">
+              <div class="form-group">
+                  <label class="control-label col-lg-4">Civil Status</label>
+                  <div class="col-lg-4">
+                    <select name="selected_cstatus" id="sport" class="validate[required] form-control">
+                        <option value="">Choose your status</option>
+                        <option value="Single">Single</option>
+                        <option value="Married">Married</option>
+                        <option value="Divorced">Divorced</option>
+                        <option value="Widowed">Widowed</option>
+                    </select>
+                  </div>
+              </div>
+              <div class="form-group">
+              <label class="control-label col-lg-4"></label>
+              <div class="col-lg-4">
+                  <input type="Submit" class="btn btn-primary" name="update_cstatus" value="Submit">
+              </div>
+              </div>
+              </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<div class="modal fade" id="modal-gender" data-modal-index="2">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Edit Gender</h4>
+      </div>
+      <div class="modal-body">
+              <form class="form-horizontal" id="update_gender" name="update_gender" action="action/updateprofile.php">
+              <div class="form-group">
+                  <label class="control-label col-lg-4">Gender</label>
+                  <div class="col-lg-4">
+                    <select name="selected_gender" id="sport" class="validate[required] form-control">
+                        <option value="">Choose a gender</option>
+                        <option value="M">Male</option>
+                        <option value="F">Female</option>
+                    </select>
+                  </div>
+              </div>
+              <div class="form-group">
+              <label class="control-label col-lg-4"></label>
+              <div class="col-lg-4">
+                  <input type="Submit" class="btn btn-primary" name="update_gender" value="Submit">
+              </div>
+              </div>
+              </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="modal-name" data-modal-index="2">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Edit Full Name</h4>
+      </div>
+      <div class="modal-body">
+              <form class="form-horizontal" id="update_name" name="update_name" action="action/updateprofile.php">
+             
+              <div class="form-group">
+              <label class="control-label col-lg-4">First Name</label>
+              <div class="col-lg-4">
+                  <input type="text" class="validate[required] form-control" name="update_fname" id="req" value="<?php echo $res_sidebar[$userType.'_fName'];?>">
+              </div>
+              </div>
+              <div class="form-group">
+                  <label class="control-label col-lg-4">Middle Name</label>
+                  <div class="col-lg-4">
+                      <input type="text" class="validate[required] form-control" name="update_mname" id="req" value="<?php echo $res_sidebar[$userType.'_mName'];?>">
+                  </div>
+              </div>
+               <div class="form-group">
+                  <label class="control-label col-lg-4">Last Name</label>
+                  <div class="col-lg-4">
+                      <input type="text" class="validate[required] form-control" name="update_lname" id="req" value="<?php echo $res_sidebar[$userType.'_lName'];?>">
+                  </div>
+              </div>
+              <div class="form-group">
+              <label class="control-label col-lg-4"></label>
+              <div class="col-lg-4">
+                  <input type="Submit" class="btn btn-primary" name="update_name" value="Submit">
+              </div>
+              </div>
+              </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
 </div>
 
                           </div>
