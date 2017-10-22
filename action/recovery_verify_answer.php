@@ -6,6 +6,10 @@ $con = mysqli_connect('localhost','root','','tracerdata') or die("ERROR");
 if (isset($_POST['validate-answer'])) {
 	$recovery_pass = $_POST['recovery_answer'];
 	$verify_user = $_REQUEST['user'];
+	$recovery_pass = stripslashes($recovery_pass);
+	$verify_user = stripslashes($verify_user);
+	$recovery_pass = mysqli_real_escape_string($con,$recovery_pass);
+  	$verify_user = mysqli_real_escape_string($con,$verify_user);
 	$ver = mysqli_query($con,"SELECT `user_ID`,`user_level`,`user_name` FROM `user_account` WHERE `user_name` = '$verify_user'");
 	$ver_res = mysqli_fetch_array($ver);
 	
