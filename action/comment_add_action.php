@@ -6,7 +6,6 @@ if (isset($_POST['submit-comment'])) {
 	$comment = $_POST['comment'];
 	$owner = $_REQUEST['userID_comment'];
 	$topicID = $_REQUEST['comment_topicID'];
-
 	$comment = stripslashes($comment);
 	$owner = stripslashes($owner);
 	$topicID = stripslashes($topicID);
