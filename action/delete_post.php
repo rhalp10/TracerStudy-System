@@ -4,6 +4,8 @@
 $con = mysqli_connect('localhost','root','','tracerdata') or die("ERROR");
 // requested post data id
 $req_encypted_postID = $_REQUEST['req_encypted_postID'];
+$req_encypted_postID = stripslashes($req_encypted_postID);
+$req_encypted_postID = mysqli_real_escape_string($con,$req_encypted_postID);
 /*FOR VERIFYING topic requested HASHED ID*/
 // selecting all data from database
 $query_verify_id = mysqli_query($con,"SELECT * FROM `forum_topic`");
