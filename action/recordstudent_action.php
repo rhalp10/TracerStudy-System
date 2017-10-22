@@ -37,10 +37,5 @@
 		echo "<script>alert('Successfully Added!');
 												window.location='../recordstudent.php';
 											</script>";
-		
-		
-		
-		
-		
 	}
 ?>
