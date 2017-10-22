@@ -81,7 +81,7 @@
                                     <div class="modal-body">
                                     <center>
                                     <h1>Are you sure ?</h1>
-                                      <a class="btn btn-success" href=""><?php echo $pin_stat?></a>
+                                      <a class="btn btn-success" href="action/post_status.php?stat<?php echo $pin_stat?>"><?php echo $pin_stat?></a>
                                       <a class="btn btn-danger"  data-dismiss="modal">CANCEL</a>
                                       </center>
                                     </div>
