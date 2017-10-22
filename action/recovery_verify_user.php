@@ -6,7 +6,8 @@ $con = mysqli_connect('localhost','root','','tracerdata') or die("ERROR");
 if (isset($_POST['recovery-submit'])) {
 	
 	$verify_user = $_POST['recovery_user'];
-
+  $verify_user = stripslashes($verify_user);
+  $verify_user = mysqli_real_escape_string($con,$verify_user);
 	
 
 	$ver = mysqli_query($con,"SELECT `user_ID`,`user_level`,`user_name` FROM `user_account` WHERE `user_name` = '$verify_user'");
