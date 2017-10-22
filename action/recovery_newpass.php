@@ -7,6 +7,13 @@ if (isset($_POST['validate-answer'])) {
 	$verify_user = $_REQUEST['user'];
 	$password = $_POST['password'];
 	$re_password = $_POST['re_password'];
+	$verify_user = stripslashes($verify_user);
+	$password = stripslashes($password);
+	$re_password = stripslashes($re_password);
+	$verify_user = mysqli_real_escape_string($con,$verify_user);
+	$password = mysqli_real_escape_string($con,$password);
+	$re_password = mysqli_real_escape_string($con,$re_password);
+
 
 	$ver = mysqli_query($con,"SELECT `user_ID`,`user_name` FROM `user_account` WHERE `user_name` = '$verify_user'");
 	$ver_res = mysqli_fetch_array($ver);
