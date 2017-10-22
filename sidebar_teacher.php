@@ -20,11 +20,11 @@ $userType = "teacher";
                                     <h5 class="media-heading"><?php echo $res_sidebar['teacher_fName'];?></h5>
                                     <ul class="list-unstyled user-info">
                                         <li><?php echo $userType  ?></li>
-                                        <li>Last Access : <br>
-                                            <small><i class="fa fa-calendar"></i>&nbsp;16 Mar 16:32</small>
-                                        </li>
                                         <li>
                                             <small><i class="fa fa-edit"></i>&nbsp;Posts: <a href="" style="color: white;"><?php echo $res_count_post?></a></small>
+                                        </li>
+                                        <li> &nbsp;<br>
+                                            &nbsp;
                                         </li>
                                     </ul>
                                 </div>
