@@ -63,7 +63,7 @@ else
                             <div class="main-bar">
                             <ol class="breadcrumb">
                               <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-                              <li class="breadcrumb-item active"> Record Student Detail</li>
+                              <li class="breadcrumb-item active"> Record Teacher Detail</li>
                             </ol>
                             </div>
                             <!-- /.main-bar -->
@@ -71,43 +71,64 @@ else
                         <div class="inner bg-light lter">
                             <div class="box col-sm-5">
                              <header>
-                              <h5>Add Student Record</h5>
+                              <h5>Add Teacher Record</h5>
                              </header>
                              <div class="body">
-                                <form class="form-horizontal" method="POST" action="action/recordstudent_action.php">
+                                <form class="form-horizontal" method="POST" action="action/recordteacher_action.php">
                                 <div class="form-group">
-                                    <label for="text1" class="control-label col-lg-4">ID Number</label>
+                                    <label for="text1" class="control-label col-lg-4">Username</label>
 
                                     <div class="col-lg-8">
-                                        <input type="text" id="text1" placeholder="ID Number" class="form-control" name="student_sinumber" onkeyup="numberInputOnly(this);">
+                                        <input type="text" id="Username" placeholder="Username" class="form-control" name="teacher_username" >
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="text1" class="control-label col-lg-4">Password</label>
+
+                                    <div class="col-lg-8">
+                                        <input type="text" id="text1" placeholder="Password" class="form-control" name="teacher_Password" >
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="text1" class="control-label col-lg-4">Confirm Password</label>
+
+                                    <div class="col-lg-8">
+                                        <input type="text" id="text1" placeholder="Confirm Password" class="form-control" name="teacher_rePassword" >
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="text1" class="control-label col-lg-4">Faculty ID</label>
+
+                                    <div class="col-lg-8">
+                                        <input type="text" id="text1" placeholder="ID Number" class="form-control" name="teacher_finumber" onkeyup="numberInputOnly(this);">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="text1" class="control-label col-lg-4">First Name</label>
 
                                     <div class="col-lg-8">
-                                        <input type="text" id="text1" placeholder="First Name" class="form-control" name="student_firstname" onkeyup="letterInputOnly(this);">
+                                        <input type="text" id="text1" placeholder="First Name" class="form-control" name="teacher_firstname" onkeyup="letterInputOnly(this);">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="text1" class="control-label col-lg-4" >Middle Name</label>
 
                                     <div class="col-lg-8">
-                                        <input type="text" id="text1" placeholder="Middle Name" class="form-control" name="student_middlename" onkeyup="letterInputOnly(this);">
+                                        <input type="text" id="text1" placeholder="Middle Name" class="form-control" name="teacher_middlename" onkeyup="letterInputOnly(this);">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="text1" class="control-label col-lg-4">Last Name</label>
 
                                     <div class="col-lg-8">
-                                        <input type="text" id="text1" placeholder="Last Name" class="form-control" name="student_lastname" onkeyup="letterInputOnly(this);">
+                                        <input type="text" id="text1" placeholder="Last Name" class="form-control" name="teacher_lastname" onkeyup="letterInputOnly(this);">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="text1" class="control-label col-lg-4">Address</label>
 
                                     <div class="col-lg-8">
-                                        <input type="text" id="text1" placeholder="Address" class="form-control" name="student_adress">
+                                        <input type="text" id="text1" placeholder="Address" class="form-control" name="teacher_adress">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -117,7 +138,7 @@ else
                                     <?php 
                                     $query_dep = mysqli_query($con,"SELECT * FROM `cvsu_department`");
                                     ?>
-                                        <select class="form-control" name="student_department">
+                                        <select class="form-control" name="teacher_adress_department">
                                         <?php
                                         while ($res_dep = mysqli_fetch_array($query_dep)) {
                                         
@@ -129,30 +150,9 @@ else
                                         </select>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="text1" class="control-label col-lg-4">Year Admission</label>
-
-                                    <div class="col-lg-8">
-                                    <div class="input-group date" id="">
-                                        <input type="date" class="form-control" name="student_year_admission">
-                                        <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span>
-                                      </span>
-                                    </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="text1" class="control-label col-lg-4">Year Graduate</label>
-
-                                    <div class="col-lg-8">
-                                    <div class="input-group date" id="">
-                                        <input type="date" class="form-control" name="student_year_grad">
-                                        <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span>
-                                      </span>
-                                    </div>
-                                    </div>
-                                </div>
+                                
                                 <!-- /.form-group -->
-                                <input class="btn btn-success" type="submit" name="submit_recordstudent" value="Submit">
+                                <input class="btn btn-success" type="submit" name="submit_recordteacher" value="Submit">
                             </form>
                              </div>
                             </div>
@@ -166,15 +166,11 @@ else
                                     <tr>
                                         <th>Name</th>
                                         <th>Department</th>
-                                        <th>Year Admitted</th>
-                                        <th>Year graduated</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tfoot>
                                     <tr>
-                                      <th></th>
-                                      <th></th>
                                       <th></th>
                                       <th></th>
                                       <th></th>
@@ -190,8 +186,6 @@ else
                                     <tr>
                                         <td><?php echo $result_student_detail['student_fName']." ".$result_student_detail['student_mName']." ".$result_student_detail['student_lName']; ?></td>
                                         <td class="text-center"><?php echo $result_student_detail['student_department'] ;?></td>
-                                        <td class="text-center"><?php echo $result_student_detail['student_admission'] ;?></td>
-                                        <td class="text-center"><?php echo $result_student_detail['student_year_grad'] ;?></td>
                                         <td class="text-center"><div class="btn-group">
 
                                           <button type="button" class="btn btn-metis-5" onclick="editFunction(<?php echo $student_ID ?>)"><i class="fa fa-edit"></i></button>
