@@ -78,30 +78,50 @@
 ini_set('display_errors', 1);
 ini_set('error_reporting', E_ERROR);
 $con = mysqli_connect('localhost','root','','tracerdata') or die("ERROR");
+//requested owner id
+$ownerID = $_REQUEST['ownerID'];
+$ownerID = stripcslashes($ownerID);
+$ownerID = mysqli_escape_string($con,$ownerID);
+
 if (isset($_POST['submit-survey'])) {
 	$sql = mysqli_query($con,"SELECT survey_maxattemp as maxattemp FROM `survey_result` WHERE survey_ownerID = '2';");
 	$attemp = mysqli_fetch_array($sql);
+
 	if ($attemp['maxattemp'] != 0 ) 
 	{
-	for ($i=1; $i <=15; $i++) { 
+	for ($i=1; $i <15; $i++) { 
+			
 			
 			if ($_POST['U_AB_BS'.$i]) {
-			echo  $_POST['U_AB_BS'.$i]."<br>";
+				$U_AB_BS = $_POST['U_AB_BS'.$i];
+				$U_AB_BS = stripcslashes($U_AB_BS);
+				$U_AB_BS = mysqli_escape_string($con,$U_AB_BS);
+			echo  $U_AB_BS."<br>";
 			}
 			else
 			{
 				echo "empty<br>";
 			}
 			if ($_POST['G_MS_MA_PHD'.$i]) {
-				echo  $_POST['G_MS_MA_PHD'.$i]."<br>";
+				$G_MS_MA_PHD = $_POST['G_MS_MA_PHD'.$i];
+				$G_MS_MA_PHD = stripcslashes($G_MS_MA_PHD);
+				$G_MS_MA_PHD = mysqli_escape_string($con,$G_MS_MA_PHD);
+				echo  $G_MS_MA_PHD ."<br>";
 			}
 			else
 			{
 				echo "empty<br>";
 			}
-			if ($i == 15) {
+			echo $i."<br>";
+			if ($i+1 == 15) {
 				if ($_POST['Other_q2']) {
-					echo $_POST['Other_q2']."<br>";
+					$Other_q2 = $_POST['Other_q2'];
+					$Other_q2 = stripcslashes($Other_q2);
+					$Other_q2 = mysqli_escape_string($con,$Other_q2);
+					echo $Other_q2."<br>";
+					$sql_q1 = "INSERT INTO `survey_question1` (`survey_qID`, `survey_ownerID`, `row`, `col1`, `col2`) ";
+					$sql_q1 .= " VALUES (NULL, '', '15', 'other', '$Other_q2') ";
+
 				}
 				else
 				{
@@ -110,8 +130,9 @@ if (isset($_POST['submit-survey'])) {
 			
 				}
 			}
-
-
+			$sql_q1 = "INSERT INTO `survey_question1` (`survey_qID`, `survey_ownerID`, `row`, `col1`, `col2`) ";
+			$sql_q1 .= " VALUES (NULL, '', '$i', '$U_AB_B', '$G_MS_MA_PHD')";
+			
 
 		}
 
@@ -140,6 +161,58 @@ if (isset($_POST['submit-survey'])) {
 		$ProbsolbSkill = $_POST['ProbsolbSkill'];//4
 		$CritThinkSkill = $_POST['CritThinkSkill'];//5
 		$Other_q6 = $_POST['Other_q6'];//6
+		$Salaries_benefits = stripslashes($Salaries_benefits);
+		$Career_challenge =  stripslashes($Career_challenge);
+		$Related_to_special_skills = stripslashes($Related_to_special_skills);
+		$Proximity_to_residence =  stripslashes($Proximity_to_residence);
+		$Other_q2 =  stripslashes($Other_q2);
+		$FJ_RankCleric =  stripslashes($FJ_RankCleric);
+		$CPJ_RankCleric = stripslashes($CPJ_RankCleric);
+		$FJ_ProTecSup =  stripslashes($FJ_ProTecSup);
+		$CPJ_ProTecSup =  stripslashes($CPJ_ProTecSup);
+		$FJ_Magex =  stripslashes($FJ_Magex);
+		$CPJ_Magex =  stripslashes($CPJ_Magex);
+		$FJ_SelfEmp =  stripslashes($FJ_SelfEmp);
+		$CPJ_SelfEmp =  stripslashes($CPJ_SelfEmp);
+		$Below5k =  stripslashes($SalariBelow5kes_benefits);
+		$k5lessthan10k =  stripslashes($k5lessthan10k);
+		$k10lessthan15k =  stripslashes($k10lessthan15k);
+		$k15lessthan20k =  stripslashes($k15lessthan20k);
+		$k20lessthan25k =  stripslashes($k20lessthan25k);
+		$k25andabove =  stripslashes($k25andabove);
+	 	$Communication_skills =  stripslashes($Communication_skills);
+		$HumRelSkills =  stripslashes($HumRelSkills);
+		$EntreSkill =  stripslashes($EntreSkill);
+		$ProbsolbSkill =  stripslashes($ProbsolbSkill);
+		$CritThinkSkill =  stripslashes($CritThinkSkill);
+		$Other_q6 =  stripslashes($Other_q6);
+
+		$Salaries_benefits = mysqli_real_escape_string($con,$Salaries_benefits);
+		$Career_challenge =  mysqli_real_escape_string($con,$Career_challenge);
+		$Related_to_special_skills = mysqli_real_escape_string($con,$Related_to_special_skills);
+		$Proximity_to_residence =  mysqli_real_escape_string($con,$Proximity_to_residence);
+		$Other_q2 =  mysqli_real_escape_string($con,$Other_q2);
+		$FJ_RankCleric =  mysqli_real_escape_string($con,$FJ_RankCleric);
+		$CPJ_RankCleric = mysqli_real_escape_string($con,$CPJ_RankCleric);
+		$FJ_ProTecSup =  mysqli_real_escape_string($con,$FJ_ProTecSup);
+		$CPJ_ProTecSup =  mysqli_real_escape_string($con,$CPJ_ProTecSup);
+		$FJ_Magex =  mysqli_real_escape_string($con,$FJ_Magex);
+		$CPJ_Magex = mysqli_real_escape_string($con,$CPJ_Magex);
+		$FJ_SelfEmp =  mysqli_real_escape_string($con,$FJ_SelfEmp);
+		$CPJ_SelfEmp =  mysqli_real_escape_string($con,$CPJ_SelfEmp);
+		$Below5k = mysqli_real_escape_string($con,$Below5k);
+		$k5lessthan10k =  mysqli_real_escape_string($con,$k5lessthan10k);
+		$k10lessthan15k =  mysqli_real_escape_string($con,$k10lessthan15k);
+		$k15lessthan20k =  mysqli_real_escape_string($con,$k15lessthan20k);
+		$k20lessthan25k =  mysqli_real_escape_string($con,$k20lessthan25k);
+		$k25andabove =  mysqli_real_escape_string($con,$k25andabove);
+	 	$Communication_skills =  mysqli_real_escape_string($con,$Communication_skills);
+		$HumRelSkills =  mysqli_real_escape_string($con,$HumRelSkills);
+		$EntreSkill =  mysqli_real_escape_string($con,$EntreSkill);
+		$ProbsolbSkill =  mysqli_real_escape_string($con,$ProbsolbSkill);
+		$CritThinkSkill =  mysqli_real_escape_string($con,$CritThinkSkill);
+		$Other_q6 =  mysqli_real_escape_string($con,$Other_q6);
+
 		echo "QUESTION NO.2<br>";
 		
 		if ($Salaries_benefits == 'yes') {
@@ -334,10 +407,10 @@ if (!empty($Communication_skills) || !empty($HumRelSkills)  || !empty($EntreSkil
 		
 		
 		// if already perform
-		//SELECT survey_maxattemp as maxattemp FROM survey_result WHERE WHERE survey_ownerID = '$login_id;
+		//SELECT survey_maxattemp as maxattemp FROM survey_result WHERE WHERE survey_ownerID = '$ownerID;
 		//$update_maxattemp = attemp['data'];
 		// $update_maxattemp -= 1;
-		//UPDATE `survey_result` SET `survey_maxattemp` = '$update_maxattemp' WHERE survey_ownerID = '$login_id';
+		//UPDATE `survey_result` SET `survey_maxattemp` = '$update_maxattemp' WHERE survey_ownerID = '$ownerID';
 	}
 	else
 	{
