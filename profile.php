@@ -365,7 +365,7 @@ else
         <h4 class="modal-title">New Password</h4>
       </div>
       <div class="modal-body">
-              <form class="form-horizontal" id="update_password" name="update_password" action="action/update.php">
+              <form class="form-horizontal" id="update_password" method="POST" action="action/update.php">
               <div class="form-group">
                   <label class="control-label col-lg-4">Password</label>
                   <div class="col-lg-4">
@@ -402,7 +402,7 @@ else
         <h4 class="modal-title">New Recovery Secret Question and Answer</h4>
       </div>
       <div class="modal-body">
-              <form class="form-horizontal" id="update_squestion" name="update_squestion" action="action/updateprofile.php">
+              <form class="form-horizontal" id="update_squestion"  method="POST" action="action/updateprofile.php">
               <div class="form-group">
                   <label class="control-label col-lg-4">Secret Question</label>
                   <div class="col-lg-4">
@@ -439,11 +439,11 @@ else
         <h4 class="modal-title">New Contact</h4>
       </div>
       <div class="modal-body">
-              <form class="form-horizontal" id="update_contact" name="update_contact" action="action/updateprofile.php">
+              <form class="form-horizontal" id="update_contact" method="POST"  action="action/updateprofile.php">
               <div class="form-group">
                   <label class="control-label col-lg-4">Contact</label>
                   <div class="col-lg-4">
-                      <input type="text" class="validate[required] form-control" name="new_contact" id="req" value="<?php echo $res_sidebar[$userType.'_contact'];?>">
+                      <input type="text" class="validate[required] form-control" name="new_contact" id="req" value="<?php echo $res_sidebar[$userType.'_contact'];?>" maxlength="11" onkeyup="numberInputOnly(this);" >
                   </div>
               </div>
               <div class="form-group">
@@ -472,7 +472,7 @@ else
         <h4 class="modal-title">Edit Birthday</h4>
       </div>
       <div class="modal-body">
-              <form class="form-horizontal" id="update_bday" name="update_bday" action="action/updateprofile.php">
+              <form class="form-horizontal" id="update_bday" method="POST"  action="action/updateprofile.php">
               <div class="form-group">
                   <label class="control-label col-lg-4">Birthday</label>
                   <div class="col-lg-4">
@@ -504,7 +504,7 @@ else
         <h4 class="modal-title">Edit Address</h4>
       </div>
       <div class="modal-body">
-              <form class="form-horizontal" id="update_address" name="update_address" action="action/updateprofile.php">
+              <form class="form-horizontal" id="update_address" method="POST"  action="action/updateprofile.php">
               <div class="form-group">
                   <label class="control-label col-lg-4">Address</label>
                   <div class="col-lg-4">
@@ -536,7 +536,7 @@ else
         <h4 class="modal-title">Edit Civil Status</h4>
       </div>
       <div class="modal-body">
-              <form class="form-horizontal" id="update_cstatus" name="update_cstatus" action="action/updateprofile.php">
+              <form class="form-horizontal" id="update_cstatus" method="POST"  action="action/updateprofile.php">
               <div class="form-group">
                   <label class="control-label col-lg-4">Civil Status</label>
                   <div class="col-lg-4">
@@ -574,7 +574,7 @@ else
         <h4 class="modal-title">Edit Gender</h4>
       </div>
       <div class="modal-body">
-              <form class="form-horizontal" id="update_gender" name="update_gender" action="action/updateprofile.php">
+              <form class="form-horizontal" id="update_gender" method="POST"  action="action/updateprofile.php">
               <div class="form-group">
                   <label class="control-label col-lg-4">Gender</label>
                   <div class="col-lg-4">
@@ -609,7 +609,7 @@ else
         <h4 class="modal-title">Edit Full Name</h4>
       </div>
       <div class="modal-body">
-              <form class="form-horizontal" id="update_name" name="update_name" action="action/updateprofile.php">
+              <form class="form-horizontal" id="update_name" method="POST"  action="action/updateprofile.php">
              
               <div class="form-group">
               <label class="control-label col-lg-4">First Name</label>
