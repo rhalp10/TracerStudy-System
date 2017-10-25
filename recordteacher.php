@@ -178,14 +178,19 @@ else
                                   </tfoot>
                                   <tbody>
                                   <?php 
-                                  $query_student_detail = mysqli_query($con,"SELECT * FROM user_student_detail");
-                                  while ($result_student_detail = mysqli_fetch_array($query_student_detail)) 
+                                  $query_teacher_detail = mysqli_query($con,"SELECT * FROM user_teacher_detail");
+                                  while ($result_teacher_detail = mysqli_fetch_array($query_teacher_detail)) 
                                     {
-                                        $student_ID = $result_student_detail['student_ID'];
+                                        $teacher_ID = $result_teacher_detail['teacher_ID'];
                                     ?>
                                     <tr>
-                                        <td><?php echo $result_student_detail['student_fName']." ".$result_student_detail['student_mName']." ".$result_student_detail['student_lName']; ?></td>
-                                        <td class="text-center"><?php echo $result_student_detail['student_department'] ;?></td>
+                                        <td><?php echo $result_teacher_detail['teacher_fName']." ".$result_teacher_detail['teacher_mName']." ".$result_teacher_detail['teacher_lName']; ?></td>
+                                        <td class="text-center"><?php 
+                                        $teacher_department = $result_teacher_detail['teacher_department'] ;
+                                        $dep_qry = mysqli_query($con,"SELECT * FROM `cvsu_department` WHERE `department_ID` = '$teacher_department'");
+                                        $dep_result = mysqli_fetch_array($dep_qry);
+                                        echo $dep_result['department_name'];
+                                        ?></td>
                                         <td class="text-center"><div class="btn-group">
 
                                           <button type="button" class="btn btn-metis-5" onclick="editFunction(<?php echo $student_ID ?>)"><i class="fa fa-edit"></i></button>
