@@ -1,6 +1,15 @@
 <?php 
 include('../session.php'); 
 $con = mysqli_connect('localhost','root','','tracerdata') or die("ERROR");
+if ($login_level == '1') {
+	$user_type = "student";
+}
+if ($login_level == '2') {
+	$user_type = "teacher";
+}
+if ($login_level == '3') {
+	$user_type = "admin";
+}
 if (isset($_POST['update_picture'])) {
 	# code...update_picture
 }
@@ -15,6 +24,12 @@ else if (isset($_POST['update_name'])) {
 	$update_fname = mysqli_real_escape_string($con,$update_fname);
 	$update_mname = mysqli_real_escape_string($con,$update_mname);
 	$update_lname = mysqli_real_escape_string($con,$update_lname);
+	$sql = "UPDATE `user_".$user_type."_detail` SET `".$user_type."_fName` = '$update_fname',`".$user_type."_mName` = '$update_mname',`".$user_type."_lName` = '$update_lname' WHERE `".$user_type."_userID` = '$login_id'";
+	mysqli_query($con,$sql);
+
+	echo "<script>alert('successfully Update!');
+				window.location='../profile.php';
+			</script>";
 }
 
 else if (isset($_POST['update_gender'])) {
@@ -22,6 +37,12 @@ else if (isset($_POST['update_gender'])) {
 	$selected_gende = $_POST['selected_gender'];
 	$selected_gender = stripslashes($selected_gender);
 	$selected_gender = mysqli_real_escape_string($con,$selected_gender);
+	$sql = "UPDATE `user_".$user_type."_detail` SET `".$user_type."_gender` = '$selected_gender' WHERE `".$user_type."_userID` = '$login_id'";
+	mysqli_query($con,$sql);
+	
+	echo "<script>alert('successfully Update!');
+				window.location='../profile.php';
+			</script>";
 }
 else if (isset($_POST['update_password'])) {
 	# code...update_password
@@ -58,24 +79,48 @@ else if (isset($_POST['update_address'])) {
 	$new_address = $_POST['new_address'];
 	$new_address = stripslashes($new_address);
 	$new_address = mysqli_real_escape_string($con,$new_address);
+	$sql = "UPDATE `user_".$user_type."_detail` SET `".$user_type."_address` = '$new_address' WHERE `".$user_type."_userID` = '$login_id'";
+	mysqli_query($con,$sql);
+	
+	echo "<script>alert('successfully Update!');
+				window.location='../profile.php';
+			</script>";
 }
 else if (isset($_POST['update_cstatus'])) {
 	# code...update_cstatus
 	$selected_cstatus = $_POST['selected_cstatus'];
 	$selected_cstatus = stripslashes($selected_cstatus);
 	$selected_cstatus = mysqli_real_escape_string($con,$selected_cstatus);
+	$sql = "UPDATE `user_".$user_type."_detail` SET `".$user_type."_civilStat` = '$selected_cstatus' WHERE `".$user_type."_userID` = '$login_id'";
+	mysqli_query($con,$sql);
+	
+	echo "<script>alert('successfully Update!');
+				window.location='../profile.php';
+			</script>";
 }
 else if (isset($_POST['update_bday'])) {
 	# code...update_bday
 	$new_bday = $_POST['new_bday'];
 	$new_bday = stripslashes($new_bday);
 	$new_bday = mysqli_real_escape_string($con,$new_bday);
+	$sql = "UPDATE `user_".$user_type."_detail` SET `".$user_type."_dob` = '$new_bday' WHERE `".$user_type."_userID` = '$login_id'";
+	mysqli_query($con,$sql);
+	
+	echo "<script>alert('successfully Update!');
+				window.location='../profile.php';
+			</script>";
 }
 else if (isset($_POST['update_contact'])) {
 	# code...update_contact
 	$new_contact = $_POST['new_contact'];
 	$new_contact = stripslashes($new_contact);
 	$new_contact = mysqli_real_escape_string($con,$new_contact);
+	$sql = "UPDATE `user_".$user_type."_detail` SET `".$user_type."_contact` = '$new_contact' WHERE `".$user_type."_userID` = '$login_id'";
+	mysqli_query($con,$sql);
+	
+	echo "<script>alert('successfully Update!');
+				window.location='../profile.php';
+			</script>";
 }
 else if (isset($_POST['update_squestion'])) {
 	# code... update_squestion
@@ -85,6 +130,11 @@ else if (isset($_POST['update_squestion'])) {
 	$new_sanswer = stripslashes($new_sanswer);
 	$new_squestion = mysqli_real_escape_string($con,$new_squestion);
 	$new_sanswer = mysqli_real_escape_string($con,$new_sanswer);
+	$sql = "UPDATE `user_".$user_type."_detail` SET `".$user_type."_secretquestion` = '$new_squestion',`".$user_type."_secretanswer` = '$new_sanswer' WHERE `".$user_type."_userID` = '$login_id'";
+	mysqli_query($con,$sql);
+	echo "<script>alert('successfully Update!');
+				window.location='../profile.php';
+			</script>";
 
 }
 
