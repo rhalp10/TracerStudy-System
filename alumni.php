@@ -91,14 +91,6 @@ else
                              <div class="tab-content">
                                 <div id="IT" class="tab-pane fade in active">
                                   <div class="body col-sm-12">
-                                  <?php 
-                                  $min_query = mysqli_query($con,"SELECT YEAR(MIN(student_year_grad)) AS minYear FROM user_student_detail WHERE student_department = 'IT'");
-                                  $max_query = mysqli_query($con,"SELECT YEAR(MAX(student_year_grad)) AS maxYear FROM user_student_detail WHERE student_department = 'IT'");
-                                  $min_res = mysqli_fetch_assoc($min_query);
-                                  $max_res = mysqli_fetch_assoc($max_query);
-                                  $minYear = $min_res['minYear'];
-                                  $maxYear = $max_res['maxYear'];
-                                  ?>
                                     <table  id="alumniIT" class="table table-bordered table-advance table-hover  dataTable">
                                       <thead>
                                         <tr>
@@ -111,50 +103,34 @@ else
                                         </tr>
                                       </tfoot>
                                       <tbody>
-                                      <?php 
-                                       for ($i=$minYear; $i<= $maxYear; $i++) { 
-                                    $query = mysqli_query($con,"SELECT student_department,student_year_grad FROM user_student_detail WHERE student_year_grad LIKE '%$i%' AND student_department LIKE 'IT'");
-                                    $dateStack = 0;//temporary dateStack value
-                                    while ($res = mysqli_fetch_array($query)) {
-                                      //while the student_year_grad fetching we have a if statement that check
-                                      //if  student_year_grad == the same year if TRUE display nothing else
-                                      if ($res['student_year_grad'] == $dateStack) {
+                                        <?php
+                                         $query = mysqli_query($con,"SELECT DISTINCT YEAR(student_year_grad) as year_grad FROM `user_student_detail`  WHERE student_department = 'IT' ORDER BY `student_year_grad`  ASC");
+                                         while ($res = mysqli_fetch_array($query)) 
+                                         {
+                                                
+                                                ?>
+                                                <tr onclick="self.location.href='alumni_view.php?course=<?php echo 'IT' ?>&year=<?php echo $res['year_grad'];?>'">
+                                                <td class="forum-td" >
+                                                <div class="forum-list-hover col-sm-1" style="height: 20px;">
+                                                <br>
+                                                  </div>
+                                                  <div class="col-sm-6 forum-list-content">
+                                                  <a href="alumni_view.php?course=<?php echo 'IT' ?>&year=<?php echo $res['year_grad'];?>"><?php echo $res['year_grad']; ?></a>
+                                                 <br>
+                                                  </div>
+                                                  <div class="col-sm-2 forum-list-content-stat">
+                                                  <br>
+                                                  </div>
+                                                  <div class="col-sm-3" style="background-color: #444444;color: white;">
+                                                  VIEW
+                                                  </div>
 
-                                        $dateStack =$i;
-                                        //echo "do not repeat<br>";
-                                      }
-                                      //display YEAR date of Alumni Batches
-                                      else
-                                      {
-                                      // displaying all available date
-                                      
-                                       ?>
-                                      <tr onclick="self.location.href='alumni_view.php?course=<?php echo 'IT' ?>&year=<?php echo $i?>'">
-                                      <td class="forum-td" >
-                                      <div class="forum-list-hover col-sm-1" style="height: 20px;">
-                                      <br>
-                                        </div>
-                                        <div class="col-sm-6 forum-list-content">
-                                        <a href=""><?php  echo "$i";?></a>
-                                       <br>
-                                        </div>
-                                        <div class="col-sm-2 forum-list-content-stat">
-                                        <br>
-                                        </div>
-                                        <div class="col-sm-3" style="background-color: #444444;color: white;">
-                                        VIEW
-                                        </div>
+                                                  </td>
+                                                </tr>
+                                                <?php 
+                                                                             }
 
-                                        </td>
-                                      </tr>
-                                       <?php
-                                       $dateStack = $i;
-                                      }
-                                    }
-                                  }
-
-                                      ?>
-                                        
+                                        ?>
                                       </tbody>
                                   </table>
                                 </div>
@@ -174,50 +150,35 @@ else
                                         </tr>
                                       </tfoot>
                                       <tbody>
-                                      <?php 
-                                       for ($i=$minYear; $i<= $maxYear; $i++) { 
-                                    $query = mysqli_query($con,"SELECT student_department,student_year_grad FROM user_student_detail WHERE student_year_grad LIKE '%$i%' AND student_department LIKE 'COMSCI'");
-                                    $dateStack = 0;//temporary dateStack value
-                                    while ($res = mysqli_fetch_array($query)) {
-                                      //while the student_year_grad fetching we have a if statement that check
-                                      //if  student_year_grad == the same year if TRUE display nothing else
-                                      if ($res['student_year_grad'] == $dateStack) {
-
-                                        $dateStack =$i;
-                                        //echo "do not repeat<br>";
-                                      }
-                                      //display YEAR date of Alumni Batches
-                                      else
-                                      {
-                                      // displaying all available date
                                       
-                                       ?>
-                                      <tr onclick="self.location.href='alumni_view.php?course=<?php echo 'COMSCI' ?>&year=<?php echo $i?>'">
-                                      <td class="forum-td" >
-                                      <div class="forum-list-hover col-sm-1" style="height: 20px;">
-                                      <br>
-                                        </div>
-                                        <div class="col-sm-6 forum-list-content">
-                                        <?php  echo "$i";?>
-                                       <br>
-                                        </div>
-                                        <div class="col-sm-2 forum-list-content-stat">
-                                        <br>
-                                        </div>
-                                        <div class="col-sm-3" style="background-color: #444444;color: white;">
-                                        VIEW
-                                        </div>
+                                      <?php
+                                       $query = mysqli_query($con,"SELECT DISTINCT YEAR(student_year_grad) as year_grad FROM `user_student_detail`  WHERE student_department = 'COMSCI' ORDER BY `student_year_grad`  ASC");
+                                       while ($res = mysqli_fetch_array($query)) 
+                                       {
+                                              
+                                              ?>
+                                              <tr onclick="self.location.href='alumni_view.php?course=<?php echo 'COMSCI' ?>&year=<?php echo $res['year_grad'];?>'">
+                                              <td class="forum-td" >
+                                              <div class="forum-list-hover col-sm-1" style="height: 20px;">
+                                              <br>
+                                                </div>
+                                                <div class="col-sm-6 forum-list-content">
+                                                <a href="alumni_view.php?course=<?php echo 'COMSCI' ?>&year=<?php echo $res['year_grad'];?>"><?php echo $res['year_grad']; ?></a>
+                                               <br>
+                                                </div>
+                                                <div class="col-sm-2 forum-list-content-stat">
+                                                <br>
+                                                </div>
+                                                <div class="col-sm-3" style="background-color: #444444;color: white;">
+                                                VIEW
+                                                </div>
 
-                                        </td>
-                                      </tr>
-                                       <?php
-                                       $dateStack = $i;
-                                      }
-                                    }
-                                  }
+                                                </td>
+                                              </tr>
+                                              <?php 
+                                                                           }
 
                                       ?>
-                                        
                                       </tbody>
                                   </table>
                                 </div>
@@ -236,52 +197,35 @@ else
                                       </tr>
                                     </tfoot>
                                     <tbody>
-                                    <?php 
-                                     for ($i=$minYear; $i<= $maxYear; $i++) { 
-                                  $query = mysqli_query($con,"SELECT student_department,student_year_grad FROM user_student_detail WHERE student_year_grad LIKE '%$i%' AND student_department LIKE 'OA'");
-                                  $dateStack = 0;//temporary dateStack value
-                                  while ($res = mysqli_fetch_array($query)) {
-                                    //while the student_year_grad fetching we have a if statement that check
-                                    //if  student_year_grad == the same year if TRUE display nothing else
-                                    if ($res['student_year_grad'] == $dateStack) {
-
-                                      $dateStack =$i;
-                                      //echo "do not repeat<br>";
-                                    }
-                                    //display YEAR date of Alumni Batches
-                                    else
-                                    {
-                                    // displaying all available date
-                                    
-                                     ?>
-
-                                 <tr onclick="self.location.href='alumni_view.php?course=<?php echo 'OA' ?>&year=<?php echo $i?>'">
-                                  <td class="forum-td" >
-                                  <div class="forum-list-hover col-sm-1" style="height: 20px;">
-                                  <br>
-                                    </div>
-                                    <div class="col-sm-6 forum-list-content">
-                                    <?php  echo "$i";?>
-                                   <br>
-                                    </div>
-                                    <div class="col-sm-2 forum-list-content-stat">
-                                    <br>
-                                    </div>
-                                    <div class="col-sm-3" style="background-color: #444444;color: white;">
-                                    VIEW
-                                    </div>
-
-                                    </td>
-                                  </tr>
-
+                                                                        
                                      <?php
-                                     $dateStack = $i;
-                                    }
-                                  }
-                                }
+                                      $query = mysqli_query($con,"SELECT DISTINCT YEAR(student_year_grad) as year_grad FROM `user_student_detail`  WHERE student_department = 'OA' ORDER BY `student_year_grad`  ASC");
+                                      while ($res = mysqli_fetch_array($query)) 
+                                      {
+                                             
+                                             ?>
+                                             <tr onclick="self.location.href='alumni_view.php?course=<?php echo 'OA' ?>&year=<?php echo $res['year_grad'];?>'">
+                                             <td class="forum-td" >
+                                             <div class="forum-list-hover col-sm-1" style="height: 20px;">
+                                             <br>
+                                               </div>
+                                               <div class="col-sm-6 forum-list-content">
+                                               <a href=""><?php echo $res['year_grad']; ?></a>
+                                              <br>
+                                               </div>
+                                               <div class="col-sm-2 forum-list-content-stat">
+                                               <br>
+                                               </div>
+                                               <div class="col-sm-3" style="background-color: #444444;color: white;">
+                                               VIEW
+                                               </div>
 
-                                    ?>
-                                      
+                                               </td>
+                                             </tr>
+                                             <?php 
+                                                                          }
+
+                                     ?>
                                     </tbody>
                                 </table>
                                 </div>
