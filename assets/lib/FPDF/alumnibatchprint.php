@@ -4,7 +4,7 @@ include('db.php');
 $req_course = $_REQUEST['course'];
 $req_year  = $_REQUEST['year'];
 
-$res = mysqli_query($con,"SELECT * FROM user_student_detail WHERE student_department LIKE '$req_course' AND student_year_grad LIKE '$req_year%'");
+$res = mysqli_query($con,"SELECT * FROM user_student_detail WHERE student_department LIKE '$req_course' AND student_year_grad LIKE '$req_year%' ORDER BY `student_fName`  ASC");
 
 class PDF extends FPDF{
 	function Header(){
