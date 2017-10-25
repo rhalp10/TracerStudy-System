@@ -105,35 +105,6 @@ $result_viewcount = mysqli_fetch_assoc($query_viewcount);
                 </div>
                 <!-- /#content -->
 
-                    <div id="right" class="onoffcanvas is-right is-fixed bg-light" aria-expanded=false>
-                        <a class="onoffcanvas-toggler" href="#right" data-toggle=onoffcanvas aria-expanded=false></a>
-                        <br>
-                        <br>
-                        <div class="well well-small dark">
-                            <ul class="list-unstyled">
-                                <li>Total User <span class="inlinesparkline pull-right">1,4,4,7,5,9,10</span></li>
-                                <li>Online User <span class="dynamicsparkline pull-right">Loading..</span></li>
-                                <li>Popularity <span class="dynamicbar pull-right">Loading..</span></li>
-                                <li>New Users <span class="inlinebar pull-right">1,3,4,5,3,5</span></li>
-                            </ul>
-                        </div>
-                        <!-- /.well well-small -->
-                        <!-- .well well-small -->
-                         <div class="well well-small dark">
-                         <div class="panel panel-default" >
-                          <div class="panel-heading">Message</div>
-                          <div class="panel-body">
-                            <form class="form-horizontal">
-                                <input type="text" class="form-control" placeholder="Recipient">
-                                <textarea  class="form-control" placeholder="Message.." style="height: 200px;">
-                                </textarea>
-                            </form>
-                          </div>
-                          </div>
-                        </div>
-                        
-                    </div>
-                    <!-- /#right -->
             </div>
 
             <!-- /#wrap -->
