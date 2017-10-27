@@ -1,12 +1,6 @@
 <?php
 /* Database connection start */
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "tracerdata";
-
-$conn = mysqli_connect($servername, $username, $password, $dbname) or die("Connection failed: " . mysqli_connect_error());
-
+include('session.php');
 /* Database connection end */
 
 
@@ -29,7 +23,7 @@ $columns = array(
 // getting total number records without any search
 $sql = "SELECT student_ID, student_fName, student_mName, student_lName, student_department, student_admission, student_year_grad ";
 $sql.=" FROM user_student_detail";
-$query=mysqli_query($conn, $sql) or die("serverside_data_registerstud.php: get employees");
+$query=mysqli_query($con, $sql) or die("serverside_data_registerstud.php: get employees");
 $totalData = mysqli_num_rows($query);
 $totalFiltered = $totalData;  // when there is no search parameter then total number rows = total number filtered rows.
 
@@ -42,11 +36,11 @@ if( !empty($requestData['search']['value']) ) {   // if there is a search parame
 	$sql.=" OR student_department LIKE '%".$requestData['search']['value']."%' )";
 	// $sql.=" OR student_department LIKE '%".$requestData['search']['value']."%' )";
 }
-$query=mysqli_query($conn, $sql) or die("serverside_data_registerstud.php: get employees");
+$query=mysqli_query($con, $sql) or die("serverside_data_registerstud.php: get employees");
 $totalFiltered = mysqli_num_rows($query); // when there is a search parameter then we have to modify total number filtered rows as per search result. 
 $sql.=" ORDER BY student_lName Asc";
 /* $requestData['order'][0]['column'] contains colmun index, $requestData['order'][0]['dir'] contains order such as asc/desc  */	
-$query=mysqli_query($conn, $sql) or die("serverside_data_registerstud.php: get employees");
+$query=mysqli_query($con, $sql) or die("serverside_data_registerstud.php: get employees");
 
 $data = array();
 while( $row=mysqli_fetch_array($query) ) {  // preparing an array

@@ -1,12 +1,6 @@
 <?php
 /* Database connection start */
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "tracerdata";
-
-$conn = mysqli_connect($servername, $username, $password, $dbname) or die("Connection failed: " . mysqli_connect_error());
-
+include('session.php');
 /* Database connection end */
 
 
@@ -22,8 +16,8 @@ $columns = array(
 
 // getting total number records without any search
 $sql = "SELECT DISTINCT YEAR(student_year_grad) as year_grad ";
-$sql.=" FROM `user_student_detail` year_grad  WHERE student_department = 'IT'";
-$query=mysqli_query($conn, $sql) or die("serverside_data_IT_Alumni.php: get employees");
+$sql.=" FROM `user_student_detail` year_grad  WHERE student_department = 'OA'";
+$query=mysqli_query($con, $sql) or die("serverside_data_OA_Alumni.php: get employees");
 $totalData = mysqli_num_rows($query);
 $totalFiltered = $totalData;  // when there is no search parameter then total number rows = total number filtered rows.
 
@@ -34,16 +28,16 @@ if( !empty($requestData['search']['value']) ) {   // if there is a search parame
 	$sql.=" AND ( YEAR(student_year_grad) LIKE '".$requestData['search']['value']."%' )";
 	// $sql.=" OR student_department LIKE '%".$requestData['search']['value']."%' )";
 }
-$query=mysqli_query($conn, $sql) or die("serverside_data_IT_Alumni.php: get employees");
+$query=mysqli_query($con, $sql) or die("serverside_data_OA_Alumni.php: get employees");
 $totalFiltered = mysqli_num_rows($query); // when there is a search parameter then we have to modify total number filtered rows as per search result. 
 $sql.=" ORDER BY student_year_grad Asc";
 /* $requestData['order'][0]['column'] contains colmun index, $requestData['order'][0]['dir'] contains order such as asc/desc  */	
-$query=mysqli_query($conn, $sql) or die("serverside_data_IT_Alumni.php: get employees");
+$query=mysqli_query($con, $sql) or die("serverside_data_OA_Alumni.php: get employees");
 
 $data = array();
 while( $row=mysqli_fetch_array($query) ) {  // preparing an array
 	$nestedData=array(); 
-	$course = "IT";
+	$course = "OA";
 	$year_grad = $row["year_grad"];
 	$nestedData[]= "<div class='forum-list-hover col-sm-1' style='height: 20px;'>
                     <br>
