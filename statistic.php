@@ -119,7 +119,7 @@ $js_outAdmin_UnRegister = json_encode($AdminPercentage_UnRegisterJS);
                             <div class="main-bar">
                             <ol class="breadcrumb">
                               <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-                              <li class="breadcrumb-item active"> Forum</li>
+                              <li class="breadcrumb-item active"> Statistic</li>
                             </ol>
                             </div>
                             <!-- /.main-bar -->
