@@ -6,13 +6,21 @@
 		$student_number = $_POST['student_number'];
 		$password = $_POST['password'];
 		$re_password = $_POST['re_password'];
+		$secret_question = $_POST['secret_question'];
+		$secret_answer = $_POST['secret_answer'];
+		
+		
 		// To protect MySQL injection for Security purpose
 		$student_number = stripslashes($student_number);
 		$password = stripslashes($password);
 		$re_password = stripslashes($re_password);
+		$secret_question = stripslashes($secret_question);
+		$secret_answer = stripslashes($secret_answer);
 		$student_number = mysqli_real_escape_string($con,$student_number);
 		$password = mysqli_real_escape_string($con,$password);
 		$re_password = mysqli_real_escape_string($con,$re_password);
+		$secret_question = mysqli_real_escape_string($con,$secret_question);
+		$secret_answer = mysqli_real_escape_string($con,$secret_answer);
 
  		//if password submit is equal the verify query perform
 		if ($password == $re_password)
@@ -26,7 +34,7 @@
 			$res['student_IDNumber'];
 			// if student has record perform add query
 			if ($student_number == $res['student_IDNumber'])  
-			{
+			{	
 				// if account is not register perform register statement
 				if ($res['student_status'] == 'unregister') {
 		 			$input = "$password";
@@ -35,7 +43,7 @@
 					// geting the last insert created account
 					$last_id = mysqli_insert_id($con);
 					//update of the student info as register
-					$result1 = mysqli_query($con,"UPDATE `user_student_detail` SET `student_status` = 'register',`student_userID` = '$last_id' WHERE `student_IDNumber` = '$student_number'");
+					$result1 = mysqli_query($con,"UPDATE `user_student_detail` SET `student_status` = 'register',`student_secretquestion` = '$secret_question',`student_secretanswer` = '$secret_answer',`student_userID` = '$last_id' WHERE `student_IDNumber` = '$student_number'");
 					echo "<script>alert('Register Successfully !');
 												window.location='../index.php';
 											</script>";
