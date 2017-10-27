@@ -141,37 +141,7 @@ else
                                         <th></th>
                                       </tr>
                                     </tfoot>
-                                    <tbody>
-                                                                        
-                                     <?php
-                                      $query = mysqli_query($con,"SELECT DISTINCT YEAR(student_year_grad) as year_grad FROM `user_student_detail`  WHERE student_department = 'OA' ORDER BY `student_year_grad`  ASC");
-                                      while ($res = mysqli_fetch_array($query)) 
-                                      {
-                                             
-                                             ?>
-                                             <tr onclick="self.location.href='alumni_view.php?course=<?php echo 'OA' ?>&year=<?php echo $res['year_grad'];?>'">
-                                             <td class="forum-td" >
-                                             <div class="forum-list-hover col-sm-1" style="height: 20px;">
-                                             <br>
-                                               </div>
-                                               <div class="col-sm-6 forum-list-content">
-                                               <a href=""><?php echo $res['year_grad']; ?></a>
-                                              <br>
-                                               </div>
-                                               <div class="col-sm-2 forum-list-content-stat">
-                                               <br>
-                                               </div>
-                                               <div class="col-sm-3" style="background-color: #444444;color: white;">
-                                               VIEW
-                                               </div>
-
-                                               </td>
-                                             </tr>
-                                             <?php 
-                                                                          }
-
-                                     ?>
-                                    </tbody>
+                                 
                                 </table>
                                 </div>
                             </div>
