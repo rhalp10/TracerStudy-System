@@ -49,29 +49,89 @@
         });
     });
 
-    $(document).ready(function() {
-        $('#alumniIT').DataTable({
-            //"paging":   false,
-            "ordering": false,
-            "info": false,
-            "bLengthChange": false,
-            "bFilter": true,
-            "bInfo": false,
-            "bAutoWidth": false
-        });
-    });
+ $(document).ready(function() {
+                var dataTable = $('#alumniIT').DataTable( {
+                    // "stripeClasses": [],
+                    "processing": true,
+                    "serverSide": true,
+                    "bAutoWidth": false,
+                    "bSort": false,
+                    "bLengthChange": false,
 
-    $(document).ready(function() {
-        $('#alumniCS').DataTable({
-            //"paging":   false,
-            "ordering": false,
-            "info": false,
-            "bLengthChange": false,
-            "bFilter": true,
-            "bInfo": false,
-            "bAutoWidth": false
-        });
-    });
+                    "columnDefs": [ {
+                        className: "forum-td",
+                          "targets": 0,
+                          "searchable": false
+                        }],
+                        // "initComplete": function () {
+                        //     $( document ).on("click", "tr[role='row']", function(){
+                        //         // var year_data = document.getElementById("year_data" ).innerHTML;
+                        //          var year_data = $(this).parents('div .col-sm-6 forum-list-content').data('id');
+                        //          jQuery("tr").addClass("myClass");
+                        //          window.location='alumni_view.php?course=IT&year='+year_data;
+
+                        //     });
+                        // },
+                    "ajax":{
+                        url :"serverside_data_IT_Alumni.php", // json datasource
+                        type: "post",  // method  , by default get
+                        error: function(){  // error handling
+                            $(".alumniIT-error").html("");
+                            $("#alumniIT").append('<tbody class="alumniIT-error"><tr><th colspan="3">No data found in the server</th></tr></tbody>');
+                            $("#alumniIT_processing").css("display","none");
+                            
+
+                        }
+                        
+                    }
+                } );
+
+
+
+                
+            } );
+
+     $(document).ready(function() {
+                var dataTable = $('#alumniCS').DataTable( {
+                    // "stripeClasses": [],
+                    
+                    "processing": true,
+                    "serverSide": true,
+                    "bAutoWidth": false,
+                     "bSort": false,
+                     "bLengthChange": false,
+                     "columnDefs": [ {
+                        className: "forum-td",
+                          "targets": 0,
+                          "searchable": false
+                        }],
+                        // "initComplete": function () {
+                        //     $( document ).on("click", "tr[role='row']", function(){
+                        //         // var year_data = document.getElementById("year_data" ).innerHTML;
+                        //          var year_data = $(this).parents('div .col-sm-6 forum-list-content').data('id');
+                        //          jQuery("tr").addClass("myClass");
+                        //          window.location='alumni_view.php?course=IT&year='+year_data;
+
+                        //     });
+                        // },
+                    "ajax":{
+                        url :"serverside_data_CS_Alumni.php", // json datasource
+                        type: "post",  // method  , by default get
+                        error: function(){  // error handling
+                            $(".alumniCS-error").html("");
+                            $("#alumniCS").append('<tbody class="alumniCS-error"><tr><th colspan="3">No data found in the server</th></tr></tbody>');
+                            $("#alumniCS_processing").css("display","none");
+                            
+
+                        }
+                        
+                    }
+                } );
+
+
+
+                
+            } );
     $(document).ready(function() {
         $('#alumniOA').DataTable({
             //"paging":   false,
@@ -80,6 +140,7 @@
             "bLengthChange": false,
             "bFilter": true,
             "bInfo": false,
+            "bSort": false,
             "bAutoWidth": false
         });
     });
@@ -88,6 +149,7 @@
 
                     "processing": true,
                     "serverSide": true,
+                    "bAutoWidth": false,
                      "bSort": false,
                      "bLengthChange": false,
                      "columnDefs": [ {
@@ -111,12 +173,12 @@
                               "searchable": false
                         }],
                     "ajax":{
-                        url :"registerstud_serverside_data.php", // json datasource
+                        url :"serverside_data_registerstud.php", // json datasource
                         type: "post",  // method  , by default get
                         error: function(){  // error handling
-                            $(".employee-grid-error").html("");
-                            $("#employee-grid").append('<tbody class="employee-grid-error"><tr><th colspan="3">No data found in the server</th></tr></tbody>');
-                            $("#employee-grid_processing").css("display","none");
+                            $(".registerstud_serverside-error").html("");
+                            $("#eregisterstud_serverside").append('<tbody class="registerstud_serverside-error"><tr><th colspan="3">No data found in the server</th></tr></tbody>');
+                            $("#registerstud_serverside_processing").css("display","none");
                             
 
                         }
