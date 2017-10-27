@@ -95,94 +95,39 @@ else
                                       <thead>
                                         <tr>
                                           <th><h3>Information Technology Alumni List</h3></th>
+
                                         </tr>
                                       </thead>
                                       <tfoot>
                                         <tr>
                                           <th></th>
+                                          
                                         </tr>
                                       </tfoot>
-                                      <tbody>
-                                        <?php
-                                         $query = mysqli_query($con,"SELECT DISTINCT YEAR(student_year_grad) as year_grad FROM `user_student_detail`  WHERE student_department = 'IT' ORDER BY `student_year_grad`  ASC");
-                                         while ($res = mysqli_fetch_array($query)) 
-                                         {
-                                                
-                                                ?>
-                                                <tr onclick="self.location.href='alumni_view.php?course=<?php echo 'IT' ?>&year=<?php echo $res['year_grad'];?>'">
-                                                <td class="forum-td" >
-                                                <div class="forum-list-hover col-sm-1" style="height: 20px;">
-                                                <br>
-                                                  </div>
-                                                  <div class="col-sm-6 forum-list-content">
-                                                  <a href="alumni_view.php?course=<?php echo 'IT' ?>&year=<?php echo $res['year_grad'];?>"><?php echo $res['year_grad']; ?></a>
-                                                 <br>
-                                                  </div>
-                                                  <div class="col-sm-2 forum-list-content-stat">
-                                                  <br>
-                                                  </div>
-                                                  <div class="col-sm-3" style="background-color: #444444;color: white;">
-                                                  VIEW
-                                                  </div>
-
-                                                  </td>
-                                                </tr>
-                                                <?php 
-                                                                             }
-
-                                        ?>
-                                      </tbody>
+                                  
                                   </table>
                                 </div>
                               </div>
-
-                              <div id="CS" class="tab-pane fade">
-                                <div class="body col-sm-12">
-                                  <table  id="alumniCS" class="table table-bordered table-advance table-hover  dataTable">
+                                <div id="CS" class="tab-pane fade in fade">
+                                  <div class="body col-sm-12">
+                                    <table  id="alumniCS" class="table table-bordered table-advance table-hover  dataTable">
                                       <thead>
                                         <tr>
                                           <th><h3>Computer Science Alumni List</h3></th>
+
                                         </tr>
                                       </thead>
                                       <tfoot>
                                         <tr>
                                           <th></th>
+                                          
                                         </tr>
                                       </tfoot>
-                                      <tbody>
-                                      
-                                      <?php
-                                       $query = mysqli_query($con,"SELECT DISTINCT YEAR(student_year_grad) as year_grad FROM `user_student_detail`  WHERE student_department = 'COMSCI' ORDER BY `student_year_grad`  ASC");
-                                       while ($res = mysqli_fetch_array($query)) 
-                                       {
-                                              
-                                              ?>
-                                              <tr onclick="self.location.href='alumni_view.php?course=<?php echo 'COMSCI' ?>&year=<?php echo $res['year_grad'];?>'">
-                                              <td class="forum-td" >
-                                              <div class="forum-list-hover col-sm-1" style="height: 20px;">
-                                              <br>
-                                                </div>
-                                                <div class="col-sm-6 forum-list-content">
-                                                <a href="alumni_view.php?course=<?php echo 'COMSCI' ?>&year=<?php echo $res['year_grad'];?>"><?php echo $res['year_grad']; ?></a>
-                                               <br>
-                                                </div>
-                                                <div class="col-sm-2 forum-list-content-stat">
-                                                <br>
-                                                </div>
-                                                <div class="col-sm-3" style="background-color: #444444;color: white;">
-                                                VIEW
-                                                </div>
-
-                                                </td>
-                                              </tr>
-                                              <?php 
-                                                                           }
-
-                                      ?>
-                                      </tbody>
+                                  
                                   </table>
                                 </div>
                               </div>
+                           
                               <div id="OA" class="tab-pane fade">
                                 <div class="body col-sm-12">
                                   <table  id="alumniOA" class="table table-bordered table-advance table-hover  dataTable">
