@@ -279,15 +279,6 @@ $(document).ready(function() {
                           "targets": 0,
                           "searchable": false
                         }],
-                        // "initComplete": function () {
-                        //     $( document ).on("click", "tr[role='row']", function(){
-                        //         // var year_data = document.getElementById("year_data" ).innerHTML;
-                        //          var year_data = $(this).parents('div .col-sm-6 forum-list-content').data('id');
-                        //          jQuery("tr").addClass("myClass");
-                        //          window.location='alumni_view.php?course=IT&year='+year_data;
-
-                        //     });
-                        // },
                     "ajax":{
                         url :"serverside_data_forumData_User_Unpin.php", // json datasource
                         type: "post",  // method  , by default get
@@ -317,15 +308,6 @@ $(document).ready(function() {
                           "targets": 0,
                           "searchable": false
                         }],
-                        // "initComplete": function () {
-                        //     $( document ).on("click", "tr[role='row']", function(){
-                        //         // var year_data = document.getElementById("year_data" ).innerHTML;
-                        //          var year_data = $(this).parents('div .col-sm-6 forum-list-content').data('id');
-                        //          jQuery("tr").addClass("myClass");
-                        //          window.location='alumni_view.php?course=IT&year='+year_data;
-
-                        //     });
-                        // },
                     "ajax":{
                         url :"serverside_data_forumData_User_Pin.php", // json datasource
                         type: "post",  // method  , by default get

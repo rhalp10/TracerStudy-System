@@ -24,8 +24,7 @@ $totalData = mysqli_num_rows($query);
 $totalFiltered = $totalData;  // when there is no search parameter then total number rows = total number filtered rows.
 
 
-// $sql = "SELECT DISTINCT YEAR(student_year_grad) as year_grad ";
-// $sql.=" FROM `user_student_detail` year_grad  WHERE 1=1";
+
 if( !empty($requestData['search']['value']) ) {   // if there is a search parameter, $requestData['search']['value'] contains search parameter
    $sql.=" AND ( post_title LIKE '".$requestData['search']['value']."%' )";
    // $sql.=" OR student_department LIKE '%".$requestData['search']['value']."%' )";
