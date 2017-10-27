@@ -61,7 +61,7 @@ else
                             <div class="main-bar">
                             <ol class="breadcrumb">
                               <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-                              <li class="breadcrumb-item active"> Forum</li>
+                              <li class="breadcrumb-item active"> Alumni</li>
                             </ol>
                             </div>
                             <!-- /.main-bar -->
