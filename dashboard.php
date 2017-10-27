@@ -72,35 +72,37 @@ else
                             <!-- /.main-bar -->
                         </header>
                         <div class="inner bg-light lter">
-                           <?php 
-                           $thread_participant  = "1 2 3 4 5 6";
-                            $pieces = explode(" ", $thread_participant);
-                            echo "<br>";
-                            $query_participant = "SELECT * FROM user_student_detail WHERE ";
+                    <!--         <?php 
+                           // $thread_participant  = "1 2 3 4 5 6";
+                            // $pieces = explode(" ", $thread_participant);
+                            // echo "<br>";
+                            // $query_participant = "SELECT * FROM user_student_detail WHERE ";
 
-                            $numItems = count($pieces);
-                            $i = 0;
-                            foreach($pieces as $participant) {
-                                $participant = trim($participant);
-                                if(++$i === $numItems) {
-                                  $query_participant.="student_ID=".$participant;
-                                }
-                                else
-                                {
-                                  $query_participant.="student_ID=".$participant." OR ";
-                                }
+                            // $numItems = count($pieces);
+                            // $i = 0;
+                            // foreach($pieces as $participant) {
+                            //     $participant = trim($participant);
+                            //     if(++$i === $numItems) {
+                            //       $query_participant.="student_ID=".$participant;
+                            //     }
+                            //     else
+                            //     {
+                            //       $query_participant.="student_ID=".$participant." OR ";
+                            //     }
 
-                            }
-                            echo $query_participant;
-                           ?>
+                            // }
+                            // echo $query_participant;
+                           ?> 
                            <input id="car" type="text" list="colors" />
                             <datalist id="colors">
                                 <option value="Red">
                                 <option value="Green">
                                 <option value="Yellow">
-                            </datalist>
+                            </datalist> -->
                            
+                           d ko pa alam lalagay ko ahhahaha
                         </div>
+
                         <!-- /.inner -->
                     </div>
                     <!-- /.outer -->
