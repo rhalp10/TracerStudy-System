@@ -30,6 +30,49 @@
 		$student_year_admission = mysqli_real_escape_string($con,$student_year_admission);
 		$student_department = mysqli_real_escape_string($con,$student_department);
 
+if (empty($student_sinumber) || empty($student_firstname)|| empty($student_middlename)|| empty($student_lastname)|| empty($student_adress)|| empty($student_year_grad)|| empty($student_year_admission)|| empty($student_department)) {
+	if (empty($student_sinumber) ) {
+		echo "<script>alert('Empty student_sinumber !');
+												window.location='../recordstudent.php';
+											</script>";
+	}
+	if (empty($student_firstname)) {
+		echo "<script>alert('Empty student_firstname !');
+												window.location='../recordstudent.php';
+											</script>";
+	}
+	if (empty($student_middlename)) {
+		echo "<script>alert('Empty student_middlename !');
+												window.location='../recordstudent.php';
+											</script>";
+	}
+	if (empty($student_lastname)) {
+		echo "<script>alert('Empty student_lastname !');
+												window.location='../recordstudent.php';
+											</script>";
+	}
+	if (empty($student_adress)) {
+		echo "<script>alert('Empty student_adress !');
+												window.location='../recordstudent.php';
+											</script>";
+	}
+	if (empty($student_year_grad)) {
+		echo "<script>alert('Empty student_year_grad !');
+												window.location='../recordstudent.php';
+											</script>";
+	}
+	if (empty($student_year_admission)) {
+		echo "<script>alert('Empty student_year_admission !');
+												window.location='../recordstudent.php';
+											</script>";
+	}
+	if (empty($student_department)) {
+		echo "<script>alert('Empty student_department !');
+												window.location='../recordstudent.php';
+											</script>";
+	}
+}
+else{
 		//insert query
 		$sql = "INSERT INTO `user_student_detail` (student_ID, student_userID, student_img, student_IDNumber, student_fName, student_mName, student_lName, student_address, student_admission, student_year_grad, student_department, student_status) ";
 		$sql.= " VALUES (NULL, '0', 'temp.gif', '$student_sinumber', '$student_firstname', '$student_middlename', '$student_lastname', '$student_adress', '$student_year_admission', '$student_year_grad', '$student_department', 'unregister')";
@@ -37,5 +80,7 @@
 		echo "<script>alert('Successfully Added!');
 												window.location='../recordstudent.php';
 											</script>";
+}
+	
 	}
 ?>
