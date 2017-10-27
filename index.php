@@ -196,7 +196,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b2e1ff', end
             <form method="POST" action="action/signup_action.php">
                 <input type="text" placeholder="Student Number" class="form-control top"  required="" onkeyup="numberInputOnly(this);" name="student_number">
                 <input type="password" placeholder="Password" class="form-control middle" required="" name="password">
-                <input type="password" placeholder="Re-password" class="form-control bottom" required="" name="re_password">
+                <input type="password" placeholder="Re-password" class="form-control middle" required="" name="re_password">
+                <input type="text" placeholder="Secret Question" class="form-control middle" required="" name="secret_question">
+                <input type="text" placeholder="Secret Answer" class="form-control bottom" required="" name="secret_answer">
                 <input class="btn btn-lg btn-success btn-block"  type="submit" name="submit-signup_student" value="Register">
             </form>
         </div>
