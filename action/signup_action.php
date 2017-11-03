@@ -44,7 +44,10 @@
 					$last_id = mysqli_insert_id($con);
 					//update of the student info as register
 					$result1 = mysqli_query($con,"UPDATE `user_student_detail` SET `student_status` = 'register',`student_secretquestion` = '$secret_question',`student_secretanswer` = '$secret_answer',`student_userID` = '$last_id' WHERE `student_IDNumber` = '$student_number'");
-					echo "<script>alert('Register Successfully !');
+
+					// add survey record default
+					$res2 = mysqli_query($con,"INSERT INTO `survey_result` (`survey_id`, `survey_ownerID`, `survey_maxattemp`, `survey_dateTaken`) VALUES (NULL, '$last_id', '2', CURRENT_TIMESTAMP);");
+								echo "<script>alert('Register Successfully !');
 												window.location='../index.php';
 											</script>";
 				}
