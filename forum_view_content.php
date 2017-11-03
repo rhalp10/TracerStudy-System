@@ -152,7 +152,8 @@
                               <hr>
 
                               <!-- Post Content -->
-                              <?php echo $post_content; ?>
+                              <?php echo  $body = htmlspecialchars_decode($post_content)?>
+                              
                               <hr>
                               <!-- Comments Form -->
                           <div class="panel panel-default" >
