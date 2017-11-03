@@ -57,28 +57,7 @@ $userType = "admin";
                                     </a>
                                     
                                   </li>
-                                  <?php 
-                                  if ($page == 'batchmates')
-                                  {
-                                    ?>
-                                     <li class="active">
-                                    <?php
-                                  }
-                                  else
-                                  {
-                                    ?>
-                                   <li class="">
-                                  <?php
-                                  }
-                                   ?>
-                                    <a href="batchmates.php">
-                                      <span class="link-title">
-                                    My Batchmates
-                                  </span>
-                                      <span class="fa arrow"></span>
-                                    </a>
-                                    
-                                  </li>
+                                  
                                   <?php 
                                   if ($page == 'forum')
                                   {

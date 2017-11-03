@@ -21,7 +21,7 @@ $userType = "teacher";
                                     <ul class="list-unstyled user-info">
                                         <li><?php echo $userType  ?></li>
                                         <li>
-                                            <small><i class="fa fa-edit"></i>&nbsp;Posts: <a href="" style="color: white;"><?php echo $res_count_post?></a></small>
+                                            <small><i class="fa fa-edit"></i>&nbsp;Posts: <a href="profile_post.php" style="color: white;"><?php echo $res_count_post?></a></small>
                                         </li>
                                         <li> &nbsp;<br>
                                             &nbsp;

@@ -23,7 +23,7 @@ if ($attemp['dataTaken'] == date( "Y", strtotime( "$date_now"))) {
 }
 else
 {   
-    mysqli_query($con,"  UPDATE `survey_result` SET `survey_maxattemp` = '2' WHERE survey_ownerID = '$login_id'");
+    mysqli_query($con,"  UPDATE `survey_result` SET `survey_maxattemp` = '2', WHERE survey_ownerID = '$login_id'");
     echo "<script>alert('Reset By Year!');
               window.location='surveyview.php';
             </script>";
@@ -116,7 +116,7 @@ else
                                  <?php
                                 }
                                 ?>
-                                <form class="form-horizontal" method="POST" action="action/surveyresult.php">
+                                <form class="form-horizontal" method="POST" action="action/surveyresult.php?ownerID=<?php echo $login_id;?>">
                                     <h1>GRADUATE TRACER SURVEY (GTS)</h1>
                                     <br>
                                     <div class="" style="display: inline-block; vertical-align: top; width: 100%;">
