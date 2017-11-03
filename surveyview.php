@@ -23,6 +23,12 @@ else if ($login_level == '3')
 else
 {}
 
+ $sql = mysqli_query($con,"SELECT YEAR(survey_dateTaken) as dataTaken,survey_maxattemp as maxattemp FROM `survey_result` WHERE survey_ownerID = '$login_id'");
+ $attemp = mysqli_fetch_array($sql);
+
+if ($attemp['maxattemp'] == '2') {
+      header('Location: survey.php');
+}
 ?>
     <!DOCTYPE html>
     <html>
@@ -77,10 +83,7 @@ else
                             <!-- /.main-bar -->
                         </header>
                         <div class="inner bg-light lter">
-                            <?php 
-                            $sql = mysqli_query($con,"SELECT YEAR(survey_dateTaken) as dataTaken,survey_maxattemp as maxattemp FROM `survey_result` WHERE survey_ownerID = '$login_id'");
-                            $attemp = mysqli_fetch_array($sql);
-                            ?>
+                           
                             <div>
                                 <?php 
                                 if ($attemp['maxattemp'] == 0) {
