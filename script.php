@@ -27,51 +27,37 @@
 
 <script type="text/javascript">
 
- $(document).ready(function() {
-                var dataTable = $('#forumData_Unpin').DataTable( {
-                    // "stripeClasses": [],
-                    "processing": true,
-                    "serverSide": true,
-                    "bAutoWidth": false,
-                    "bSort": false,
-                    "bLengthChange": false,
 
-                    "columnDefs": [ {
+ $(document).ready(function() {
+        var dataTable = $('#forumData_Unpin').DataTable( {
+          "processing": true,
+          "serverSide": true,
+          "bLengthChange": false,
+          "ordering": true,
+          "columnDefs": [ {
                         className: "forum-td",
                           "targets": 0,
                           "searchable": false
                         }],
-                        // "initComplete": function () {
-                        //     $( document ).on("click", "tr[role='row']", function(){
-                        //         // var year_data = document.getElementById("year_data" ).innerHTML;
-                        //          var year_data = $(this).parents('div .col-sm-6 forum-list-content').data('id');
-                        //          jQuery("tr").addClass("myClass");
-                        //          window.location='alumni_view.php?course=IT&year='+year_data;
-
-                        //     });
-                        // },
-                    "ajax":{
-                        url :"serverside_data_forumUnpin.php", // json datasource
-                        type: "post",  // method  , by default get
-                        error: function(){  // error handling
-                            $(".forumData_Unpin-error").html("");
-                            $("#forumData_Unpin").append('<tbody class="forumData_Unpin-error"><tr><th colspan="3">No data found in the server</th></tr></tbody>');
-                            $("#forumData_Unpin_processing").css("display","none");
-                            
-
-                        }
-                        
-                    }
-                } );
-                
-            } );
+          "ajax":{
+            url :"serverside_data_forumUnpin.php", // json datasource
+            type: "post",  // method  , by default get
+            error: function(){  // error handling
+              $(".forumData_Unpin-error").html("");
+              $("#forumData_Unpin").append('<tbody class="forumData_Unpin-error"><tr><th colspan="3">No data found in the server</th></tr></tbody>');
+              $("#forumData_Unpin_processing").css("display","none");
+              
+            }
+          }
+        } );
+      } );
  $(document).ready(function() {
                 var dataTable = $('#forumData_Pin').DataTable( {
                     // "stripeClasses": [],
                     "processing": true,
                     "serverSide": true,
                     "bAutoWidth": false,
-                    "bSort": false,
+                    
                     "bLengthChange": false,
 
                     "columnDefs": [ {
@@ -109,14 +95,19 @@
                     "processing": true,
                     "serverSide": true,
                     "bAutoWidth": false,
-                    "bSort": false,
+                    // "bSort": false,
                     "bLengthChange": false,
 
+                    "info":     false,
                     "columnDefs": [ {
+
+                        "orderable": false,
                         className: "forum-td",
                           "targets": 0,
                           "searchable": false
+
                         }],
+                        
                         // "initComplete": function () {
                         //     $( document ).on("click", "tr[role='row']", function(){
                         //         // var year_data = document.getElementById("year_data" ).innerHTML;
@@ -126,6 +117,7 @@
 
                         //     });
                         // },
+
                     "ajax":{
                         url :"serverside_data_IT_Alumni.php", // json datasource
                         type: "post",  // method  , by default get
@@ -144,21 +136,25 @@
 
                 
             } );
-
-     $(document).ready(function() {
+ $(document).ready(function() {
                 var dataTable = $('#alumniCS').DataTable( {
                     // "stripeClasses": [],
-                    
                     "processing": true,
                     "serverSide": true,
                     "bAutoWidth": false,
-                     "bSort": false,
-                     "bLengthChange": false,
-                     "columnDefs": [ {
+                    // "bSort": false,
+                    "bLengthChange": false,
+
+                    "info":     false,
+                    "columnDefs": [ {
+
+                        "orderable": false,
                         className: "forum-td",
                           "targets": 0,
                           "searchable": false
+
                         }],
+                        
                         // "initComplete": function () {
                         //     $( document ).on("click", "tr[role='row']", function(){
                         //         // var year_data = document.getElementById("year_data" ).innerHTML;
@@ -168,57 +164,75 @@
 
                         //     });
                         // },
+
                     "ajax":{
                         url :"serverside_data_CS_Alumni.php", // json datasource
                         type: "post",  // method  , by default get
                         error: function(){  // error handling
-                            $(".alumniCS-error").html("");
-                            $("#alumniCS").append('<tbody class="alumniCS-error"><tr><th colspan="3">No data found in the server</th></tr></tbody>');
-                            $("#alumniCS_processing").css("display","none");
+                            $(".alumniIT-error").html("");
+                            $("#alumniIT").append('<tbody class="alumniIT-error"><tr><th colspan="3">No data found in the server</th></tr></tbody>');
+                            $("#alumniIT_processing").css("display","none");
                             
 
                         }
                         
                     }
                 } );
-           } );
-$(document).ready(function() {
-      var dataTable = $('#alumniOA').DataTable( {
-          // "stripeClasses": [],
-          
-          "processing": true,
-          "serverSide": true,
-          "bAutoWidth": false,
-           "bSort": false,
-           "bLengthChange": false,
-           "columnDefs": [ {
-              className: "forum-td",
-                "targets": 0,
-                "searchable": false
-              }],
-              // "initComplete": function () {
-              //     $( document ).on("click", "tr[role='row']", function(){
-              //         // var year_data = document.getElementById("year_data" ).innerHTML;
-              //          var year_data = $(this).parents('div .col-sm-6 forum-list-content').data('id');
-              //          jQuery("tr").addClass("myClass");
-              //          window.location='alumni_view.php?course=IT&year='+year_data;
 
-              //     });
-              // },
-          "ajax":{
-              url :"serverside_data_OA_Alumni.php", // json datasource
-              type: "post",  // method  , by default get
-              error: function(){  // error handling
-                  $(".alumniOA-error").html("");
-                  $("#alumniOA").append('<tbody class="alumniOA-error"><tr><th colspan="3">No data found in the server</th></tr></tbody>');
-                  $("#alumniOA_processing").css("display","none");
-                  
 
-              }
-              
-          }
-      } );
-  } );
+
+                
+            } );
+
+
+
+ $(document).ready(function() {
+                var dataTable = $('#alumniOA').DataTable( {
+                    // "stripeClasses": [],
+                    "processing": true,
+                    "serverSide": true,
+                    "bAutoWidth": false,
+                    // "bSort": false,
+                    "bLengthChange": false,
+
+                    "info":     false,
+                    "columnDefs": [ {
+
+                        "orderable": false,
+                        className: "forum-td",
+                          "targets": 0,
+                          "searchable": false
+
+                        }],
+                        
+                        // "initComplete": function () {
+                        //     $( document ).on("click", "tr[role='row']", function(){
+                        //         // var year_data = document.getElementById("year_data" ).innerHTML;
+                        //          var year_data = $(this).parents('div .col-sm-6 forum-list-content').data('id');
+                        //          jQuery("tr").addClass("myClass");
+                        //          window.location='alumni_view.php?course=IT&year='+year_data;
+
+                        //     });
+                        // },
+
+                    "ajax":{
+                        url :"serverside_data_OA_Alumni.php", // json datasource
+                        type: "post",  // method  , by default get
+                        error: function(){  // error handling
+                            $(".alumniIT-error").html("");
+                            $("#alumniIT").append('<tbody class="alumniIT-error"><tr><th colspan="3">No data found in the server</th></tr></tbody>');
+                            $("#alumniIT_processing").css("display","none");
+                            
+
+                        }
+                        
+                    }
+                } );
+
+
+
+                
+            } );
  
     $(document).ready(function() {
                 var dataTable = $('#registerstud_serverside').DataTable( {
@@ -226,7 +240,7 @@ $(document).ready(function() {
                     "processing": true,
                     "serverSide": true,
                     "bAutoWidth": false,
-                     "bSort": false,
+                     // "bSort": false,
                      "bLengthChange": false,
                      "columnDefs": [ {
                         className: "text-center",
@@ -271,7 +285,7 @@ $(document).ready(function() {
                     "processing": true,
                     "serverSide": true,
                     "bAutoWidth": false,
-                    "bSort": false,
+                    
                     "bLengthChange": false,
 
                     "columnDefs": [ {
@@ -300,7 +314,7 @@ $(document).ready(function() {
                     "processing": true,
                     "serverSide": true,
                     "bAutoWidth": false,
-                    "bSort": false,
+                    
                     "bLengthChange": false,
 
                     "columnDefs": [ {
@@ -321,7 +335,7 @@ $(document).ready(function() {
                         
                     }
                 } );
-                
+              
             } );
     //NUMBER ONLY
     function numberInputOnly(elem) {
