@@ -89,49 +89,56 @@ if (isset($_POST['submit-survey'])) {
 
 	if ($attemp['maxattemp'] != 0 ) 
 	{
-	for ($i=1; $i <15; $i++) { 
+	for ($i=1; $i <=15; $i++) { 
 			
 			
 			if ($_POST['U_AB_BS'.$i]) {
 				$U_AB_BS = $_POST['U_AB_BS'.$i];
 				$U_AB_BS = stripcslashes($U_AB_BS);
 				$U_AB_BS = mysqli_escape_string($con,$U_AB_BS);
-			echo  $U_AB_BS."<br>";
+			
+
 			}
 			else
 			{
-				echo "empty<br>";
+				$G_MS_MA_PHD = "";
 			}
 			if ($_POST['G_MS_MA_PHD'.$i]) {
 				$G_MS_MA_PHD = $_POST['G_MS_MA_PHD'.$i];
 				$G_MS_MA_PHD = stripcslashes($G_MS_MA_PHD);
 				$G_MS_MA_PHD = mysqli_escape_string($con,$G_MS_MA_PHD);
-				echo  $G_MS_MA_PHD ."<br>";
+				
 			}
 			else
 			{
-				echo "empty<br>";
+				$G_MS_MA_PHD = "";
 			}
-			echo $i."<br>";
-			if ($i+1 == 15) {
-				if ($_POST['Other_q2']) {
-					$Other_q2 = $_POST['Other_q2'];
-					$Other_q2 = stripcslashes($Other_q2);
-					$Other_q2 = mysqli_escape_string($con,$Other_q2);
-					echo $Other_q2."<br>";
-					$sql_q1 = "INSERT INTO `survey_question1` (`survey_qID`, `survey_ownerID`, `row`, `col1`, `col2`) ";
-					$sql_q1 .= " VALUES (NULL, '', '15', 'other', '$Other_q2') ";
-
+			if ($i == 15) {
+				if ($_POST['Other_q1']) {
+					$Other_q1 = $_POST['Other_q1'];
+					$Other_q1 = stripcslashes($Other_q1);
+					$Other_q1 = mysqli_escape_string($con,$Other_q1);
+					
 				}
 				else
 				{
 
-				echo "empty_other<br>";
+				$Other_q1 = "";
 			
 				}
+				$sql_q1 = "INSERT INTO `survey_question1` (`survey_qID`, `survey_ownerID`, `row`, `col1`, `col2`) ";
+					$sql_q1 .= " VALUES (NULL, '$ownerID', '$i', 'other', '$Other_q1')";
+					mysqli_query($con,$sql_q1);
+
 			}
-			$sql_q1 = "INSERT INTO `survey_question1` (`survey_qID`, `survey_ownerID`, `row`, `col1`, `col2`) ";
-			$sql_q1 .= " VALUES (NULL, '', '$i', '$U_AB_B', '$G_MS_MA_PHD')";
+			else
+			{
+				
+				$sql_q1 = "INSERT INTO `survey_question1` (`survey_qID`, `survey_ownerID`, `row`, `col1`, `col2`) ";
+				$sql_q1 .= " VALUES (NULL, '$ownerID', '$i', '$U_AB_BS', '$G_MS_MA_PHD')";
+				mysqli_query($con,$sql_q1);
+			}
+			
 			
 
 		}
@@ -216,6 +223,7 @@ if (isset($_POST['submit-survey'])) {
 		echo "QUESTION NO.2<br>";
 		
 		if ($Salaries_benefits == 'yes') {
+
 			echo  $Salaries_benefits."<br>";
 		}
 		else
