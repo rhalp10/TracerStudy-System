@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 25, 2017 at 06:37 PM
+-- Generation Time: Nov 03, 2017 at 05:03 AM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -115,7 +115,8 @@ INSERT INTO `forum_comment` (`comment_ID`, `comment_topicID`, `comment_userID`, 
 (11, '2', 1, 'xcvxcvxcv', '2017-10-17 15:59:50'),
 (12, '6', 2, 'teacher', '2017-10-17 16:00:33'),
 (13, '20', 2, 'zxczxczxc', '2017-10-17 16:03:24'),
-(14, '4', 2, 'xcvxcv', '2017-10-25 12:15:10');
+(14, '4', 2, 'xcvxcv', '2017-10-25 12:15:10'),
+(15, '20', 2, 'asdasd', '2017-10-27 18:57:18');
 
 -- --------------------------------------------------------
 
@@ -158,7 +159,7 @@ CREATE TABLE `forum_topic` (
 --
 
 INSERT INTO `forum_topic` (`topic_ID`, `post_title`, `post_owner_id`, `post_date`, `post_content`, `post_status`) VALUES
-(1, 'asdasd', 1, '2017-09-09 12:03:53', '<p>asdasd</p>\r\n', 'UNPIN'),
+(1, 'aaaaaaaaaaaaa', 1, '2017-10-29 10:34:11', '<p>asdasd</p>\r\n', 'UNPIN'),
 (2, 'werwerewr', 1, '2017-09-09 12:04:01', '<p>wrwer</p>\r\n', 'UNPIN'),
 (3, 'xcvxcvxcv', 1, '2017-09-09 12:04:08', '<p>xcvxv</p>\r\n', 'UNPIN'),
 (4, 'heyeeee', 1, '2017-10-11 01:48:37', '<p>asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasd</p>\r\n', 'UNPIN'),
@@ -171,7 +172,8 @@ INSERT INTO `forum_topic` (`topic_ID`, `post_title`, `post_owner_id`, `post_date
 (11, 'sdfsdfsdf', 3, '2017-09-09 16:17:32', '<p>fsdf</p>\r\n', 'UNPIN'),
 (12, 'sdfsdfsdf', 3, '2017-09-09 16:18:28', '<p>fsdf</p>\r\n', 'UNPIN'),
 (18, '22222222222222', 3, '2017-10-05 18:44:43', '<p>ssadasdasdasd</p>\r\n', 'UNPIN'),
-(20, 'sample', 2, '2017-10-25 12:14:38', '<pre>\r\nasdasdasdasdasd </pre>\r\n', 'PIN');
+(20, 'sample', 2, '2017-10-31 04:07:52', '<h1><span style=\"font-size:14px\"><strong>xxxxxxxxxxxxxxxxxxxxxxxxxx<span style=\"color:#2c3e50\">xxxxxxxxxxxxxxxxxxxxxxxxxxxx<br />\r\nasdasdasdasd</span></strong></span></h1>\r\n\r\n<h6><span style=\"font-size:48px\"><strong>DARREN1</strong></span><br />\r\n<q><span style=\"color:#1abc9c\"><span style=\"font-family:Georgia,serif\">a</span></span></q></h6>\r\n', 'UNPIN'),
+(22, 'franz', 12, '2017-10-29 10:42:05', '<p>franz</p>\r\n', 'UNPIN');
 
 -- --------------------------------------------------------
 
@@ -467,8 +469,10 @@ CREATE TABLE `survey_result` (
 --
 
 INSERT INTO `survey_result` (`survey_id`, `survey_ownerID`, `survey_maxattemp`, `survey_dateTaken`) VALUES
-(0, 2, 2, '2017-10-25 14:37:20'),
-(1, 1, 2, '2017-10-15 14:53:50');
+(0, 2, 2, '2017-10-27 19:19:37'),
+(1, 1, 2, '2017-10-27 19:19:40'),
+(2, 3, 2, '2017-10-27 19:19:53'),
+(3, 0, 0, '2017-11-03 02:34:25');
 
 -- --------------------------------------------------------
 
@@ -551,7 +555,8 @@ INSERT INTO `user_account` (`user_ID`, `user_level`, `user_name`, `user_password
 (1, 1, '201310656', 'M8+Cpt+zltZs3QpomFLRjEFCGvI0VGC+jjJzXH32Mtw=', '2017-10-25 06:08:39'),
 (2, 2, 'teacher', '6Bgzqn4mnCPjx432mpfOVbU87Mi3sy29KRe8A1l+2X0=', '2017-09-06 10:18:33'),
 (3, 3, 'admin', 'QrUgcNdRjaE74hfEIeThKa/RaqA9N/KpBI+X7VeiyfE=', '2017-09-06 10:23:49'),
-(11, 1, '555', 'cYJ67TqHIeZ2rC6+c635Ev22WdK4Nf6SMoSQMInVEoM=', '2017-09-09 16:09:10');
+(11, 1, '555', 'cYJ67TqHIeZ2rC6+c635Ev22WdK4Nf6SMoSQMInVEoM=', '2017-09-09 16:09:10'),
+(12, 1, '123456', 'swHPJ7q+RfGnh4kp774FrzOW/hnKWeRhBNhK0xS/YtM=', '2017-10-29 10:41:36');
 
 -- --------------------------------------------------------
 
@@ -686,7 +691,8 @@ INSERT INTO `user_student_detail` (`student_ID`, `student_userID`, `student_img`
 (15, 0, 'temp.gif', 201088814, 'Raouf', 'R', 'Daud', 'Indang', 'Single', '1997-09-26', 'M', '09169158798', '2017-09-30', '2016-00-00', 'COMSCI', 'unregister', '', ''),
 (16, 0, 'temp.gif', 200901201, 'Justine', '', 'De-guzman', 'Indang', 'Single', '1997-09-26', 'M', '09169158798', '2017-09-30', '2017-02-00', 'COMSCI', 'unregister', '', ''),
 (17, 0, 'temp.gif', 201310253, 'Andrea', 'L', 'Labbres', 'Indang', 'Single', '1997-09-26', 'F', '09169158798', '2017-09-30', '2017-01-00', 'COMSCI', 'unregister', '', ''),
-(18, 0, 'temp.gif', 201310888, 'hero', 'h', 'hero', 'asd', '', '0000-00-00', '', '', '2013-03-10', '2018-03-10', 'IT', 'unregister', '', '');
+(23, 12, 'temp.gif', 123456, 'franz', 'r.', 'cabrera', 'blk 38 lot 11 ph2b', '', '0000-00-00', '', '', '2013-01-01', '2017-04-05', 'IT', 'register', 'franz', 'cabrera'),
+(24, 0, 'temp.gif', 123456, 'sda', 'sdas', 'dasd', 'asd', '', '0000-00-00', '', '', '2017-10-03', '2017-10-14', 'COMSCI', 'unregister', '', '');
 
 -- --------------------------------------------------------
 
@@ -743,9 +749,9 @@ INSERT INTO `view_counter` (`view_ID`, `view_topicID`, `view_count`) VALUES
 (3, 3, 20),
 (4, 4, 20),
 (5, 5, 63),
-(6, 6, 131),
-(19, 22, 8),
-(20, 23, 0),
+(6, 6, 132),
+(19, 22, 9),
+(20, 23, 1),
 (21, 24, 1),
 (22, 25, 2),
 (23, 26, 16),
@@ -757,10 +763,11 @@ INSERT INTO `view_counter` (`view_ID`, `view_topicID`, `view_count`) VALUES
 (38, 3, 4),
 (39, 4, 14),
 (40, 5, 5),
-(41, 6, 40),
+(41, 6, 41),
 (47, 12, 7),
 (53, 18, 14),
-(55, 20, 82);
+(55, 20, 104),
+(57, 22, 1);
 
 --
 -- Indexes for dumped tables
@@ -969,7 +976,7 @@ ALTER TABLE `cvsu_department`
 -- AUTO_INCREMENT for table `forum_comment`
 --
 ALTER TABLE `forum_comment`
-  MODIFY `comment_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `comment_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `forum_comment_reply`
 --
@@ -979,7 +986,7 @@ ALTER TABLE `forum_comment_reply`
 -- AUTO_INCREMENT for table `forum_topic`
 --
 ALTER TABLE `forum_topic`
-  MODIFY `topic_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `topic_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT for table `forum_topic_likes`
 --
@@ -1009,7 +1016,7 @@ ALTER TABLE `message_thread_participant`
 -- AUTO_INCREMENT for table `survey_question1`
 --
 ALTER TABLE `survey_question1`
-  MODIFY `survey_qID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `survey_qID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=223;
 --
 -- AUTO_INCREMENT for table `survey_question2`
 --
@@ -1036,6 +1043,11 @@ ALTER TABLE `survey_question5`
 ALTER TABLE `survey_question6`
   MODIFY `survey_qID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
+-- AUTO_INCREMENT for table `survey_result`
+--
+ALTER TABLE `survey_result`
+  MODIFY `survey_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
 -- AUTO_INCREMENT for table `survey_typechkbox`
 --
 ALTER TABLE `survey_typechkbox`
@@ -1054,7 +1066,7 @@ ALTER TABLE `survey_typetxtbox`
 -- AUTO_INCREMENT for table `user_account`
 --
 ALTER TABLE `user_account`
-  MODIFY `user_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `user_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `user_admin_detail`
 --
@@ -1079,7 +1091,7 @@ ALTER TABLE `user_notif_type`
 -- AUTO_INCREMENT for table `user_student_detail`
 --
 ALTER TABLE `user_student_detail`
-  MODIFY `student_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `student_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT for table `user_teacher_detail`
 --
@@ -1089,7 +1101,7 @@ ALTER TABLE `user_teacher_detail`
 -- AUTO_INCREMENT for table `view_counter`
 --
 ALTER TABLE `view_counter`
-  MODIFY `view_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `view_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 --
 -- Constraints for dumped tables
 --

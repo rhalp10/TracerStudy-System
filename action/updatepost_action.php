@@ -13,7 +13,7 @@ if (isset($_POST['submit_updatetopic'])) {
 	mysqli_query($con,"UPDATE `forum_topic` SET  `post_title` = '$updatepost_title' ,`post_content` = '$updatepost_content', `post_status` = 'UNPIN' WHERE `topic_ID` = '$post_ID'");
 $req_encypted_postID = password_hash($post_ID, PASSWORD_DEFAULT);
 	echo "<script>alert('Successfully Updated');
-											window.location='../profile_post.php';
+											window.location='../forum_view.php?post_ID=$req_encypted_postID';
 										</script>";
 
 }
