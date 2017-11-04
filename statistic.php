@@ -167,9 +167,9 @@ $js_outAdmin_UnRegister = json_encode($AdminPercentage_UnRegisterJS);
                                             <span class="caret"></span>
                                           </button>
                                           <ul class="dropdown-menu" role="menu">
-                                            <li><a href="#">PIE CHART</a></li>
-                                            <li><a href="#">BAR GRAPH</a></li>
-                                            <li><a href="#">LINE GRAPH</a></li>
+                                             <li><a href="statistic_piegraph.php" target="_blank">PIE CHART</a></li>
+                                            <li><a href="statistic_bargraph.php"  target="_blank">BAR GRAPH</a></li>
+                                            <li><a href="statistic_linegraph.php"  target="_blank">LINE GRAPH</a></li>
                                           </ul>
                                         </div>
                                         </td>
@@ -183,9 +183,9 @@ $js_outAdmin_UnRegister = json_encode($AdminPercentage_UnRegisterJS);
                                             <span class="caret"></span>
                                           </button>
                                           <ul class="dropdown-menu" role="menu">
-                                            <li><a href="#">PIE CHART</a></li>
-                                            <li><a href="#">BAR GRAPH</a></li>
-                                            <li><a href="#">LINE GRAPH</a></li>
+                                             <li><a href="statistic_piegraph.php" target="_blank">PIE CHART</a></li>
+                                            <li><a href="statistic_bargraph.php"  target="_blank">BAR GRAPH</a></li>
+                                            <li><a href="statistic_linegraph.php"  target="_blank">LINE GRAPH</a></li>
                                           </ul>
                                         </div>
                                         </td>
@@ -199,9 +199,9 @@ $js_outAdmin_UnRegister = json_encode($AdminPercentage_UnRegisterJS);
                                             <span class="caret"></span>
                                           </button>
                                           <ul class="dropdown-menu" role="menu">
-                                            <li><a href="#">PIE CHART</a></li>
-                                            <li><a href="#">BAR GRAPH</a></li>
-                                            <li><a href="#">LINE GRAPH</a></li>
+                                             <li><a href="statistic_piegraph.php" target="_blank">PIE CHART</a></li>
+                                            <li><a href="statistic_bargraph.php"  target="_blank">BAR GRAPH</a></li>
+                                            <li><a href="statistic_linegraph.php"  target="_blank">LINE GRAPH</a></li>
                                           </ul>
                                         </div>
                                         </td>
@@ -215,9 +215,9 @@ $js_outAdmin_UnRegister = json_encode($AdminPercentage_UnRegisterJS);
                                             <span class="caret"></span>
                                           </button>
                                           <ul class="dropdown-menu" role="menu">
-                                            <li><a href="#">PIE CHART</a></li>
-                                            <li><a href="#">BAR GRAPH</a></li>
-                                            <li><a href="#">LINE GRAPH</a></li>
+                                             <li><a href="statistic_piegraph.php" target="_blank">PIE CHART</a></li>
+                                            <li><a href="statistic_bargraph.php"  target="_blank">BAR GRAPH</a></li>
+                                            <li><a href="statistic_linegraph.php"  target="_blank">LINE GRAPH</a></li>
                                           </ul>
                                         </div>
                                         </td>
@@ -231,9 +231,9 @@ $js_outAdmin_UnRegister = json_encode($AdminPercentage_UnRegisterJS);
                                             <span class="caret"></span>
                                           </button>
                                           <ul class="dropdown-menu" role="menu">
-                                            <li><a href="#">PIE CHART</a></li>
-                                            <li><a href="#">BAR GRAPH</a></li>
-                                            <li><a href="#">LINE GRAPH</a></li>
+                                             <li><a href="statistic_piegraph.php" target="_blank">PIE CHART</a></li>
+                                            <li><a href="statistic_bargraph.php"  target="_blank">BAR GRAPH</a></li>
+                                            <li><a href="statistic_linegraph.php"  target="_blank">LINE GRAPH</a></li>
                                           </ul>
                                         </div>
                                         </td>
@@ -248,9 +248,9 @@ $js_outAdmin_UnRegister = json_encode($AdminPercentage_UnRegisterJS);
                                             <span class="caret"></span>
                                           </button>
                                           <ul class="dropdown-menu" role="menu">
-                                            <li><a href="#">PIE CHART</a></li>
-                                            <li><a href="#">BAR GRAPH</a></li>
-                                            <li><a href="#">LINE GRAPH</a></li>
+                                             <li><a href="statistic_piegraph.php" target="_blank">PIE CHART</a></li>
+                                            <li><a href="statistic_bargraph.php"  target="_blank">BAR GRAPH</a></li>
+                                            <li><a href="statistic_linegraph.php"  target="_blank">LINE GRAPH</a></li>
                                           </ul>
                                         </div>
                                         </td>
@@ -264,9 +264,9 @@ $js_outAdmin_UnRegister = json_encode($AdminPercentage_UnRegisterJS);
                                             <span class="caret"></span>
                                           </button>
                                           <ul class="dropdown-menu" role="menu">
-                                            <li><a href="#">PIE CHART</a></li>
-                                            <li><a href="#">BAR GRAPH</a></li>
-                                            <li><a href="#">LINE GRAPH</a></li>
+                                             <li><a href="statistic_piegraph.php" target="_blank">PIE CHART</a></li>
+                                            <li><a href="statistic_bargraph.php"  target="_blank">BAR GRAPH</a></li>
+                                            <li><a href="statistic_linegraph.php"  target="_blank">LINE GRAPH</a></li>
                                           </ul>
                                         </div>
                                         </td>
@@ -280,9 +280,9 @@ $js_outAdmin_UnRegister = json_encode($AdminPercentage_UnRegisterJS);
                                             <span class="caret"></span>
                                           </button>
                                           <ul class="dropdown-menu" role="menu">
-                                            <li><a href="#">PIE CHART</a></li>
-                                            <li><a href="#">BAR GRAPH</a></li>
-                                            <li><a href="#">LINE GRAPH</a></li>
+                                            <li><a href="statistic_piegraph.php" target="_blank">PIE CHART</a></li>
+                                            <li><a href="statistic_bargraph.php"  target="_blank">BAR GRAPH</a></li>
+                                            <li><a href="statistic_linegraph.php"  target="_blank">LINE GRAPH</a></li>
                                           </ul>
                                         </div>
                                         </td>
@@ -297,9 +297,9 @@ $js_outAdmin_UnRegister = json_encode($AdminPercentage_UnRegisterJS);
                                             <span class="caret"></span>
                                           </button>
                                           <ul class="dropdown-menu" role="menu">
-                                            <li><a href="#">PIE CHART</a></li>
-                                            <li><a href="#">BAR GRAPH</a></li>
-                                            <li><a href="#">LINE GRAPH</a></li>
+                                             <li><a href="statistic_piegraph.php" target="_blank">PIE CHART</a></li>
+                                            <li><a href="statistic_bargraph.php"  target="_blank">BAR GRAPH</a></li>
+                                            <li><a href="statistic_linegraph.php"  target="_blank">LINE GRAPH</a></li>
                                           </ul>
                                         </div>
                                         </td>
@@ -313,9 +313,9 @@ $js_outAdmin_UnRegister = json_encode($AdminPercentage_UnRegisterJS);
                                             <span class="caret"></span>
                                           </button>
                                           <ul class="dropdown-menu" role="menu">
-                                            <li><a href="#">PIE CHART</a></li>
-                                            <li><a href="#">BAR GRAPH</a></li>
-                                            <li><a href="#">LINE GRAPH</a></li>
+                                             <li><a href="statistic_piegraph.php" target="_blank">PIE CHART</a></li>
+                                            <li><a href="statistic_bargraph.php"  target="_blank">BAR GRAPH</a></li>
+                                            <li><a href="statistic_linegraph.php"  target="_blank">LINE GRAPH</a></li>
                                           </ul>
                                         </div>
                                         </td>
