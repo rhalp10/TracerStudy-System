@@ -197,7 +197,7 @@
                                           ?>
                                         <div class="comment-main-level">
                                         <!-- Avatar -->
-                                        <div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg" alt=""></div>
+                                        <div class="comment-avatar"><img src="assets/img/profile_img/temp.gif" alt=""></div>
                                         <!-- Contenedor del Comentario -->
                                         <div class="comment-box">
                                           <div class="comment-head">
@@ -225,9 +225,31 @@
                                                 $r_data = mysqli_fetch_array($q_data);
                                                 echo $r_data[$u_type.'_fName']." ".$r_data[$u_type.'_mName']." ".$r_data[$u_type.'_lName'];
                                                 ?></a></h6>
-                                            <span><?php echo $comment_data['comment_date']; ?></span>
-                                             <i class="fa fa-reply"> Reply</i>
-                                            <i class="fa fa-heart"></i>
+                                            <span><?php echo date( "M jS, Y", strtotime( $comment_data['comment_date'])). "<strong> at </strong>".date( 'h:i A', strtotime($comment_data['comment_date'])); ?>
+                                            
+                                            </span>
+                                            <?php 
+                                            if ($login_id == $comment_data['comment_userID']){
+                                              ?>
+                                              <i class="fa fa-edit" data-toggle="modal" data-target="#editcomment"> ```</i>
+                                              <?php
+                                            }
+                                            if ($login_id == $comment_data['comment_userID']){
+                                              ?>
+                                              <i class="fa fa-reply"> Reply</i>
+                                              <?php
+                                            }
+                                            else
+                                            {
+                                              ?>
+                                               <i class="fa fa-heart"></i>
+                                              <?php
+                                            }
+                                            ?>
+                                            
+                                             
+                                           
+
                                           </div>
                                           <div class="comment-content">
                                             <?php echo $comment_data['comment_content']; ?>
@@ -238,7 +260,30 @@
                                           <?php
                                           }
                                       ?>
-                                      
+<div id="editcomment" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <center>
+        <div class="btn-group ">
+          <button type="button" class="btn btn-primary">EDIT</button>
+          <button type="button" class="btn btn-danger">DELETE</button>
+        </div>
+        </center>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
                                       <!-- Respuestas de los comentarios -->
                                      <!--  <ul class="comments-list reply-list">
                                        
