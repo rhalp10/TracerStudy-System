@@ -223,7 +223,6 @@ else
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
@@ -246,7 +245,7 @@ else
                                           </div>
                                           <div class="modal-footer">
                                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                            
                                           </div>
                                         </div><!-- /.modal-content -->
                                       </div><!-- /.modal-dialog -->
@@ -305,7 +304,7 @@ else
             var r = confirm("Are you sure do you want to edit ?");
             if (r == true) {
                 
-             window.location.href = "recordstudent.php?modal=" + student_ID;
+             // window.location.href = "recordstudent.php?modal=" + student_ID;
             } else {
                
             }
@@ -314,12 +313,31 @@ else
             var txt;
             var r = confirm("Are you sure do you want to delete?");
             if (r == true) {
-                
-             window.location.href = "recordstudent.php?modal=" + student_ID;
+                 $('#myModal').modal('show');
+             // window.location.href = "recordstudent.php?modal=" + student_ID;
             } else {
                
             }
+
         }       
         </script>
+<div id="myModal" class="modal hide fade" role="dialog">
+  <div class="modal-dialog">
 
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <p>Some text in the modal.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
 </html>
