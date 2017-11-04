@@ -1,5 +1,6 @@
 <?php 
 // Establishing Connection with Server by passing server_name, user_id and password as a parameter
+include('../session.php'); 
 $con = mysqli_connect('localhost','root','','tracerdata') or die("ERROR");
 
 if (isset($_POST['submit-comment'])) {
@@ -26,15 +27,26 @@ if (isset($_POST['submit-comment'])) {
 	    if (password_verify($check_id, $req_encypted_postID)) 
 	      {
 	      $verified_id = $check_id;//temporary value save to verified_id
+	      $post_owner_id = $res_ver_id['post_owner_id'];
 	      }  
 	      
 	}
-
-
+	
+	
 	
 	$sql="INSERT INTO `forum_comment` (comment_ID, comment_topicID, comment_userID, comment_content, comment_date)";
 	$sql.=" VALUES (NULL, '$verified_id', '$owner', '$comment', CURRENT_TIMESTAMP)";
 	$result = mysqli_query($con,$sql);
+	if ($post_owner_id == $owner) {
+		// "if same dont display notif";
+	}
+	else
+	{
+		$sql="INSERT INTO `user_notification` (`notif_ID`, `notif_typeID`, `notif_topicID`, `notif_userID`, `notif_receiverID`, `notif_date`, `notif_state`)";
+		$sql.=" VALUES (NULL, '3', '$verified_id', '$owner', '$post_owner_id', CURRENT_TIMESTAMP, '0')";
+		$result = mysqli_query($con,$sql);
+
+	}
 
 	echo "<script>alert('Successfully Comment');
 						window.location='../forum_view.php?post_ID=$topicID';
@@ -42,5 +54,8 @@ if (isset($_POST['submit-comment'])) {
 
 	
 }
-echo "sdasd";
+
+
+
+
 ?>
