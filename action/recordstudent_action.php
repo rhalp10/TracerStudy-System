@@ -77,6 +77,7 @@ else{
 		$sql = "INSERT INTO `user_student_detail` (student_ID, student_userID, student_img, student_IDNumber, student_fName, student_mName, student_lName, student_address, student_admission, student_year_grad, student_department, student_status) ";
 		$sql.= " VALUES (NULL, '0', 'temp.gif', '$student_sinumber', '$student_firstname', '$student_middlename', '$student_lastname', '$student_adress', '$student_year_admission', '$student_year_grad', '$student_department', 'unregister')";
 		$res = mysqli_query($con,$sql);
+		
 		echo "<script>alert('Successfully Added!');
 												window.location='../recordstudent.php';
 											</script>";
