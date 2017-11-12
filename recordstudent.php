@@ -142,7 +142,7 @@ else
                                     <label for="text1" class="control-label col-lg-4" >Middle Name</label>
 
                                     <div class="col-lg-8">
-                                        <input type="text" id="text1" placeholder="Middle Name" class="form-control" name="student_middlename" onkeyup="letterInputOnly(this);" required="">
+                                        <input type="text" id="text1" placeholder="Middle Name" class="form-control" name="student_middlename" onkeyup="letterInputOnly(this);" required=""  maxlength="1">
                                     </div>
                                 </div>
                                 <div class="form-group">
