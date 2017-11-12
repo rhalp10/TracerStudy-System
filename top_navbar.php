@@ -74,14 +74,14 @@ $res['student_img'];
 
 
         <ul class="nav navbar-nav pull-right">
-            <li class="dropdown ">
+           <!--  <li class="dropdown ">
                 <a href="#" id="nbAcctDD" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><i class="icon-user"></i>Message<i class="icon-sort-down"></i></a>
                 <ul class="dropdown-menu pull-right" >
                  <?php 
-                 include ("dropdown-menu_message.php");
+                 // include ("dropdown-menu_message.php");
                  ?>
                 </ul>
-            </li>
+            </li> -->
 
             <li class="dropdown ">
                 <a href="#" id="nbAcctDD" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><i class="icon-user"></i>Notification<i class="icon-sort-down"></i></a>
