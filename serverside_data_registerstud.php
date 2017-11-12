@@ -50,10 +50,9 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
 	$nestedData[] = $row["student_department"];
 	$nestedData[] = $row["student_admission"];
 	$nestedData[] = $row["student_year_grad"];
-	$nestedData[] = "<div class='btn-group'>
-
-                                          <button type='button' class='btn btn-metis-5' onclick='editFunction(".$student_ID.")'><i class='fa fa-edit'></i></button>
-                                          <button type='button' class='btn btn-metis-1' onclick='deleteFunction(".$student_ID.")'><i class='fa fa-close'></i></button>
+	$nestedData[] = "<div class='btn-group'>                                   
+	<a  class='btn btn-metis-5' href='recordstudent_edit.php?studentID=$student_ID'><i class='fa fa-edit'></i></a>
+	<a  class='btn btn-metis-1' href='recordstudent_edit.php?studentID=$student_ID'><i class='fa fa-close'></i></a>
                                         </div>";
 	
 	$data[] = $nestedData;
