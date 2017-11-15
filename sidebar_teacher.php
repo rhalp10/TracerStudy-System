@@ -110,28 +110,6 @@ $userType = "teacher";
                                     </ul>
                                   </li>
                                   <?php 
-                                  if ($page == 'survey')
-                                  {
-                                    ?>
-                                     <li class="active">
-                                    <?php
-                                  }
-                                  else
-                                  {
-                                    ?>
-                                   <li class="">
-                                  <?php
-                                  }
-                                   ?>
-                                    <a href="survey.php">
-                                      <span class="link-title">
-                                    Survey Report
-                                  </span>
-                                  <span class="fa arrow"></span>
-                                    </a>
-                                    
-                                  </li>
-                                  <?php 
                                   if ($page == 'statistic')
                                   {
                                     ?>
