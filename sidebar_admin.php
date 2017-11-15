@@ -90,28 +90,6 @@ $userType = "admin";
                                     </ul>
                                   </li>
                                   <?php 
-                                  if ($page == 'survey')
-                                  {
-                                    ?>
-                                     <li class="active">
-                                    <?php
-                                  }
-                                  else
-                                  {
-                                    ?>
-                                   <li class="">
-                                  <?php
-                                  }
-                                   ?>
-                                    <a href="survey.php">
-                                      <span class="link-title">
-                                    Survey
-                                  </span>
-                                  <span class="fa arrow"></span>
-                                    </a>
-                                    
-                                  </li>
-                                  <?php 
                                   if ($page == 'statistic')
                                   {
                                     ?>
@@ -128,6 +106,50 @@ $userType = "admin";
                                     <a href="statistic.php">
                                       <span class="link-title">
                                     Statistic
+                                  </span>
+                                      <span class="fa arrow"></span>
+                                    </a>
+                                    
+                                  </li>
+                                   <?php 
+                                  if ($page == 'recordstudent')
+                                  {
+                                    ?>
+                                     <li class="active">
+                                    <?php
+                                  }
+                                  else
+                                  {
+                                    ?>
+                                   <li class="">
+                                  <?php
+                                  }
+                                   ?>
+                                    <a href="recordstudent.php">
+                                      <span class="link-title">
+                                    Record Student
+                                  </span>
+                                      <span class="fa arrow"></span>
+                                    </a>
+                                    
+                                  </li>
+                                   <?php 
+                                  if ($page == 'recordteacher')
+                                  {
+                                    ?>
+                                     <li class="active">
+                                    <?php
+                                  }
+                                  else
+                                  {
+                                    ?>
+                                   <li class="">
+                                  <?php
+                                  }
+                                   ?>
+                                    <a href="recordteacher.php">
+                                      <span class="link-title">
+                                    Record Teacher
                                   </span>
                                       <span class="fa arrow"></span>
                                     </a>
