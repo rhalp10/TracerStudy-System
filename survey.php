@@ -4,6 +4,10 @@ include('db.php');
 $sql = mysqli_query($con,"SELECT YEAR(survey_dateTaken) as dataTaken,survey_maxattemp as maxattemp FROM `survey_result` WHERE survey_ownerID = '$login_id'");
 $attemp = mysqli_fetch_array($sql);
 $date_now = date("Y/m/d") ;
+if ($login_level == '3' || $login_level == '2' ) {
+    header('Location: dashboard.php'); 
+}
+
 if ($attemp['dataTaken'] == date( "Y", strtotime( "$date_now"))) {
    
     if ($attemp['maxattemp'] != 0) {
