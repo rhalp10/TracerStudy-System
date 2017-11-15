@@ -132,18 +132,34 @@ else
                                     </div>
                                 </div>
                                 <div class="form-group">
+                                    <label for="text1" class="control-label col-lg-4">Birthday</label>
+
+                                    <div class="col-lg-8">
+                                        <input type="date" id="text1" placeholder="Birthday" class="form-control" name="teacher_bday">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                  <label for="text1" class="control-label col-lg-4">Gender</label>
+                                  <div class="col-lg-8">
+                                      <select class="form-control" name="teacher_gender">
+                                          <option value="M">Male</option>
+                                          <option value="F">Female</option>
+                                      </select>
+                                  </div>
+                                </div>
+                                <div class="form-group">
                                     <label for="text1" class="control-label col-lg-4">Department</label>
 
                                     <div class="col-lg-8">
                                     <?php 
                                     $query_dep = mysqli_query($con,"SELECT * FROM `cvsu_department`");
                                     ?>
-                                        <select class="form-control" name="teacher_adress_department">
+                                        <select class="form-control" name="teacher_department">
                                         <?php
                                         while ($res_dep = mysqli_fetch_array($query_dep)) {
                                         
                                         ?>
-                                            <option value="<?php echo $res_dep['department_acronym'] ?>"><?php echo $res_dep['department_name'];?></option>
+                                            <option value="<?php echo $res_dep['department_ID'] ?>"><?php echo $res_dep['department_name'];?></option>
                                         <?php 
                                         }
                                         ?>
@@ -243,61 +259,7 @@ function deleteFunction(student_ID){
                 </div>
                 <!-- /#content -->
 
-                    <div id="right" class="onoffcanvas is-right is-fixed bg-light" aria-expanded=false>
-                        <a class="onoffcanvas-toggler" href="#right" data-toggle=onoffcanvas aria-expanded=false></a>
-                        <br>
-                        <br>
-                        <div class="well well-small dark">
-                            <ul class="list-unstyled">
-                                <li>Visitor <span class="inlinesparkline pull-right">1,4,4,7,5,9,10</span></li>
-                                <li>Online Visitor <span class="dynamicsparkline pull-right">Loading..</span></li>
-                                <li>Popularity <span class="dynamicbar pull-right">Loading..</span></li>
-                                <li>New Users <span class="inlinebar pull-right">1,3,4,5,3,5</span></li>
-                            </ul>
-                        </div>
-                        <!-- /.well well-small -->
-                        <!-- .well well-small -->
-                        <div class="well well-small dark">
-                            <button class="btn btn-block">Default</button>
-                            <button class="btn btn-primary btn-block">Primary</button>
-                            <button class="btn btn-info btn-block">Info</button>
-                            <button class="btn btn-success btn-block">Success</button>
-                            <button class="btn btn-danger btn-block">Danger</button>
-                            <button class="btn btn-warning btn-block">Warning</button>
-                            <button class="btn btn-inverse btn-block">Inverse</button>
-                            <button class="btn btn-metis-1 btn-block">btn-metis-1</button>
-                            <button class="btn btn-metis-2 btn-block">btn-metis-2</button>
-                            <button class="btn btn-metis-3 btn-block">btn-metis-3</button>
-                            <button class="btn btn-metis-4 btn-block">btn-metis-4</button>
-                            <button class="btn btn-metis-5 btn-block">btn-metis-5</button>
-                            <button class="btn btn-metis-6 btn-block">btn-metis-6</button>
-                        </div>
-                        <!-- /.well well-small -->
-                        <!-- .well well-small -->
-                        <div class="well well-small dark">
-                            <span>Default</span><span class="pull-right"><small>20%</small></span>
-                        
-                            <div class="progress xs">
-                                <div class="progress-bar progress-bar-info" style="width: 20%"></div>
-                            </div>
-                            <span>Success</span><span class="pull-right"><small>40%</small></span>
-                        
-                            <div class="progress xs">
-                                <div class="progress-bar progress-bar-success" style="width: 40%"></div>
-                            </div>
-                            <span>warning</span><span class="pull-right"><small>60%</small></span>
-                        
-                            <div class="progress xs">
-                                <div class="progress-bar progress-bar-warning" style="width: 60%"></div>
-                            </div>
-                            <span>Danger</span><span class="pull-right"><small>80%</small></span>
-                        
-                            <div class="progress xs">
-                                <div class="progress-bar progress-bar-danger" style="width: 80%"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /#right -->
+         
             </div>
 
             <!-- /#wrap -->
