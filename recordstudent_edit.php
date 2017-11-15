@@ -116,6 +116,22 @@ else
                                     </div>
                                 </div>
                                 <div class="form-group">
+                                    <label for="text1" class="control-label col-lg-4">Birthday</label>
+
+                                    <div class="col-lg-8">
+                                        <input type="date" id="text1" placeholder="Birthday" class="form-control" name="student_bday">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="text1" class="control-label col-lg-4">Gender</label>
+                                    <div class="col-lg-8">
+                                        <select class="form-control" name="student_gender">
+                                            <option value="M">Male</option>
+                                            <option value="F">Female</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
                                     <label for="text1" class="control-label col-lg-4">Address</label>
 
                                     <div class="col-lg-8">
