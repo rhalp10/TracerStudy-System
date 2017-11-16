@@ -98,7 +98,7 @@ while ($user_notif_sql = mysqli_fetch_array($user_notif_qry))
 ?>
          
       </div>
-      <div class="panel-footer text-center panel_footer_custom"><a href="">See All</a></div>
+      <div class="panel-footer text-center panel_footer_custom"><a href="notification.php">See All</a></div>
     </div>
 
 
