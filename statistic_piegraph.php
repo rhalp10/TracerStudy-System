@@ -24,35 +24,35 @@ else
 {}
 
 //include convert scripts
-$category = $_GET['category'];
-if ($category = 'accountregister') {
+$category = $_REQUEST['category'];
+if ($category == 'accountregister') {
     include('json_encode_accountregister.php');
 }
-else if ($category = 'accountununregister') {
+else if ($category == 'accountununregister') {
     include('json_encode_accountununregister.php');
 }
-else if ($category = 'acceptingjobreason') {
+else if ($category == 'acceptingjobreason') {
     include('json_encode_acceptingjobreason.php');
 }
-else if ($category = 'relevantjob') {
+else if ($category == 'relevantjob') {
     include('json_encode_relevantjob.php');
 }
-else if ($category = 'grossearning') {
+else if ($category == 'grossearning') {
     include('json_encode_grossearning.php');
 }
-else if ($category = 'joblevelpos') {
+else if ($category == 'joblevelpos') {
     include('json_encode_joblevelpos.php');
 }
-else if ($category = 'empystat') {
+else if ($category == 'empystat') {
     include('json_encode_empystat.php');
 }
-else if ($category = 'purdegres') {
+else if ($category == 'purdegres') {
     include('json_encode_purdegres.php');
 }
-else if ($category = 'unres') {
+else if ($category == 'unres') {
     include('json_encode_unres.php');
 }
-else if ($category = 'uclfyj') {
+else if ($category == 'uclfyj') {
     include('json_encode_uclfyj.php');
 }
 else
@@ -149,34 +149,34 @@ else
             <!-- /#footer -->
             <?php include ('script.php');?>
             <?php 
-            if ($category = 'accountregister') {
+            if ($category == 'accountregister') {
                 include('jsript_graph_accountregister.php');
             }
-            else if ($category = 'accountununregister') {
+            else if ($category == 'accountununregister') {
                 include('jsript_graph_accountununregister.php');
             }
-            else if ($category = 'acceptingjobreason') {
+            else if ($category =='acceptingjobreason') {
                 include('jsript_graph_acceptingjobreason.php');
             }
-            else if ($category = 'relevantjob') {
+            else if ($category == 'relevantjob') {
                 include('jsript_graph_relevantjob.php');
             }
-            else if ($category = 'grossearning') {
+            else if ($category == 'grossearning') {
                 include('jsript_graph_grossearning.php');
             }
-            else if ($category = 'joblevelpos') {
+            else if ($category == 'joblevelpos') {
                 include('jsript_graph_joblevelpos.php');
             }
-            else if ($category = 'empystat') {
+            else if ($category == 'empystat') {
                 include('jsript_graph_empystat.php');
             }
-            else if ($category = 'purdegres') {
+            else if ($category == 'purdegres') {
                 include('jsript_graph_purdegres.php');
             }
-            else if ($category = 'unres') {
+            else if ($category == 'unres') {
                 include('jsript_graph_unres.php');
             }
-            else if ($category = 'uclfyj') {
+            else if ($category == 'uclfyj') {
                 include('jsript_graph_uclfyj.php');
             }
             else
