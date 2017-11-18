@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 03, 2017 at 05:03 AM
+-- Generation Time: Nov 18, 2017 at 01:51 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -116,7 +116,11 @@ INSERT INTO `forum_comment` (`comment_ID`, `comment_topicID`, `comment_userID`, 
 (12, '6', 2, 'teacher', '2017-10-17 16:00:33'),
 (13, '20', 2, 'zxczxczxc', '2017-10-17 16:03:24'),
 (14, '4', 2, 'xcvxcv', '2017-10-25 12:15:10'),
-(15, '20', 2, 'asdasd', '2017-10-27 18:57:18');
+(15, '20', 2, 'asdasd', '2017-10-27 18:57:18'),
+(25, '20', 2, 'darrennnnnn', '2017-11-04 19:52:04'),
+(26, '20', 2, 'aaaa', '2017-11-04 19:52:26'),
+(27, '1', 2, 'my teacherrr', '2017-11-04 19:54:10'),
+(28, '10', 2, 'my teacher\r\n', '2017-11-04 19:54:32');
 
 -- --------------------------------------------------------
 
@@ -282,52 +286,75 @@ INSERT INTO `message_thread_participant` (`participant_ID`, `participant_threadI
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `survey_forms`
+--
+
+CREATE TABLE `survey_forms` (
+  `form_id` int(11) NOT NULL,
+  `form_ownerID` int(11) NOT NULL,
+  `form_taken` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `survey_forms`
+--
+
+INSERT INTO `survey_forms` (`form_id`, `form_ownerID`, `form_taken`) VALUES
+(1, 1, '2017-11-18 10:04:15');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `survey_maxcount`
+--
+
+CREATE TABLE `survey_maxcount` (
+  `survey_id` int(11) NOT NULL,
+  `survey_ownerID` int(11) NOT NULL,
+  `survey_maxattemp` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `survey_maxcount`
+--
+
+INSERT INTO `survey_maxcount` (`survey_id`, `survey_ownerID`, `survey_maxattemp`) VALUES
+(0, 1, 1);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `survey_question1`
 --
 
 CREATE TABLE `survey_question1` (
   `survey_qID` int(11) NOT NULL,
-  `survey_ownerID` int(11) NOT NULL,
   `row` int(11) NOT NULL,
   `col1` varchar(50) NOT NULL,
-  `col2` varchar(50) NOT NULL
+  `col2` varchar(50) NOT NULL,
+  `survey_formID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `survey_question1`
 --
 
-INSERT INTO `survey_question1` (`survey_qID`, `survey_ownerID`, `row`, `col1`, `col2`) VALUES
-(0, 0, 1, 'U_AB_BS1', ''),
-(1, 0, 2, '', 'G_MS_MA_PHD2'),
-(2, 0, 3, 'U_AB_BS3', ''),
-(3, 0, 4, '', 'G_MS_MA_PHD4'),
-(4, 0, 5, 'U_AB_BS5', 'G_MS_MA_PHD5'),
-(5, 0, 6, '', 'G_MS_MA_PHD6'),
-(6, 0, 7, '', 'G_MS_MA_PHD7'),
-(7, 0, 8, '', 'G_MS_MA_PHD8'),
-(8, 0, 9, '', 'G_MS_MA_PHD9'),
-(9, 0, 10, '', 'G_MS_MA_PHD10'),
-(10, 0, 11, 'U_AB_BS11', ''),
-(11, 0, 12, 'U_AB_BS12', 'G_MS_MA_PHD12'),
-(12, 0, 13, 'U_AB_BS13', ''),
-(13, 0, 14, 'U_AB_BS14', 'G_MS_MA_PHD14'),
-(14, 0, 15, 'other', 'axczxczxczxc'),
-(15, 1, 1, 'U_AB_BS1', ''),
-(16, 1, 2, '', 'G_MS_MA_PHD2'),
-(17, 1, 3, 'U_AB_BS3', ''),
-(18, 1, 4, '', 'G_MS_MA_PHD4'),
-(19, 1, 5, 'U_AB_BS5', 'G_MS_MA_PHD5'),
-(20, 1, 6, '', 'G_MS_MA_PHD6'),
-(21, 1, 7, '', 'G_MS_MA_PHD7'),
-(22, 1, 8, '', 'G_MS_MA_PHD8'),
-(23, 1, 9, '', 'G_MS_MA_PHD9'),
-(24, 1, 10, '', 'G_MS_MA_PHD10'),
-(26, 1, 11, 'U_AB_BS11', ''),
-(27, 1, 12, 'U_AB_BS12', 'G_MS_MA_PHD12'),
-(28, 1, 13, 'U_AB_BS13', ''),
-(29, 1, 14, 'U_AB_BS14', 'G_MS_MA_PHD14'),
-(30, 1, 15, 'other', 'axczxczxczxc');
+INSERT INTO `survey_question1` (`survey_qID`, `row`, `col1`, `col2`, `survey_formID`) VALUES
+(1, 1, 'U_AB_BS1', '', 1),
+(2, 2, '', '', 1),
+(3, 3, '', '', 1),
+(4, 4, '', '', 1),
+(5, 5, '', '', 1),
+(6, 6, '', '', 1),
+(7, 7, '', '', 1),
+(8, 8, '', '', 1),
+(9, 9, '', '', 1),
+(10, 10, '', '', 1),
+(11, 11, '', '', 1),
+(12, 12, '', '', 1),
+(13, 13, '', '', 1),
+(14, 14, '', '', 1),
+(15, 15, 'other', '', 1);
 
 -- --------------------------------------------------------
 
@@ -337,26 +364,21 @@ INSERT INTO `survey_question1` (`survey_qID`, `survey_ownerID`, `row`, `col1`, `
 
 CREATE TABLE `survey_question2` (
   `survey_qID` int(11) NOT NULL,
-  `survey_ownerID` int(11) NOT NULL,
   `survey_row1` int(11) NOT NULL,
-  `survey_col1` varchar(50) NOT NULL
+  `survey_col1` varchar(50) DEFAULT 'no',
+  `survey_formID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `survey_question2`
 --
 
-INSERT INTO `survey_question2` (`survey_qID`, `survey_ownerID`, `survey_row1`, `survey_col1`) VALUES
-(1, 0, 1, 'no'),
-(2, 0, 2, 'yes'),
-(3, 0, 3, 'no'),
-(4, 0, 4, 'yes'),
-(5, 0, 5, 'asdasdjkasdasd'),
-(6, 1, 1, 'yes'),
-(7, 1, 2, 'yes'),
-(8, 1, 3, 'yes'),
-(9, 1, 4, 'yes'),
-(10, 1, 5, '');
+INSERT INTO `survey_question2` (`survey_qID`, `survey_row1`, `survey_col1`, `survey_formID`) VALUES
+(1, 1, 'no', 1),
+(2, 2, 'yes', 1),
+(3, 3, 'no', 1),
+(4, 4, 'yes', 1),
+(5, 5, 'no', 1);
 
 -- --------------------------------------------------------
 
@@ -366,21 +388,21 @@ INSERT INTO `survey_question2` (`survey_qID`, `survey_ownerID`, `survey_row1`, `
 
 CREATE TABLE `survey_question3` (
   `survey_qID` int(11) NOT NULL,
-  `survey_ownerID` int(11) NOT NULL,
   `row` int(11) NOT NULL,
-  `col1` varchar(1) NOT NULL,
-  `col2` varchar(1) NOT NULL
+  `col1` varchar(1) DEFAULT '0',
+  `col2` varchar(1) NOT NULL DEFAULT '0',
+  `survey_formID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `survey_question3`
 --
 
-INSERT INTO `survey_question3` (`survey_qID`, `survey_ownerID`, `row`, `col1`, `col2`) VALUES
-(1, 0, 1, '1', '0'),
-(2, 0, 2, '0', '1'),
-(3, 0, 3, '1', '0'),
-(4, 0, 4, '0', '1');
+INSERT INTO `survey_question3` (`survey_qID`, `row`, `col1`, `col2`, `survey_formID`) VALUES
+(1, 1, '1', '0', 1),
+(2, 2, '0', '1', 1),
+(3, 3, '1', '0', 1),
+(4, 4, '0', '1', 1);
 
 -- --------------------------------------------------------
 
@@ -390,22 +412,46 @@ INSERT INTO `survey_question3` (`survey_qID`, `survey_ownerID`, `row`, `col1`, `
 
 CREATE TABLE `survey_question4` (
   `survey_qID` int(11) NOT NULL,
-  `survey_ownerID` int(11) NOT NULL,
   `row1` int(11) NOT NULL,
-  `col1` varchar(1) NOT NULL
+  `col1` varchar(1) NOT NULL DEFAULT '0',
+  `survey_formID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `survey_question4`
 --
 
-INSERT INTO `survey_question4` (`survey_qID`, `survey_ownerID`, `row1`, `col1`) VALUES
-(1, 0, 1, '1'),
-(2, 0, 2, ''),
-(3, 0, 3, '1'),
-(4, 0, 4, ''),
-(5, 0, 5, '1'),
-(6, 0, 6, '1');
+INSERT INTO `survey_question4` (`survey_qID`, `row1`, `col1`, `survey_formID`) VALUES
+(1, 1, '1', 1),
+(2, 2, '', 1),
+(3, 3, '1', 1),
+(4, 4, '', 1),
+(5, 5, '1', 1),
+(6, 6, '1', 1),
+(7, 1, '', 0),
+(8, 2, '1', 0),
+(9, 3, '1', 0),
+(10, 4, '1', 0),
+(11, 5, '1', 0),
+(12, 6, '1', 0),
+(37, 1, '1', 0),
+(38, 2, '1', 0),
+(39, 3, '1', 0),
+(40, 4, '1', 0),
+(41, 5, '1', 0),
+(42, 6, '1', 0),
+(55, 1, '', 0),
+(56, 2, '', 0),
+(57, 3, '', 0),
+(58, 4, '', 0),
+(59, 5, '', 0),
+(60, 6, '', 0),
+(61, 1, '', 0),
+(62, 2, '', 0),
+(63, 3, '', 0),
+(64, 4, '', 0),
+(65, 5, '', 0),
+(66, 6, '', 0);
 
 -- --------------------------------------------------------
 
@@ -415,16 +461,16 @@ INSERT INTO `survey_question4` (`survey_qID`, `survey_ownerID`, `row1`, `col1`) 
 
 CREATE TABLE `survey_question5` (
   `survey_qID` int(11) NOT NULL,
-  `survey_ownerID` int(11) NOT NULL,
-  `survey_ans` varchar(1) NOT NULL
+  `ans` varchar(5) NOT NULL,
+  `survey_formID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `survey_question5`
 --
 
-INSERT INTO `survey_question5` (`survey_qID`, `survey_ownerID`, `survey_ans`) VALUES
-(1, 0, '1');
+INSERT INTO `survey_question5` (`survey_qID`, `ans`, `survey_formID`) VALUES
+(1, 'yes', 1);
 
 -- --------------------------------------------------------
 
@@ -434,45 +480,66 @@ INSERT INTO `survey_question5` (`survey_qID`, `survey_ownerID`, `survey_ans`) VA
 
 CREATE TABLE `survey_question6` (
   `survey_qID` int(11) NOT NULL,
-  `survey_ownerID` int(11) NOT NULL,
-  `row1` int(11) NOT NULL,
-  `col1` varchar(50) NOT NULL
+  `ans` varchar(5) NOT NULL,
+  `survey_formID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `survey_question6`
 --
 
-INSERT INTO `survey_question6` (`survey_qID`, `survey_ownerID`, `row1`, `col1`) VALUES
-(1, 0, 1, '1'),
-(2, 0, 2, '0'),
-(3, 0, 3, '1'),
-(4, 0, 4, '1'),
-(5, 0, 5, '1'),
-(6, 0, 6, 'zxczxcz');
+INSERT INTO `survey_question6` (`survey_qID`, `ans`, `survey_formID`) VALUES
+(1, 'temp', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `survey_result`
+-- Table structure for table `survey_question7`
 --
 
-CREATE TABLE `survey_result` (
-  `survey_id` int(11) NOT NULL,
-  `survey_ownerID` int(11) NOT NULL,
-  `survey_maxattemp` int(11) NOT NULL,
-  `survey_dateTaken` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+CREATE TABLE `survey_question7` (
+  `survey_qID` int(11) NOT NULL,
+  `survey_ans` varchar(1) NOT NULL DEFAULT '0',
+  `survey_formID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `survey_result`
+-- Dumping data for table `survey_question7`
 --
 
-INSERT INTO `survey_result` (`survey_id`, `survey_ownerID`, `survey_maxattemp`, `survey_dateTaken`) VALUES
-(0, 2, 2, '2017-10-27 19:19:37'),
-(1, 1, 2, '2017-10-27 19:19:40'),
-(2, 3, 2, '2017-10-27 19:19:53'),
-(3, 0, 0, '2017-11-03 02:34:25');
+INSERT INTO `survey_question7` (`survey_qID`, `survey_ans`, `survey_formID`) VALUES
+(1, '1', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `survey_question8`
+--
+
+CREATE TABLE `survey_question8` (
+  `survey_qID` int(11) NOT NULL,
+  `row1` int(11) NOT NULL,
+  `col1` varchar(50) NOT NULL,
+  `survey_formID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `survey_question8`
+--
+
+INSERT INTO `survey_question8` (`survey_qID`, `row1`, `col1`, `survey_formID`) VALUES
+(1, 1, '1', 1),
+(2, 2, '0', 1),
+(3, 3, '1', 1),
+(4, 4, '1', 1),
+(5, 5, '1', 1),
+(6, 6, 'zxczxcz', 1),
+(13, 1, '1', 0),
+(14, 2, '1', 0),
+(15, 3, '1', 0),
+(16, 4, '1', 0),
+(17, 5, '1', 0),
+(18, 6, '33333333333333333333', 0);
 
 -- --------------------------------------------------------
 
@@ -618,18 +685,41 @@ INSERT INTO `user_level` (`level_ID`, `level_name`) VALUES
 
 CREATE TABLE `user_notification` (
   `notif_ID` int(11) NOT NULL,
-  `notif_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `notif_typeID` int(11) NOT NULL,
+  `notif_topicID` int(11) NOT NULL,
   `notif_userID` int(11) NOT NULL,
-  `notif_receiverID` int(11) NOT NULL
+  `notif_receiverID` int(11) NOT NULL,
+  `notif_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `notif_state` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user_notification`
 --
 
-INSERT INTO `user_notification` (`notif_ID`, `notif_date`, `notif_typeID`, `notif_userID`, `notif_receiverID`) VALUES
-(1, '2017-08-24 10:22:13', 2, 1, 2);
+INSERT INTO `user_notification` (`notif_ID`, `notif_typeID`, `notif_topicID`, `notif_userID`, `notif_receiverID`, `notif_date`, `notif_state`) VALUES
+(1, 3, 22, 1, 2, '2017-11-04 19:04:38', 0),
+(4, 3, 1, 2, 1, '2017-11-04 19:54:10', 0),
+(5, 3, 10, 2, 3, '2017-11-04 19:54:32', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_notif_state`
+--
+
+CREATE TABLE `user_notif_state` (
+  `status_ID` int(11) NOT NULL,
+  `status_Desc` varchar(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user_notif_state`
+--
+
+INSERT INTO `user_notif_state` (`status_ID`, `status_Desc`) VALUES
+(0, 'UNREAD'),
+(1, 'READ');
 
 -- --------------------------------------------------------
 
@@ -684,15 +774,16 @@ CREATE TABLE `user_student_detail` (
 --
 
 INSERT INTO `user_student_detail` (`student_ID`, `student_userID`, `student_img`, `student_IDNumber`, `student_fName`, `student_mName`, `student_lName`, `student_address`, `student_civilStat`, `student_dob`, `student_gender`, `student_contact`, `student_admission`, `student_year_grad`, `student_department`, `student_status`, `student_secretquestion`, `student_secretanswer`) VALUES
-(1, 1, 'temp.gif', 201310656, 'Rhalp Darren ', 'R', 'Cabrera', 'Blk 38 Lot 11 Phase 2 b Southville 2 TMC', 'Single', '1997-09-26', 'M', '09888888888', '2013-10-05', '2018-03-30', 'IT', 'register', 'ano ang pangalan ko ?', 'darren'),
+(1, 1, 'temp.gif', 201310656, 'Rhalp Darren ', 'R', 'Cabrera', 'Blk 38 lot 11', 'Single', '1997-09-26', 'M', '09888888888', '2013-11-01', '2018-11-29', 'IT', 'register', 'ano ang pangalan ko ?', 'darren'),
 (2, 0, 'temp.gif', 201410209, 'Mardical', '', 'del Mundo', 'Indang', 'Single', '1997-09-26', 'F', '09169158798', '2017-09-30', '2017-09-12', 'COMSCI', 'register', '', ''),
 (13, 0, 'temp.gif', 201410259, 'Ria', '', 'Jimenez', 'Indang', 'Single', '1997-09-26', 'F', '09169158798', '2017-09-30', '2017-09-02', 'OA', 'unregister', '', ''),
 (14, 11, 'temp.gif', 201309888, 'John Ervin', 'N', 'Villadolid', 'Naic', 'Single', '1997-09-26', 'M', '09169158798', '2017-09-30', '2016-00-00', 'COMSCI', 'register', '', ''),
 (15, 0, 'temp.gif', 201088814, 'Raouf', 'R', 'Daud', 'Indang', 'Single', '1997-09-26', 'M', '09169158798', '2017-09-30', '2016-00-00', 'COMSCI', 'unregister', '', ''),
 (16, 0, 'temp.gif', 200901201, 'Justine', '', 'De-guzman', 'Indang', 'Single', '1997-09-26', 'M', '09169158798', '2017-09-30', '2017-02-00', 'COMSCI', 'unregister', '', ''),
 (17, 0, 'temp.gif', 201310253, 'Andrea', 'L', 'Labbres', 'Indang', 'Single', '1997-09-26', 'F', '09169158798', '2017-09-30', '2017-01-00', 'COMSCI', 'unregister', '', ''),
-(23, 12, 'temp.gif', 123456, 'franz', 'r.', 'cabrera', 'blk 38 lot 11 ph2b', '', '0000-00-00', '', '', '2013-01-01', '2017-04-05', 'IT', 'register', 'franz', 'cabrera'),
-(24, 0, 'temp.gif', 123456, 'sda', 'sdas', 'dasd', 'asd', '', '0000-00-00', '', '', '2017-10-03', '2017-10-14', 'COMSCI', 'unregister', '', '');
+(23, 12, 'temp.gif', 123456, 'franz', 'r', 'cabrera', 'blk 38 lot 11 ph2b', '', '0000-00-00', '', '', '2013-01-01', '2017-04-05', 'IT', 'register', 'franz', 'cabrera'),
+(24, 0, 'temp.gif', 123456, 'sda', 'R', 'dasd', 'asd', '', '0000-00-00', '', '', '2017-10-03', '2017-10-14', 'COMSCI', 'unregister', '', ''),
+(25, 0, 'temp.gif', 33, 'a', 'a', 'a', 'ssssss', 'widowed', '2017-11-11', 'F', '', '2017-11-09', '2017-11-03', 'OA', 'unregister', '', '');
 
 -- --------------------------------------------------------
 
@@ -725,7 +816,11 @@ CREATE TABLE `user_teacher_detail` (
 
 INSERT INTO `user_teacher_detail` (`teacher_ID`, `teacher_userID`, `teacher_img`, `teacher_facultyID`, `teacher_fName`, `teacher_mName`, `teacher_lName`, `teacher_gender`, `teacher_dob`, `teacher_contact`, `teacher_address`, `teacher_civilStat`, `teacher_department`, `teacher_status`, `teacher_secretquestion`, `teacher_secretanswer`) VALUES
 (1, 2, 'temp.gif', 'a12s3d', 'teacher', 't', 'teacher', 'M', '1997-09-26', '09999999999', 'Blk 38 Lot 11 Phase 2 b Southville 2 TMC', 'Single', 2, 'register', 'zxczxczxc', '3333'),
-(3, 2, 'temp.gif', '123', 'sad', 'asd', 'asd', '', '0000-00-00', '', 'asdasd', '', 0, 'register', '', '');
+(3, 2, 'temp.gif', '123', 'sad', 'asd', 'asd', '', '0000-00-00', '', 'asdasd', '', 0, 'register', '', ''),
+(4, 2, 'temp.gif', '231', 'asd', 'dd', 'ss', '', '0000-00-00', '', 'aa', '', 0, 'register', '', ''),
+(5, 2, 'temp.gif', '22', 'sdfs', 'sf', 'cx', '', '0000-00-00', '', 'xcv', '', 0, 'register', '', ''),
+(6, 2, 'temp.gif', '111', 'a', 'asd', 'a', '', '0000-00-00', '', 'a', '', 0, 'register', '', ''),
+(7, 2, 'temp.gif', '1', 's', 's', 's', '', '0000-00-00', '', 's', '', 2, 'register', '', '');
 
 -- --------------------------------------------------------
 
@@ -744,30 +839,30 @@ CREATE TABLE `view_counter` (
 --
 
 INSERT INTO `view_counter` (`view_ID`, `view_topicID`, `view_count`) VALUES
-(1, 1, 29),
+(1, 1, 39),
 (2, 2, 154),
-(3, 3, 20),
+(3, 3, 21),
 (4, 4, 20),
 (5, 5, 63),
-(6, 6, 132),
-(19, 22, 9),
+(6, 6, 134),
+(19, 22, 12),
 (20, 23, 1),
 (21, 24, 1),
 (22, 25, 2),
 (23, 26, 16),
 (24, 27, 24),
-(28, 1, 37),
+(28, 1, 47),
 (34, 29, 1),
-(36, 1, 15),
+(36, 1, 25),
 (37, 2, 3),
-(38, 3, 4),
+(38, 3, 5),
 (39, 4, 14),
 (40, 5, 5),
-(41, 6, 41),
+(41, 6, 43),
 (47, 12, 7),
-(53, 18, 14),
-(55, 20, 104),
-(57, 22, 1);
+(53, 18, 16),
+(55, 20, 133),
+(57, 22, 4);
 
 --
 -- Indexes for dumped tables
@@ -842,6 +937,19 @@ ALTER TABLE `message_thread_participant`
   ADD PRIMARY KEY (`participant_ID`);
 
 --
+-- Indexes for table `survey_forms`
+--
+ALTER TABLE `survey_forms`
+  ADD PRIMARY KEY (`form_id`);
+
+--
+-- Indexes for table `survey_maxcount`
+--
+ALTER TABLE `survey_maxcount`
+  ADD PRIMARY KEY (`survey_id`),
+  ADD UNIQUE KEY `survey_ownerID` (`survey_ownerID`);
+
+--
 -- Indexes for table `survey_question1`
 --
 ALTER TABLE `survey_question1`
@@ -878,10 +986,16 @@ ALTER TABLE `survey_question6`
   ADD PRIMARY KEY (`survey_qID`);
 
 --
--- Indexes for table `survey_result`
+-- Indexes for table `survey_question7`
 --
-ALTER TABLE `survey_result`
-  ADD PRIMARY KEY (`survey_id`);
+ALTER TABLE `survey_question7`
+  ADD PRIMARY KEY (`survey_qID`);
+
+--
+-- Indexes for table `survey_question8`
+--
+ALTER TABLE `survey_question8`
+  ADD PRIMARY KEY (`survey_qID`);
 
 --
 -- Indexes for table `survey_typechkbox`
@@ -926,6 +1040,12 @@ ALTER TABLE `user_level`
 --
 ALTER TABLE `user_notification`
   ADD PRIMARY KEY (`notif_ID`);
+
+--
+-- Indexes for table `user_notif_state`
+--
+ALTER TABLE `user_notif_state`
+  ADD PRIMARY KEY (`status_ID`);
 
 --
 -- Indexes for table `user_notif_type`
@@ -976,7 +1096,7 @@ ALTER TABLE `cvsu_department`
 -- AUTO_INCREMENT for table `forum_comment`
 --
 ALTER TABLE `forum_comment`
-  MODIFY `comment_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `comment_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 --
 -- AUTO_INCREMENT for table `forum_comment_reply`
 --
@@ -1013,25 +1133,35 @@ ALTER TABLE `message_thread`
 ALTER TABLE `message_thread_participant`
   MODIFY `participant_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
+-- AUTO_INCREMENT for table `survey_forms`
+--
+ALTER TABLE `survey_forms`
+  MODIFY `form_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+--
+-- AUTO_INCREMENT for table `survey_maxcount`
+--
+ALTER TABLE `survey_maxcount`
+  MODIFY `survey_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
 -- AUTO_INCREMENT for table `survey_question1`
 --
 ALTER TABLE `survey_question1`
-  MODIFY `survey_qID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=223;
+  MODIFY `survey_qID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `survey_question2`
 --
 ALTER TABLE `survey_question2`
-  MODIFY `survey_qID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `survey_qID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 --
 -- AUTO_INCREMENT for table `survey_question3`
 --
 ALTER TABLE `survey_question3`
-  MODIFY `survey_qID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `survey_qID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `survey_question4`
 --
 ALTER TABLE `survey_question4`
-  MODIFY `survey_qID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `survey_qID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 --
 -- AUTO_INCREMENT for table `survey_question5`
 --
@@ -1041,12 +1171,17 @@ ALTER TABLE `survey_question5`
 -- AUTO_INCREMENT for table `survey_question6`
 --
 ALTER TABLE `survey_question6`
-  MODIFY `survey_qID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `survey_qID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT for table `survey_result`
+-- AUTO_INCREMENT for table `survey_question7`
 --
-ALTER TABLE `survey_result`
-  MODIFY `survey_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+ALTER TABLE `survey_question7`
+  MODIFY `survey_qID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `survey_question8`
+--
+ALTER TABLE `survey_question8`
+  MODIFY `survey_qID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT for table `survey_typechkbox`
 --
@@ -1081,7 +1216,12 @@ ALTER TABLE `user_level`
 -- AUTO_INCREMENT for table `user_notification`
 --
 ALTER TABLE `user_notification`
-  MODIFY `notif_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `notif_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `user_notif_state`
+--
+ALTER TABLE `user_notif_state`
+  MODIFY `status_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `user_notif_type`
 --
@@ -1091,12 +1231,12 @@ ALTER TABLE `user_notif_type`
 -- AUTO_INCREMENT for table `user_student_detail`
 --
 ALTER TABLE `user_student_detail`
-  MODIFY `student_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `student_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 --
 -- AUTO_INCREMENT for table `user_teacher_detail`
 --
 ALTER TABLE `user_teacher_detail`
-  MODIFY `teacher_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `teacher_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `view_counter`
 --
