@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 18, 2017 at 01:51 PM
+-- Generation Time: Nov 18, 2017 at 10:01 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -295,13 +295,6 @@ CREATE TABLE `survey_forms` (
   `form_taken` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `survey_forms`
---
-
-INSERT INTO `survey_forms` (`form_id`, `form_ownerID`, `form_taken`) VALUES
-(1, 1, '2017-11-18 10:04:15');
-
 -- --------------------------------------------------------
 
 --
@@ -319,7 +312,7 @@ CREATE TABLE `survey_maxcount` (
 --
 
 INSERT INTO `survey_maxcount` (`survey_id`, `survey_ownerID`, `survey_maxattemp`) VALUES
-(0, 1, 1);
+(1, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -335,27 +328,6 @@ CREATE TABLE `survey_question1` (
   `survey_formID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `survey_question1`
---
-
-INSERT INTO `survey_question1` (`survey_qID`, `row`, `col1`, `col2`, `survey_formID`) VALUES
-(1, 1, 'U_AB_BS1', '', 1),
-(2, 2, '', '', 1),
-(3, 3, '', '', 1),
-(4, 4, '', '', 1),
-(5, 5, '', '', 1),
-(6, 6, '', '', 1),
-(7, 7, '', '', 1),
-(8, 8, '', '', 1),
-(9, 9, '', '', 1),
-(10, 10, '', '', 1),
-(11, 11, '', '', 1),
-(12, 12, '', '', 1),
-(13, 13, '', '', 1),
-(14, 14, '', '', 1),
-(15, 15, 'other', '', 1);
-
 -- --------------------------------------------------------
 
 --
@@ -368,17 +340,6 @@ CREATE TABLE `survey_question2` (
   `survey_col1` varchar(50) DEFAULT 'no',
   `survey_formID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `survey_question2`
---
-
-INSERT INTO `survey_question2` (`survey_qID`, `survey_row1`, `survey_col1`, `survey_formID`) VALUES
-(1, 1, 'no', 1),
-(2, 2, 'yes', 1),
-(3, 3, 'no', 1),
-(4, 4, 'yes', 1),
-(5, 5, 'no', 1);
 
 -- --------------------------------------------------------
 
@@ -394,16 +355,6 @@ CREATE TABLE `survey_question3` (
   `survey_formID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `survey_question3`
---
-
-INSERT INTO `survey_question3` (`survey_qID`, `row`, `col1`, `col2`, `survey_formID`) VALUES
-(1, 1, '1', '0', 1),
-(2, 2, '0', '1', 1),
-(3, 3, '1', '0', 1),
-(4, 4, '0', '1', 1);
-
 -- --------------------------------------------------------
 
 --
@@ -417,42 +368,6 @@ CREATE TABLE `survey_question4` (
   `survey_formID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `survey_question4`
---
-
-INSERT INTO `survey_question4` (`survey_qID`, `row1`, `col1`, `survey_formID`) VALUES
-(1, 1, '1', 1),
-(2, 2, '', 1),
-(3, 3, '1', 1),
-(4, 4, '', 1),
-(5, 5, '1', 1),
-(6, 6, '1', 1),
-(7, 1, '', 0),
-(8, 2, '1', 0),
-(9, 3, '1', 0),
-(10, 4, '1', 0),
-(11, 5, '1', 0),
-(12, 6, '1', 0),
-(37, 1, '1', 0),
-(38, 2, '1', 0),
-(39, 3, '1', 0),
-(40, 4, '1', 0),
-(41, 5, '1', 0),
-(42, 6, '1', 0),
-(55, 1, '', 0),
-(56, 2, '', 0),
-(57, 3, '', 0),
-(58, 4, '', 0),
-(59, 5, '', 0),
-(60, 6, '', 0),
-(61, 1, '', 0),
-(62, 2, '', 0),
-(63, 3, '', 0),
-(64, 4, '', 0),
-(65, 5, '', 0),
-(66, 6, '', 0);
-
 -- --------------------------------------------------------
 
 --
@@ -465,13 +380,6 @@ CREATE TABLE `survey_question5` (
   `survey_formID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `survey_question5`
---
-
-INSERT INTO `survey_question5` (`survey_qID`, `ans`, `survey_formID`) VALUES
-(1, 'yes', 1);
-
 -- --------------------------------------------------------
 
 --
@@ -480,16 +388,9 @@ INSERT INTO `survey_question5` (`survey_qID`, `ans`, `survey_formID`) VALUES
 
 CREATE TABLE `survey_question6` (
   `survey_qID` int(11) NOT NULL,
-  `ans` varchar(5) NOT NULL,
+  `ans` varchar(10) NOT NULL,
   `survey_formID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `survey_question6`
---
-
-INSERT INTO `survey_question6` (`survey_qID`, `ans`, `survey_formID`) VALUES
-(1, 'temp', 1);
 
 -- --------------------------------------------------------
 
@@ -503,13 +404,6 @@ CREATE TABLE `survey_question7` (
   `survey_formID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `survey_question7`
---
-
-INSERT INTO `survey_question7` (`survey_qID`, `survey_ans`, `survey_formID`) VALUES
-(1, '1', 1);
-
 -- --------------------------------------------------------
 
 --
@@ -522,24 +416,6 @@ CREATE TABLE `survey_question8` (
   `col1` varchar(50) NOT NULL,
   `survey_formID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `survey_question8`
---
-
-INSERT INTO `survey_question8` (`survey_qID`, `row1`, `col1`, `survey_formID`) VALUES
-(1, 1, '1', 1),
-(2, 2, '0', 1),
-(3, 3, '1', 1),
-(4, 4, '1', 1),
-(5, 5, '1', 1),
-(6, 6, 'zxczxcz', 1),
-(13, 1, '1', 0),
-(14, 2, '1', 0),
-(15, 3, '1', 0),
-(16, 4, '1', 0),
-(17, 5, '1', 0),
-(18, 6, '33333333333333333333', 0);
 
 -- --------------------------------------------------------
 
@@ -1136,52 +1012,52 @@ ALTER TABLE `message_thread_participant`
 -- AUTO_INCREMENT for table `survey_forms`
 --
 ALTER TABLE `survey_forms`
-  MODIFY `form_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `form_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `survey_maxcount`
 --
 ALTER TABLE `survey_maxcount`
-  MODIFY `survey_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `survey_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `survey_question1`
 --
 ALTER TABLE `survey_question1`
-  MODIFY `survey_qID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `survey_qID` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `survey_question2`
 --
 ALTER TABLE `survey_question2`
-  MODIFY `survey_qID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `survey_qID` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `survey_question3`
 --
 ALTER TABLE `survey_question3`
-  MODIFY `survey_qID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `survey_qID` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `survey_question4`
 --
 ALTER TABLE `survey_question4`
-  MODIFY `survey_qID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `survey_qID` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `survey_question5`
 --
 ALTER TABLE `survey_question5`
-  MODIFY `survey_qID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `survey_qID` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `survey_question6`
 --
 ALTER TABLE `survey_question6`
-  MODIFY `survey_qID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `survey_qID` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `survey_question7`
 --
 ALTER TABLE `survey_question7`
-  MODIFY `survey_qID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `survey_qID` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `survey_question8`
 --
 ALTER TABLE `survey_question8`
-  MODIFY `survey_qID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `survey_qID` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `survey_typechkbox`
 --
