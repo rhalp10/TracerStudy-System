@@ -1,37 +1,31 @@
 <?php 
 include('session.php');
 include('db.php');
-$sql = mysqli_query($con,"SELECT YEAR(survey_dateTaken) as dataTaken,survey_maxattemp as maxattemp FROM `survey_result` WHERE survey_ownerID = '$login_id'");
-$attemp = mysqli_fetch_array($sql);
-$date_now = date("Y/m/d") ;
+
+$survey_maxcount_qry = mysqli_query($con,"SELECT survey_maxattemp FROM `survey_maxcount` WHERE survey_ownerID = '$login_id'");
+$survey_maxattemp = mysqli_fetch_array($survey_maxcount_qry);
+//if user is teacher or admin disable survey form features
 if ($login_level == '3' || $login_level == '2' ) {
     header('Location: dashboard.php'); 
 }
 
-if ($attemp['dataTaken'] == date( "Y", strtotime( "$date_now"))) {
-   
-    if ($attemp['maxattemp'] != 0) {
-       
-       if ($attemp['maxattemp'] == 1) {
-          echo "<script>
-              window.location='surveyview.php';
-            </script>";
-       }
-    }
-    else
-    {
-        echo "<script>alert('Exceed the maximum attemp!');
-              window.location='surveyview.php';
-            </script>";
-    }
+//getting latest date base on server PC
+$date_now = date("Y/m/d") ;
+$year_now = date( "Y", strtotime( "$date_now"));
+
+
+
+$survey_latest_form_sql = mysqli_query ($con,"SELECT form_id,year(max(form_taken)) as survey_year FROM `survey_forms` WHERE form_ownerID = '$login_id' ");
+$latest_survey_form = mysqli_fetch_array($survey_latest_form_sql);
+$latest_user_survey_formID = $latest_survey_form['form_id'];
+$latest_user_survey_year = $latest_survey_form['survey_year'];
+//checking if year now is greater tha your latest survey taken
+if ($year_now > $latest_user_survey_year)
+{
+    // survey_maxcount reset to 2
+    mysqli_query($con,"UPDATE `survey_maxcount` SET `survey_maxattemp` = '2' WHERE `survey_ownerID` = '$login_id' ");
 }
-else
-{   
-    mysqli_query($con,"  UPDATE `survey_result` SET `survey_maxattemp` = '2', WHERE survey_ownerID = '$login_id'");
-    echo "<script>alert('Reset By Year!');
-              window.location='surveyview.php';
-            </script>";
-}
+
 $page = 'survey';
 if ($login_level == '1')
 {
@@ -110,13 +104,13 @@ else
                         <div class="inner bg-light lter">
                             <div>
                                  <?php 
-                                if ($attemp['maxattemp'] == 0) {
+                                if ($survey_maxattemp['survey_maxattemp'] == '0') {
                                     # code...
                                 }
                                 else
                                 {
                                  ?>
-                                <h3 class="pull-right"><a href="" class="btn btn-default">Retake Remaining (<?php echo $attemp['maxattemp'];?>)</a></h3>
+                                <h3 class="pull-right"><a href="" class="btn btn-default">Retake Remaining (<?php echo $survey_maxattemp['survey_maxattemp'];?>)</a></h3>
                                  <?php
                                 }
                                 ?>
@@ -450,6 +444,25 @@ else
                                                 </tr>
                                             </tbody>
                                         </table>
+                                    </div>
+                                     <div id="sq_106" class="" style="display: inline-block; vertical-align: top; width: 100%;">
+                                        <h5 class=""><span style="">5. Are you presently employed?</span></h5>
+                                        <select id="" class="form-control" style="width: 300px;" name="pre_emp">
+
+                                             <option value="yes">Yes</option>
+                                             <option value="no">No</option>
+                                             <option value="never">Never Employed</option>
+                                         </select>
+                                    </div>
+                                    <div id="Yes" class="x" style="display: inline-block; vertical-align: top; width: 100%;">
+                                        <h5 class=""><span style="">6. Present Employment Status</span></h5>
+                                        <select id="" class="form-control" style="width: 300px;" name="pre_stat">
+                                             <option value="rop">Regular or Permanent</option>
+                                             <option value="temp">Temporary</option>
+                                             <option value="cas">Casual</option>
+                                             <option value="con">Contractual</option>
+                                             <option value="self">Self- employed</option>
+                                         </select>
                                     </div>
                                     <div id="sq_106" class="" style="display: inline-block; vertical-align: top; width: 100%;">
                                         <h5 class=""><span style="">7. Was the curriculum you had in college relevant to your first job?</span></h5>
