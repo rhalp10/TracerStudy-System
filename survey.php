@@ -2,6 +2,7 @@
 include('session.php');
 include('db.php');
 
+
 $survey_maxcount_qry = mysqli_query($con,"SELECT survey_maxattemp FROM `survey_maxcount` WHERE survey_ownerID = '$login_id'");
 $survey_maxattemp = mysqli_fetch_array($survey_maxcount_qry);
 //if user is teacher or admin disable survey form features
@@ -9,6 +10,10 @@ if ($login_level == '3' || $login_level == '2' ) {
     header('Location: dashboard.php'); 
 }
 
+if($survey_maxattemp['survey_maxattemp'] <= '0')
+{
+   header('Location: surveyview.php');
+}
 //getting latest date base on server PC
 $date_now = date("Y/m/d") ;
 $year_now = date( "Y", strtotime( "$date_now"));
@@ -457,7 +462,7 @@ else
                                     <div id="Yes" class="x" style="display: inline-block; vertical-align: top; width: 100%;">
                                         <h5 class=""><span style="">6. Present Employment Status</span></h5>
                                         <select id="" class="form-control" style="width: 300px;" name="pre_stat">
-                                             <option value="rop">Regular or Permanent</option>
+                                             <option value="rop" >Regular or Permanent</option>
                                              <option value="temp">Temporary</option>
                                              <option value="cas">Casual</option>
                                              <option value="con">Contractual</option>
