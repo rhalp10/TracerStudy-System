@@ -10,6 +10,7 @@ $row = mysqli_fetch_assoc($ses_sql);
 $login_session = $row['user_name'];
 $login_level = $row['user_level'];
 $login_id = $row['user_ID'];
+
 if (!isset($login_session))
 {
   mysqli_close($con); // Closing Connection
