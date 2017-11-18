@@ -4,6 +4,7 @@ $res_sidebar = mysqli_fetch_assoc($query_sidebar);
 $query_count_post = mysqli_query($con,"SELECT `post_owner_id` FROM `forum_topic` WHERE `post_owner_id` = $login_id");
 $res_count_post = mysqli_num_rows($query_count_post);
 $userType = "student";
+
 ?>
 
                     <div id="left">
@@ -123,7 +124,17 @@ $userType = "student";
                                   <?php
                                   }
                                    ?>
-                                    <a href="survey.php">
+
+                                    <a href="<?php 
+                                    if($survey_maxattemp['survey_maxattemp']  <= '1')
+                                    {
+                                      echo "surveyview.php";
+                                    }
+                                    else{
+                                      echo "survey.php";
+                                    }
+                                    ?>">
+
                                       <span class="link-title">
                                     Survey
                                   </span>
