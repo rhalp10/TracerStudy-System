@@ -79,6 +79,7 @@ if (empty($student_sinumber) || empty($student_firstname)|| empty($student_middl
 												window.location='../recordstudent.php';
 											</script>";
 	}
+
 }
 else{
 		//insert query
