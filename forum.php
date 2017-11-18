@@ -2,6 +2,9 @@
 <?php 
 include('session.php');
 include('db.php');
+
+$survey_maxcount_qry = mysqli_query($con,"SELECT survey_maxattemp FROM `survey_maxcount` WHERE survey_ownerID = '$login_id'");
+$survey_maxattemp = mysqli_fetch_array($survey_maxcount_qry);
 $page = 'forum';
 if($login_level == '1') {
    $result = mysqli_query($con,"SELECT * FROM `user_student_detail` WHERE student_userID = $login_id");
@@ -71,13 +74,13 @@ else {}
                                   </tfoot>
                               </table>
                               <hr>
-                              <table id="forumData_Unpin"  class="table table-bordered table-advance table-hover  dataTable">
+                              <table id="forumData_Unpin"  class="table table-bordered table-advance table-hover  dataTable" >
                                   <thead>
                                     <tr>
                                       <th><h3>Topic</h3></th>
                                     </tr>
-                                    <tr onclick="self.location.href='forum_topic_create.php'">
-                                  <td class="forum-td" >
+                                    <tr onclick="self.location.href='forum_topic_create.php'" >
+                                  <td class="forum-td" id="forumData_Unpin_td" >
                                   <div class="forum-list-hover col-sm-1" >
                                   <i class="fa fa-plus"></i>
                                     </div>
@@ -123,9 +126,10 @@ else {}
             <?php include ('script.php');?>
         </body>
         <script type="text/javascript">
+
             $(document).ready(function() {
         console.log("document ready!");
-
+       
         var $sticky = $('.sticky');
         var $stickyrStopper = $('.sticky-stopper');
         if (!!$sticky.offset()) { // make sure ".sticky" element exists

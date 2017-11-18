@@ -2,6 +2,9 @@
 <?php 
 include('session.php'); //for login session if you are not logged in you will go back in index.php
 include('db.php');//database connection
+
+$survey_maxcount_qry = mysqli_query($con,"SELECT survey_maxattemp FROM `survey_maxcount` WHERE survey_ownerID = '$login_id'");
+$survey_maxattemp = mysqli_fetch_array($survey_maxcount_qry);
 $page = 'forum';
 
 if ($login_level == '1')//for student access

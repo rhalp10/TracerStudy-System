@@ -2,6 +2,7 @@
 <?php 
 include('session.php'); 
 include('db.php');
+
 $page = 'forum';
 
 if ($login_level == '1')//for student access
