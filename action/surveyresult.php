@@ -1,80 +1,5 @@
 <?php 
-// $json = $_REQUEST['result'];
-// $survey_result	 = json_decode($json);
-// access name of $survey object
-// JavaScript: value
 
-// echo $survey_result->Region_of_Origin .'<br/>';
-// echo $survey_result->Location_of_Residence .'<br/>';
-// $survey_result->Educ_Dec_only ;
-// $survey_result->Pro_Exa_pass ;
-// $survey_result->Reason_pusue_degree ;
-
-
-
-// columns{  Degree_Specialization
-//   College_or_University
-//   Year_Graduate
-//   Honors_Awards_Received
-// }
-
-
-// foreach ($survey_result->Educ_Dec_only) {
-//     echo $survey_result->Educ_Dec_only['Degree_Specialization'];
-//     echo $survey_result->Educ_Dec_only['College_or_University'];
-//     echo $survey_result->Educ_Dec_only['Year_Graduate'];
-//     echo $survey_result->Educ_Dec_only['Honors_Awards_Received'];
-// }
-
-// $json = <<<JSON
-// {
-//     "title":"A Title Here",
-//     "images":[
-//         {
-//             "coverType":"fanart",
-//             "url":"some_random_file_here.jpg"
-//         },
-//         {
-//             "coverType":"banner",
-//             "url":"another_random_file_here.jpg"
-//         },
-//         {
-//             "coverType":"poster",
-//             "url":"yet_another_random_file_here.jpg"
-//         }
-//     ]
-// }
-// JSON;
-// print_r($json);
-// $a=0;
-// foreach ($survey_result->Educ_Dec_only as $data)
-// {
-	//each
-		// echo "index of array".$a++.'<br/>';
-  //       echo 'Degree_Specialization: ' .$data->Degree_Specialization .'<br/>';
-  //       echo 'College_or_University: ' .$data->College_or_University .'<br/>';
-  //       echo 'Honors_Awards_Received: ' .$data->Honors_Awards_Received .'<br/>';
-    //add query
-// }
-// $a=0;
-// foreach ($survey_result->Pro_Exa_pass as $data)
-// {
-	//each
-		// echo "index of array".$a++.'<br/>';
-  //       echo 'Degree_Specialization: ' .$data->Name_of_Examination .'<br/>';
-  //       echo 'College_or_University: ' .$data->Date_Taken .'<br/>';
-  //       echo 'Honors_Awards_Received: ' .$data->Rating .'<br/>';
-    	//add query
-// }
-// foreach ($survey_result->Pro_Exa_pass as $data)
-// {
-	//each
-		// echo "index of array".$a++.'<br/>';
-  //       echo 'Degree_Specialization: ' .$data->Name_of_Examination .'<br/>';
-  //       echo 'College_or_University: ' .$data->Date_Taken .'<br/>';
-  //       echo 'Honors_Awards_Received: ' .$data->Rating .'<br/>';
-    	//add query
-// }
 ini_set('display_errors', 1);
 ini_set('error_reporting', E_ERROR);
 $con = mysqli_connect('localhost','root','','tracerdata') or die("ERROR");
@@ -89,7 +14,7 @@ if (isset($_POST['submit-survey'])) {
 
 	if ($attemp['maxattemp'] != 0 ) 
 	{
-	for ($i=1; $i <=15; $i++) { 
+		for ($i=1; $i <=15; $i++) { 
 			
 			
 			if ($_POST['U_AB_BS'.$i]) {
@@ -126,17 +51,17 @@ if (isset($_POST['submit-survey'])) {
 				$Other_q1 = "";
 			
 				}
-				$sql_q1 = "INSERT INTO `survey_question1` (`survey_qID`, `survey_ownerID`, `row`, `col1`, `col2`) ";
-					$sql_q1 .= " VALUES (NULL, '$ownerID', '$i', 'other', '$Other_q1')";
-					mysqli_query($con,$sql_q1);
+					// $sql_q1 = "INSERT INTO `survey_question1` (`survey_qID`, `survey_ownerID`, `row`, `col1`, `col2`) ";
+					// $sql_q1 .= " VALUES (NULL, '$ownerID', '$i', 'other', '$Other_q1')";
+					// mysqli_query($con,$sql_q1);
 
 			}
 			else
 			{
 				
-				$sql_q1 = "INSERT INTO `survey_question1` (`survey_qID`, `survey_ownerID`, `row`, `col1`, `col2`) ";
-				$sql_q1 .= " VALUES (NULL, '$ownerID', '$i', '$U_AB_BS', '$G_MS_MA_PHD')";
-				mysqli_query($con,$sql_q1);
+				// $sql_q1 = "INSERT INTO `survey_question1` (`survey_qID`, `survey_ownerID`, `row`, `col1`, `col2`) ";
+				// $sql_q1 .= " VALUES (NULL, '$ownerID', '$i', '$U_AB_BS', '$G_MS_MA_PHD')";
+				// mysqli_query($con,$sql_q1);
 			}
 			
 			
@@ -167,7 +92,7 @@ if (isset($_POST['submit-survey'])) {
 		$EntreSkill = $_POST['EntreSkill'];//3
 		$ProbsolbSkill = $_POST['ProbsolbSkill'];//4
 		$CritThinkSkill = $_POST['CritThinkSkill'];//5
-		$Other_q6 = $_POST['Other_q6'];//6
+		$Other_q8 = $_POST['Other_q8'];//6
 		$Salaries_benefits = stripslashes($Salaries_benefits);
 		$Career_challenge =  stripslashes($Career_challenge);
 		$Related_to_special_skills = stripslashes($Related_to_special_skills);
@@ -181,7 +106,7 @@ if (isset($_POST['submit-survey'])) {
 		$CPJ_Magex =  stripslashes($CPJ_Magex);
 		$FJ_SelfEmp =  stripslashes($FJ_SelfEmp);
 		$CPJ_SelfEmp =  stripslashes($CPJ_SelfEmp);
-		$Below5k =  stripslashes($SalariBelow5kes_benefits);
+		$Below5k =  stripslashes($Below5k);
 		$k5lessthan10k =  stripslashes($k5lessthan10k);
 		$k10lessthan15k =  stripslashes($k10lessthan15k);
 		$k15lessthan20k =  stripslashes($k15lessthan20k);
@@ -192,7 +117,7 @@ if (isset($_POST['submit-survey'])) {
 		$EntreSkill =  stripslashes($EntreSkill);
 		$ProbsolbSkill =  stripslashes($ProbsolbSkill);
 		$CritThinkSkill =  stripslashes($CritThinkSkill);
-		$Other_q6 =  stripslashes($Other_q6);
+		$Other_q8 =  stripslashes($Other_q8);
 
 		$Salaries_benefits = mysqli_real_escape_string($con,$Salaries_benefits);
 		$Career_challenge =  mysqli_real_escape_string($con,$Career_challenge);
@@ -218,207 +143,143 @@ if (isset($_POST['submit-survey'])) {
 		$EntreSkill =  mysqli_real_escape_string($con,$EntreSkill);
 		$ProbsolbSkill =  mysqli_real_escape_string($con,$ProbsolbSkill);
 		$CritThinkSkill =  mysqli_real_escape_string($con,$CritThinkSkill);
-		$Other_q6 =  mysqli_real_escape_string($con,$Other_q6);
+		$Other_q8 =  mysqli_real_escape_string($con,$Other_q8);
 
-		echo "QUESTION NO.2<br>";
 		
-		if ($Salaries_benefits == 'yes') {
-
-			echo  $Salaries_benefits."<br>";
-		}
-		else
-		{
-			echo "NO<br>";
-		}
-		if ($Career_challenge == 'yes') {
-			echo  $Career_challenge."<br>";
-		}
-		else
-		{
-			echo "NO<br>";
-		}
-		if ($Related_to_special_skills == 'yes') {
-			echo  $Related_to_special_skills."<br>";
-		}
-		else
-		{
-			echo "NO<br>";
-		}
-		if ($Proximity_to_residence == 'yes') {
-			echo  $Proximity_to_residence."<br>";
-		}
-		else
-		{
-			echo "NO<br>";
-		}
-		if (!empty($Other_q2)) {
-			echo  $Other_q2."<br>";
-		}
-		else
-		{
-			echo "empty_other<br>";
-		}
-
-		echo "QUESTION NO.3<br>";
-		
-		
-		if ($FJ_RankCleric == '1') {
-			echo  $FJ_RankCleric."<br>";
-		}
-		else
-		{
-			echo "empty<br>";
-		}
-		if ($CPJ_RankCleric == '1') {
-			echo  $CPJ_RankCleric."<br>";
-		}
-		else
-		{
-			echo "empty<br>";
-		}
-		if ($FJ_ProTecSup == '1') {
-			echo  $FJ_ProTecSup."<br>";
-		}
-		else
-		{
-			echo "empty<br>";
-		}
-		if ($CPJ_ProTecSup == '1') {
-			echo  $CPJ_RankCleric."<br>";
-		}
-		else
-		{
-			echo "empty<br>";
-		}
-		if ($FJ_Magex == '1') {
-			echo  $FJ_Magex."<br>";
-		}
-		else
-		{
-			echo "empty<br>";
-		}
-		if ($CPJ_Magex == '1') {
-			echo  $CPJ_Magex."<br>";
-		}
-		else
-		{
-			echo "empty<br>";
-		}
-		if ($FJ_SelfEmp == '1') {
-			echo  $FJ_SelfEmp."<br>";
-		}
-		else
-		{
-			echo "empty<br>";
-		}
-		if ($CPJ_SelfEmp == '1') {
-			echo  $CPJ_SelfEmp."<br>";
-		}
-		else
-		{
-			echo "empty<br>";
-		}
-
-		echo "QUESTION NO.4: <br>";
-		if ($Below5k == '1') {
-			echo  $Below5k."<br>";
-		}
-		else
-		{
-			echo "empty<br>";
-		}
-		if ($k5lessthan10k == '1') {
-				echo $k5lessthan10k."<br>";
-		}
-		else
-		{
-			echo "empty<br>";
-		}
-		if ($k10lessthan15k == '1') {
-			echo  $k10lessthan15k."<br>";
-		}
-		else
-		{
-			echo "empty<br>";
+		// if ($Salaries_benefits == 'yes') {
+		// 	$q2_sql = "INSERT INTO survey_question2(`survey_qID`, `survey_ownerID`, `survey_row1`, `survey_col1`) ";
+		// 	$q2_sql.= "VALUES (NULL, '$ownerID', '1', '$Salaries_benefits')";
+		// 	mysqli_query($con,$q2_sql);
+		// }
+		// else
+		// {
+		// 	$Salaries_benefits = "no";
+		// 	$q2_sql = "INSERT INTO survey_question2(`survey_qID`, `survey_ownerID`, `survey_row1`, `survey_col1`) ";
+		// 	$q2_sql.= "VALUES (NULL, '$ownerID', '1', '$Salaries_benefits')";
+		// 	mysqli_query($con,$q2_sql);
 			
-		}
-		if ($k15lessthan20k == '1') {
-			echo  $k15lessthan20k."<br>";
-		}
-		else
-		{
-			echo "empty<br>";
-		}
-		if ($k20lessthan25k == '1') {
-			echo  $k20lessthan25k."<br>";
-		}
-		else
-		{
-			echo "empty<br>";
-		}
-		if ($k25andabove == '1') {
-			echo  $k25andabove."<br>";
-		}
-		else
-		{
-			echo "empty<br>";
-		}
+		// }
+		// if ($Career_challenge == 'yes') {
+		// 	$q2_sql = "INSERT INTO survey_question2(`survey_qID`, `survey_ownerID`, `survey_row1`, `survey_col1`) ";
+		// 	$q2_sql.= "VALUES (NULL, '$ownerID', '2', '$Career_challenge')";
+		// 	mysqli_query($con,$q2_sql);
+		// }
+		// else
+		// {	$Career_challenge = 'no';
+		// 	$q2_sql = "INSERT INTO survey_question2(`survey_qID`, `survey_ownerID`, `survey_row1`, `survey_col1`) ";
+		// 	$q2_sql.= "VALUES (NULL, '$ownerID', '2', '$Career_challenge')";
+		// 	mysqli_query($con,$q2_sql);
+		// }
+		// if ($Related_to_special_skills == 'yes') {
+		// 	$q2_sql = "INSERT INTO survey_question2(`survey_qID`, `survey_ownerID`, `survey_row1`, `survey_col1`) ";
+		// 	$q2_sql.= "VALUES (NULL, '$ownerID', '3', '$Related_to_special_skills')";
+		// 	mysqli_query($con,$q2_sql);
+		// }
+		// else
+		// {
+		// 	$Related_to_special_skills = "no";
+		// 	$q2_sql = "INSERT INTO survey_question2(`survey_qID`, `survey_ownerID`, `survey_row1`, `survey_col1`) ";
+		// 	$q2_sql.= "VALUES (NULL, '$ownerID', '3', '$Related_to_special_skills')";
+		// 	mysqli_query($con,$q2_sql);
+		// }
+		// if ($Proximity_to_residence == 'yes') {
+		// 	$q2_sql = "INSERT INTO survey_question2(`survey_qID`, `survey_ownerID`, `survey_row1`, `survey_col1`) ";
+		// 	$q2_sql.= "VALUES (NULL, '$ownerID', '4', '$Proximity_to_residence')";
+		// 	mysqli_query($con,$q2_sql);
+		// }
+		// else
+		// {	
+		// 	$Proximity_to_residence = "no";
+		// 	$q2_sql = "INSERT INTO survey_question2(`survey_qID`, `survey_ownerID`, `survey_row1`, `survey_col1`) ";
+		// 	$q2_sql.= "VALUES (NULL, '$ownerID', '4', '$Proximity_to_residence')";
+		// 	mysqli_query($con,$q2_sql);
+		// }
+		// if (!empty($Other_q2)) {
+		// 	$q2_sql = "INSERT INTO survey_question2(`survey_qID`, `survey_ownerID`, `survey_row1`, `survey_col1`) ";
+		// 	$q2_sql.= "VALUES (NULL, '$ownerID', '5', '$Other_q2')";
+		// 	mysqli_query($con,$q2_sql);
+		// }
+		// else
+		// {
+		// 	$Other_q2 = "no";
+		// 	$q2_sql = "INSERT INTO survey_question2(`survey_qID`, `survey_ownerID`, `survey_row1`, `survey_col1`) ";
+		// 	$q2_sql.= "VALUES (NULL, '$ownerID', '5', '$Other_q2')";
+		// 	mysqli_query($con,$q2_sql);
+		// }
+		
 
-if (!empty($Communication_skills) || !empty($HumRelSkills)  || !empty($EntreSkill) || !empty($ProbsolbSkill) || !empty($CritThinkSkill) || !empty($Other_q6)) {
-			 echo "QUESTION NO.5: <br>";
-			 echo "YES <br>";
-			 echo "QUESTION NO.6: <br>";
-		if ($Communication_skills  == '1') {
-			# code...
+		
+
+			// $q3_sql = "INSERT INTO survey_question3 (`survey_qID`, `survey_ownerID`, `row`, `col1`, `col2`) ";
+			// $q3_sql.= "VALUES (NULL, '$ownerID', '1', '$FJ_RankCleric','$CPJ_RankCleric')";
+			// mysqli_query($con,$q3_sql);
+			// $q3_sql = "INSERT INTO survey_question3 (`survey_qID`, `survey_ownerID`, `row`, `col1`, `col2`) ";
+			// $q3_sql.= "VALUES (NULL, '$ownerID', '2', '$FJ_ProTecSup','$CPJ_ProTecSup')";
+			// mysqli_query($con,$q3_sql);
+			// $q3_sql = "INSERT INTO survey_question3 (`survey_qID`, `survey_ownerID`, `row`, `col1`, `col2`) ";
+			// $q3_sql.= "VALUES (NULL, '$ownerID', '3', '$FJ_Magex','$CPJ_Magex')";
+			// mysqli_query($con,$q3_sql);
+			// $q3_sql = "INSERT INTO survey_question3 (`survey_qID`, `survey_ownerID`, `row`, `col1`, `col2`) ";
+			// $q3_sql.= "VALUES (NULL, '$ownerID', '4', '$FJ_SelfEmp','$CPJ_SelfEmp')";
+			// mysqli_query($con,$q3_sql);
+
+		
+		$q4_sql = "INSERT INTO survey_question4 (`survey_qID`, `survey_ownerID`, `row1`, `col1`) ";
+		$q4_sql.= "VALUES (NULL, '$ownerID', '1', '$Below5k')";
+		mysqli_query($con,$q4_sql);
+		$q4_sql = "INSERT INTO survey_question4 (`survey_qID`, `survey_ownerID`, `row1`, `col1`) ";
+		$q4_sql.= "VALUES (NULL, '$ownerID', '2', '$k5lessthan10k')";
+		mysqli_query($con,$q4_sql);
+		$q4_sql = "INSERT INTO survey_question4 (`survey_qID`, `survey_ownerID`, `row1`, `col1`) ";
+		$q4_sql.= "VALUES (NULL, '$ownerID', '3', '$k10lessthan15k')";
+		mysqli_query($con,$q4_sql);
+		$q4_sql = "INSERT INTO survey_question4 (`survey_qID`, `survey_ownerID`, `row1`, `col1`) ";
+		$q4_sql.= "VALUES (NULL, '$ownerID', '4', '$k15lessthan20k')";
+		mysqli_query($con,$q4_sql);
+		$q4_sql = "INSERT INTO survey_question4 (`survey_qID`, `survey_ownerID`, `row1`, `col1`) ";
+		$q4_sql.= "VALUES (NULL, '$ownerID', '5', '$k20lessthan25k')";
+		mysqli_query($con,$q4_sql);
+		$q4_sql = "INSERT INTO survey_question4 (`survey_qID`, `survey_ownerID`, `row1`, `col1`) ";
+		$q4_sql.= "VALUES (NULL, '$ownerID', '6', '$k25andabove')";
+		mysqli_query($con,$q4_sql);
+
+
+		if (!empty($Communication_skills) || !empty($HumRelSkills)  || !empty($EntreSkill) || !empty($ProbsolbSkill) || !empty($CritThinkSkill) || !empty($Other_q8)) {
+				$q7_sql = "INSERT INTO survey_question7 (`survey_qID`, `survey_ownerID`, `survey_ans`) ";
+				$q7_sql.= "VALUES (NULL, '$ownerID', '1')";
+				mysqli_query($con,$q7_sql);
+
+			 	$q8_sql = "INSERT INTO survey_question8 (`survey_qID`, `survey_ownerID`, `row1`, `col1`) ";
+				$q8_sql.= "VALUES (NULL, '$ownerID', '1', '$Communication_skills')";
+				mysqli_query($con,$q8_sql);
+				$q8_sql = "INSERT INTO survey_question8 (`survey_qID`, `survey_ownerID`, `row1`, `col1`) ";
+				$q8_sql.= "VALUES (NULL, '$ownerID', '2', '$HumRelSkills')";
+				mysqli_query($con,$q8_sql);
+				$q8_sql = "INSERT INTO survey_question8 (`survey_qID`, `survey_ownerID`, `row1`, `col1`) ";
+				$q8_sql.= "VALUES (NULL, '$ownerID', '3', '$EntreSkill')";
+				mysqli_query($con,$q8_sql);
+				$q8_sql = "INSERT INTO survey_question8 (`survey_qID`, `survey_ownerID`, `row1`, `col1`) ";
+				$q8_sql.= "VALUES (NULL, '$ownerID', '4', '$ProbsolbSkill')";
+				mysqli_query($con,$q8_sql);
+				$q8_sql = "INSERT INTO survey_question8 (`survey_qID`, `survey_ownerID`, `row1`, `col1`) ";
+				$q8_sql.= "VALUES (NULL, '$ownerID', '5', '$CritThinkSkill')";
+				mysqli_query($con,$q8_sql);
+				$q8_sql = "INSERT INTO survey_question8 (`survey_qID`, `survey_ownerID`, `row1`, `col1`) ";
+				$q8_sql.= "VALUES (NULL, '$ownerID', '6', '$Other_q8')";
+				mysqli_query($con,$q8_sql);
+				
+
 		}
-		else
+		// all data filled on question 8 is all empty  
+		if (empty($Communication_skills) && empty($HumRelSkills)  && empty($EntreSkill) && empty($ProbsolbSkill) && empty($CritThinkSkill) && empty($Other_q8)) 
 		{
-			echo "empty<br>";
-		}
-		if ($Communication_skills  == '1') {
-			
-			echo $Communication_skills."<br>";
-		}
-		else
-		{
-			echo "empty<br>";
-		}
-		if ($HumRelSkills  == '1') {
-			echo $HumRelSkills."<br>";
-		}
-		else
-		{
-			echo "empty<br>";
-		}
-		if ($EntreSkill  == '1') {
-			echo $EntreSkill."<br>";
-		}
-		else
-		{
-			echo "empty<br>";
-		}
-		if ($ProbsolbSkill  == '1') {
-			echo $ProbsolbSkill."<br>";
-		}
-		else
-		{
-			echo "empty<br>";
-		}
-		if ($Other_q6  == '1') {
-			echo $Other_q6."<br>";
-		}
-		else
-		{
-			echo "empty<br>";
-		}
+			$q7_sql = "INSERT INTO survey_question7 (`survey_qID`, `survey_ownerID`, `survey_ans`) ";
+			$q7_sql.= "VALUES (NULL, '$ownerID', '0')";
+			mysqli_query($con,$q7_sql);
 		}
 		
 		
-		// if already perform
-		//SELECT survey_maxattemp as maxattemp FROM survey_result WHERE WHERE survey_ownerID = '$ownerID;
-		//$update_maxattemp = attemp['data'];
-		// $update_maxattemp -= 1;
-		//UPDATE `survey_result` SET `survey_maxattemp` = '$update_maxattemp' WHERE survey_ownerID = '$ownerID';
+		
 	}
 	else
 	{
@@ -430,9 +291,4 @@ if (!empty($Communication_skills) || !empty($HumRelSkills)  || !empty($EntreSkil
 	
 
 }
-
-
-
-
-
 ?>
