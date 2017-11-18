@@ -1,6 +1,30 @@
 <?php 
+
 include('session.php');
 include('db.php');
+
+$survey_maxcount_qry = mysqli_query($con,"SELECT survey_maxattemp FROM `survey_maxcount` WHERE survey_ownerID = '$login_id'");
+$survey_maxattemp = mysqli_fetch_array($survey_maxcount_qry);
+//if user is teacher or admin disable survey form features
+if ($login_level == '3' || $login_level == '2' ) {
+    header('Location: dashboard.php'); 
+}
+
+//getting latest date base on server PC
+$date_now = date("Y/m/d") ;
+$year_now = date( "Y", strtotime( "$date_now"));
+
+
+$survey_latest_form_sql = mysqli_query ($con,"SELECT form_id,year(max(form_taken)) as survey_year FROM `survey_forms` WHERE form_ownerID = '$login_id' ");
+$latest_survey_form = mysqli_fetch_array($survey_latest_form_sql);
+$latest_user_survey_formID = $latest_survey_form['form_id'];
+$latest_user_survey_year = $latest_survey_form['survey_year'];
+//checking if year now is greater tha your latest survey taken
+if ($year_now > $latest_user_survey_year)
+{
+    // survey_maxcount reset to 2
+    mysqli_query($con,"UPDATE `survey_maxcount` SET `survey_maxattemp` = '2' WHERE `survey_ownerID` = '$login_id' ");
+}
 $page = 'survey';
 if ($login_level == '1')
 {
@@ -22,13 +46,6 @@ else if ($login_level == '3')
 }
 else
 {}
-
- $sql = mysqli_query($con,"SELECT YEAR(survey_dateTaken) as dataTaken,survey_maxattemp as maxattemp FROM `survey_result` WHERE survey_ownerID = '$login_id'");
- $attemp = mysqli_fetch_array($sql);
-
-if ($attemp['maxattemp'] == '2') {
-      header('Location: survey.php');
-}
 ?>
     <!DOCTYPE html>
     <html>
@@ -76,7 +93,8 @@ if ($attemp['maxattemp'] == '2') {
                         <header class="head">
                             <div class="main-bar">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                                    <li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
+                                    <li class="breadcrumb-item"><a href="survey.php">Survey Form</a></li>
                                     <li class="breadcrumb-item active"> Survey Question View</li>
                                 </ol>
                             </div>
@@ -86,19 +104,31 @@ if ($attemp['maxattemp'] == '2') {
                            
                             <div>
                                 <?php 
-                                if ($attemp['maxattemp'] == 0) {
+                                if ($survey_maxattemp['survey_maxattemp'] == 0) {
                                     # code...
                                 }
                                 else
                                 {
                                  ?>
-                                <h3 class="pull-right"><a href="" class="btn btn-default">Retake Remaining (<?php echo $attemp['maxattemp'];?>)</a></h3>
+                                <h3 class="pull-right"><a href="survey.php" class="btn btn-default">Retake Remaining (<?php echo $survey_maxattemp['survey_maxattemp'];?>)</a></h3>
                                  <?php
                                 }
                                 ?>
-                                <form class="form-horizontal" method="POST" action="action/surveyresult.php">
-
-                                    <h1>GRADUATE TRACER SURVEY (GTS)</h1>
+                                <form class="form-horizontal" >
+                                    <?php
+                                    $q1_data_qry = mysqli_query($con,"SELECT * FROM `survey_question1` WHERE survey_formID = '$latest_user_survey_formID'");
+                                    while ($q1_data = mysqli_fetch_array($q1_data_qry)) {
+                                         $q1_col[] = $q1_data['col1'];
+                                         $q1_co2[] = $q1_data['col2'];
+                                         
+                                     }
+                                    $q2_data_qry = mysqli_query($con,"SELECT * FROM `survey_question2` WHERE survey_formID = '$latest_user_survey_formID'");
+                                    while ($q2_data = mysqli_fetch_array($q2_data_qry)) {
+                                         $q2_col[] = $q2_data['survey_col1'];
+                                         
+                                     }
+                                     ?>
+                                    <h1>GRADUATE TRACER SURVEY VIEW </h1>
                                     <br>
                                     <div class="" style="display: inline-block; vertical-align: top; width: 100%;">
                                         <h5 class=""><span style="">1. Reason (s) for taking the course (s) or pursuing degree (s).  You may check (/) more than one answer.</span></h5>
@@ -115,161 +145,422 @@ if ($attemp['maxattemp'] == '2') {
                                                     <td><span style="">High Grades in the course or subject area (s) related to the course</span></td>
                                                     <td>
                                                         <label class="">
-                                                            <input  type="checkbox" name="U_AB_BS1" value="U_AB_BS1" class=""><span class="circle"></span><span class="check"></span></label>
+                                                            <?php 
+                                                            if ($q1_col[0]) {
+                                                                  echo "✓";
+                                                            }
+                                                            else
+                                                            {
+                                                                 echo "x";
+                                                            }
+                                                            ?>
+                                                        </label>
                                                     </td>
                                                     <td>
                                                         <label class="">
-                                                           <input type="checkbox" class="" name="G_MS_MA_PHD1" value="G_MS_MA_PHD1"><span class="circle" style=""></span><span class="check" style=""></span></label>
+                                                           <?php 
+                                                            if ($q1_co2[0]) {
+                                                                  echo "✓";
+                                                            }
+                                                            else
+                                                            {
+                                                                 echo "x";
+                                                            }
+                                                            ?>
+                                                         </label>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td><span class="" style="">Good grades in high school</span></td>
                                                     <td>
                                                         <label class="">
-                                                            <input type="checkbox" name="U_AB_BS2" value="U_AB_BS2" class=""><span class="circle"></span><span class="check" style=""></span></label>
+                                                            <?php 
+                                                            if ($q1_col[1]) {
+                                                                  echo "✓";
+                                                            }
+                                                            else
+                                                            {
+                                                                 echo "x";
+                                                            }
+                                                            ?>
+                                                        </label>
                                                     </td>
                                                     <td>
                                                         <label class="">
-                                                            <input type="checkbox" name="G_MS_MA_PHD2" value="G_MS_MA_PHD2" class=""><span class="circle"></span><span class="check"></span></label>
+                                                           <?php 
+                                                            if ($q1_co2[1]) {
+                                                                  echo "✓";
+                                                            }
+                                                            else
+                                                            {
+                                                                 echo "x";
+                                                            }
+                                                            ?>
+                                                         </label>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td><span style="">Influence of parents or relatives</span></td>
                                                     <td>
                                                         <label class="">
-                                                            <input type="checkbox" name="U_AB_BS3" value="U_AB_BS3" class=""><span class="circle"></span><span class="check"></span></label>
+                                                            <?php 
+                                                            if ($q1_col[2]) {
+                                                                  echo "✓";
+                                                            }
+                                                            else
+                                                            {
+                                                                 echo "x";
+                                                            }
+                                                            ?>
+                                                        </label>
                                                     </td>
                                                     <td>
                                                         <label class="">
-                                                            <input type="checkbox" name="G_MS_MA_PHD3" value="G_MS_MA_PHD3" class=""><span class="circle" style=""></span><span class="check"></span></label>
+                                                           <?php 
+                                                            if ($q1_co2[2]) {
+                                                                  echo "✓";
+                                                            }
+                                                            else
+                                                            {
+                                                                 echo "x";
+                                                            }
+                                                            ?>
+                                                         </label>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td><span class="" style="">Peer Influence</span></td>
                                                     <td>
                                                         <label class="">
-                                                            <input type="checkbox" name="U_AB_BS4" value="U_AB_BS4" class=""><span class="circle" style=""></span><span class="check"></span></label>
+                                                            <?php 
+                                                            if ($q1_col[3]) {
+                                                                  echo "✓";
+                                                            }
+                                                            else
+                                                            {
+                                                                 echo "x";
+                                                            }
+                                                            ?>
+                                                        </label>
                                                     </td>
                                                     <td>
                                                         <label class="">
-                                                            <input type="checkbox" name="G_MS_MA_PHD4" value="G_MS_MA_PHD4" class=""><span class="circle"></span><span class="check" style=""></span></label>
+                                                           <?php 
+                                                            if ($q1_co2[3]) {
+                                                                  echo "✓";
+                                                            }
+                                                            else
+                                                            {
+                                                                 echo "x";
+                                                            }
+                                                            ?>
+                                                         </label>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td><span class="" style="">Inspired by a role model</span></td>
                                                     <td>
                                                         <label class="">
-                                                            <input type="checkbox" name="U_AB_BS5" value="U_AB_BS5" class=""><span class="circle"></span><span class="check" style=""></span></label>
+                                                            <?php 
+                                                            if ($q1_col[4]) {
+                                                                  echo "✓";
+                                                            }
+                                                            else
+                                                            {
+                                                                 echo "x";
+                                                            }
+                                                            ?>
+                                                        </label>
                                                     </td>
                                                     <td>
                                                         <label class="">
-                                                            <input type="checkbox" name="G_MS_MA_PHD5" value="G_MS_MA_PHD5" class=""><span class="circle"></span><span class="check"></span></label>
+                                                           <?php 
+                                                            if ($q1_co2[4]) {
+                                                                  echo "✓";
+                                                            }
+                                                            else
+                                                            {
+                                                                 echo "x";
+                                                            }
+                                                            ?>
+                                                         </label>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td><span style="">Strong passion for the profession</span></td>
                                                     <td>
                                                         <label class="">
-                                                            <input type="checkbox" class="" name="U_AB_BS6" value="U_AB_BS6"><span class="circle"></span><span class="check"></span></label>
+                                                            <?php 
+                                                            if ($q1_col[5]) {
+                                                                  echo "✓";
+                                                            }
+                                                            else
+                                                            {
+                                                                 echo "x";
+                                                            }
+                                                            ?>
+                                                        </label>
                                                     </td>
                                                     <td>
                                                         <label class="">
-                                                            <input type="checkbox" class="" name="G_MS_MA_PHD6" value="G_MS_MA_PHD6"><span class="circle" style=""></span><span class="check"></span></label>
+                                                           <?php 
+                                                            if ($q1_co2[5]) {
+                                                                  echo "✓";
+                                                            }
+                                                            else
+                                                            {
+                                                                 echo "x";
+                                                            }
+                                                            ?>
+                                                         </label>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td><span class="" style="">Prospect for immediate employment</span></td>
                                                     <td>
                                                         <label class="">
-                                                            <input type="checkbox" class="" name="U_AB_BS7" value="U_AB_BS7"><span class="circle" style=""></span><span class="check"></span></label>
+                                                            <?php 
+                                                            if ($q1_col[6]) {
+                                                                  echo "✓";
+                                                            }
+                                                            else
+                                                            {
+                                                                 echo "x";
+                                                            }
+                                                            ?>
+                                                        </label>
                                                     </td>
                                                     <td>
                                                         <label class="">
-                                                            <input type="checkbox" class="" name="G_MS_MA_PHD7" value="G_MS_MA_PHD7"><span class="circle"></span><span class="check" style=""></span></label>
+                                                           <?php 
+                                                            if ($q1_co2[6]) {
+                                                                  echo "✓";
+                                                            }
+                                                            else
+                                                            {
+                                                                 echo "x";
+                                                            }
+                                                            ?>
+                                                         </label>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td><span class="" style="">Status or prestige of the profession</span></td>
                                                     <td>
                                                         <label class="">
-                                                            <input type="checkbox" class="" name="U_AB_BS8" value="U_AB_BS8"><span class="circle"></span><span class="check" style=""></span></label>
+                                                            <?php 
+                                                            if ($q1_col[7]) {
+                                                                  echo "✓";
+                                                            }
+                                                            else
+                                                            {
+                                                                 echo "x";
+                                                            }
+                                                            ?>
+                                                        </label>
                                                     </td>
                                                     <td>
                                                         <label class="">
-                                                            <input type="checkbox" class="" name="G_MS_MA_PHD8" value="G_MS_MA_PHD8"><span class="circle"></span><span class="check"></span></label>
+                                                           <?php 
+                                                            if ($q1_co2[7]) {
+                                                                  echo "✓";
+                                                            }
+                                                            else
+                                                            {
+                                                                 echo "x";
+                                                            }
+                                                            ?>
+                                                         </label>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td><span style="">Availability  of course offering in chosen institution</span></td>
                                                     <td>
                                                         <label class="">
-                                                            <input type="checkbox" class="" name="U_AB_BS9" value="U_AB_BS9"><span class="circle"></span><span class="check"></span></label>
+                                                            <?php 
+                                                            if ($q1_col[8]) {
+                                                                  echo "✓";
+                                                            }
+                                                            else
+                                                            {
+                                                                 echo "x";
+                                                            }
+                                                            ?>
+                                                        </label>
                                                     </td>
                                                     <td>
                                                         <label class="">
-                                                            <input type="checkbox" class="" name="G_MS_MA_PHD9" value="G_MS_MA_PHD9"><span class="circle" style=""></span><span class="check"></span></label>
+                                                           <?php 
+                                                            if ($q1_co2[8]) {
+                                                                  echo "✓";
+                                                            }
+                                                            else
+                                                            {
+                                                                 echo "x";
+                                                            }
+                                                            ?>
+                                                         </label>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td><span class="" style="">Prospect of career advancement</span></td>
                                                     <td>
                                                         <label class="">
-                                                            <input type="checkbox" class="" name="U_AB_BS10" value="U_AB_BS10"><span class="circle" style=""></span><span class="check"></span></label>
+                                                            <?php 
+                                                            if ($q1_col[9]) {
+                                                                  echo "✓";
+                                                            }
+                                                            else
+                                                            {
+                                                                 echo "x";
+                                                            }
+                                                            ?>
+                                                        </label>
                                                     </td>
                                                     <td>
                                                         <label class="">
-                                                            <input type="checkbox" class="" name="G_MS_MA_PHD10" value="G_MS_MA_PHD10"><span class="circle"></span><span class="check" style=""></span></label>
+                                                           <?php 
+                                                            if ($q1_co2[9]) {
+                                                                  echo "✓";
+                                                            }
+                                                            else
+                                                            {
+                                                                 echo "x";
+                                                            }
+                                                            ?>
+                                                         </label>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td><span style="">Affordable for the family</span></td>
                                                     <td>
                                                         <label class="">
-                                                            <input type="checkbox" class="" name="U_AB_BS11" value="U_AB_BS11"><span class="circle"></span><span class="check"></span></label>
+                                                            <?php 
+                                                            if ($q1_col[10]) {
+                                                                  echo "✓";
+                                                            }
+                                                            else
+                                                            {
+                                                                 echo "x";
+                                                            }
+                                                            ?>
+                                                        </label>
                                                     </td>
                                                     <td>
                                                         <label class="">
-                                                            <input type="checkbox" class="" name="G_MS_MA_PHD11" value="G_MS_MA_PHD11"><span class="circle"></span><span class="check"></span></label>
+                                                           <?php 
+                                                            if ($q1_co2[10]) {
+                                                                  echo "✓";
+                                                            }
+                                                            else
+                                                            {
+                                                                 echo "x";
+                                                            }
+                                                            ?>
+                                                         </label>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td><span style="">Prospect of attractive compensation</span></td>
                                                     <td>
                                                         <label class="">
-                                                            <input type="checkbox" class="" name="U_AB_BS12" value="U_AB_BS12"><span class="circle"></span><span class="check"></span></label>
+                                                            <?php 
+                                                            if ($q1_col[11]) {
+                                                                  echo "✓";
+                                                            }
+                                                            else
+                                                            {
+                                                                 echo "x";
+                                                            }
+                                                            ?>
+                                                        </label>
                                                     </td>
                                                     <td>
                                                         <label class="">
-                                                            <input type="checkbox" class="" name="G_MS_MA_PHD12" value="G_MS_MA_PHD12"><span class="circle"></span><span class="check"></span></label>
+                                                           <?php 
+                                                            if ($q1_co2[11]) {
+                                                                  echo "✓";
+                                                            }
+                                                            else
+                                                            {
+                                                                 echo "x";
+                                                            }
+                                                            ?>
+                                                         </label>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td><span style="">Opportunity for employment abroad</span></td>
                                                     <td>
                                                         <label class="">
-                                                            <input type="checkbox" class="" name="U_AB_BS13" value="U_AB_BS13"><span class="circle"></span><span class="check"></span></label>
+                                                            <?php 
+                                                            if ($q1_col[12]) {
+                                                                  echo "✓";
+                                                            }
+                                                            else
+                                                            {
+                                                                 echo "x";
+                                                            }
+                                                            ?>
+                                                        </label>
                                                     </td>
                                                     <td>
                                                         <label class="">
-                                                            <input type="checkbox" class="" name="G_MS_MA_PHD13" value="G_MS_MA_PHD13"><span class="circle"></span><span class="check"></span></label>
+                                                           <?php 
+                                                            if ($q1_co2[12]) {
+                                                                  echo "✓";
+                                                            }
+                                                            else
+                                                            {
+                                                                 echo "x";
+                                                            }
+                                                            ?>
+                                                         </label>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td><span style="">No particular choice or no better idea</span></td>
                                                     <td>
                                                         <label class="">
-                                                            <input type="checkbox" class="" name="U_AB_BS14" value="U_AB_BS14"><span class="circle"></span><span class="check"></span></label>
+                                                            <?php 
+                                                            if ($q1_col[13]) {
+                                                                  echo "✓";
+                                                            }
+                                                            else
+                                                            {
+                                                                 echo "x";
+                                                            }
+                                                            ?>
+                                                        </label>
                                                     </td>
                                                     <td>
                                                         <label class="">
-                                                            <input type="checkbox" class="" name="G_MS_MA_PHD14" value="G_MS_MA_PHD14"><span class="circle"></span><span class="check"></span></label>
+                                                           <?php 
+                                                            if ($q1_co2[13]) {
+                                                                  echo "✓";
+                                                            }
+                                                            else
+                                                            {
+                                                                 echo "x";
+                                                            }
+                                                            ?>
+                                                         </label>
                                                     </td>
                                                 </tr>
                                                     <tr>
                                                     <td><span style="">Others, please specify</span></td>
                                                     <td>
                                                         <label class="">
-                                                            <input type="text" class="form-control" name="U_AB_BS14" value=""><span class="circle"></span><span class="check"></span></label>
+                                                        <input type="text" name="" disabled="" class="form-control" value="<?php 
+                                                        if ($q1_co2[14]) {
+                                                              echo $q2_col[0];
+                                                        }
+                                                        else
+                                                        {
+                                                             
+                                                        }
+                                                        ?>">
+                                                        </label>
                                                     </td>
                                                     <td>
                                                     </td>
@@ -291,35 +582,80 @@ if ($attemp['maxattemp'] == '2') {
                                                     <td><span style="">Salaries and benefits</span></td>
                                                     <td>
                                                         <label class="">
-                                                            <input id="" type="checkbox" name="Salaries_benefits" value="Salaries_benefits" class=""><span class="circle"></span><span class="check"></span></label>
+                                                        <?php 
+                                                        if ($q2_col[0]) {
+                                                              echo "✓";
+                                                        }
+                                                        else
+                                                        {
+                                                             
+                                                        }
+                                                        ?>
+                                                        </label>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td><span style="">Career challenge</span></td>
                                                     <td>
                                                         <label class="">
-                                                            <input id="" type="checkbox" name="Career_challenge" value="Career_challenge" class=""><span class="circle"></span><span class="check"></span></label>
+                                                        <?php 
+                                                        if ($q2_col[1]) {
+                                                              echo "✓";
+                                                        }
+                                                        else
+                                                        {
+                                                             echo "x";
+                                                        }
+                                                        ?>
+                                                        </label>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td><span style="">Related to special skills</span></td>
                                                     <td>
                                                         <label class="">
-                                                            <input id="" type="checkbox" name="Related_to_special_skills" value="Related_to_special_skills" class=""><span class="circle"></span><span class="check"></span></label>
+                                                        <?php 
+                                                        if ($q2_col[2]) {
+                                                              echo "✓";
+                                                        }
+                                                        else
+                                                        {
+                                                             echo "x";
+                                                        }
+                                                        ?>
+                                                        </label>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td><span style="">Proximity to residence</span></td>
                                                     <td>
                                                         <label class="">
-                                                            <input id="" type="checkbox" name="Proximity_to_residence" value="Proximity_to_residence" class=""><span class="circle"></span><span class="check"></span></label>
+                                                        <?php 
+                                                        if ($q2_col[3]) {
+                                                              echo "✓";
+                                                        }
+                                                        else
+                                                        {
+                                                             echo "x";
+                                                        }
+                                                        ?>
+                                                        </label>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td><span style="">Other reason (s), please specify</span></td>
                                                     <td>
                                                         <label class="">
-                                                            <input type="text" class="form-control" name="Other_q2" value="Other_q2"><span class="circle"></span><span class="check"></span></label>
+                                                        <input type="text" name="" disabled="" class="form-control" value="<?php 
+                                                        if ($q2_col[0]) {
+                                                              echo $q2_col[0];
+                                                        }
+                                                        else
+                                                        {
+                                                             echo "Empty";
+                                                        }
+                                                        ?>">
+                                                        </label>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -523,7 +859,7 @@ if ($attemp['maxattemp'] == '2') {
                                         </table>
 
                                 </div>
-                                 <center><h2><i>Thank  you  for taking time out to fill out this questionnaire.</i></h2></center>
+                                
                                     
                                     <!-- <div class="form-group">
                                 <label class="control-label col-lg-2">Change Picture</label>
