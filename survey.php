@@ -445,14 +445,14 @@ else
                                                     </td>
                                                      <td>
                                                         <label class="">
-                                                            <input id="" type="checkbox" name="k25_and_above" value="25k_and_above" class=""><span class="circle"></span><span class="check">P 25,000.00  and above</span></label>
+                                                            <input id="" type="checkbox" name="k25_and_above" value="1" class=""><span class="circle"></span><span class="check">P 25,000.00  and above</span></label>
                                                     </td>
                                                 </tr>
                                             </tbody>
                                         </table>
                                     </div>
                                     <div id="sq_106" class="" style="display: inline-block; vertical-align: top; width: 100%;">
-                                        <h5 class=""><span style="">5. Was the curriculum you had in college relevant to your first job?</span></h5>
+                                        <h5 class=""><span style="">7. Was the curriculum you had in college relevant to your first job?</span></h5>
                                         <table class="table">
                                             <thead>
                                                 <tr>
@@ -464,10 +464,10 @@ else
                                             <tbody>
                                                 <tr>
                                                 <td>
-                                                    <button type="button"class="btn btn-default" onclick="show('id1');">Yes</button>
+                                                    <button id="btn1" type="button" class="btn btn-default" onclick="show('id1');">Yes</button>
                                                     </td>
                                                      <td>
-                                                        <button type="button"class="btn btn-default" onclick="show('id2');">No</button>
+                                                        <button id="btn2" type="button" class="btn btn-default" onclick="show('id2');">No</button>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -478,12 +478,26 @@ else
                                      document.getElementById("id1").style.display="none";
                                      document.getElementById("id2").style.display="none";
                                      document.getElementById(elementId).style.display="block";
+                                     var btn =  elementId;
+                                     if (btn =='id1') {
+
+                                     document.getElementById("btn1").className = "btn btn-primary";
+                                     document.getElementById("btn2").className = "btn btn-default";
+                                     }
+                                     if (btn =='id2') 
+                                     {
+                                    document.getElementById("btn1").className = "btn btn-default";
+                                    document.getElementById("btn2").className = "btn btn-primary";
+                                     
+                                     }
+                                     
+
                                     }
                                     </script>
                                     <div id="id2"></div>
                                 <div id="id1"  style="display: inline-block; vertical-align: top; width: 100%;display:none;">
                                     
-                                     <h5 class=""><span style="">6. what competencies learned in college did you find very useful in your first job?  You may check (/) more than one answer.</span></h5>
+                                     <h5 class=""><span style="">8. what competencies learned in college did you find very useful in your first job?  You may check (/) more than one answer.</span></h5>
                                         <table class="table">
                                             <thead>
                                                 <tr>
@@ -538,7 +552,7 @@ else
                                                     </td>
 
                                                     <td>
-                                                        <input id="" type="textbox" name="Other_q6" value="" class="form-control">
+                                                        <input id="" type="textbox" name="Other_q8" value="" class="form-control">
                                                     </td>
 
                                                 </tr>
