@@ -84,7 +84,7 @@ else
                                 <thead>
                                     <tr>
                                         <th class="text-center col-sm-3">Name</th>
-                                        <th class="text-center col-sm-1">Department</th>
+                                        <th class="text-center col-sm-1">Course</th>
                                         <th class="text-center col-sm-2">Year Admitted</th>
                                         <th class="text-center">Year graduated</th>
                                         <th class="text-center text-center">Action</th>
@@ -189,7 +189,7 @@ else
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="text1" class="control-label col-lg-4">Department</label>
+                                    <label for="text1" class="control-label col-lg-4">Course</label>
 
                                     <div class="col-lg-8">
                                     <?php 
