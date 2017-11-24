@@ -582,11 +582,11 @@ else
                                                         <label class="">
                                                         <input type="text" name="" disabled="" class="form-control" value="<?php 
                                                         if ($q1_co2[14]) {
-                                                              echo $q2_col[0];
+                                                              echo $q1_co2[14];
                                                         }
                                                         else
                                                         {
-                                                             
+                                                             echo "empty";
                                                         }
                                                         ?>">
                                                         </label>
@@ -612,12 +612,12 @@ else
                                                     <td>
                                                         <label class="">
                                                         <?php 
-                                                        if ($q2_col[0]) {
-                                                              echo "✓";
+                                                        if ($q2_col[0] == "no") {
+                                                              echo "x";
                                                         }
                                                         else
                                                         {
-                                                             
+                                                             echo "✓";
                                                         }
                                                         ?>
                                                         </label>
@@ -628,12 +628,12 @@ else
                                                     <td>
                                                         <label class="">
                                                         <?php 
-                                                        if ($q2_col[1]) {
-                                                              echo "✓";
+                                                        if ($q2_col[1] == "no") {
+                                                              echo "x";
                                                         }
                                                         else
                                                         {
-                                                             echo "x";
+                                                             echo "✓";
                                                         }
                                                         ?>
                                                         </label>
@@ -644,12 +644,12 @@ else
                                                     <td>
                                                         <label class="">
                                                         <?php 
-                                                        if ($q2_col[2]) {
-                                                              echo "✓";
+                                                        if ($q2_col[2] == "no") {
+                                                              echo "x";
                                                         }
                                                         else
                                                         {
-                                                             echo "x";
+                                                             echo "✓";
                                                         }
                                                         ?>
                                                         </label>
@@ -660,12 +660,12 @@ else
                                                     <td>
                                                         <label class="">
                                                         <?php 
-                                                        if ($q2_col[3]) {
-                                                              echo "✓";
+                                                        if ($q2_col[3] == "no") {
+                                                              echo "x";
                                                         }
                                                         else
                                                         {
-                                                             echo "x";
+                                                             echo "✓";
                                                         }
                                                         ?>
                                                         </label>
@@ -676,8 +676,8 @@ else
                                                     <td>
                                                         <label class="">
                                                         <input type="text" name="" disabled="" class="form-control" value="<?php 
-                                                        if ($q2_col[0]) {
-                                                              echo $q2_col[0];
+                                                        if ($q2_col[4]) {
+                                                              echo $q2_col[4];
                                                         }
                                                         else
                                                         {
