@@ -11,13 +11,10 @@ $requestData= $_REQUEST;
 $columns = array( 
 // datatable column index  => database column name
 	
-	0 =>'student_ID', 
-	1 =>'student_fName', 
-	2 => 'student_mName',
-	3 => 'student_lName',
-	4 => 'student_department',
-	5 => 'student_admission',
-	6 => 'student_year_grad'
+	0 =>'student_lName', 
+	1 => 'student_department',
+	2 => 'student_admission',
+	3 => 'student_year_grad'
 );
 
 // getting total number records without any search
@@ -33,6 +30,9 @@ $sql.=" FROM user_student_detail WHERE 1=1";
 if( !empty($requestData['search']['value']) ) {   // if there is a search parameter, $requestData['search']['value'] contains search parameter
 	$sql.=" AND ( student_fName LIKE '%".$requestData['search']['value']."%' ";    
 	$sql.=" OR student_mName LIKE '%".$requestData['search']['value']."%' ";
+	$sql.=" OR student_lName LIKE '%".$requestData['search']['value']."%' ";
+	$sql.=" OR student_admission LIKE '%".$requestData['search']['value']."%' ";
+	$sql.=" OR student_year_grad LIKE '%".$requestData['search']['value']."%' ";
 	$sql.=" OR student_department LIKE '%".$requestData['search']['value']."%' )";
 	// $sql.=" OR student_department LIKE '%".$requestData['search']['value']."%' )";
 }
@@ -52,7 +52,7 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
 	$nestedData[] = $row["student_year_grad"];
 	$nestedData[] = "<div class='btn-group'>                                   
 	<a  class='btn btn-metis-5' href='recordstudent_edit.php?studentID=$student_ID'><i class='fa fa-edit'></i></a>
-	<a  class='btn btn-metis-1' href='recordstudent_edit.php?studentID=$student_ID'><i class='fa fa-close'></i></a>
+	<a  class='btn btn-metis-1' href='recordstudent_delete.php?studentID=$student_ID'><i class='fa fa-close'></i></a>
                                         </div>";
 	
 	$data[] = $nestedData;
