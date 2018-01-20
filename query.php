@@ -14,8 +14,8 @@ class json
         return $total_count;
       }
      function DataCountPercent($countVal, $totalCount){
-    	$dataCount_Percent = (($countVal / $totalCount) * 100);
-		return $dataCount_Percent;
+      $dataCount_Percent = (($countVal / $totalCount) * 100);
+    return $dataCount_Percent;
     }   
 
      function stackValue($val)
@@ -47,297 +47,99 @@ $row = "`row`";
 $col1 = "`col1`";
 $col2 = "`col2`";
 $totalqa1 = mysqli_query($con,$saf.$table);
-$totalqa1_rc_1_true = mysqli_query($con,$saf." ".$table." WHERE ".$row."='1' AND ".$col1." != ''");
-$totalqa1_rc_2_true = mysqli_query($con,$saf." ".$table." WHERE ".$row."='2' AND ".$col1." != ''");
-$totalqa1_rc_3_true = mysqli_query($con,$saf." ".$table." WHERE ".$row."='3' AND ".$col1." != ''");
-$totalqa1_rc_4_true = mysqli_query($con,$saf." ".$table." WHERE ".$row."='4' AND ".$col1." != ''");
-$totalqa1_rc_5_true = mysqli_query($con,$saf." ".$table." WHERE ".$row."='5' AND ".$col1." != ''");
-$totalqa1_rc_6_true = mysqli_query($con,$saf." ".$table." WHERE ".$row."='6' AND ".$col1." != ''");
-$totalqa1_rc_7_true = mysqli_query($con,$saf." ".$table." WHERE ".$row."='7' AND ".$col1." != ''");
-$totalqa1_rc_8_true = mysqli_query($con,$saf." ".$table." WHERE ".$row."='8' AND ".$col1." != ''");
-$totalqa1_rc_9_true = mysqli_query($con,$saf." ".$table." WHERE ".$row."='9' AND ".$col1." != ''");
-$totalqa1_rc_10_true = mysqli_query($con,$saf." ".$table." WHERE ".$row."='10' AND ".$col1." != ''");
-$totalqa1_rc_11_true = mysqli_query($con,$saf." ".$table." WHERE ".$row."='11' AND ".$col1." != ''");
-$totalqa1_rc_12_true = mysqli_query($con,$saf." ".$table." WHERE ".$row."='12' AND ".$col1." != ''");
-$totalqa1_rc_13_true = mysqli_query($con,$saf." ".$table." WHERE ".$row."='13' AND ".$col1." != ''");
-$totalqa1_rc_14_true = mysqli_query($con,$saf." ".$table." WHERE ".$row."='14' AND ".$col1." != ''");
-$totalqa1_rc_15_true = mysqli_query($con,$saf." ".$table." WHERE ".$row."='15' AND ".$col1." != ''");
 
-$totalqa1_rc_1_false = mysqli_query($con,$saf." ".$table." WHERE ".$row."='1' AND ".$col1." = ''");
-$totalqa1_rc_2_false = mysqli_query($con,$saf." ".$table." WHERE ".$row."='2' AND ".$col1." = ''");
-$totalqa1_rc_3_false = mysqli_query($con,$saf." ".$table." WHERE ".$row."='3' AND ".$col1." = ''");
-$totalqa1_rc_4_false = mysqli_query($con,$saf." ".$table." WHERE ".$row."='4' AND ".$col1." = ''");
-$totalqa1_rc_5_false = mysqli_query($con,$saf." ".$table." WHERE ".$row."='5' AND ".$col1." = ''");
-$totalqa1_rc_6_false = mysqli_query($con,$saf." ".$table." WHERE ".$row."='6' AND ".$col1." = ''");
-$totalqa1_rc_7_false = mysqli_query($con,$saf." ".$table." WHERE ".$row."='7' AND ".$col1." = ''");
-$totalqa1_rc_8_false = mysqli_query($con,$saf." ".$table." WHERE ".$row."='8' AND ".$col1." = ''");
-$totalqa1_rc_9_false = mysqli_query($con,$saf." ".$table." WHERE ".$row."='9' AND ".$col1." = ''");
-$totalqa1_rc_10_false = mysqli_query($con,$saf." ".$table." WHERE ".$row."='10' AND ".$col1." = ''");
-$totalqa1_rc_11_false = mysqli_query($con,$saf." ".$table." WHERE ".$row."='11' AND ".$col1." = ''");
-$totalqa1_rc_12_false = mysqli_query($con,$saf." ".$table." WHERE ".$row."='12' AND ".$col1." = ''");
-$totalqa1_rc_13_false = mysqli_query($con,$saf." ".$table." WHERE ".$row."='13' AND ".$col1." = ''");
-$totalqa1_rc_14_false = mysqli_query($con,$saf." ".$table." WHERE ".$row."='14' AND ".$col1." = ''");
-$totalqa1_rc_15_false = mysqli_query($con,$saf." ".$table." WHERE ".$row."='15' AND ".$col1." = ''");
+$totalqa1_rc_true = array();
+$totalqa1_rc_false = array();
+$totalqa1_rcc_true = array();
+$totalqa1_rcc_false = array();
+$totalqa1_rbcc_true = array();
+$totalqa1_rbcc_false = array();
 
-$totalqa1_rcc_1_true = mysqli_query($con,$saf." ".$table." WHERE ".$row."='1' AND ".$col2." != ''");
-$totalqa1_rcc_2_true = mysqli_query($con,$saf." ".$table." WHERE ".$row."='2' AND ".$col2." != ''");
-$totalqa1_rcc_3_true = mysqli_query($con,$saf." ".$table." WHERE ".$row."='3' AND ".$col2." != ''");
-$totalqa1_rcc_4_true = mysqli_query($con,$saf." ".$table." WHERE ".$row."='4' AND ".$col2." != ''");
-$totalqa1_rcc_5_true = mysqli_query($con,$saf." ".$table." WHERE ".$row."='5' AND ".$col2." != ''");
-$totalqa1_rcc_6_true = mysqli_query($con,$saf." ".$table." WHERE ".$row."='6' AND ".$col2." != ''");
-$totalqa1_rcc_7_true = mysqli_query($con,$saf." ".$table." WHERE ".$row."='7' AND ".$col2." != ''");
-$totalqa1_rcc_8_true = mysqli_query($con,$saf." ".$table." WHERE ".$row."='8' AND ".$col2." != ''");
-$totalqa1_rcc_9_true = mysqli_query($con,$saf." ".$table." WHERE ".$row."='9' AND ".$col2." != ''");
-$totalqa1_rcc_10_true = mysqli_query($con,$saf." ".$table." WHERE ".$row."='10' AND ".$col2." != ''");
-$totalqa1_rcc_11_true = mysqli_query($con,$saf." ".$table." WHERE ".$row."='11' AND ".$col2." != ''");
-$totalqa1_rcc_12_true = mysqli_query($con,$saf." ".$table." WHERE ".$row."='12' AND ".$col2." != ''");
-$totalqa1_rcc_13_true = mysqli_query($con,$saf." ".$table." WHERE ".$row."='13' AND ".$col2." != ''");
-$totalqa1_rcc_14_true = mysqli_query($con,$saf." ".$table." WHERE ".$row."='14' AND ".$col2." != ''");
-$totalqa1_rcc_15_true = mysqli_query($con,$saf." ".$table." WHERE ".$row."='15' AND ".$col2." != ''");
+$count_total_qa1_rc_true = array();
+$count_total_qa1_rc_false = array();
+$count_total_qa1_rcc_true = array();
+$count_total_qa1_rcc_false = array();
+$count_total_qa1_rbcc_true = array();
+$count_total_qa1_rbcc_false = array();
 
-$totalqa1_rcc_1_false = mysqli_query($con,$saf." ".$table." WHERE ".$row."='1' AND ".$col2." = ''");
-$totalqa1_rcc_2_false = mysqli_query($con,$saf." ".$table." WHERE ".$row."='2' AND ".$col2." = ''");
-$totalqa1_rcc_3_false = mysqli_query($con,$saf." ".$table." WHERE ".$row."='3' AND ".$col2." = ''");
-$totalqa1_rcc_4_false = mysqli_query($con,$saf." ".$table." WHERE ".$row."='4' AND ".$col2." = ''");
-$totalqa1_rcc_5_false = mysqli_query($con,$saf." ".$table." WHERE ".$row."='5' AND ".$col2." = ''");
-$totalqa1_rcc_6_false = mysqli_query($con,$saf." ".$table." WHERE ".$row."='6' AND ".$col2." = ''");
-$totalqa1_rcc_7_false = mysqli_query($con,$saf." ".$table." WHERE ".$row."='7' AND ".$col2." = ''");
-$totalqa1_rcc_8_false = mysqli_query($con,$saf." ".$table." WHERE ".$row."='8' AND ".$col2." = ''");
-$totalqa1_rcc_9_false = mysqli_query($con,$saf." ".$table." WHERE ".$row."='9' AND ".$col2." = ''");
-$totalqa1_rcc_10_false = mysqli_query($con,$saf." ".$table." WHERE ".$row."='10' AND ".$col2." = ''");
-$totalqa1_rcc_11_false = mysqli_query($con,$saf." ".$table." WHERE ".$row."='11' AND ".$col2." = ''");
-$totalqa1_rcc_12_false = mysqli_query($con,$saf." ".$table." WHERE ".$row."='12' AND ".$col2." = ''");
-$totalqa1_rcc_13_false = mysqli_query($con,$saf." ".$table." WHERE ".$row."='13' AND ".$col2." = ''");
-$totalqa1_rcc_14_false = mysqli_query($con,$saf." ".$table." WHERE ".$row."='14' AND ".$col2." = ''");
-$totalqa1_rcc_15_false = mysqli_query($con,$saf." ".$table." WHERE ".$row."='15' AND ".$col2." = ''");
+$total_qa1_rc_true_percent = array();
+$total_qa1_rc_false_percent = array();
+$total_qa1_rcc_true_percent = array();
+$total_qa1_rcc_false_percent = array();
+$total_qa1_rbcc_true_percent = array();
+$total_qa1_rbcc_false_percent = array();
 
-$totalqa1_rbcc_1_true = mysqli_query($con,$saf." ".$table." WHERE ".$row."='1' AND ".$col1." != '' AND ".$col2." != ''");
-$totalqa1_rbcc_2_true = mysqli_query($con,$saf." ".$table." WHERE ".$row."='2' AND ".$col1." != '' AND ".$col2." != ''");
-$totalqa1_rbcc_3_true = mysqli_query($con,$saf." ".$table." WHERE ".$row."='3' AND ".$col1." != '' AND ".$col2." != ''");
-$totalqa1_rbcc_4_true = mysqli_query($con,$saf." ".$table." WHERE ".$row."='4' AND ".$col1." != '' AND ".$col2." != ''");
-$totalqa1_rbcc_5_true = mysqli_query($con,$saf." ".$table." WHERE ".$row."='5' AND ".$col1." != '' AND ".$col2." != ''");
-$totalqa1_rbcc_6_true = mysqli_query($con,$saf." ".$table." WHERE ".$row."='6' AND ".$col1." != '' AND ".$col2." != ''");
-$totalqa1_rbcc_7_true = mysqli_query($con,$saf." ".$table." WHERE ".$row."='7' AND ".$col1." != '' AND ".$col2." != ''");
-$totalqa1_rbcc_8_true = mysqli_query($con,$saf." ".$table." WHERE ".$row."='8' AND ".$col1." != '' AND ".$col2." != ''");
-$totalqa1_rbcc_9_true = mysqli_query($con,$saf." ".$table." WHERE ".$row."='9' AND ".$col1." != '' AND ".$col2." != ''");
-$totalqa1_rbcc_10_true = mysqli_query($con,$saf." ".$table." WHERE ".$row."='10' AND ".$col1." != '' AND ".$col2." != ''");
-$totalqa1_rbcc_11_true = mysqli_query($con,$saf." ".$table." WHERE ".$row."='11' AND ".$col1." != '' AND ".$col2." != ''");
-$totalqa1_rbcc_12_true = mysqli_query($con,$saf." ".$table." WHERE ".$row."='12' AND ".$col1." != '' AND ".$col2." != ''");
-$totalqa1_rbcc_13_true = mysqli_query($con,$saf." ".$table." WHERE ".$row."='13' AND ".$col1." != '' AND ".$col2." != ''");
-$totalqa1_rbcc_14_true = mysqli_query($con,$saf." ".$table." WHERE ".$row."='14' AND ".$col1." != '' AND ".$col2." != ''");
-$totalqa1_rbcc_15_true = mysqli_query($con,$saf." ".$table." WHERE ".$row."='15' AND ".$col1." != '' AND ".$col2." != ''");
+for ($i=0; $i < 15; $i++) { 
+  $a = $i+1;
+  $totalqa1_rc_true[$i] = mysqli_query($con,$saf." ".$table." WHERE ".$row."='$a' AND ".$col1." != ''");
+  $totalqa1_rc_false[$i] = mysqli_query($con,$saf." ".$table." WHERE ".$row."='$a' AND ".$col1." = ''");
+  $totalqa1_rcc_true[$i] = mysqli_query($con,$saf." ".$table." WHERE ".$row."='$a' AND ".$col2." != ''");
+  $totalqa1_rcc_false[$i] = mysqli_query($con,$saf." ".$table." WHERE ".$row."='$a' AND ".$col2." = ''");
+  $totalqa1_rbcc_true[$i] = mysqli_query($con,$saf." ".$table." WHERE ".$row."='$a' AND ".$col1." != '' AND ".$col2." != ''");
+  $totalqa1_rbcc_false[$i] = mysqli_query($con,$saf." ".$table." WHERE ".$row."='$a' AND ".$col1." = '' AND ".$col2." = ''");
 
-$totalqa1_rbcc_1_false = mysqli_query($con,$saf." ".$table." WHERE ".$row."='1' AND ".$col1." = '' AND ".$col2." = ''");
-$totalqa1_rbcc_2_false = mysqli_query($con,$saf." ".$table." WHERE ".$row."='2' AND ".$col1." = '' AND ".$col2." = ''");
-$totalqa1_rbcc_3_false = mysqli_query($con,$saf." ".$table." WHERE ".$row."='3' AND ".$col1." = '' AND ".$col2." = ''");
-$totalqa1_rbcc_4_false = mysqli_query($con,$saf." ".$table." WHERE ".$row."='4' AND ".$col1." = '' AND ".$col2." = ''");
-$totalqa1_rbcc_5_false = mysqli_query($con,$saf." ".$table." WHERE ".$row."='5' AND ".$col1." = '' AND ".$col2." = ''");
-$totalqa1_rbcc_6_false = mysqli_query($con,$saf." ".$table." WHERE ".$row."='6' AND ".$col1." = '' AND ".$col2." = ''");
-$totalqa1_rbcc_7_false = mysqli_query($con,$saf." ".$table." WHERE ".$row."='7' AND ".$col1." = '' AND ".$col2." = ''");
-$totalqa1_rbcc_8_false = mysqli_query($con,$saf." ".$table." WHERE ".$row."='8' AND ".$col1." = '' AND ".$col2." = ''");
-$totalqa1_rbcc_9_false = mysqli_query($con,$saf." ".$table." WHERE ".$row."='9' AND ".$col1." = '' AND ".$col2." = ''");
-$totalqa1_rbcc_10_false = mysqli_query($con,$saf." ".$table." WHERE ".$row."='10' AND ".$col1." = '' AND ".$col2." = ''");
-$totalqa1_rbcc_11_false = mysqli_query($con,$saf." ".$table." WHERE ".$row."='11' AND ".$col1." = '' AND ".$col2." = ''");
-$totalqa1_rbcc_12_false = mysqli_query($con,$saf." ".$table." WHERE ".$row."='12' AND ".$col1." = '' AND ".$col2." = ''");
-$totalqa1_rbcc_13_false = mysqli_query($con,$saf." ".$table." WHERE ".$row."='13' AND ".$col1." = '' AND ".$col2." = ''");
-$totalqa1_rbcc_14_false = mysqli_query($con,$saf." ".$table." WHERE ".$row."='14' AND ".$col1." = '' AND ".$col2." = ''");
-$totalqa1_rbcc_15_false = mysqli_query($con,$saf." ".$table." WHERE ".$row."='15' AND ".$col1." = '' AND ".$col2." = ''");
-
-
+}
+//total of all recorded answer on number 1.
 $countqa1 = $json->DataCount($totalqa1);
+//for each column 1 row 1 - 15 true value
+foreach ($totalqa1_rc_true as $rc_true) {
+  
+  $count_total_qa1_rc_true[] = $json->DataCount($rc_true);
+   
+}
+//for each column 1 row 1 - 15 false value
+foreach ($totalqa1_rc_false as $rc_false) {
+  $count_total_qa1_rc_false[] = $json->DataCount($rc_false);
+  
+}
+//for each column 2 row 1 - 15 true value
+foreach ($totalqa1_rcc_true as $rcc_true) {
+  
+  $count_total_qa1_rcc_true[] = $json->DataCount($rcc_true);
+   
+}
+//for each column 2 row 1 - 15 false value
+foreach ($totalqa1_rcc_false as $rcc_false) {
+  $count_total_qa1_rcc_false[] = $json->DataCount($rcc_false);
 
-$count_total_qa1_rc_1_true= $json->DataCount($totalqa1_rc_1_true);
-$count_total_qa1_rc_2_true= $json->DataCount($totalqa1_rc_2_true);
-$count_total_qa1_rc_3_true= $json->DataCount($totalqa1_rc_3_true);
-$count_total_qa1_rc_4_true= $json->DataCount($totalqa1_rc_4_true);
-$count_total_qa1_rc_5_true= $json->DataCount($totalqa1_rc_5_true);
-$count_total_qa1_rc_6_true= $json->DataCount($totalqa1_rc_6_true);
-$count_total_qa1_rc_7_true= $json->DataCount($totalqa1_rc_7_true);
-$count_total_qa1_rc_8_true= $json->DataCount($totalqa1_rc_8_true);
-$count_total_qa1_rc_9_true= $json->DataCount($totalqa1_rc_9_true);
-$count_total_qa1_rc_10_true= $json->DataCount($totalqa1_rc_10_true);
-$count_total_qa1_rc_11_true= $json->DataCount($totalqa1_rc_11_true);
-$count_total_qa1_rc_12_true= $json->DataCount($totalqa1_rc_12_true);
-$count_total_qa1_rc_13_true= $json->DataCount($totalqa1_rc_13_true);
-$count_total_qa1_rc_14_true= $json->DataCount($totalqa1_rc_14_true);
-$count_total_qa1_rc_15_true= $json->DataCount($totalqa1_rc_15_true);
-
-$count_total_qa1_rc_1_false= $json->DataCount($totalqa1_rc_1_false);
-$count_total_qa1_rc_2_false= $json->DataCount($totalqa1_rc_2_false);
-$count_total_qa1_rc_3_false= $json->DataCount($totalqa1_rc_3_false);
-$count_total_qa1_rc_4_false= $json->DataCount($totalqa1_rc_4_false);
-$count_total_qa1_rc_5_false= $json->DataCount($totalqa1_rc_5_false);
-$count_total_qa1_rc_6_false= $json->DataCount($totalqa1_rc_6_false);
-$count_total_qa1_rc_7_false= $json->DataCount($totalqa1_rc_7_false);
-$count_total_qa1_rc_8_false= $json->DataCount($totalqa1_rc_8_false);
-$count_total_qa1_rc_9_false= $json->DataCount($totalqa1_rc_9_false);
-$count_total_qa1_rc_10_false= $json->DataCount($totalqa1_rc_10_false);
-$count_total_qa1_rc_11_false= $json->DataCount($totalqa1_rc_11_false);
-$count_total_qa1_rc_12_false= $json->DataCount($totalqa1_rc_12_false);
-$count_total_qa1_rc_13_false= $json->DataCount($totalqa1_rc_13_false);
-$count_total_qa1_rc_14_false= $json->DataCount($totalqa1_rc_14_false);
-$count_total_qa1_rc_15_false= $json->DataCount($totalqa1_rc_15_false);
-
-$count_total_qa1_rcc_1_true= $json->DataCount($totalqa1_rcc_1_true);
-$count_total_qa1_rcc_2_true= $json->DataCount($totalqa1_rcc_2_true);
-$count_total_qa1_rcc_3_true= $json->DataCount($totalqa1_rcc_3_true);
-$count_total_qa1_rcc_4_true= $json->DataCount($totalqa1_rcc_4_true);
-$count_total_qa1_rcc_5_true= $json->DataCount($totalqa1_rcc_5_true);
-$count_total_qa1_rcc_6_true= $json->DataCount($totalqa1_rcc_6_true);
-$count_total_qa1_rcc_7_true= $json->DataCount($totalqa1_rcc_7_true);
-$count_total_qa1_rcc_8_true= $json->DataCount($totalqa1_rcc_8_true);
-$count_total_qa1_rcc_9_true= $json->DataCount($totalqa1_rcc_9_true);
-$count_total_qa1_rcc_10_true= $json->DataCount($totalqa1_rcc_10_true);
-$count_total_qa1_rcc_11_true= $json->DataCount($totalqa1_rcc_11_true);
-$count_total_qa1_rcc_12_true= $json->DataCount($totalqa1_rcc_12_true);
-$count_total_qa1_rcc_13_true= $json->DataCount($totalqa1_rcc_13_true);
-$count_total_qa1_rcc_14_true= $json->DataCount($totalqa1_rcc_14_true);
-$count_total_qa1_rcc_15_true= $json->DataCount($totalqa1_rcc_15_true);
-
-$count_total_qa1_rcc_1_false= $json->DataCount($totalqa1_rcc_1_false);
-$count_total_qa1_rcc_2_false= $json->DataCount($totalqa1_rcc_2_false);
-$count_total_qa1_rcc_3_false= $json->DataCount($totalqa1_rcc_3_false);
-$count_total_qa1_rcc_4_false= $json->DataCount($totalqa1_rcc_4_false);
-$count_total_qa1_rcc_5_false= $json->DataCount($totalqa1_rcc_5_false);
-$count_total_qa1_rcc_6_false= $json->DataCount($totalqa1_rcc_6_false);
-$count_total_qa1_rcc_7_false= $json->DataCount($totalqa1_rcc_7_false);
-$count_total_qa1_rcc_8_false= $json->DataCount($totalqa1_rcc_8_false);
-$count_total_qa1_rcc_9_false= $json->DataCount($totalqa1_rcc_9_false);
-$count_total_qa1_rcc_10_false= $json->DataCount($totalqa1_rcc_10_false);
-$count_total_qa1_rcc_11_false= $json->DataCount($totalqa1_rcc_11_false);
-$count_total_qa1_rcc_12_false= $json->DataCount($totalqa1_rcc_12_false);
-$count_total_qa1_rcc_13_false= $json->DataCount($totalqa1_rcc_13_false);
-$count_total_qa1_rcc_14_false= $json->DataCount($totalqa1_rcc_14_false);
-$count_total_qa1_rcc_15_false= $json->DataCount($totalqa1_rcc_15_false);
-
-$count_total_qa1_rbcc_1_true= $json->DataCount($totalqa1_rbcc_1_true);
-$count_total_qa1_rbcc_2_true= $json->DataCount($totalqa1_rbcc_2_true);
-$count_total_qa1_rbcc_3_true= $json->DataCount($totalqa1_rbcc_3_true);
-$count_total_qa1_rbcc_4_true= $json->DataCount($totalqa1_rbcc_4_true);
-$count_total_qa1_rbcc_5_true= $json->DataCount($totalqa1_rbcc_5_true);
-$count_total_qa1_rbcc_6_true= $json->DataCount($totalqa1_rbcc_6_true);
-$count_total_qa1_rbcc_7_true= $json->DataCount($totalqa1_rbcc_7_true);
-$count_total_qa1_rbcc_8_true= $json->DataCount($totalqa1_rbcc_8_true);
-$count_total_qa1_rbcc_9_true= $json->DataCount($totalqa1_rbcc_9_true);
-$count_total_qa1_rbcc_10_true= $json->DataCount($totalqa1_rbcc_10_true);
-$count_total_qa1_rbcc_11_true= $json->DataCount($totalqa1_rbcc_11_true);
-$count_total_qa1_rbcc_12_true= $json->DataCount($totalqa1_rbcc_12_true);
-$count_total_qa1_rbcc_13_true= $json->DataCount($totalqa1_rbcc_13_true);
-$count_total_qa1_rbcc_14_true= $json->DataCount($totalqa1_rbcc_14_true);
-$count_total_qa1_rbcc_15_true= $json->DataCount($totalqa1_rbcc_15_true);
-
-$count_total_qa1_rbcc_1_false= $json->DataCount($totalqa1_rbcc_1_false);
-$count_total_qa1_rbcc_2_false= $json->DataCount($totalqa1_rbcc_2_false);
-$count_total_qa1_rbcc_3_false= $json->DataCount($totalqa1_rbcc_3_false);
-$count_total_qa1_rbcc_4_false= $json->DataCount($totalqa1_rbcc_4_false);
-$count_total_qa1_rbcc_5_false= $json->DataCount($totalqa1_rbcc_5_false);
-$count_total_qa1_rbcc_6_false= $json->DataCount($totalqa1_rbcc_6_false);
-$count_total_qa1_rbcc_7_false= $json->DataCount($totalqa1_rbcc_7_false);
-$count_total_qa1_rbcc_8_false= $json->DataCount($totalqa1_rbcc_8_false);
-$count_total_qa1_rbcc_9_false= $json->DataCount($totalqa1_rbcc_9_false);
-$count_total_qa1_rbcc_10_false= $json->DataCount($totalqa1_rbcc_10_false);
-$count_total_qa1_rbcc_11_false= $json->DataCount($totalqa1_rbcc_11_false);
-$count_total_qa1_rbcc_12_false= $json->DataCount($totalqa1_rbcc_12_false);
-$count_total_qa1_rbcc_13_false= $json->DataCount($totalqa1_rbcc_13_false);
-$count_total_qa1_rbcc_14_false= $json->DataCount($totalqa1_rbcc_14_false);
-$count_total_qa1_rbcc_15_false= $json->DataCount($totalqa1_rbcc_15_false);
+}
+//for each column 1 and column 2 row 1 - 15 true value
+foreach ($totalqa1_rbcc_true as $rbcc_true) {
+  
+  $count_total_qa1_rbcc_true[] = $json->DataCount($rbcc_true);
+   
+}
+//for each column 1 and column 2 row 1 - 15 false value
+foreach ($totalqa1_rbcc_false as $rbcc_false) {
+  $count_total_qa1_rbcc_false[] = $json->DataCount($rbcc_false);
+   
+}
 
 
-echo $total_qa1_rc_1_true_percent = $json->DataCountPercent($count_total_qa1_rc_1_true,$countqa1);
-echo $total_qa1_rc_2_true_percent = $json->DataCountPercent($count_total_qa1_rc_2_true,$countqa1);
-echo $total_qa1_rc_3_true_percent = $json->DataCountPercent($count_total_qa1_rc_3_true,$countqa1);
-echo $total_qa1_rc_4_true_percent = $json->DataCountPercent($count_total_qa1_rc_4_true,$countqa1);
-echo $total_qa1_rc_5_true_percent = $json->DataCountPercent($count_total_qa1_rc_5_true,$countqa1);
-$total_qa1_rc_6_true_percent = $json->DataCountPercent($count_total_qa1_rc_6_true,$countqa1);
-$total_qa1_rc_7_true_percent = $json->DataCountPercent($count_total_qa1_rc_7_true,$countqa1);
-$total_qa1_rc_8_true_percent = $json->DataCountPercent($count_total_qa1_rc_8_true,$countqa1);
-$total_qa1_rc_9_true_percent = $json->DataCountPercent($count_total_qa1_rc_9_true,$countqa1);
-$total_qa1_rc_10_true_percent = $json->DataCountPercent($count_total_qa1_rc_10_true,$countqa1);
-$total_qa1_rc_11_true_percent = $json->DataCountPercent($count_total_qa1_rc_11_true,$countqa1);
-$total_qa1_rc_12_true_percent = $json->DataCountPercent($count_total_qa1_rc_12_true,$countqa1);
-$total_qa1_rc_13_true_percent = $json->DataCountPercent($count_total_qa1_rc_13_true,$countqa1);
-$total_qa1_rc_14_true_percent = $json->DataCountPercent($count_total_qa1_rc_14_true,$countqa1);
-$total_qa1_rc_15_true_percent = $json->DataCountPercent($count_total_qa1_rc_15_true,$countqa1);
+foreach ($count_total_qa1_rc_true as $total_qa1_rc_true) {
+  $total_qa1_rc_true_percent[] = $json->DataCountPercent($total_qa1_rc_true,$countqa1);
 
-$total_qa1_rc_1_false_percent = $json->DataCountPercent($count_total_qa1_rc_1_false,$countqa1);
-$total_qa1_rc_2_false_percent = $json->DataCountPercent($count_total_qa1_rc_2_false,$countqa1);
-$total_qa1_rc_3_false_percent = $json->DataCountPercent($count_total_qa1_rc_3_false,$countqa1);
-$total_qa1_rc_4_false_percent = $json->DataCountPercent($count_total_qa1_rc_4_false,$countqa1);
-$total_qa1_rc_5_false_percent = $json->DataCountPercent($count_total_qa1_rc_5_false,$countqa1);
-$total_qa1_rc_6_false_percent = $json->DataCountPercent($count_total_qa1_rc_6_false,$countqa1);
-$total_qa1_rc_7_false_percent = $json->DataCountPercent($count_total_qa1_rc_7_false,$countqa1);
-$total_qa1_rc_8_false_percent = $json->DataCountPercent($count_total_qa1_rc_8_false,$countqa1);
-$total_qa1_rc_9_false_percent = $json->DataCountPercent($count_total_qa1_rc_9_false,$countqa1);
-$total_qa1_rc_10_false_percent = $json->DataCountPercent($count_total_qa1_rc_10_false,$countqa1);
-$total_qa1_rc_11_false_percent = $json->DataCountPercent($count_total_qa1_rc_11_false,$countqa1);
-$total_qa1_rc_12_false_percent = $json->DataCountPercent($count_total_qa1_rc_12_false,$countqa1);
-$total_qa1_rc_13_false_percent = $json->DataCountPercent($count_total_qa1_rc_13_false,$countqa1);
-$total_qa1_rc_14_false_percent = $json->DataCountPercent($count_total_qa1_rc_14_false,$countqa1);
-$total_qa1_rc_15_false_percent = $json->DataCountPercent($count_total_qa1_rc_15_false,$countqa1);
-
-$total_qa1_rcc_1_true_percent = $json->DataCountPercent($count_total_qa1_rcc_1_true,$countqa1);
-$total_qa1_rcc_2_true_percent = $json->DataCountPercent($count_total_qa1_rcc_2_true,$countqa1);
-$total_qa1_rcc_3_true_percent = $json->DataCountPercent($count_total_qa1_rcc_3_true,$countqa1);
-$total_qa1_rcc_4_true_percent = $json->DataCountPercent($count_total_qa1_rcc_4_true,$countqa1);
-$total_qa1_rcc_5_true_percent = $json->DataCountPercent($count_total_qa1_rcc_5_true,$countqa1);
-$total_qa1_rcc_6_true_percent = $json->DataCountPercent($count_total_qa1_rcc_6_true,$countqa1);
-$total_qa1_rcc_7_true_percent = $json->DataCountPercent($count_total_qa1_rcc_7_true,$countqa1);
-$total_qa1_rcc_8_true_percent = $json->DataCountPercent($count_total_qa1_rcc_8_true,$countqa1);
-$total_qa1_rcc_9_true_percent = $json->DataCountPercent($count_total_qa1_rcc_9_true,$countqa1);
-$total_qa1_rcc_10_true_percent = $json->DataCountPercent($count_total_qa1_rcc_10_true,$countqa1);
-$total_qa1_rcc_11_true_percent = $json->DataCountPercent($count_total_qa1_rcc_11_true,$countqa1);
-$total_qa1_rcc_12_true_percent = $json->DataCountPercent($count_total_qa1_rcc_12_true,$countqa1);
-$total_qa1_rcc_13_true_percent = $json->DataCountPercent($count_total_qa1_rcc_13_true,$countqa1);
-$total_qa1_rcc_14_true_percent = $json->DataCountPercent($count_total_qa1_rcc_14_true,$countqa1);
-$total_qa1_rcc_15_true_percent = $json->DataCountPercent($count_total_qa1_rcc_15_true,$countqa1);
-
-$total_qa1_rcc_1_false_percent = $json->DataCountPercent($count_total_qa1_rcc_1_false,$countqa1);
-$total_qa1_rcc_2_false_percent = $json->DataCountPercent($count_total_qa1_rcc_2_false,$countqa1);
-$total_qa1_rcc_3_false_percent = $json->DataCountPercent($count_total_qa1_rcc_3_false,$countqa1);
-$total_qa1_rcc_4_false_percent = $json->DataCountPercent($count_total_qa1_rcc_4_false,$countqa1);
-$total_qa1_rcc_5_false_percent = $json->DataCountPercent($count_total_qa1_rcc_5_false,$countqa1);
-$total_qa1_rcc_6_false_percent = $json->DataCountPercent($count_total_qa1_rcc_6_false,$countqa1);
-$total_qa1_rcc_7_false_percent = $json->DataCountPercent($count_total_qa1_rcc_7_false,$countqa1);
-$total_qa1_rcc_8_false_percent = $json->DataCountPercent($count_total_qa1_rcc_8_false,$countqa1);
-$total_qa1_rcc_9_false_percent = $json->DataCountPercent($count_total_qa1_rcc_9_false,$countqa1);
-$total_qa1_rcc_10_false_percent = $json->DataCountPercent($count_total_qa1_rcc_10_false,$countqa1);
-$total_qa1_rcc_11_false_percent = $json->DataCountPercent($count_total_qa1_rcc_11_false,$countqa1);
-$total_qa1_rcc_12_false_percent = $json->DataCountPercent($count_total_qa1_rcc_12_false,$countqa1);
-$total_qa1_rcc_13_false_percent = $json->DataCountPercent($count_total_qa1_rcc_13_false,$countqa1);
-$total_qa1_rcc_14_false_percent = $json->DataCountPercent($count_total_qa1_rcc_14_false,$countqa1);
-$total_qa1_rcc_15_false_percent = $json->DataCountPercent($count_total_qa1_rcc_15_false,$countqa1);
-
-$total_qa1_rbcc_1_true_percent = $json->DataCountPercent($count_total_qa1_rbcc_1_true,$countqa1);
-$total_qa1_rbcc_2_true_percent = $json->DataCountPercent($count_total_qa1_rbcc_2_true,$countqa1);
-$total_qa1_rbcc_3_true_percent = $json->DataCountPercent($count_total_qa1_rbcc_3_true,$countqa1);
-$total_qa1_rbcc_4_true_percent = $json->DataCountPercent($count_total_qa1_rbcc_4_true,$countqa1);
-$total_qa1_rbcc_5_true_percent = $json->DataCountPercent($count_total_qa1_rbcc_5_true,$countqa1);
-$total_qa1_rbcc_6_true_percent = $json->DataCountPercent($count_total_qa1_rbcc_6_true,$countqa1);
-$total_qa1_rbcc_7_true_percent = $json->DataCountPercent($count_total_qa1_rbcc_7_true,$countqa1);
-$total_qa1_rbcc_8_true_percent = $json->DataCountPercent($count_total_qa1_rbcc_8_true,$countqa1);
-$total_qa1_rbcc_9_true_percent = $json->DataCountPercent($count_total_qa1_rbcc_9_true,$countqa1);
-$total_qa1_rbcc_10_true_percent = $json->DataCountPercent($count_total_qa1_rbcc_10_true,$countqa1);
-$total_qa1_rbcc_11_true_percent = $json->DataCountPercent($count_total_qa1_rbcc_11_true,$countqa1);
-$total_qa1_rbcc_12_true_percent = $json->DataCountPercent($count_total_qa1_rbcc_12_true,$countqa1);
-$total_qa1_rbcc_13_true_percent = $json->DataCountPercent($count_total_qa1_rbcc_13_true,$countqa1);
-$total_qa1_rbcc_14_true_percent = $json->DataCountPercent($count_total_qa1_rbcc_14_true,$countqa1);
-$total_qa1_rbcc_15_true_percent = $json->DataCountPercent($count_total_qa1_rbcc_15_true,$countqa1);
-
-$total_qa1_rbcc_1_false_percent = $json->DataCountPercent($count_total_qa1_rbcc_1_false,$countqa1);
-$total_qa1_rbcc_2_false_percent = $json->DataCountPercent($count_total_qa1_rbcc_2_false,$countqa1);
-$total_qa1_rbcc_3_false_percent = $json->DataCountPercent($count_total_qa1_rbcc_3_false,$countqa1);
-$total_qa1_rbcc_4_false_percent = $json->DataCountPercent($count_total_qa1_rbcc_4_false,$countqa1);
-$total_qa1_rbcc_5_false_percent = $json->DataCountPercent($count_total_qa1_rbcc_5_false,$countqa1);
-$total_qa1_rbcc_6_false_percent = $json->DataCountPercent($count_total_qa1_rbcc_6_false,$countqa1);
-$total_qa1_rbcc_7_false_percent = $json->DataCountPercent($count_total_qa1_rbcc_7_false,$countqa1);
-$total_qa1_rbcc_8_false_percent = $json->DataCountPercent($count_total_qa1_rbcc_8_false,$countqa1);
-$total_qa1_rbcc_9_false_percent = $json->DataCountPercent($count_total_qa1_rbcc_9_false,$countqa1);
-$total_qa1_rbcc_10_false_percent = $json->DataCountPercent($count_total_qa1_rbcc_10_false,$countqa1);
-$total_qa1_rbcc_11_false_percent = $json->DataCountPercent($count_total_qa1_rbcc_11_false,$countqa1);
-$total_qa1_rbcc_12_false_percent = $json->DataCountPercent($count_total_qa1_rbcc_12_false,$countqa1);
-$total_qa1_rbcc_13_false_percent = $json->DataCountPercent($count_total_qa1_rbcc_13_false,$countqa1);
-$total_qa1_rbcc_14_false_percent = $json->DataCountPercent($count_total_qa1_rbcc_14_false,$countqa1);
-$total_qa1_rbcc_15_false_percent = $json->DataCountPercent($count_total_qa1_rbcc_15_false,$countqa1);
+}
+foreach ($count_total_qa1_rc_false as $total_qa1_rc_false) {
+  $total_qa1_rc_false_percent[] = $json->DataCountPercent($total_qa1_rc_false,$countqa1);
+ 
+}
+foreach ($count_total_qa1_rcc_true as $total_qa1_rcc_true) {
+  $total_qa1_rcc_true_percent[] = $json->DataCountPercent($total_qa1_rcc_true,$countqa1);
+ 
+}
+foreach ($count_total_qa1_rcc_false as $total_qa1_rcc_false) {
+  $total_qa1_rcc_false_percent[] = $json->DataCountPercent($total_qa1_rcc_false,$countqa1);
+  
+}
+foreach ($count_total_qa1_rc_true as $total_qa1_rbcc_true) {
+  $total_qa1_rbcc_true_percent[] = $json->DataCountPercent($total_qa1_rbcc_true,$countqa1);
+ 
+}
+foreach ($count_total_qa1_rc_false as $total_qa1_rbcc_false) {
+  $total_qa1_rbcc_false_percent[] = $json->DataCountPercent($total_qa1_rbcc_false,$countqa1);
+  
+}
 
 echo "<br><hr><br>";
 echo "<H1>2. )ACCEPTING JOB REASON</H1>";
