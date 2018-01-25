@@ -1,7 +1,7 @@
 
 <?php 
 include('session.php'); //for login session if you are not logged in you will go back in index.php
-include('db.php');//database connection
+require('db.php');//database connection
 
 $survey_maxcount_qry = mysqli_query($con,"SELECT survey_maxattemp FROM `survey_maxcount` WHERE survey_ownerID = '$login_id'");
 $survey_maxattemp = mysqli_fetch_array($survey_maxcount_qry);
@@ -114,6 +114,42 @@ $result_viewcount = mysqli_fetch_assoc($query_viewcount);
             <?php include('footer.php');?>
             <!-- /#footer -->
             <?php include ('script.php');?>
+
+            <script>
+$(document).ready(function(){
+  
+  $(document).on('click', '#getUser', function(e){
+    
+    e.preventDefault();
+    
+    var uid = $(this).data('id');   // it will get id of clicked row
+    
+    $('#dynamic-content').html(''); // leave it blank before ajax call
+    $('#modal-loader').show();      // load ajax loader
+    
+    $.ajax({
+      url: 'getComment.php',
+      type: 'POST',
+      data: 'id='+uid,
+      dataType: 'html'
+    })
+    .done(function(data){
+      console.log(data);  
+      $('#dynamic-content').html('');    
+      $('#dynamic-content').html(data); // load response 
+      $('#modal-loader').hide();      // hide ajax loader 
+    })
+    .fail(function(){
+      $('#dynamic-content').html('<i class="glyphicon glyphicon-info-sign"></i> Something went wrong, Please try again...');
+      $('#modal-loader').hide();
+    });
+    
+  });
+  
+});
+
+</script>
+
         </body>
 
 </html>

@@ -197,15 +197,8 @@
                                           ?>
                                         <div class="comment-main-level">
                                         <!-- Avatar -->
-                                        <div class="comment-avatar"><img src="assets/img/profile_img/temp.gif" alt=""></div>
-                                        <!-- Contenedor del Comentario -->
-                                        <div class="comment-box">
-                                          <div class="comment-head">
-                                            <h6 class="comment-name <?php if ($login_id == $comment_data['comment_userID']){
-                                              echo "by-author";} ?>"><a href="">
-
-                                                <?php 
-                                                $cuID = $comment_data['comment_userID'];
+                                        <?php 
+                                        $cuID = $comment_data['comment_userID'];
                                                 
                                                 $q_udata = mysqli_query($con,"SELECT * FROM user_account WHERE user_ID = '$cuID'");
                                                 $r_udata = mysqli_fetch_array($q_udata);
@@ -223,6 +216,17 @@
                                                 $uID = $r_udata['user_ID'];
                                                 $q_data = mysqli_query($con,"SELECT * FROM user_".$u_type."_detail WHERE ".$u_type."_userID = '$uID'");
                                                 $r_data = mysqli_fetch_array($q_data);
+                                                
+                                        ?>
+                                        <div class="comment-avatar"><img src="assets/img/profile_img/<?php echo $r_data[$u_type.'_img'];?>" alt="" style="width: 64px; height: 64px;"></div>
+                                        <!-- Contenedor del Comentario -->
+                                        <div class="comment-box">
+                                          <div class="comment-head">
+                                            <h6 class="comment-name <?php if ($login_id == $comment_data['comment_userID']){
+                                              echo "by-author";} ?>"><a href="">
+
+                                                <?php 
+
                                                 echo $r_data[$u_type.'_fName']." ".$r_data[$u_type.'_mName']." ".$r_data[$u_type.'_lName'];
                                                 ?></a></h6>
                                             <span><?php echo date( "M jS, Y", strtotime( $comment_data['comment_date'])). "<strong> at </strong>".date( 'h:i A', strtotime($comment_data['comment_date'])); ?>
@@ -231,18 +235,19 @@
                                             <?php 
                                             if ($login_id == $comment_data['comment_userID']){
                                               ?>
-                                              <i class="fa fa-edit" data-toggle="modal" data-target="#editcomment"> ```</i>
+                                              <i class="fa fa-edit" data-toggle="modal" data-target="#view-modal" data-id="<?php echo $comment_data['comment_ID']; ?>" id="getUser"> ```</i>
                                               <?php
                                             }
                                             if ($login_id == $comment_data['comment_userID']){
                                               ?>
-                                              <i class="fa fa-reply"> Reply</i>
+                                              <!-- <i class="fa fa-reply"> Reply</i> -->
                                               <?php
                                             }
                                             else
                                             {
                                               ?>
-                                               <i class="fa fa-heart"></i>
+                                              <!-- <i class="fa fa-reply"> Reply</i> -->
+                                              <!--  <i class="fa fa-heart"></i> -->
                                               <?php
                                             }
                                             ?>
@@ -252,7 +257,8 @@
 
                                           </div>
                                           <div class="comment-content">
-                                            <?php echo $comment_data['comment_content']; ?>
+                                            <?php echo $comment_data['comment_content']; 
+                                            ?>
                                           </div>
                                         </div>
                                         </div>
@@ -260,50 +266,6 @@
                                           <?php
                                           }
                                       ?>
-<div id="editcomment" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Modal Header</h4>
-      </div>
-      <div class="modal-body">
-        <center>
-        <div class="btn-group ">
-          <button type="button" class="btn btn-primary">EDIT</button>
-          <button type="button" class="btn btn-danger">DELETE</button>
-        </div>
-        </center>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-
-  </div>
-</div>
-                                      <!-- Respuestas de los comentarios -->
-                                     <!--  <ul class="comments-list reply-list">
-                                       
-                                        <li> -->
-                                          <!-- Avatar --><!-- 
-                                          <div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg" alt=""></div> -->
-                                          <!-- Contenedor del Comentario -->
-                                       <!--    <div class="comment-box">
-                                            <div class="comment-head">
-                                              <h6 class="comment-name by-author"><a href="http://creaticode.com/blog">Agustin Ortiz</a></h6>
-                                              <span>hace 10 minutos</span>
-                                              <i class="fa fa-reply"> Reply</i>
-                                              <i class="fa fa-heart"></i>
-                                            </div>
-                                            <div class="comment-content">
-                                              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?
-                                            </div>
-                                          </div>
-                                        </li>
-                                      </ul> -->
                                     </li>
 
                                     <li>
@@ -319,4 +281,33 @@
                         <!-- /.inner -->
                     </div>
                     <!-- /.outer -->
+
+   <div id="view-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none; color: black;">
+             <div class="modal-dialog"> 
+                  <div class="modal-content"> 
+                  
+                       <div class="modal-header"> 
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button> 
+                            <h4 class="modal-title">
+                              <i class="fa fa-info"></i> Action
+                            </h4> 
+                       </div> 
+                       <div class="modal-body"> 
+                       
+                           <div id="modal-loader" style="display: none; text-align: center;">
+                            <img src="ajax-loader.gif">
+                           </div>
+                            
+                           <!-- content will be load here -->                          
+                           <div id="dynamic-content"></div>
+                             
+                        </div> 
+                        <div class="modal-footer"> 
+                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>  
+                        </div> 
+                        
+                 </div> 
+              </div>
+       </div><!-- /.modal -->    
+
 
