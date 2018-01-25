@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-US">
 
 <head>
     <title>404</title>
@@ -34,6 +34,6 @@
 </body>
 
 </html>
-    <?php 
+<?php 
    include('back_history.php');
-   ?>
+?>
