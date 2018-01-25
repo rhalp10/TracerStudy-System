@@ -172,7 +172,7 @@ else
                                           
                                           <div class="row">
                                               <div class="bio-row">
-                                                <img class="media-object img-thumbnail user-img" alt="User Picture" src="assets/img/profile_img/<?php echo $res_sidebar[$userType.'_img'];?>">
+                                                <img class="media-object img-thumbnail user-img" alt="User Picture" src="assets/img/profile_img/<?php echo $res_sidebar[$userType.'_img'];?>" style="width: 64px; height: 64px;">
                                               </div>
                                               <div class="bio-row"></div>
                                               <div class="bio-row">
@@ -347,9 +347,26 @@ else
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
         <h4 class="modal-title">Change Picture</h4>
       </div>
-      <div class="modal-body" style="height: 250px;">
+      <div class="modal-body center" style="height: 250px;">
              
-              <iframe src="http://localhost/tracer/assets/lib/image_upload/image_upload_demo.php" style="width: 100%; height: 100%;" frameBorder="0"></iframe>
+              <!-- <iframe src="http://localhost/tracer/assets/lib/image_upload/image_upload_demo.php" style="width: 100%; height: 100%;" frameBorder="0"></iframe> -->
+              
+              <div class="col-sm-6">
+                <form class="form" action="upload.php?login_id=<?php echo $login_id?>" method="POST" enctype="multipart/form-data">
+                Select image to upload:
+                <div class="form-group">
+                   <input type="file" name="fileToUpload" id="fileToUpload">
+                </div>
+               <input type="submit" value="Upload Image" name="submit" class="btn btn-primary">
+              </form>
+              </div>
+              <div class="col-sm-6">
+                
+               <a class="user-link" href="#">
+                  <img class="media-object img-thumbnail user-img" alt="User Picture" src="assets/img/profile_img/<?php echo $data_img?>" style="width: 128px; height: 128px;">
+              </a>
+              </div>
+    
 
       </div>
       <div class="modal-footer">
