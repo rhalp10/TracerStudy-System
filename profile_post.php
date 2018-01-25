@@ -77,10 +77,12 @@ else {}
                               <hr>
                               <table id="forumData_User_Unpin"  class="table table-bordered table-advance table-hover  dataTable">
                                   <thead>
+
                                     <tr>
                                       <th><h3>Topic</h3></th>
+
                                     </tr>
-                                    <tr onclick="self.location.href='forum_topic_create.php'">
+                                     <tr onclick="self.location.href='forum_topic_create.php'">
                                   <td class="forum-td" >
                                   <div class="forum-list-hover col-sm-1" >
                                   <i class="fa fa-plus"></i>
@@ -118,61 +120,7 @@ else {}
                 </div>
                 <!-- /#content -->
 
-                    <div id="right" class="onoffcanvas is-right is-fixed bg-light" aria-expanded=false>
-                        <a class="onoffcanvas-toggler" href="#right" data-toggle=onoffcanvas aria-expanded=false></a>
-                        <br>
-                        <br>
-                        <div class="well well-small dark">
-                            <ul class="list-unstyled">
-                                <li>Visitor <span class="inlinesparkline pull-right">1,4,4,7,5,9,10</span></li>
-                                <li>Online Visitor <span class="dynamicsparkline pull-right">Loading..</span></li>
-                                <li>Popularity <span class="dynamicbar pull-right">Loading..</span></li>
-                                <li>New Users <span class="inlinebar pull-right">1,3,4,5,3,5</span></li>
-                            </ul>
-                        </div>
-                        <!-- /.well well-small -->
-                        <!-- .well well-small -->
-                        <div class="well well-small dark">
-                            <button class="btn btn-block">Default</button>
-                            <button class="btn btn-primary btn-block">Primary</button>
-                            <button class="btn btn-info btn-block">Info</button>
-                            <button class="btn btn-success btn-block">Success</button>
-                            <button class="btn btn-danger btn-block">Danger</button>
-                            <button class="btn btn-warning btn-block">Warning</button>
-                            <button class="btn btn-inverse btn-block">Inverse</button>
-                            <button class="btn btn-metis-1 btn-block">btn-metis-1</button>
-                            <button class="btn btn-metis-2 btn-block">btn-metis-2</button>
-                            <button class="btn btn-metis-3 btn-block">btn-metis-3</button>
-                            <button class="btn btn-metis-4 btn-block">btn-metis-4</button>
-                            <button class="btn btn-metis-5 btn-block">btn-metis-5</button>
-                            <button class="btn btn-metis-6 btn-block">btn-metis-6</button>
-                        </div>
-                        <!-- /.well well-small -->
-                        <!-- .well well-small -->
-                        <div class="well well-small dark">
-                            <span>Default</span><span class="pull-right"><small>20%</small></span>
-                        
-                            <div class="progress xs">
-                                <div class="progress-bar progress-bar-info" style="width: 20%"></div>
-                            </div>
-                            <span>Success</span><span class="pull-right"><small>40%</small></span>
-                        
-                            <div class="progress xs">
-                                <div class="progress-bar progress-bar-success" style="width: 40%"></div>
-                            </div>
-                            <span>warning</span><span class="pull-right"><small>60%</small></span>
-                        
-                            <div class="progress xs">
-                                <div class="progress-bar progress-bar-warning" style="width: 60%"></div>
-                            </div>
-                            <span>Danger</span><span class="pull-right"><small>80%</small></span>
-                        
-                            <div class="progress xs">
-                                <div class="progress-bar progress-bar-danger" style="width: 80%"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /#right -->
+      
             </div>
 
             <!-- /#wrap -->
@@ -180,45 +128,330 @@ else {}
             <!-- /#footer -->
             <?php include ('script.php');?>
         </body>
-        <script type="text/javascript">
-            $(document).ready(function() {
-        console.log("document ready!");
+<script type="text/javascript">
 
-        var $sticky = $('.sticky');
-        var $stickyrStopper = $('.sticky-stopper');
-        if (!!$sticky.offset()) { // make sure ".sticky" element exists
 
-            var generalSidebarHeight = $sticky.innerHeight();
-            var stickyTop = $sticky.offset().top;
-            var stickOffset = 0;
-            var stickyStopperPosition = $stickyrStopper.offset().top;
-            var stopPoint = stickyStopperPosition - generalSidebarHeight - stickOffset;
-            var diff = stopPoint + stickOffset;
+  $(document).ready(function() {
+                var dataTable = $('#rteacherData').DataTable( {
+                    // "stripeClasses": [],
+                    "processing": true,
+                    "serverSide": true,
+                    "bAutoWidth": false,
+                    "bLengthChange": false
+                } );
+              
+            } );
 
-            $(window).scroll(function() { // scroll event
-                var windowTop = $(window).scrollTop(); // returns number
+ $(document).ready(function() {
+        var dataTable = $('#forumData_Unpin').DataTable( {
+          "processing": true,
+          "serverSide": true,
+          "bLengthChange": false,
+          "ordering": true,
+          "columnDefs": [ {
+                        className: "forum-td",
+                          "targets": 0,
+                          "searchable": false
+                        }],
+          "ajax":{
+            url :"serverside_data_forumUnpin.php", // json datasource
+            type: "post",  // method  , by default get
+            error: function(){  // error handling
+              $(".forumData_Unpin-error").html("");
+              $("#forumData_Unpin").append('<tbody class="forumData_Unpin-error"><tr><th colspan="3">No data found in the server</th></tr></tbody>');
+              $("#forumData_Unpin_processing").css("display","none");
+              
+            }
+          }
+        } );
+      } );
+ $(document).ready(function() {
 
-                if (stopPoint < windowTop) {
-                    $sticky.css({
-                        position: 'absolute',
-                        top: diff
-                    });
-                } else if (stickyTop < windowTop + stickOffset) {
-                    $sticky.css({
-                        position: 'fixed',
-                        top: stickOffset
-                    });
-                } else {
-                    $sticky.css({
-                        position: 'absolute',
-                        top: 'initial'
-                    });
-                }
-            });
+                var dataTable = $('#forumData_Pin').DataTable( {
+                    // "stripeClasses": [],
+                    "processing": true,
+                    "serverSide": true,
+                    "bAutoWidth": false,
+                    
+                    "bLengthChange": false,
 
-        }
-    });
+                    "columnDefs": [ {
+                        className: "forum-td",
+                          "targets": 0,
+                          "searchable": false
+                        }],
+                        // "initComplete": function () {
+                        //     $( document ).on("click", "tr[role='row']", function(){
+                        //         // var year_data = document.getElementById("year_data" ).innerHTML;
+                        //          var year_data = $(this).parents('div .col-sm-6 forum-list-content').data('id');
+                        //          jQuery("tr").addClass("myClass");
+                        //          window.location='alumni_view.php?course=IT&year='+year_data;
 
+                        //     });
+                        // },
+                    "ajax":{
+                        url :"serverside_data_forumPin.php", // json datasource
+                        type: "post",  // method  , by default get
+                        error: function(){  // error handling
+                            $(".forumData_Pin-error").html("");
+                            $("#forumData_Pin").append('<tbody class="forumData_Pin-error"><tr><th colspan="3">No data found in the server</th></tr></tbody>');
+                            $("#forumData_Pin_processing").css("display","none");
+                            
+
+                        }
+                        
+                    }
+                } );
+                
+            } );
+ $(document).ready(function() {
+                var dataTable = $('#alumniIT').DataTable( {
+                    // "stripeClasses": [],
+                    "processing": true,
+                    "serverSide": true,
+                    "bAutoWidth": false,
+                    // "bSort": false,
+                    "bLengthChange": false,
+
+                    "info":     false,
+                    "columnDefs": [ {
+
+                        "orderable": false,
+                        className: "forum-td",
+                          "targets": 0,
+                          "searchable": false
+
+                        }],
+                        
+                        // "initComplete": function () {
+                        //     $( document ).on("click", "tr[role='row']", function(){
+                        //         // var year_data = document.getElementById("year_data" ).innerHTML;
+                        //          var year_data = $(this).parents('div .col-sm-6 forum-list-content').data('id');
+                        //          jQuery("tr").addClass("myClass");
+                        //          window.location='alumni_view.php?course=IT&year='+year_data;
+
+                        //     });
+                        // },
+
+                    "ajax":{
+                        url :"serverside_data_IT_Alumni.php", // json datasource
+                        type: "post",  // method  , by default get
+                        error: function(){  // error handling
+                            $(".alumniIT-error").html("");
+                            $("#alumniIT").append('<tbody class="alumniIT-error"><tr><th colspan="3">No data found in the server</th></tr></tbody>');
+                            $("#alumniIT_processing").css("display","none");
+                            
+
+                        }
+                        
+                    }
+                } );
+
+
+
+                
+            } );
+ $(document).ready(function() {
+                var dataTable = $('#alumniCS').DataTable( {
+                    // "stripeClasses": [],
+                    "processing": true,
+                    "serverSide": true,
+                    "bAutoWidth": false,
+                    // "bSort": false,
+                    "bLengthChange": false,
+
+                    "info":     false,
+                    "columnDefs": [ {
+
+                        "orderable": false,
+                        className: "forum-td",
+                          "targets": 0,
+                          "searchable": false
+
+                        }],
+                        
+                        // "initComplete": function () {
+                        //     $( document ).on("click", "tr[role='row']", function(){
+                        //         // var year_data = document.getElementById("year_data" ).innerHTML;
+                        //          var year_data = $(this).parents('div .col-sm-6 forum-list-content').data('id');
+                        //          jQuery("tr").addClass("myClass");
+                        //          window.location='alumni_view.php?course=IT&year='+year_data;
+
+                        //     });
+                        // },
+
+                    "ajax":{
+                        url :"serverside_data_CS_Alumni.php", // json datasource
+                        type: "post",  // method  , by default get
+                        error: function(){  // error handling
+                            $(".alumniIT-error").html("");
+                            $("#alumniIT").append('<tbody class="alumniIT-error"><tr><th colspan="3">No data found in the server</th></tr></tbody>');
+                            $("#alumniIT_processing").css("display","none");
+                            
+
+                        }
+                        
+                    }
+                } );
+
+
+
+                
+            } );
+
+
+
+ $(document).ready(function() {
+                var dataTable = $('#alumniOA').DataTable( {
+                    // "stripeClasses": [],
+                    "processing": true,
+                    "serverSide": true,
+                    "bAutoWidth": false,
+                    // "bSort": false,
+                    "bLengthChange": false,
+
+                    "info":     false,
+                    "columnDefs": [ {
+
+                        "orderable": false,
+                        className: "forum-td",
+                          "targets": 0,
+                          "searchable": false
+
+                        }],
+                        
+                        // "initComplete": function () {
+                        //     $( document ).on("click", "tr[role='row']", function(){
+                        //         // var year_data = document.getElementById("year_data" ).innerHTML;
+                        //          var year_data = $(this).parents('div .col-sm-6 forum-list-content').data('id');
+                        //          jQuery("tr").addClass("myClass");
+                        //          window.location='alumni_view.php?course=IT&year='+year_data;
+
+                        //     });
+                        // },
+
+                    "ajax":{
+                        url :"serverside_data_OA_Alumni.php", // json datasource
+                        type: "post",  // method  , by default get
+                        error: function(){  // error handling
+                            $(".alumniIT-error").html("");
+                            $("#alumniIT").append('<tbody class="alumniIT-error"><tr><th colspan="3">No data found in the server</th></tr></tbody>');
+                            $("#alumniIT_processing").css("display","none");
+                            
+
+                        }
+                        
+                    }
+                } );
+
+
+
+                
+            } );
+ 
+    $(document).ready(function() {
+                var dataTable = $('#registerstud_serverside').DataTable( {
+
+                    "processing": true,
+                    "serverSide": true,
+                    "bAutoWidth": false,
+                     // "bSort": false,
+                     "bLengthChange": false,
+                     "columnDefs": [ {
+                        className: "text-center",
+                          "targets": 1,
+                          "searchable": false
+                        }, 
+                        {
+                        className: "text-center",
+                          "targets": 2,
+                          "searchable": false
+                        }, 
+                        {
+                        className: "text-center",
+                          "targets": 3,
+                          "searchable": false
+                        }, 
+                        {
+                        className: "text-center",
+                              "targets": 4,
+                              "searchable": false
+                        }],
+                    "ajax":{
+                        url :"serverside_data_registerstud.php", // json datasource
+                        type: "post",  // method  , by default get
+                        error: function(){  // error handling
+                            $(".registerstud_serverside-error").html("");
+                            $("#eregisterstud_serverside").append('<tbody class="registerstud_serverside-error"><tr><th colspan="3">No data found in the server</th></tr></tbody>');
+                            $("#registerstud_serverside_processing").css("display","none");
+                            
+
+                        }
+                        
+                    }
+                } );
+
+
+                
+            } );
+$(document).ready(function() {
+                var dataTable = $('#forumData_User_Unpin').DataTable( {
+                    // "stripeClasses": [],
+                    "processing": true,
+                    "serverSide": true,
+                    "bAutoWidth": false,
+                    
+                    "bLengthChange": false,
+
+                    "columnDefs": [ {
+                        className: "forum-td",
+                          "targets": 0,
+                          "searchable": false
+                        }],
+                    "ajax":{
+                        url :"serverside_data_forumData_User_Unpin.php", // json datasource
+                        type: "post",  // method  , by default get
+                        error: function(){  // error handling
+                            $(".forumData_User_Unpin-error").html("");
+                            $("#forumData_User_Unpin").append('<tbody class="forumData_User_Unpin-error"><tr><th colspan="3">No data found in the server</th></tr></tbody>');
+                            $("#forumData_User_Unpin_processing").css("display","none");
+                            
+
+                        }
+                        
+                    }
+                } );
+                
+            } );
+ $(document).ready(function() {
+                var dataTable = $('#forumData_User_Pin').DataTable( {
+                    // "stripeClasses": [],
+                    "processing": true,
+                    "serverSide": true,
+                    "bAutoWidth": false,
+                    
+                    "bLengthChange": false,
+
+                    "columnDefs": [ {
+                        className: "forum-td",
+                          "targets": 0,
+                          "searchable": false
+                        }],
+                    "ajax":{
+                        url :"serverside_data_forumData_User_Pin.php", // json datasource
+                        type: "post",  // method  , by default get
+                        error: function(){  // error handling
+                            $(".forumData_User_Pin-error").html("");
+                            $("#forumData_User_Pin").append('<tbody class="forumData_User_Pin-error"><tr><th colspan="3">No data found in the server</th></tr></tbody>');
+                            $("#forumData_User_Pin_processing").css("display","none");
+                            
+
+                        }
+                        
+                    }
+                } );
+              
+            } );
 
         </script>
 

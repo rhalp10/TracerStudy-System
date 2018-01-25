@@ -28,7 +28,52 @@ else if ($login_level == '3')
 else
 {
 }
+
+class json
+    {
+    public $value = 0;
+    public function EncodeParsing($parse){
+        $j_encode = json_encode($parse);
+        return $j_encode;
+      }
+    public function DataCount($count){
+
+        $total_count = mysqli_num_rows($count);
+        return $total_count;
+      }
+       
+    public function stackValue($val)
+      {
+          $this->value += $val;
+      }
+     
+    public function getSum()
+      {
+          return $this->value . "<br />";
+      }
+    public function addtoString($str, $item) {
+    $parts = explode(',', $str);
+    $parts[] = $item;
+
+    return implode(',', $parts);
+    }
+ 
+
+   
+    }
+$json = new json;
+
+
+$totalresult_ofStudent = mysqli_query($con,"SELECT * FROM `user_student_detail` WHERE `student_status` = 'register'");
+$totalresult_ofTeacher = mysqli_query($con,"SELECT * FROM `user_teacher_detail` WHERE `teacher_status` = 'register'");
+$totalresult_ofAdmin = mysqli_query($con,"SELECT * FROM `user_admin_detail` WHERE `admin_status` = 'register'");
+
+$totalAcc_register_asStudent = $json->DataCount($totalresult_ofStudent);
+$totalAcc_register_asTeacher = $json->DataCount($totalresult_ofTeacher);
+$totalAcc_register_asAdmin = $json->DataCount($totalresult_ofAdmin);
+
 ?>
+
 
 
 <!DOCTYPE html>
@@ -74,36 +119,14 @@ else
                             </div>
                             <!-- /.main-bar -->
                         </header>
+
                         <div class="inner bg-light lter">
-                    <!--         <?php 
-                           // $thread_participant  = "1 2 3 4 5 6";
-                            // $pieces = explode(" ", $thread_participant);
-                            // echo "<br>";
-                            // $query_participant = "SELECT * FROM user_student_detail WHERE ";
-
-                            // $numItems = count($pieces);
-                            // $i = 0;
-                            // foreach($pieces as $participant) {
-                            //     $participant = trim($participant);
-                            //     if(++$i === $numItems) {
-                            //       $query_participant.="student_ID=".$participant;
-                            //     }
-                            //     else
-                            //     {
-                            //       $query_participant.="student_ID=".$participant." OR ";
-                            //     }
-
-                            // }
-                            // echo $query_participant;
-                           ?> 
-                           <input id="car" type="text" list="colors" />
-                            <datalist id="colors">
-                                <option value="Red">
-                                <option value="Green">
-                                <option value="Yellow">
-                            </datalist> -->
-                           
-                           d ko pa alam lalagay ko ahhahaha
+                            <center><h1>Welcome</h1></center>
+                           <div class="col-sm-6" >
+                                <div id="canvas-holder">
+                                    <canvas id="chart-area" />
+                                </div>
+                            </div>
                         </div>
 
                         <!-- /.inner -->
@@ -119,6 +142,62 @@ else
             <?php include('footer.php');?>
             <!-- /#footer -->
             <?php include ('script.php');?>
+            <script>
+    // REGISTERED VALUE Declaration of variable 
+    var student_Percent = <?php echo $totalAcc_register_asStudent; ?>;
+    var Teacher_Percent = <?php echo $totalAcc_register_asTeacher; ?>;
+    var Admin_Percent = <?php echo $totalAcc_register_asAdmin; ?>;
+    // REGISTERED VALUE Parsing of variable
+    var student_Parse = parseInt(student_Percent);
+    var teacher_Parse = parseInt(Teacher_Percent);
+    var admin_Parse = parseInt(Admin_Percent);
+    //REGISTERED VALUE Parsed Data passed on variable
+    var a = student_Parse;
+    var b = teacher_Parse;
+    var c = admin_Parse;
+    var total_register = a+b+c;
+   
+
+
+    var config = {
+        type: 'pie',
+        data: {
+            datasets: [{
+                data: [
+                    a,
+                    b,
+                    c
+                ],
+                backgroundColor: [
+                    window.chartColors.red,
+                    window.chartColors.orange,
+                    window.chartColors.blue,
+                ],
+                label: 'Dataset 1'
+            }],
+            labels: [
+                "Student ",
+                "Teacher ",
+                "Admin ",
+
+            ]
+        },
+        options: {
+           title: {
+             display: true,
+             text: 'Total Account Register: '+total_register
+           }
+         }
+    };
+
+    window.onload = function() {
+        var ctx = document.getElementById("chart-area").getContext("2d");
+        window.myPie = new Chart(ctx, config);
+
+    };
+
+    </script>
+    
         </body>
 
 </html>

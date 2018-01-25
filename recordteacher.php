@@ -180,78 +180,34 @@ else
                               <h5>List</h5>
                              </header>
                              <div class="body">
-                                <table id="myData"  class="table table-bordered table-advance table-hover  dataTable">
-                                <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Department</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tfoot>
-                                    <tr>
-                                      <th></th>
-                                      <th></th>
-                                      <th></th>
-                                    </tr>
-                                  </tfoot>
-                                  <tbody>
-                                  <?php 
-                                  $query_teacher_detail = mysqli_query($con,"SELECT * FROM user_teacher_detail");
-                                  while ($result_teacher_detail = mysqli_fetch_array($query_teacher_detail)) 
-                                    {
-                                        $teacher_ID = $result_teacher_detail['teacher_ID'];
-                                    ?>
-                                    <tr>
-                                        <td><?php echo $result_teacher_detail['teacher_fName']." ".$result_teacher_detail['teacher_mName']." ".$result_teacher_detail['teacher_lName']; ?></td>
-                                        <td class="text-center"><?php 
-                                        $teacher_department = $result_teacher_detail['teacher_department'] ;
-                                        $dep_qry = mysqli_query($con,"SELECT * FROM `cvsu_department` WHERE `department_ID` = '$teacher_department'");
-                                        $dep_result = mysqli_fetch_array($dep_qry);
-                                        echo $dep_result['department_name'];
-                                        ?></td>
-                                        <td class="text-center"><div class="btn-group">
-
-                                          <button type="button" class="btn btn-metis-5" onclick="editFunction(<?php echo $student_ID ?>)"><i class="fa fa-edit"></i></button>
-                                          <button type="button" class="btn btn-metis-1" onclick="deleteFunction(<?php echo $student_ID ?>)"><i class="fa fa-close"></i></button>
-                                        </div></td>
-                                    </tr>
-                                    <!-- Modal -->
-                                               
-                                  <?php
-                                    }
-                                  ?>
-<script type="text/javascript">
-
-function editFunction(student_ID){
-    var txt;
-    var r = confirm("Are you sure do you want to edit ?");
-    if (r == true) {
-        
-     window.location.href = "recordstudent.php?modal=" + student_ID;
-    } else {
-       
-    }
-
-}       
-
-function deleteFunction(student_ID){
-    var txt;
-    var r = confirm("Are you sure do you want to delete?");
-    if (r == true) {
-        
-     window.location.href = "recordstudent.php?modal=" + student_ID;
-    } else {
-       
-    }
-
-}       
-
-
-</script>
-            </div>
-                                  </tbody>
-
+                                <table id="rteacherData" class="table table-bordered table-advance table-hover  ">
+                                    <thead>
+                                        <tr >
+                                            <th class="col-sm-2">Name</th>
+                                            <th class="col-sm-3">Department</th>
+                                            <th class="col-sm-2">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>a</td>
+                                            <td>a</td>
+                                            <td>
+                                                <div class="btn-group">
+                                                  <button type="button" class="btn btn-primary"><i class="fa fa-eye"></i></button>
+                                                  <button type="button" class="btn btn-primary"><i class="fa fa-edit"></i></button>
+                                                  <button type="button" class="btn btn-primary"><i class="fa fa-close"></i></button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                        </tr>
+                                    </tfoot>
                                 </table>
                              </div>
                             </div>
