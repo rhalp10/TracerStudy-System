@@ -1,10 +1,4 @@
 # TracerStudy System
-
-## Index Preview
-![alt text](https://github.com/rhalp10/TracerStudy-System/blob/master/screenshots/index.png "Index")
-
-## Forum Preview
-![alt text](https://github.com/rhalp10/TracerStudy-System/blob/master/screenshots/forum.png "Forum")
-
-## Statistic Graphs Preview
-![alt text](https://github.com/rhalp10/TracerStudy-System/blob/master/screenshots/statistic.png "Statistic Graphs")
+[![GitHub license](https://img.shields.io/github/license/rhalp10/TracerStudy-System.svg?style=for-the-badge)](https://github.com/rhalp10/TracerStudy-System/blob/master/LICENSE)
+[![GitHub issues](https://img.shields.io/github/issues/rhalp10/TracerStudy-System.svg?style=for-the-badge)](https://github.com/rhalp10/TracerStudy-System/issues)
+[![GitHub forks](https://img.shields.io/github/forks/rhalp10/TracerStudy-System.svg?style=for-the-badge)](https://github.com/rhalp10/TracerStudy-System/network)
