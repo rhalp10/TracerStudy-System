@@ -235,7 +235,7 @@
                                             <?php 
                                             if ($login_id == $comment_data['comment_userID']){
                                               ?>
-                                              <i class="fa fa-edit" data-toggle="modal" data-target="#view-modal" data-id="<?php echo $comment_data['comment_ID']; ?>" id="getUser"> ```</i>
+                                              <i class="fa fa-bars" data-toggle="modal" data-target="#view-modal" data-id="<?php echo $comment_data['comment_ID']; ?>" id="getUser"></i>
                                               <?php
                                             }
                                             if ($login_id == $comment_data['comment_userID']){
@@ -295,7 +295,7 @@
                        <div class="modal-body"> 
                        
                            <div id="modal-loader" style="display: none; text-align: center;">
-                            <img src="ajax-loader.gif">
+                            <img src="assets/img/ajax-loader.gif">
                            </div>
                             
                            <!-- content will be load here -->                          
