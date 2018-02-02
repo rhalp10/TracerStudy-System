@@ -106,9 +106,6 @@ else {}
                                     </tr>
                                   </tfoot>
                      
-                                  <script type="text/javascript">
-                                    
-                                  </script>
                               </table>
                         </div>
                         <!-- /.inner -->
