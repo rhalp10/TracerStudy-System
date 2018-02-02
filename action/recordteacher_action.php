@@ -35,7 +35,7 @@
 
 		//insert query
 		$sql = "INSERT INTO `user_teacher_detail` (teacher_ID, teacher_userID, teacher_img, teacher_facultyID, teacher_fName, teacher_mName, teacher_lName, teacher_address,teacher_department, teacher_status) ";
-		$sql.= " VALUES (NULL, '2', 'temp.gif', '$teacher_finumber', '$teacher_firstname', '$teacher_middlename', '$teacher_lastname', '$teacher_adress', '$teacher_department', 'register')";
+		$sql.= " VALUES (NULL, '', 'temp.gif', '$teacher_finumber', '$teacher_firstname', '$teacher_middlename', '$teacher_lastname', '$teacher_adress', '$teacher_department', 'register')";
 		// geting the last insert created account
 		$last_id = mysqli_insert_id($con);
 
