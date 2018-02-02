@@ -65,12 +65,13 @@ while ($user_notif_sql = mysqli_fetch_array($user_notif_qry))
   $post_qry = mysqli_query($con,"SELECT post_title FROM `forum_topic` WHERE topic_ID = $notif_topicID");
   $post_sql = mysqli_fetch_array($post_qry);
   $post_title = $post_sql['post_title'];
+  
 
   ?>
         <!-- msg unread-->
         <div class="col-sm-12 panel_item_custom" onclick="myFunction(this)">
             <a class="user-link col-sm-3" href="" >
-                <img class="media-object img-thumbnail user-img" alt="User Picture" src="assets/img/profile_img/<?php echo $userimg?>">
+                <img class="media-object img-thumbnail user-img" alt="User Picture" src="assets/img/profile_img/<?php echo $userimg?>" style="width: 64px; height: 64px;">
             </a>
             <div class="col-sm-9">
                 <div class="col-sm-12"><?php echo $fname." ".$mname." ".$lname ?></div>
