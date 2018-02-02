@@ -36,7 +36,7 @@ if (isset($_POST['submit']))
         && $imageFileType != "gif" ) {
             
             echo "<script>alert('Sorry, only JPG, JPEG, PNG & GIF files are allowed.');
-                                window.location='index.php';
+                                window.location='profile.php';
                             </script>";
             $uploadOk = 0;
         }
@@ -44,7 +44,7 @@ if (isset($_POST['submit']))
         if ($uploadOk == 0) 
         {
             echo "<script>alert('Sorry, your file was not uploaded.');
-                                window.location='index.php';
+                                window.location='profile.php';
                             </script>";
         // if everything is ok, try to upload file
         } 
@@ -55,7 +55,7 @@ if (isset($_POST['submit']))
             if ($data_img == 'temp.gif') {
                 if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
                     $imgName = $_FILES["fileToUpload"]["name"];
-                    $query = "UPDATE `user_".$user_type."_detail` SET `".$user_type."_img` = '$imgName' WHERE `".$user_type."_ID` =".$data_id." ";
+                    $query = "UPDATE `user_".$user_type."_detail` SET `".$user_type."_img` = '$imgName' WHERE `".$user_type."_userID` =".$data_id." ";
                     mysqli_query($con,$query);
                     echo "<script>alert('Successfully Update');
                                     window.location='profile.php';
@@ -64,7 +64,7 @@ if (isset($_POST['submit']))
                 else 
                 {
                     echo "<script>alert('Sorry, there was an error uploading your file.');
-                                    window.location='index.php';
+                                    window.location='profile.php';
                                 </script>";
                 }
 
@@ -76,7 +76,7 @@ if (isset($_POST['submit']))
                 unlink('assets/img/profile_img/'.$data_img);
                 if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
                     $imgName = $_FILES["fileToUpload"]["name"];
-                    $query = "UPDATE `user_".$user_type."_detail` SET `".$user_type."_img` = '$imgName' WHERE `".$user_type."_ID` =".$data_id." ";
+                    $query = "UPDATE `user_".$user_type."_detail` SET `".$user_type."_img` = '$imgName' WHERE `".$user_type."_userID` =".$data_id." ";
                     mysqli_query($con,$query);
                     echo "<script>alert('Successfully Update');
                                     window.location='profile.php';
@@ -85,7 +85,7 @@ if (isset($_POST['submit']))
                 else 
                 {
                     echo "<script>alert('Sorry, there was an error uploading your file.');
-                                    window.location='index.php';
+                                    window.location='profile.php';
                                 </script>";
                 }
             }

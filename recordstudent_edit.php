@@ -81,6 +81,7 @@ else
                             $edit_qry = mysqli_query($con,"SELECT * FROM `user_student_detail` WHERE student_ID = '$studentID'");
                             $edit_sql = mysqli_fetch_array($edit_qry);
                             $student_IDNumber = $edit_sql['student_IDNumber'];
+                            $student_img = $edit_sql['student_img'];
                             $student_fName = $edit_sql['student_fName'];
                             $student_mName = $edit_sql['student_mName'];
                             $student_lName = $edit_sql['student_lName'];
@@ -89,7 +90,17 @@ else
                             $student_admission = $edit_sql['student_admission'];
                             $student_year_grad = $edit_sql['student_year_grad'];
                             ?>
+                                
                                 <form id="myform" class="form-horizontal" method="POST" action="action/recordstudent_edit_action.php?studentID=<?php echo $studentID?>">
+                                <div class="form-group">
+                                    <label for="text1" class="control-label col-lg-4"></label>
+
+                                    <div class="col-lg-8">
+                                         <a class="user-link" href="#">
+                                          <img class="media-object img-thumbnail user-img" alt="User Picture" src="assets/img/profile_img/<?php echo $student_img?>" style="width: 128px; height: 128px;">
+                                      </a>
+                                    </div>
+                                </div>
                                 <div class="form-group">
                                     <label for="text1" class="control-label col-lg-4">ID Number</label>
 

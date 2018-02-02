@@ -195,8 +195,8 @@ else
                                             <td>
                                                 <div class="btn-group">
                                                   <button type="button" class="btn btn-primary"><i class="fa fa-eye"></i></button>
-                                                  <button type="button" class="btn btn-primary"><i class="fa fa-edit"></i></button>
-                                                  <button type="button" class="btn btn-primary"><i class="fa fa-close"></i></button>
+                                                  <button type="button" class="btn btn-metis-5"><i class="fa fa-edit"></i></button>
+                                                  <button type="button" class="btn btn-danger"><i class="fa fa-close"></i></button>
                                                 </div>
                                             </td>
                                         </tr>
@@ -227,43 +227,69 @@ else
             <?php include ('script.php');?>
         </body>
         <script type="text/javascript">
-        $(document).ready(function() {
-        console.log("document ready!");
 
-        var $sticky = $('.sticky');
-        var $stickyrStopper = $('.sticky-stopper');
-        if (!!$sticky.offset()) { // make sure ".sticky" element exists
+        function editFunction(teacher_ID){
+            var txt;
+            var r = confirm("Are you sure do you want to edit ?");
+            if (r == true) {
+                
+             // window.location.href = "recordstudent.php?modal=" + student_ID;
+            } else {
+               
+            }
+        }       
+        function deleteFunction(teacher_ID){
+            var txt;
+            var r = confirm("Are you sure do you want to delete?");
+            if (r == true) {
+                 $('#myModal').modal('show');
+             // window.location.href = "recordstudent.php?modal=" + student_ID;
+            } else {
+               
+            }
 
-            var generalSidebarHeight = $sticky.innerHeight();
-            var stickyTop = $sticky.offset().top;
-            var stickOffset = 0;
-            var stickyStopperPosition = $stickyrStopper.offset().top;
-            var stopPoint = stickyStopperPosition - generalSidebarHeight - stickOffset;
-            var diff = stopPoint + stickOffset;
+        }    
+                   $(document).ready(function() {
+                var dataTable = $('#rteacherData').DataTable( {
 
-            $(window).scroll(function() { // scroll event
-                var windowTop = $(window).scrollTop(); // returns number
+                    "processing": true,
+                    "serverSide": true,
+                    "bAutoWidth": false,
+                     // "bSort": false,
+                     "bLengthChange": false,
+                     "columnDefs": [ {
+                        className: "text-center",
+                          "targets": 0,
+                          "searchable": false
+                        }, 
+                        {
+                        className: "text-center",
+                          "targets": 1,
+                          "searchable": false
+                        }, 
+                        {
+                        className: "text-center",
+                          "targets": 2,
+                          "searchable": false
+                        }],
+                    "ajax":{
+                        url :"serverside_data_registerteacher.php", // json datasource
+                        type: "post",  // method  , by default get
+                        error: function(){  // error handling
+                            $(".registerstud_serverside-error").html("");
+                            $("#eregisterstud_serverside").append('<tbody class="registerstud_serverside-error"><tr><th colspan="3">No data found in the server</th></tr></tbody>');
+                            $("#registerstud_serverside_processing").css("display","none");
+                            
 
-                if (stopPoint < windowTop) {
-                    $sticky.css({
-                        position: 'absolute',
-                        top: diff
-                    });
-                } else if (stickyTop < windowTop + stickOffset) {
-                    $sticky.css({
-                        position: 'fixed',
-                        top: stickOffset
-                    });
-                } else {
-                    $sticky.css({
-                        position: 'absolute',
-                        top: 'initial'
-                    });
-                }
-            });
+                        }
+                        
+                    }
+                } );
 
-        }
-        });
+
+                
+            } );
+
         </script>
 
 </html>

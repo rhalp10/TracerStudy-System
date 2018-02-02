@@ -289,43 +289,8 @@ else
             <?php include ('script.php');?>
         </body>
         <script type="text/javascript">
-        $(document).ready(function() {
-        console.log("document ready!");
 
-        var $sticky = $('.sticky');
-        var $stickyrStopper = $('.sticky-stopper');
-        if (!!$sticky.offset()) { // make sure ".sticky" element exists
 
-            var generalSidebarHeight = $sticky.innerHeight();
-            var stickyTop = $sticky.offset().top;
-            var stickOffset = 0;
-            var stickyStopperPosition = $stickyrStopper.offset().top;
-            var stopPoint = stickyStopperPosition - generalSidebarHeight - stickOffset;
-            var diff = stopPoint + stickOffset;
-
-            $(window).scroll(function() { // scroll event
-                var windowTop = $(window).scrollTop(); // returns number
-
-                if (stopPoint < windowTop) {
-                    $sticky.css({
-                        position: 'absolute',
-                        top: diff
-                    });
-                } else if (stickyTop < windowTop + stickOffset) {
-                    $sticky.css({
-                        position: 'fixed',
-                        top: stickOffset
-                    });
-                } else {
-                    $sticky.css({
-                        position: 'absolute',
-                        top: 'initial'
-                    });
-                }
-            });
-
-        }
-        });
 
 
         function editFunction(student_ID){
@@ -348,7 +313,52 @@ else
                
             }
 
-        }       
+        }          
+         $(document).ready(function() {
+                var dataTable = $('#registerstud_serverside').DataTable( {
+
+                    "processing": true,
+                    "serverSide": true,
+                    "bAutoWidth": false,
+                     // "bSort": false,
+                     "bLengthChange": false,
+                     "columnDefs": [ {
+                        className: "text-center",
+                          "targets": 1,
+                          "searchable": false
+                        }, 
+                        {
+                        className: "text-center",
+                          "targets": 2,
+                          "searchable": false
+                        }, 
+                        {
+                        className: "text-center",
+                          "targets": 3,
+                          "searchable": false
+                        }, 
+                        {
+                        className: "text-center",
+                              "targets": 4,
+                              "searchable": false
+                        }],
+                    "ajax":{
+                        url :"serverside_data_registerstud.php", // json datasource
+                        type: "post",  // method  , by default get
+                        error: function(){  // error handling
+                            $(".registerstud_serverside-error").html("");
+                            $("#eregisterstud_serverside").append('<tbody class="registerstud_serverside-error"><tr><th colspan="3">No data found in the server</th></tr></tbody>');
+                            $("#registerstud_serverside_processing").css("display","none");
+                            
+
+                        }
+                        
+                    }
+                } );
+
+
+                
+            } );
         </script>
 <div id="myModal" class="modal hide fade" role="dialog">
   <div class="modal-dialog">

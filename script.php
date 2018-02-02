@@ -92,6 +92,8 @@
         }
     } );
 } );
+
+ 
     //NUMBER ONLY
     function numberInputOnly(elem) {
         var validChars = /[0-9]/;

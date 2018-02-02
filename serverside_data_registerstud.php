@@ -52,7 +52,7 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
 	$nestedData[] = $row["student_year_grad"];
 	$nestedData[] = "<div class='btn-group'>                                   
 	<a  class='btn btn-metis-5' href='recordstudent_edit.php?studentID=$student_ID'><i class='fa fa-edit'></i></a>
-	<a  class='btn btn-metis-1' href='recordstudent_delete.php?studentID=$student_ID'><i class='fa fa-close'></i></a>
+	<a  class='btn btn-metis-1' href='recordstudent_delete.php?studentID=$student_ID' ><i class='fa fa-close'></i></a>
                                         </div>";
 	
 	$data[] = $nestedData;
