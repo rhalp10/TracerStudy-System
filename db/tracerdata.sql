@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 25, 2018 at 01:35 PM
+-- Generation Time: Feb 02, 2018 at 03:39 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -127,7 +127,8 @@ INSERT INTO `forum_comment` (`comment_ID`, `comment_topicID`, `comment_userID`, 
 (33, '22', 3, '3123123', '2018-01-19 18:15:38'),
 (34, '9', 1, 'asdasdasd', '2018-01-25 08:30:40'),
 (36, '1', 1, 'asdasd', '2018-01-25 10:18:49'),
-(37, '7', 1, 'asdasd', '2018-01-25 11:50:52');
+(37, '7', 1, 'asdasd', '2018-01-25 11:50:52'),
+(38, '9', 1, 'yeheyyyy', '2018-02-02 13:12:17');
 
 -- --------------------------------------------------------
 
@@ -701,7 +702,7 @@ INSERT INTO `user_account` (`user_ID`, `user_level`, `user_name`, `user_password
 CREATE TABLE `user_admin_detail` (
   `admin_ID` int(11) NOT NULL,
   `admin_userID` int(11) NOT NULL,
-  `admin_img` varchar(50) NOT NULL DEFAULT 'temp.gif',
+  `admin_img` varchar(250) NOT NULL DEFAULT 'temp.gif',
   `admin_fName` varchar(100) NOT NULL,
   `admin_mName` varchar(25) NOT NULL,
   `admin_lName` varchar(50) NOT NULL,
@@ -720,7 +721,7 @@ CREATE TABLE `user_admin_detail` (
 --
 
 INSERT INTO `user_admin_detail` (`admin_ID`, `admin_userID`, `admin_img`, `admin_fName`, `admin_mName`, `admin_lName`, `admin_address`, `admin_status`, `admin_gender`, `admin_dob`, `admin_contact`, `admin_civilStat`, `admin_secretquestion`, `admin_secretanswer`) VALUES
-(1, 3, 'temp.gif', 'admin', 'admin', 'admin', 'Blk 38 Lot 11 Phase 2 b Southville 2 TMC', 'register', 'M', '0000-00-00', '09999999999', 'Single', '', ''),
+(1, 3, '14910474_10157945054475556_5155007875170723680_n.png', 'admin', 'admin', 'admin', 'Blk 38 Lot 11 Phase 2 b Southville 2 TMC', 'register', 'M', '0000-00-00', '09999999999', 'Single', '', ''),
 (2, 0, 'temp.gif', 'admin', 'admin', 'admin', 'Blk 38 Lot 11 Phase 2 b Southville 2 TMC', 'unregister', 'M', '0000-00-00', '09999999999', 'Single', '', '');
 
 -- --------------------------------------------------------
@@ -772,7 +773,8 @@ INSERT INTO `user_notification` (`notif_ID`, `notif_typeID`, `notif_topicID`, `n
 (7, 3, 18, 1, 3, '2017-11-25 08:41:34', 0),
 (8, 3, 22, 3, 12, '2018-01-19 18:15:38', 0),
 (9, 3, 9, 1, 3, '2018-01-25 08:30:41', 0),
-(10, 3, 9, 1, 3, '2018-01-25 08:30:50', 0);
+(10, 3, 9, 1, 3, '2018-01-25 08:30:50', 0),
+(11, 3, 9, 1, 3, '2018-02-02 13:12:17', 0);
 
 -- --------------------------------------------------------
 
@@ -823,7 +825,7 @@ INSERT INTO `user_notif_type` (`type_ID`, `type_Name`) VALUES
 CREATE TABLE `user_student_detail` (
   `student_ID` int(11) NOT NULL,
   `student_userID` int(11) NOT NULL,
-  `student_img` varchar(150) NOT NULL DEFAULT 'temp.gif',
+  `student_img` varchar(250) NOT NULL DEFAULT 'temp.gif',
   `student_IDNumber` int(11) NOT NULL,
   `student_fName` varchar(100) NOT NULL,
   `student_mName` varchar(25) NOT NULL,
@@ -846,13 +848,15 @@ CREATE TABLE `user_student_detail` (
 --
 
 INSERT INTO `user_student_detail` (`student_ID`, `student_userID`, `student_img`, `student_IDNumber`, `student_fName`, `student_mName`, `student_lName`, `student_address`, `student_civilStat`, `student_dob`, `student_gender`, `student_contact`, `student_admission`, `student_year_grad`, `student_department`, `student_status`, `student_secretquestion`, `student_secretanswer`) VALUES
-(1, 1, 'op.png', 201310656, 'Rhalp Darren ', 'R', 'Cabrera', 'Blk 38 lot 11', 'Single', '1997-09-26', 'M', '09888888888', '2013-11-01', '2018-11-29', 'IT', 'register', 'ano ang pangalan ko ?', 'darren'),
+(1, 1, '14910474_10157945054475556_5155007875170723680_n.png', 201310656, 'Rhalp Darren', 'R', 'Cabrera', 'Blk 38 lot 11', 'Single', '1997-09-26', 'M', '09888888888', '2013-11-01', '2018-11-29', 'IT', 'register', 'ano ang pangalan ko ?', 'darren'),
 (2, 0, 'temp.gif', 201410209, 'Mardical', '', 'del Mundo', 'Indang', 'Single', '1997-09-26', 'F', '09169158798', '2017-09-30', '2017-09-12', 'COMSCI', 'register', '', ''),
 (13, 0, 'temp.gif', 201410259, 'Ria', '', 'Jimenez', 'Indang', 'Single', '1997-09-26', 'F', '09169158798', '2017-09-30', '2017-09-02', 'OA', 'unregister', '', ''),
 (16, 0, 'temp.gif', 200901201, 'Justine', '', 'De-guzman', 'Indang', 'Single', '1997-09-26', 'M', '09169158798', '2017-09-30', '2017-02-00', 'COMSCI', 'unregister', '', ''),
 (17, 0, 'temp.gif', 201310253, 'Andrea', 'L', 'Labbres', 'Indang', 'Single', '1997-09-26', 'F', '09169158798', '2017-09-30', '2017-01-00', 'COMSCI', 'unregister', '', ''),
 (23, 12, 'temp.gif', 123456, 'franz', 'r', 'cabrera', 'blk 38 lot 11 ph2b', '', '0000-00-00', '', '', '2013-01-01', '2017-04-05', 'IT', 'register', 'franz', 'cabrera'),
-(24, 0, 'temp.gif', 123456, 'sda', 'R', 'dasd', 'asd', '', '0000-00-00', '', '', '2017-10-03', '2017-10-14', 'COMSCI', 'unregister', '', '');
+(24, 0, 'temp.gif', 123456, 'sda', 'R', 'dasd', 'asd', '', '0000-00-00', '', '', '2017-10-03', '2017-10-14', 'COMSCI', 'unregister', '', ''),
+(25, 0, 'temp.gif', 123, 'asd', 'A', 'CABRERA', 'Blk 38 Lot 11 Phase2b Southville2 Trece Martires City', 'Married', '2018-02-14', 'M', '', '2018-02-08', '2018-03-03', 'IT', 'unregister', '', ''),
+(26, 0, 'temp.gif', 123, 'zzzzzzzzzzzzzzzz', 'q', 'qwe', '123', 'Married', '2018-02-14', 'F', '', '2018-02-02', '2018-02-09', 'IT', 'unregister', '', '');
 
 -- --------------------------------------------------------
 
@@ -884,14 +888,9 @@ CREATE TABLE `user_teacher_detail` (
 --
 
 INSERT INTO `user_teacher_detail` (`teacher_ID`, `teacher_userID`, `teacher_img`, `teacher_facultyID`, `teacher_fName`, `teacher_mName`, `teacher_lName`, `teacher_gender`, `teacher_dob`, `teacher_contact`, `teacher_address`, `teacher_civilStat`, `teacher_department`, `teacher_status`, `teacher_secretquestion`, `teacher_secretanswer`) VALUES
-(1, 2, 'temp.gif', 'a12s3d', 'teacher', 't', 'teacher', 'M', '1997-09-26', '09999999999', 'Blk 38 Lot 11 Phase 2 b Southville 2 TMC', 'Single', 2, 'register', 'zxczxczxc', '3333'),
-(3, 2, 'temp.gif', '123', 'sad', 'asd', 'asd', '', '0000-00-00', '', 'asdasd', '', 0, 'register', '', ''),
-(4, 2, 'temp.gif', '231', 'asd', 'dd', 'ss', '', '0000-00-00', '', 'aa', '', 0, 'register', '', ''),
-(5, 2, 'temp.gif', '22', 'sdfs', 'sf', 'cx', '', '0000-00-00', '', 'xcv', '', 0, 'register', '', ''),
-(6, 2, 'temp.gif', '111', 'a', 'asd', 'a', '', '0000-00-00', '', 'a', '', 0, 'register', '', ''),
-(7, 2, 'temp.gif', '1', 's', 's', 's', '', '0000-00-00', '', 's', '', 2, 'register', '', ''),
-(8, 2, 'temp.gif', '123', 'asdasd', 'x', 'dasda', '', '0000-00-00', '', '234234', '', 3, 'register', '', ''),
-(9, 2, 'temp.gif', '6456456', 'ff', 'fgg', 'ccc', '', '0000-00-00', '', 'gggdfg8798980', '', 2, 'register', '', '');
+(1, 2, '14963384_10157945054480556_5814871009565891544_n.png', 'a12s3d', 'teacher', 't', 'teacher', 'M', '1997-09-26', '09999999999', 'Blk 38 Lot 11 Phase 2 b Southville 2 TMC', 'Single', 2, 'register', 'zxczxczxc', '3333'),
+(2, 2, 'temp.gif', '654', 'asdasd', 'asdasd', 'asd', '', '0000-00-00', '', 'asd', '', 2, 'register', '', ''),
+(3, 0, 'temp.gif', '123', 'dsa', 'dsa', 'dsa', '', '0000-00-00', '', 'dsa', '', 2, 'register', '', '');
 
 -- --------------------------------------------------------
 
@@ -910,28 +909,28 @@ CREATE TABLE `view_counter` (
 --
 
 INSERT INTO `view_counter` (`view_ID`, `view_topicID`, `view_count`) VALUES
-(1, 1, 62),
+(1, 1, 63),
 (2, 2, 154),
 (3, 3, 21),
-(4, 4, 21),
+(4, 4, 22),
 (5, 5, 63),
-(6, 6, 141),
+(6, 6, 145),
 (19, 22, 15),
 (20, 23, 1),
 (21, 24, 1),
 (22, 25, 2),
 (23, 26, 16),
 (24, 27, 24),
-(28, 1, 70),
+(28, 1, 71),
 (34, 29, 1),
-(36, 1, 48),
+(36, 1, 49),
 (37, 2, 3),
 (38, 3, 5),
-(39, 4, 15),
+(39, 4, 16),
 (40, 5, 5),
-(41, 6, 50),
+(41, 6, 54),
 (47, 12, 7),
-(53, 18, 22),
+(53, 18, 23),
 (55, 20, 134),
 (57, 22, 7);
 
@@ -1149,7 +1148,7 @@ ALTER TABLE `cvsu_department`
 -- AUTO_INCREMENT for table `forum_comment`
 --
 ALTER TABLE `forum_comment`
-  MODIFY `comment_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `comment_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 --
 -- AUTO_INCREMENT for table `forum_comment_reply`
 --
@@ -1254,7 +1253,7 @@ ALTER TABLE `user_level`
 -- AUTO_INCREMENT for table `user_notification`
 --
 ALTER TABLE `user_notification`
-  MODIFY `notif_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `notif_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `user_notif_state`
 --
@@ -1269,12 +1268,12 @@ ALTER TABLE `user_notif_type`
 -- AUTO_INCREMENT for table `user_student_detail`
 --
 ALTER TABLE `user_student_detail`
-  MODIFY `student_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `student_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 --
 -- AUTO_INCREMENT for table `user_teacher_detail`
 --
 ALTER TABLE `user_teacher_detail`
-  MODIFY `teacher_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `teacher_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `view_counter`
 --
