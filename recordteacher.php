@@ -89,14 +89,14 @@ else
                                     <label for="text1" class="control-label col-lg-4">Password</label>
 
                                     <div class="col-lg-8">
-                                        <input type="text" id="text1" placeholder="Password" class="form-control" name="teacher_Password" >
+                                        <input type="Password" id="text1" placeholder="Password" class="form-control" name="teacher_Password" >
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="text1" class="control-label col-lg-4">Confirm Password</label>
 
                                     <div class="col-lg-8">
-                                        <input type="text" id="text1" placeholder="Confirm Password" class="form-control" name="teacher_rePassword" >
+                                        <input type="Password" id="text1" placeholder="Confirm Password" class="form-control" name="teacher_rePassword" >
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -128,6 +128,13 @@ else
                                     </div>
                                 </div>
                                 <div class="form-group">
+                                    <label for="text1" class="control-label col-lg-4">Contact</label>
+
+                                    <div class="col-lg-8">
+                                        <input type="text" id="text1" placeholder="Contact" class="form-control" name="teacher_contact" onkeyup="numberInputOnly(this);" required=""  min="9" max="9">
+                                    </div>
+                                </div>
+                                <div class="form-group">
                                     <label for="text1" class="control-label col-lg-4">Address</label>
 
                                     <div class="col-lg-8">
@@ -149,6 +156,22 @@ else
                                           <option value="F">Female</option>
                                       </select>
                                   </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="text1" class="control-label col-lg-4">Civil Status</label>
+                                    <div class="col-lg-8">
+                                        <select class="form-control" name="teacher_civilStat">
+                                            <?php 
+                                            $mstat_q = mysqli_query($con,"SELECT * FROM `marital_status`");
+                                            while ($mstat = mysqli_fetch_array($mstat_q)) {
+                                               ?>
+                                                <option value="<?php echo $mstat['ID']; ?>"><?php echo $mstat['marital_Name']; ?></option>
+                                               <?php
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="text1" class="control-label col-lg-4">Department</label>

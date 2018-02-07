@@ -86,9 +86,9 @@ else
                             $teacher_mName = $edit_sql['teacher_mName'];
                             $teacher_lName = $edit_sql['teacher_lName'];
                             $teacher_gender = $edit_sql['teacher_gender'];
-                             $teacher_department = $edit_sql['teacher_department'];
-                            
-
+                            $teacher_department = $edit_sql['teacher_department'];
+                            $teacher_civilStat = $edit_sql['teacher_civilStat'];
+                            $teacher_contact = $edit_sql['teacher_contact'];
                             $teacher_dob = $edit_sql['teacher_dob'];
                             $teacher_address = $edit_sql['teacher_address'];
                             ?>
@@ -153,6 +153,25 @@ else
 
                                     <div class="col-lg-8">
                                         <input type="text" id="text1" placeholder="Address" class="form-control" name="teacher_adress" required="" disabled="" value="<?php echo $teacher_address;?>">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="text1" class="control-label col-lg-4">Contact</label>
+
+                                    <div class="col-lg-8">
+                                        <input type="text" id="text1"  disabled="" class="form-control" name="teacher_bday" value="<?php echo $teacher_contact; ?>">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="text1" class="control-label col-lg-4">Civil Stat</label>
+                                    <div class="col-lg-8">
+                                     
+                                       <?php 
+                                       $mstat_q = mysqli_query($con,"SELECT marital_Name FROM `marital_status` WHERE ID = '$teacher_civilStat'");
+                                       $mstat_q  = mysqli_fetch_array($mstat_q);
+                                      
+                                       ?>
+                                        <input type="text" id="text1" placeholder="Marital" class="form-control" name="Department" required="" disabled="" value="<?php  echo $mstat_q['marital_Name'];?>">
                                     </div>
                                 </div>
                                 <div class="form-group">

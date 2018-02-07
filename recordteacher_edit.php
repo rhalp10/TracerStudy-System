@@ -86,6 +86,7 @@ else
                             $teacher_mName = $edit_sql['teacher_mName'];
                             $teacher_lName = $edit_sql['teacher_lName'];
                             $teacher_address = $edit_sql['teacher_address'];
+                            $teacher_contact = $edit_sql['teacher_contact'];
                             ?>
                                 <form id="myform" class="form-horizontal" method="POST" action="action/recordteacher_edit_action.php?teacherID=<?php echo $teacherID?>">
                                 <div class="form-group">
@@ -132,6 +133,13 @@ else
                                         <input type="date" id="text1" placeholder="Birthday" class="form-control" name="teacher_bday">
                                     </div>
                                 </div>
+                                 <div class="form-group">
+                                    <label for="text1" class="control-label col-lg-4">Contact</label>
+
+                                    <div class="col-lg-8">
+                                        <input type="text" id="text1" placeholder="Contact" class="form-control" name="teacher_contact" onkeyup="numberInputOnly(this);" required="" value="<?php echo $teacher_contact; ?>" min="9" max="9">
+                                    </div>
+                                </div>
                                 <div class="form-group">
                                     <label for="text1" class="control-label col-lg-4">Gender</label>
                                     <div class="col-lg-8">
@@ -149,6 +157,21 @@ else
                                     </div>
                                 </div>
                                 <div class="form-group">
+                                    <label for="text1" class="control-label col-lg-4">Civil Status</label>
+                                    <div class="col-lg-8">
+                                        <select class="form-control" name="teacher_civilStat">
+                                            <?php 
+                                            $mstat_q = mysqli_query($con,"SELECT * FROM `marital_status`");
+                                            while ($mstat = mysqli_fetch_array($mstat_q)) {
+                                               ?>
+                                                <option value="<?php echo $mstat['ID']; ?>"><?php echo $mstat['marital_Name']; ?></option>
+                                               <?php
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
                                     <label for="text1" class="control-label col-lg-4">Department</label>
 
                                     <div class="col-lg-8">
@@ -160,7 +183,7 @@ else
                                         while ($res_dep = mysqli_fetch_array($query_dep)) {
                                         
                                         ?>
-                                            <option value="<?php echo $res_dep['department_acronym'] ?>"><?php echo $res_dep['department_name'];?></option>
+                                            <option value="<?php echo $res_dep['department_ID'] ?>"><?php echo $res_dep['department_name'];?></option>
                                         <?php 
                                         }
                                         ?>
