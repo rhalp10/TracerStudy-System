@@ -95,6 +95,9 @@ else
   </ul>
 </div>
 <?php 
+    $zit = "";
+    $zcs = "";
+    $zoa = "";
           if ($req_course == 'IT') {
                 $zit = "show";
                 $zcs = "hidden";
@@ -110,10 +113,11 @@ else
               $zcs = "hidden";
               $zoa = "show";
            }
+
           ?>
 
 
-<div id="IT_con" <?php echo $zit?>="">
+<div id="IT_con" <?php if($zit){ echo $zit."=''";}else{echo "";}?> >
   <center><h3>Information Technology Batch of <?php echo $req_year; ?> </h3></center>
   <table class="table table-bordered table-advance table-hover  ">
     <thead>
@@ -147,6 +151,7 @@ else
     </tfoot>
   </table>
 </div>
+
 <div id="CS_con" <?php echo $zcs?>="">
   <center><h3>Computer Science Batch of <?php echo $req_year; ?></h3></center>
   <table class="table table-bordered table-advance table-hover  ">
