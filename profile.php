@@ -182,7 +182,13 @@ else
                                                   <p><span>Address </span>: <?php echo $res_sidebar[$userType.'_address'];?></p>
                                               </div>
                                               <div class="bio-row">
-                                                  <p><span>Status</span>: <?php echo $res_sidebar[$userType.'_civilStat'];?></p>
+                                                  <p><span>Status</span>: <?php 
+                                                  $civilStat = $res_sidebar[$userType.'_civilStat'];
+                                                  $c_q = mysqli_query($con,"SELECT * FROM `marital_status` WHERE ID = '$civilStat'");
+                                                  $c_n = mysqli_fetch_array($c_q);
+                                                  print_r($c_n['marital_Name']);
+
+                                                  ?></p>
                                               </div>
                                               <div class="bio-row">
                                                   <p><span>Gender </span>: <?php 
@@ -558,15 +564,18 @@ else
       <div class="modal-body">
               <form class="form-horizontal" id="update_cstatus" method="POST"  action="action/updateprofile.php">
               <div class="form-group">
-                  <label class="control-label col-lg-4">Civil Status</label>
-                  <div class="col-lg-4">
-                    <select name="selected_cstatus" id="sport" class="validate[required] form-control">
-                        <option value="">Choose your status</option>
-                        <option value="Single">Single</option>
-                        <option value="Married">Married</option>
-                        <option value="Divorced">Divorced</option>
-                        <option value="Widowed">Widowed</option>
-                    </select>
+                  <label for="text1" class="control-label col-lg-4">Civil Stat</label>
+                  <div class="col-lg-8">
+                      <select class="form-control" name="teacher_civil">
+                          <?php 
+                          $mstat_q = mysqli_query($con,"SELECT * FROM `marital_status`");
+                          while ($mstat = mysqli_fetch_array($mstat_q)) {
+                             ?>
+                              <option value="<?php echo $mstat['id']; ?>"><?php echo $mstat['marital_Name']; ?></option>
+                             <?php
+                          }
+                          ?>
+                      </select>
                   </div>
               </div>
               <div class="form-group">
