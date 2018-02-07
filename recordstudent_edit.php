@@ -89,6 +89,7 @@ else
                             $student_department = $edit_sql['student_department'];
                             $student_admission = $edit_sql['student_admission'];
                             $student_year_grad = $edit_sql['student_year_grad'];
+                            $student_contact = $edit_sql['student_contact'];
                             ?>
                                 
                                 <form id="myform" class="form-horizontal" method="POST" action="action/recordstudent_edit_action.php?studentID=<?php echo $studentID?>">
@@ -130,6 +131,13 @@ else
                                     </div>
                                 </div>
                                 <div class="form-group">
+                                    <label for="text1" class="control-label col-lg-4">Contact</label>
+
+                                    <div class="col-lg-8">
+                                        <input type="text" id="text1" placeholder="Contact" class="form-control" name="student_contact" onkeyup="numberInputOnly(this);" required="" value="<?php echo $student_contact;?>">
+                                    </div>
+                                </div>
+                                <div class="form-group">
                                     <label for="text1" class="control-label col-lg-4">Birthday</label>
 
                                     <div class="col-lg-8">
@@ -150,6 +158,21 @@ else
 
                                     <div class="col-lg-8">
                                         <input type="text" id="text1" placeholder="Address" class="form-control" name="student_adress" required=""  value="<?php echo $student_address;?>">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="text1" class="control-label col-lg-4">Civil Stat</label>
+                                    <div class="col-lg-8">
+                                        <select class="form-control" name="student_civil">
+                                            <?php 
+                                            $mstat_q = mysqli_query($con,"SELECT * FROM `marital_status`");
+                                            while ($mstat = mysqli_fetch_array($mstat_q)) {
+                                               ?>
+                                                <option value="<?php echo $mstat['id']; ?>"><?php echo $mstat['marital_Name']; ?></option>
+                                               <?php
+                                            }
+                                            ?>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="form-group">

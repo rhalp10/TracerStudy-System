@@ -163,6 +163,13 @@ else
                                     </div>
                                 </div>
                                 <div class="form-group">
+                                    <label for="text1" class="control-label col-lg-4">Contact</label>
+
+                                    <div class="col-lg-8">
+                                        <input type="text" id="text1" placeholder="Contact" class="form-control" name="student_contact" onkeyup="numberInputOnly(this);" required=""  min="9" max="9">
+                                    </div>
+                                </div>
+                                <div class="form-group">
                                     <label for="text1" class="control-label col-lg-4">Gender</label>
                                     <div class="col-lg-8">
                                         <select class="form-control" name="student_gender">
@@ -172,12 +179,17 @@ else
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="text1" class="control-label col-lg-4">Civil Status</label>
+                                    <label for="text1" class="control-label col-lg-4">Civil Stat</label>
                                     <div class="col-lg-8">
-                                        <select class="form-control" name="student_civilStat">
-                                            <option value="Single">Single</option>
-                                            <option value="Married">Married</option>
-                                            <option value="widowed">Widowed</option>
+                                        <select class="form-control" name="student_civil">
+                                            <?php 
+                                            $mstat_q = mysqli_query($con,"SELECT * FROM `marital_status`");
+                                            while ($mstat = mysqli_fetch_array($mstat_q)) {
+                                               ?>
+                                                <option value="<?php echo $mstat['id']; ?>"><?php echo $mstat['marital_Name']; ?></option>
+                                               <?php
+                                            }
+                                            ?>
                                         </select>
                                     </div>
                                 </div>
