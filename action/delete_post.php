@@ -27,6 +27,9 @@ while ($res_ver_id = mysqli_fetch_array($query_verify_id))
 $result = mysqli_query($con,"DELETE  FROM `forum_topic` WHERE `topic_ID` = '$verified_id'");
 $result = mysqli_query($con,"DELETE  FROM `view_counter` WHERE `view_topicID` = '$verified_id'");
 $result = mysqli_query($con,"DELETE  FROM `forum_comment` WHERE `comment_topicID` = '$verified_id'");
+$last_id = mysqli_insert_id($result);
+$result = mysqli_query($con,"DELETE  FROM `forum_comment_reply` WHERE `comment_reply_parentID` = '$last_id'");
+
 echo "<script>alert('Successfully Deleted');
 						window.location='../forum.php';
 					</script>";
