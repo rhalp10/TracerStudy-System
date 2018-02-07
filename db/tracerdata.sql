@@ -1,9 +1,9 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
+-- version 4.7.7
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 02, 2018 at 03:39 PM
+-- Generation Time: Feb 07, 2018 at 05:37 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -105,30 +105,22 @@ CREATE TABLE `forum_comment` (
 --
 
 INSERT INTO `forum_comment` (`comment_ID`, `comment_topicID`, `comment_userID`, `comment_content`, `comment_date`) VALUES
-(4, '20', 1, 'aaaaaaaa', '2017-10-16 12:17:55'),
-(5, '20', 1, 'zxczxcxc', '2017-10-16 12:23:38'),
-(6, '20', 1, 'franz\r\n', '2017-10-16 12:24:18'),
-(7, '12', 1, 'zxczxc', '2017-10-16 12:28:07'),
-(8, '12', 1, 'zxczxczxczxc', '2017-10-16 12:28:30'),
-(9, '6', 1, 'xxxxxxxxxxxxxxxxxxxxxxxxx', '2017-10-17 14:56:43'),
-(10, '6', 1, 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', '2017-10-17 15:11:21'),
-(11, '2', 1, 'xcvxcvxcv', '2017-10-17 15:59:50'),
-(12, '6', 2, 'teacher', '2017-10-17 16:00:33'),
-(13, '20', 2, 'zxczxczxc', '2017-10-17 16:03:24'),
-(14, '4', 2, 'xcvxcv', '2017-10-25 12:15:10'),
-(15, '20', 2, 'asdasd', '2017-10-27 18:57:18'),
-(25, '20', 2, 'darrennnnnn', '2017-11-04 19:52:04'),
-(26, '20', 2, 'aaaa', '2017-11-04 19:52:26'),
-(27, '1', 2, 'my teacherrr', '2017-11-04 19:54:10'),
-(28, '10', 2, 'my teacher\r\n', '2017-11-04 19:54:32'),
-(29, '18', 1, 'csdsdasd23423424', '2017-11-25 08:41:22'),
-(30, '18', 1, 'rhemz', '2017-11-25 08:41:34'),
-(32, '10', 3, '234234234', '2018-01-19 18:15:07'),
-(33, '22', 3, '3123123', '2018-01-19 18:15:38'),
-(34, '9', 1, 'asdasdasd', '2018-01-25 08:30:40'),
-(36, '1', 1, 'asdasd', '2018-01-25 10:18:49'),
-(37, '7', 1, 'asdasd', '2018-01-25 11:50:52'),
-(38, '9', 1, 'yeheyyyy', '2018-02-02 13:12:17');
+(4, '20', 1, 'aaaaaaaa', '2017-10-16 04:17:55'),
+(5, '20', 1, 'zxczxcxc', '2017-10-16 04:23:38'),
+(6, '20', 1, 'franz\r\n', '2017-10-16 04:24:18'),
+(7, '12', 1, 'zxczxc', '2017-10-16 04:28:07'),
+(8, '12', 1, 'zxczxczxczxc', '2017-10-16 04:28:30'),
+(9, '6', 1, 'xxxxxxxxxxxxxxxxxxxxxxxxx', '2017-10-17 06:56:43'),
+(10, '6', 1, 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', '2017-10-17 07:11:21'),
+(12, '6', 2, 'teacher', '2017-10-17 08:00:33'),
+(13, '20', 2, 'zxczxczxc', '2017-10-17 08:03:24'),
+(14, '4', 2, 'xcvxcv', '2017-10-25 04:15:10'),
+(15, '20', 2, 'asdasd', '2017-10-27 10:57:18'),
+(25, '20', 2, 'darrennnnnn', '2017-11-04 11:52:04'),
+(26, '20', 2, 'aaaa', '2017-11-04 11:52:26'),
+(27, '1', 2, 'my teacherrr', '2017-11-04 11:54:10'),
+(28, '10', 2, 'my teacher\r\n', '2017-11-04 11:54:32'),
+(29, '1', 1, 'xx', '2018-02-04 13:26:48');
 
 -- --------------------------------------------------------
 
@@ -143,13 +135,6 @@ CREATE TABLE `forum_comment_reply` (
   `comment_reply_content` varchar(500) NOT NULL,
   `comment_reply_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `forum_comment_reply`
---
-
-INSERT INTO `forum_comment_reply` (`comment_reply_ID`, `comment_reply_parentID`, `comment_reply_userID`, `comment_reply_content`, `comment_reply_date`) VALUES
-(1, 0, 0, '35345534', '2018-01-25 10:43:17');
 
 -- --------------------------------------------------------
 
@@ -171,21 +156,7 @@ CREATE TABLE `forum_topic` (
 --
 
 INSERT INTO `forum_topic` (`topic_ID`, `post_title`, `post_owner_id`, `post_date`, `post_content`, `post_status`) VALUES
-(1, 'aaaaaaaaaaaaa', 1, '2017-11-25 08:42:00', '<p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>\r\n', 'UNPIN'),
-(2, 'werwerewr', 1, '2017-09-09 12:04:01', '<p>wrwer</p>\r\n', 'UNPIN'),
-(3, 'xcvxcvxcv', 1, '2017-09-09 12:04:08', '<p>xcvxv</p>\r\n', 'UNPIN'),
-(4, 'heyeeee', 1, '2017-10-11 01:48:37', '<p>asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasd</p>\r\n', 'UNPIN'),
-(5, 'sadasdasd', 1, '2017-10-06 18:43:23', '<p>999999999999999999999999999999999999999999999</p>\r\n\r\n<p>&nbsp;</p>\r\n', 'UNPIN'),
-(6, '22222222222222222', 2, '2017-10-11 01:35:54', '<div style=\"background:#eeeeee; border:1px solid #cccccc; padding:5px 10px\">pop[op[op[op[op[</div>\r\n\r\n<h3 style=\"color:#aaaaaa; font-style:italic\">p[]546564sdfsdfsdf</h3>\r\n\r\n<p><strong><span dir=\"rtl\"><span style=\"background-color:#2ecc71\">cxverewr</span></span></strong></p>\r\n\r\n<table border=\"1\" cellpadding=\"1\" cellspacing=\"1\" style=\"width:500px\">\r\n	<tbody>\r\n		<tr>\r\n			<td>&nbsp;</td>\r\n			<td>&nbsp;</td>\r\n		</tr>\r\n		<tr>\r\n			<td>&nbsp;</td>\r\n			<td>&nbsp;</td>\r\n		</tr>\r\n		<tr>\r\n			<td>&nbsp;</td>\r\n			<td>&nbsp;</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n\r\n<p>&nbsp;</p>\r\n', 'UNPIN'),
-(7, 'asdasd', 1, '2017-09-09 15:45:52', '<p>asdasdasd</p>\r\n', 'UNPIN'),
-(8, 'xx', 3, '2017-09-09 16:11:28', '<p>xx</p>\r\n', 'UNPIN'),
-(9, '89', 3, '2017-09-09 16:14:46', '<p>987</p>\r\n', 'UNPIN'),
-(10, 'sdfsdfsdf', 3, '2017-09-09 16:17:24', '<p>fsdf</p>\r\n', 'UNPIN'),
-(11, 'sdfsdfsdf', 3, '2017-09-09 16:17:32', '<p>fsdf</p>\r\n', 'UNPIN'),
-(12, 'sdfsdfsdf', 3, '2017-09-09 16:18:28', '<p>fsdf</p>\r\n', 'UNPIN'),
-(18, '22222222222222', 3, '2018-01-13 08:22:36', '<p>ssadasdasdasd</p>\r\n', 'PIN'),
-(20, 'sample', 2, '2017-10-31 04:07:52', '<h1><span style=\"font-size:14px\"><strong>xxxxxxxxxxxxxxxxxxxxxxxxxx<span style=\"color:#2c3e50\">xxxxxxxxxxxxxxxxxxxxxxxxxxxx<br />\r\nasdasdasdasd</span></strong></span></h1>\r\n\r\n<h6><span style=\"font-size:48px\"><strong>DARREN1</strong></span><br />\r\n<q><span style=\"color:#1abc9c\"><span style=\"font-family:Georgia,serif\">a</span></span></q></h6>\r\n', 'UNPIN'),
-(22, 'franz', 12, '2017-10-29 10:42:05', '<p>franz</p>\r\n', 'UNPIN');
+(1, 'first topic', 1, '2018-02-04 13:26:40', '<p>da reyt weeyy</p>\r\n', 'UNPIN');
 
 -- --------------------------------------------------------
 
@@ -197,12 +168,25 @@ CREATE TABLE `forum_topic_likes` (
   `topic_likes_ID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `forum_topic_likes`
+-- Table structure for table `marital_status`
 --
 
-INSERT INTO `forum_topic_likes` (`topic_likes_ID`) VALUES
-(1);
+CREATE TABLE `marital_status` (
+  `ID` int(11) UNSIGNED NOT NULL,
+  `marital_Name` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `marital_status`
+--
+
+INSERT INTO `marital_status` (`ID`, `marital_Name`) VALUES
+(1, 'Single'),
+(2, 'Married'),
+(3, 'Widowed');
 
 -- --------------------------------------------------------
 
@@ -223,8 +207,8 @@ CREATE TABLE `message_send` (
 --
 
 INSERT INTO `message_send` (`message_ID`, `message_threadID`, `message_sendDate`, `message_content`, `message_receiver`) VALUES
-(1, 1, '2017-10-06 18:19:33', 'waaaaaaaa', 2),
-(2, 1, '2017-10-06 18:19:28', 'meeeeeeeeeeeee', 2);
+(1, 1, '2017-10-06 10:19:33', 'waaaaaaaa', 2),
+(2, 1, '2017-10-06 10:19:28', 'meeeeeeeeeeeee', 2);
 
 -- --------------------------------------------------------
 
@@ -239,14 +223,6 @@ CREATE TABLE `message_send_state` (
   `state_dateRead` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `message_send_state`
---
-
-INSERT INTO `message_send_state` (`state_ID`, `state_msgID`, `state_readerID`, `state_dateRead`) VALUES
-(1, 1, 2, '0000-00-00 00:00:00'),
-(2, 2, 2, '0000-00-00 00:00:00');
-
 -- --------------------------------------------------------
 
 --
@@ -259,16 +235,6 @@ CREATE TABLE `message_thread` (
   `thread_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `message_thread`
---
-
-INSERT INTO `message_thread` (`thread_ID`, `thread_name`, `thread_created`) VALUES
-(1, 'row1', '2017-10-06 18:02:55'),
-(2, 'row2', '2017-10-06 17:59:58'),
-(3, 'row3', '2017-10-06 18:02:46'),
-(4, 'row4', '2017-10-06 18:02:51');
-
 -- --------------------------------------------------------
 
 --
@@ -280,16 +246,6 @@ CREATE TABLE `message_thread_participant` (
   `participant_threadID` int(11) NOT NULL,
   `participant_userID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `message_thread_participant`
---
-
-INSERT INTO `message_thread_participant` (`participant_ID`, `participant_threadID`, `participant_userID`) VALUES
-(1, 1, 1),
-(2, 1, 2),
-(3, 4, 1),
-(4, 4, 2);
 
 -- --------------------------------------------------------
 
@@ -308,11 +264,8 @@ CREATE TABLE `survey_forms` (
 --
 
 INSERT INTO `survey_forms` (`form_id`, `form_ownerID`, `form_taken`) VALUES
-(1, 1, '2017-11-26 14:34:57'),
-(2, 1, '2017-11-26 14:37:33'),
-(3, 1, '2017-11-26 14:39:26'),
-(4, 1, '2018-01-18 09:21:56'),
-(5, 1, '2018-01-18 13:49:30');
+(0, 0, '2018-02-04 12:23:39'),
+(1, 1, '2018-02-04 13:24:38');
 
 -- --------------------------------------------------------
 
@@ -331,7 +284,7 @@ CREATE TABLE `survey_maxcount` (
 --
 
 INSERT INTO `survey_maxcount` (`survey_id`, `survey_ownerID`, `survey_maxattemp`) VALUES
-(1, 1, 0);
+(0, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -352,81 +305,21 @@ CREATE TABLE `survey_question1` (
 --
 
 INSERT INTO `survey_question1` (`survey_qID`, `row`, `col1`, `col2`, `survey_formID`) VALUES
-(1, 1, 'U_AB_BS1', 'G_MS_MA_PHD1', 1),
+(1, 1, '', 'G_MS_MA_PHD1', 1),
 (2, 2, '', 'G_MS_MA_PHD2', 1),
-(3, 3, '', 'G_MS_MA_PHD3', 1),
+(3, 3, '', '', 1),
 (4, 4, 'U_AB_BS4', '', 1),
 (5, 5, 'U_AB_BS5', '', 1),
-(6, 6, '', 'G_MS_MA_PHD6', 1),
-(7, 7, 'U_AB_BS7', '', 1),
-(8, 8, '', '', 1),
-(9, 9, '', 'G_MS_MA_PHD9', 1),
-(10, 10, '', 'G_MS_MA_PHD10', 1),
-(11, 11, 'U_AB_BS11', '', 1),
-(12, 12, 'U_AB_BS12', '', 1),
-(13, 13, '', 'G_MS_MA_PHD13', 1),
-(14, 14, '', 'G_MS_MA_PHD14', 1),
-(15, 15, 'other', 'daaaaaa', 1),
-(16, 1, '', '', 2),
-(17, 2, '', '', 2),
-(18, 3, '', '', 2),
-(19, 4, '', '', 2),
-(20, 5, '', '', 2),
-(21, 6, '', '', 2),
-(22, 7, '', '', 2),
-(23, 8, '', '', 2),
-(24, 9, '', '', 2),
-(25, 10, '', '', 2),
-(26, 11, '', '', 2),
-(27, 12, '', '', 2),
-(28, 13, '', '', 2),
-(29, 14, '', '', 2),
-(30, 15, 'other', '99999999999999', 2),
-(31, 1, '', '', 3),
-(32, 2, '', '', 3),
-(33, 3, '', '', 3),
-(34, 4, '', '', 3),
-(35, 5, '', '', 3),
-(36, 6, '', '', 3),
-(37, 7, '', '', 3),
-(38, 8, '', '', 3),
-(39, 9, '', '', 3),
-(40, 10, '', '', 3),
-(41, 11, '', '', 3),
-(42, 12, '', '', 3),
-(43, 13, '', '', 3),
-(44, 14, '', '', 3),
-(45, 15, 'other', 'qqqqqqq', 3),
-(46, 1, 'U_AB_BS1', '', 4),
-(47, 2, 'U_AB_BS2', '', 4),
-(48, 3, '', 'G_MS_MA_PHD3', 4),
-(49, 4, '', 'G_MS_MA_PHD4', 4),
-(50, 5, 'U_AB_BS5', '', 4),
-(51, 6, 'U_AB_BS6', '', 4),
-(52, 7, '', 'G_MS_MA_PHD7', 4),
-(53, 8, '', 'G_MS_MA_PHD8', 4),
-(54, 9, 'U_AB_BS9', '', 4),
-(55, 10, 'U_AB_BS10', '', 4),
-(56, 11, '', 'G_MS_MA_PHD11', 4),
-(57, 12, '', 'G_MS_MA_PHD12', 4),
-(58, 13, 'U_AB_BS13', '', 4),
-(59, 14, 'U_AB_BS14', '', 4),
-(60, 15, 'other', '21214654768787', 4),
-(61, 1, '', '', 5),
-(62, 2, '', '', 5),
-(63, 3, '', '', 5),
-(64, 4, '', '', 5),
-(65, 5, '', '', 5),
-(66, 6, '', '', 5),
-(67, 7, '', '', 5),
-(68, 8, '', '', 5),
-(69, 9, '', '', 5),
-(70, 10, '', '', 5),
-(71, 11, '', '', 5),
-(72, 12, '', '', 5),
-(73, 13, '', '', 5),
-(74, 14, '', '', 5),
-(75, 15, 'other', '', 5);
+(6, 6, '', '', 1),
+(7, 7, '', 'G_MS_MA_PHD7', 1),
+(8, 8, '', 'G_MS_MA_PHD8', 1),
+(9, 9, 'U_AB_BS9', '', 1),
+(10, 10, 'U_AB_BS10', '', 1),
+(11, 11, '', 'G_MS_MA_PHD11', 1),
+(12, 12, '', 'G_MS_MA_PHD12', 1),
+(13, 13, 'U_AB_BS13', '', 1),
+(14, 14, 'U_AB_BS14', '', 1),
+(15, 15, 'other', 'zzzzzzzzzz', 1);
 
 -- --------------------------------------------------------
 
@@ -437,7 +330,7 @@ INSERT INTO `survey_question1` (`survey_qID`, `row`, `col1`, `col2`, `survey_for
 CREATE TABLE `survey_question2` (
   `survey_qID` int(11) NOT NULL,
   `survey_row1` int(11) NOT NULL,
-  `survey_col1` varchar(50) DEFAULT NULL,
+  `survey_col1` varchar(50) DEFAULT 'no',
   `survey_formID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -447,30 +340,10 @@ CREATE TABLE `survey_question2` (
 
 INSERT INTO `survey_question2` (`survey_qID`, `survey_row1`, `survey_col1`, `survey_formID`) VALUES
 (1, 1, 'yes', 1),
-(2, 2, 'yes', 1),
+(2, 2, 'no', 1),
 (3, 3, 'yes', 1),
 (4, 4, 'yes', 1),
-(5, 5, 'no', 1),
-(6, 1, 'no', 2),
-(7, 2, 'no', 2),
-(8, 3, 'no', 2),
-(9, 4, 'no', 2),
-(10, 5, 'no', 2),
-(11, 1, 'no', 3),
-(12, 2, 'no', 3),
-(13, 3, 'no', 3),
-(14, 4, 'no', 3),
-(15, 5, 'qqqq', 3),
-(16, 1, 'yes', 4),
-(17, 2, 'yes', 4),
-(18, 3, 'yes', 4),
-(19, 4, 'yes', 4),
-(20, 5, '', 4),
-(21, 1, 'no', 5),
-(22, 2, 'no', 5),
-(23, 3, 'no', 5),
-(24, 4, 'no', 5),
-(25, 5, '', 5);
+(5, 5, 'cccccccccccccc', 1);
 
 -- --------------------------------------------------------
 
@@ -491,26 +364,10 @@ CREATE TABLE `survey_question3` (
 --
 
 INSERT INTO `survey_question3` (`survey_qID`, `row`, `col1`, `col2`, `survey_formID`) VALUES
-(1, 1, '1', '1', 1),
-(2, 2, '1', '1', 1),
-(3, 3, '1', '1', 1),
-(4, 4, '1', '1', 1),
-(5, 1, '', '', 2),
-(6, 2, '', '', 2),
-(7, 3, '', '', 2),
-(8, 4, '', '', 2),
-(9, 1, '', '', 3),
-(10, 2, '', '', 3),
-(11, 3, '', '', 3),
-(12, 4, '', '', 3),
-(13, 1, '1', '', 4),
-(14, 2, '1', '', 4),
-(15, 3, '1', '', 4),
-(16, 4, '1', '', 4),
-(17, 1, '', '', 5),
-(18, 2, '', '', 5),
-(19, 3, '', '', 5),
-(20, 4, '', '', 5);
+(1, 1, '1', '', 1),
+(2, 2, '', '1', 1),
+(3, 3, '1', '', 1),
+(4, 4, '1', '1', 1);
 
 -- --------------------------------------------------------
 
@@ -535,31 +392,7 @@ INSERT INTO `survey_question4` (`survey_qID`, `row1`, `col1`, `survey_formID`) V
 (3, 3, '1', 1),
 (4, 4, '1', 1),
 (5, 5, '1', 1),
-(6, 6, '1', 1),
-(7, 1, '', 2),
-(8, 2, '', 2),
-(9, 3, '', 2),
-(10, 4, '', 2),
-(11, 5, '', 2),
-(12, 6, '', 2),
-(13, 1, '', 3),
-(14, 2, '', 3),
-(15, 3, '', 3),
-(16, 4, '', 3),
-(17, 5, '', 3),
-(18, 6, '', 3),
-(19, 1, '', 4),
-(20, 2, '', 4),
-(21, 3, '', 4),
-(22, 4, '1', 4),
-(23, 5, '1', 4),
-(24, 6, '1', 4),
-(25, 1, '', 5),
-(26, 2, '', 5),
-(27, 3, '', 5),
-(28, 4, '', 5),
-(29, 5, '', 5),
-(30, 6, '1', 5);
+(6, 6, '1', 1);
 
 -- --------------------------------------------------------
 
@@ -578,11 +411,7 @@ CREATE TABLE `survey_question5` (
 --
 
 INSERT INTO `survey_question5` (`survey_qID`, `ans`, `survey_formID`) VALUES
-(1, 'no', 1),
-(2, 'yes', 2),
-(3, 'yes', 3),
-(4, 'yes', 4),
-(5, 'yes', 5);
+(1, 'yes', 1);
 
 -- --------------------------------------------------------
 
@@ -601,12 +430,7 @@ CREATE TABLE `survey_question6` (
 --
 
 INSERT INTO `survey_question6` (`survey_qID`, `ans`, `survey_formID`) VALUES
-(1, 'rop', 1),
-(2, 'self', 2),
-(3, 'con', 3),
-(4, 'temp', 4),
-(5, 'cas', 0),
-(6, 'rop', 5);
+(1, 'temp', 1);
 
 -- --------------------------------------------------------
 
@@ -625,11 +449,7 @@ CREATE TABLE `survey_question7` (
 --
 
 INSERT INTO `survey_question7` (`survey_qID`, `survey_ans`, `survey_formID`) VALUES
-(1, '1', 1),
-(2, '0', 2),
-(3, '0', 3),
-(4, '1', 4),
-(5, '1', 5);
+(1, '1', 1);
 
 -- --------------------------------------------------------
 
@@ -650,23 +470,11 @@ CREATE TABLE `survey_question8` (
 
 INSERT INTO `survey_question8` (`survey_qID`, `row1`, `col1`, `survey_formID`) VALUES
 (1, 1, '1', 1),
-(2, 2, '1', 1),
+(2, 2, '', 1),
 (3, 3, '1', 1),
 (4, 4, '1', 1),
 (5, 5, '1', 1),
-(6, 6, 'daaaaaaaa', 1),
-(7, 1, '1', 4),
-(8, 2, '', 4),
-(9, 3, '1', 4),
-(10, 4, '', 4),
-(11, 5, '1', 4),
-(12, 6, '', 4),
-(13, 1, '', 5),
-(14, 2, '', 5),
-(15, 3, '', 5),
-(16, 4, '1', 5),
-(17, 5, '', 5),
-(18, 6, '', 5);
+(6, 6, 'fff', 1);
 
 -- --------------------------------------------------------
 
@@ -687,11 +495,12 @@ CREATE TABLE `user_account` (
 --
 
 INSERT INTO `user_account` (`user_ID`, `user_level`, `user_name`, `user_password`, `user_created`) VALUES
-(0, 0, 'unregister', 'unregister', '2017-10-21 16:35:35'),
-(1, 1, '201310656', 'M8+Cpt+zltZs3QpomFLRjEFCGvI0VGC+jjJzXH32Mtw=', '2017-10-25 06:08:39'),
-(2, 2, 'teacher', '6Bgzqn4mnCPjx432mpfOVbU87Mi3sy29KRe8A1l+2X0=', '2017-09-06 10:18:33'),
-(3, 3, 'admin', 'QrUgcNdRjaE74hfEIeThKa/RaqA9N/KpBI+X7VeiyfE=', '2017-09-06 10:23:49'),
-(12, 1, '123456', 'swHPJ7q+RfGnh4kp774FrzOW/hnKWeRhBNhK0xS/YtM=', '2017-10-29 10:41:36');
+(0, 3, 'unregister', 'unregister', '2018-02-04 12:20:56'),
+(1, 1, '201310656', 'M8+Cpt+zltZs3QpomFLRjEFCGvI0VGC+jjJzXH32Mtw=', '2017-10-24 22:08:39'),
+(3, 3, 'admin', 'QrUgcNdRjaE74hfEIeThKa/RaqA9N/KpBI+X7VeiyfE=', '2017-09-06 02:23:49'),
+(4, 2, '3', 'EubGHmBLzl/vo4QaEmMmq+4VBNihTeZ5V4ob1H/u0IY=', '2018-02-07 14:20:34'),
+(5, 2, 'ssss', 'FDPMnFgSGvITJtp7Ojx8d8pIOPXe5nVr3Ar1fOvm7II=', '2018-02-07 15:25:38'),
+(6, 2, 'daaa1', 'nmJlYI9M3qXXfMBP75rfDTf9c9s0Jq8ZiEdlRCxtmB4=', '2018-02-07 16:04:01');
 
 -- --------------------------------------------------------
 
@@ -711,7 +520,7 @@ CREATE TABLE `user_admin_detail` (
   `admin_gender` varchar(1) NOT NULL,
   `admin_dob` date NOT NULL,
   `admin_contact` varchar(11) NOT NULL,
-  `admin_civilStat` varchar(25) NOT NULL,
+  `admin_civilStat` int(11) NOT NULL,
   `admin_secretquestion` varchar(250) NOT NULL,
   `admin_secretanswer` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -721,8 +530,7 @@ CREATE TABLE `user_admin_detail` (
 --
 
 INSERT INTO `user_admin_detail` (`admin_ID`, `admin_userID`, `admin_img`, `admin_fName`, `admin_mName`, `admin_lName`, `admin_address`, `admin_status`, `admin_gender`, `admin_dob`, `admin_contact`, `admin_civilStat`, `admin_secretquestion`, `admin_secretanswer`) VALUES
-(1, 3, '14910474_10157945054475556_5155007875170723680_n.png', 'admin', 'admin', 'admin', 'Blk 38 Lot 11 Phase 2 b Southville 2 TMC', 'register', 'M', '0000-00-00', '09999999999', 'Single', '', ''),
-(2, 0, 'temp.gif', 'admin', 'admin', 'admin', 'Blk 38 Lot 11 Phase 2 b Southville 2 TMC', 'unregister', 'M', '0000-00-00', '09999999999', 'Single', '', '');
+(1, 3, 'temp.gif', '', '', '', '', 'register', '', '0000-00-00', '48949494984', 1, '', '');
 
 -- --------------------------------------------------------
 
@@ -761,21 +569,6 @@ CREATE TABLE `user_notification` (
   `notif_state` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `user_notification`
---
-
-INSERT INTO `user_notification` (`notif_ID`, `notif_typeID`, `notif_topicID`, `notif_userID`, `notif_receiverID`, `notif_date`, `notif_state`) VALUES
-(1, 3, 22, 1, 2, '2017-11-04 19:04:38', 0),
-(4, 3, 1, 2, 1, '2017-11-04 19:54:10', 0),
-(5, 3, 10, 2, 3, '2017-11-04 19:54:32', 0),
-(6, 3, 18, 1, 3, '2017-11-25 08:41:22', 0),
-(7, 3, 18, 1, 3, '2017-11-25 08:41:34', 0),
-(8, 3, 22, 3, 12, '2018-01-19 18:15:38', 0),
-(9, 3, 9, 1, 3, '2018-01-25 08:30:41', 0),
-(10, 3, 9, 1, 3, '2018-01-25 08:30:50', 0),
-(11, 3, 9, 1, 3, '2018-02-02 13:12:17', 0);
-
 -- --------------------------------------------------------
 
 --
@@ -786,14 +579,6 @@ CREATE TABLE `user_notif_state` (
   `status_ID` int(11) NOT NULL,
   `status_Desc` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `user_notif_state`
---
-
-INSERT INTO `user_notif_state` (`status_ID`, `status_Desc`) VALUES
-(0, 'UNREAD'),
-(1, 'READ');
 
 -- --------------------------------------------------------
 
@@ -806,16 +591,6 @@ CREATE TABLE `user_notif_type` (
   `type_Name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `user_notif_type`
---
-
-INSERT INTO `user_notif_type` (`type_ID`, `type_Name`) VALUES
-(1, 'Login'),
-(2, 'Like'),
-(3, 'Comment'),
-(4, 'Post');
-
 -- --------------------------------------------------------
 
 --
@@ -826,12 +601,12 @@ CREATE TABLE `user_student_detail` (
   `student_ID` int(11) NOT NULL,
   `student_userID` int(11) NOT NULL,
   `student_img` varchar(250) NOT NULL DEFAULT 'temp.gif',
-  `student_IDNumber` int(11) NOT NULL,
+  `student_IDNumber` int(11) DEFAULT NULL,
   `student_fName` varchar(100) NOT NULL,
   `student_mName` varchar(25) NOT NULL,
   `student_lName` varchar(50) NOT NULL,
   `student_address` varchar(250) NOT NULL,
-  `student_civilStat` varchar(25) NOT NULL,
+  `student_civilStat` int(11) NOT NULL,
   `student_dob` date NOT NULL,
   `student_gender` varchar(1) NOT NULL,
   `student_contact` varchar(11) NOT NULL,
@@ -848,15 +623,9 @@ CREATE TABLE `user_student_detail` (
 --
 
 INSERT INTO `user_student_detail` (`student_ID`, `student_userID`, `student_img`, `student_IDNumber`, `student_fName`, `student_mName`, `student_lName`, `student_address`, `student_civilStat`, `student_dob`, `student_gender`, `student_contact`, `student_admission`, `student_year_grad`, `student_department`, `student_status`, `student_secretquestion`, `student_secretanswer`) VALUES
-(1, 1, '14910474_10157945054475556_5155007875170723680_n.png', 201310656, 'Rhalp Darren', 'R', 'Cabrera', 'Blk 38 lot 11', 'Single', '1997-09-26', 'M', '09888888888', '2013-11-01', '2018-11-29', 'IT', 'register', 'ano ang pangalan ko ?', 'darren'),
-(2, 0, 'temp.gif', 201410209, 'Mardical', '', 'del Mundo', 'Indang', 'Single', '1997-09-26', 'F', '09169158798', '2017-09-30', '2017-09-12', 'COMSCI', 'register', '', ''),
-(13, 0, 'temp.gif', 201410259, 'Ria', '', 'Jimenez', 'Indang', 'Single', '1997-09-26', 'F', '09169158798', '2017-09-30', '2017-09-02', 'OA', 'unregister', '', ''),
-(16, 0, 'temp.gif', 200901201, 'Justine', '', 'De-guzman', 'Indang', 'Single', '1997-09-26', 'M', '09169158798', '2017-09-30', '2017-02-00', 'COMSCI', 'unregister', '', ''),
-(17, 0, 'temp.gif', 201310253, 'Andrea', 'L', 'Labbres', 'Indang', 'Single', '1997-09-26', 'F', '09169158798', '2017-09-30', '2017-01-00', 'COMSCI', 'unregister', '', ''),
-(23, 12, 'temp.gif', 123456, 'franz', 'r', 'cabrera', 'blk 38 lot 11 ph2b', '', '0000-00-00', '', '', '2013-01-01', '2017-04-05', 'IT', 'register', 'franz', 'cabrera'),
-(24, 0, 'temp.gif', 123456, 'sda', 'R', 'dasd', 'asd', '', '0000-00-00', '', '', '2017-10-03', '2017-10-14', 'COMSCI', 'unregister', '', ''),
-(25, 0, 'temp.gif', 123, 'asd', 'A', 'CABRERA', 'Blk 38 Lot 11 Phase2b Southville2 Trece Martires City', 'Married', '2018-02-14', 'M', '', '2018-02-08', '2018-03-03', 'IT', 'unregister', '', ''),
-(26, 0, 'temp.gif', 123, 'zzzzzzzzzzzzzzzz', 'q', 'qwe', '123', 'Married', '2018-02-14', 'F', '', '2018-02-02', '2018-02-09', 'IT', 'unregister', '', '');
+(1, 1, '14963384_10157945054480556_5814871009565891544_n.png', 201310656, 'Rhalp Darren', 'R', 'Cabrera', 'Blk 38 Lot 11 Phase2b Southville2 Trece Martires City', 0, '0000-00-00', '', '11111111111', '2013-06-01', '2018-10-30', 'COMSCI', 'register', '', ''),
+(2, 0, 'temp.gif', 321, 's', 's', 's', 's', 0, '2018-02-08', 'M', '11111111111', '2018-01-29', '2018-02-22', 'COMSCI', 'unregister', '', ''),
+(4, 0, 'temp.gif', 132131321, 'sd', 'g', 'jhgjhg', '123123', 0, '2018-02-07', 'F', '123123', '2018-02-08', '2018-02-14', 'IT', 'unregister', '', '');
 
 -- --------------------------------------------------------
 
@@ -868,7 +637,7 @@ CREATE TABLE `user_teacher_detail` (
   `teacher_ID` int(11) NOT NULL,
   `teacher_userID` int(11) NOT NULL,
   `teacher_img` varchar(250) NOT NULL DEFAULT 'temp.gif',
-  `teacher_facultyID` varchar(50) NOT NULL,
+  `teacher_facultyID` int(11) DEFAULT NULL,
   `teacher_fName` varchar(100) NOT NULL,
   `teacher_mName` varchar(25) NOT NULL,
   `teacher_lName` varchar(50) NOT NULL,
@@ -876,7 +645,7 @@ CREATE TABLE `user_teacher_detail` (
   `teacher_dob` date NOT NULL,
   `teacher_contact` varchar(11) NOT NULL,
   `teacher_address` varchar(250) NOT NULL,
-  `teacher_civilStat` varchar(25) NOT NULL,
+  `teacher_civilStat` int(11) NOT NULL,
   `teacher_department` int(11) NOT NULL,
   `teacher_status` varchar(10) NOT NULL DEFAULT 'unregister',
   `teacher_secretquestion` varchar(250) NOT NULL,
@@ -888,9 +657,8 @@ CREATE TABLE `user_teacher_detail` (
 --
 
 INSERT INTO `user_teacher_detail` (`teacher_ID`, `teacher_userID`, `teacher_img`, `teacher_facultyID`, `teacher_fName`, `teacher_mName`, `teacher_lName`, `teacher_gender`, `teacher_dob`, `teacher_contact`, `teacher_address`, `teacher_civilStat`, `teacher_department`, `teacher_status`, `teacher_secretquestion`, `teacher_secretanswer`) VALUES
-(1, 2, '14963384_10157945054480556_5814871009565891544_n.png', 'a12s3d', 'teacher', 't', 'teacher', 'M', '1997-09-26', '09999999999', 'Blk 38 Lot 11 Phase 2 b Southville 2 TMC', 'Single', 2, 'register', 'zxczxczxc', '3333'),
-(2, 2, 'temp.gif', '654', 'asdasd', 'asdasd', 'asd', '', '0000-00-00', '', 'asd', '', 2, 'register', '', ''),
-(3, 0, 'temp.gif', '123', 'dsa', 'dsa', 'dsa', '', '0000-00-00', '', 'dsa', '', 2, 'register', '', '');
+(125, 0, 'temp.gif', 12, 'Samples', 's', 's', 'M', '0000-00-00', '0', 'x', 3, 1, 'unregister', '', ''),
+(128, 5, 'temp.gif', 123123, 'qwe', 'qwe', 'qwe', 'M', '0000-00-00', '09169158798', '12312', 0, 1, 'register', '', '');
 
 -- --------------------------------------------------------
 
@@ -909,30 +677,7 @@ CREATE TABLE `view_counter` (
 --
 
 INSERT INTO `view_counter` (`view_ID`, `view_topicID`, `view_count`) VALUES
-(1, 1, 63),
-(2, 2, 154),
-(3, 3, 21),
-(4, 4, 22),
-(5, 5, 63),
-(6, 6, 145),
-(19, 22, 15),
-(20, 23, 1),
-(21, 24, 1),
-(22, 25, 2),
-(23, 26, 16),
-(24, 27, 24),
-(28, 1, 71),
-(34, 29, 1),
-(36, 1, 49),
-(37, 2, 3),
-(38, 3, 5),
-(39, 4, 16),
-(40, 5, 5),
-(41, 6, 54),
-(47, 12, 7),
-(53, 18, 23),
-(55, 20, 134),
-(57, 22, 7);
+(1, 1, 4);
 
 --
 -- Indexes for dumped tables
@@ -983,6 +728,12 @@ ALTER TABLE `forum_topic_likes`
   ADD PRIMARY KEY (`topic_likes_ID`);
 
 --
+-- Indexes for table `marital_status`
+--
+ALTER TABLE `marital_status`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- Indexes for table `message_send`
 --
 ALTER TABLE `message_send`
@@ -1010,56 +761,64 @@ ALTER TABLE `message_thread_participant`
 -- Indexes for table `survey_forms`
 --
 ALTER TABLE `survey_forms`
-  ADD PRIMARY KEY (`form_id`);
+  ADD PRIMARY KEY (`form_id`),
+  ADD KEY `form_ownerID` (`form_ownerID`);
 
 --
 -- Indexes for table `survey_maxcount`
 --
 ALTER TABLE `survey_maxcount`
   ADD PRIMARY KEY (`survey_id`),
-  ADD UNIQUE KEY `survey_ownerID` (`survey_ownerID`);
+  ADD KEY `survey_ownerID` (`survey_ownerID`);
 
 --
 -- Indexes for table `survey_question1`
 --
 ALTER TABLE `survey_question1`
-  ADD PRIMARY KEY (`survey_qID`);
+  ADD PRIMARY KEY (`survey_qID`),
+  ADD KEY `survey_formID` (`survey_formID`);
 
 --
 -- Indexes for table `survey_question2`
 --
 ALTER TABLE `survey_question2`
-  ADD PRIMARY KEY (`survey_qID`);
+  ADD PRIMARY KEY (`survey_qID`),
+  ADD KEY `survey_formID` (`survey_formID`);
 
 --
 -- Indexes for table `survey_question3`
 --
 ALTER TABLE `survey_question3`
-  ADD PRIMARY KEY (`survey_qID`);
+  ADD PRIMARY KEY (`survey_qID`),
+  ADD KEY `survey_formID` (`survey_formID`);
 
 --
 -- Indexes for table `survey_question4`
 --
 ALTER TABLE `survey_question4`
-  ADD PRIMARY KEY (`survey_qID`);
+  ADD PRIMARY KEY (`survey_qID`),
+  ADD KEY `survey_formID` (`survey_formID`);
 
 --
 -- Indexes for table `survey_question5`
 --
 ALTER TABLE `survey_question5`
-  ADD PRIMARY KEY (`survey_qID`);
+  ADD PRIMARY KEY (`survey_qID`),
+  ADD KEY `survey_formID` (`survey_formID`);
 
 --
 -- Indexes for table `survey_question6`
 --
 ALTER TABLE `survey_question6`
-  ADD PRIMARY KEY (`survey_qID`);
+  ADD PRIMARY KEY (`survey_qID`),
+  ADD KEY `survey_formID` (`survey_formID`);
 
 --
 -- Indexes for table `survey_question7`
 --
 ALTER TABLE `survey_question7`
-  ADD PRIMARY KEY (`survey_qID`);
+  ADD PRIMARY KEY (`survey_qID`),
+  ADD KEY `survey_formID` (`survey_formID`);
 
 --
 -- Indexes for table `survey_question8`
@@ -1085,31 +844,15 @@ ALTER TABLE `user_admin_detail`
 -- Indexes for table `user_level`
 --
 ALTER TABLE `user_level`
-  ADD PRIMARY KEY (`level_ID`);
-
---
--- Indexes for table `user_notification`
---
-ALTER TABLE `user_notification`
-  ADD PRIMARY KEY (`notif_ID`);
-
---
--- Indexes for table `user_notif_state`
---
-ALTER TABLE `user_notif_state`
-  ADD PRIMARY KEY (`status_ID`);
-
---
--- Indexes for table `user_notif_type`
---
-ALTER TABLE `user_notif_type`
-  ADD PRIMARY KEY (`type_ID`);
+  ADD PRIMARY KEY (`level_ID`),
+  ADD UNIQUE KEY `level_ID` (`level_ID`);
 
 --
 -- Indexes for table `user_student_detail`
 --
 ALTER TABLE `user_student_detail`
   ADD PRIMARY KEY (`student_ID`),
+  ADD UNIQUE KEY `student_IDNumber` (`student_IDNumber`),
   ADD KEY `student_userID` (`student_userID`);
 
 --
@@ -1117,7 +860,9 @@ ALTER TABLE `user_student_detail`
 --
 ALTER TABLE `user_teacher_detail`
   ADD PRIMARY KEY (`teacher_ID`),
-  ADD KEY `teacher_userID` (`teacher_userID`);
+  ADD UNIQUE KEY `teacher_facultyID` (`teacher_facultyID`),
+  ADD KEY `teacher_userID` (`teacher_userID`),
+  ADD KEY `teacher_department` (`teacher_department`);
 
 --
 -- Indexes for table `view_counter`
@@ -1134,151 +879,163 @@ ALTER TABLE `view_counter`
 --
 ALTER TABLE `cvsu_college`
   MODIFY `colleges_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT for table `cvsu_course`
 --
 ALTER TABLE `cvsu_course`
   MODIFY `course_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT for table `cvsu_department`
 --
 ALTER TABLE `cvsu_department`
   MODIFY `department_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT for table `forum_comment`
 --
 ALTER TABLE `forum_comment`
-  MODIFY `comment_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `comment_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+
 --
 -- AUTO_INCREMENT for table `forum_comment_reply`
 --
 ALTER TABLE `forum_comment_reply`
-  MODIFY `comment_reply_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `comment_reply_ID` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `forum_topic`
 --
 ALTER TABLE `forum_topic`
-  MODIFY `topic_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `topic_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `forum_topic_likes`
 --
 ALTER TABLE `forum_topic_likes`
-  MODIFY `topic_likes_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `topic_likes_ID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `marital_status`
+--
+ALTER TABLE `marital_status`
+  MODIFY `ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
 --
 -- AUTO_INCREMENT for table `message_send`
 --
 ALTER TABLE `message_send`
   MODIFY `message_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT for table `message_send_state`
 --
 ALTER TABLE `message_send_state`
-  MODIFY `state_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `state_ID` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `message_thread`
 --
 ALTER TABLE `message_thread`
-  MODIFY `thread_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `thread_ID` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `message_thread_participant`
 --
 ALTER TABLE `message_thread_participant`
-  MODIFY `participant_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `participant_ID` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `survey_forms`
 --
 ALTER TABLE `survey_forms`
-  MODIFY `form_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
---
--- AUTO_INCREMENT for table `survey_maxcount`
---
-ALTER TABLE `survey_maxcount`
-  MODIFY `survey_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `form_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `survey_question1`
 --
 ALTER TABLE `survey_question1`
-  MODIFY `survey_qID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
+  MODIFY `survey_qID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
 --
 -- AUTO_INCREMENT for table `survey_question2`
 --
 ALTER TABLE `survey_question2`
-  MODIFY `survey_qID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `survey_qID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
 -- AUTO_INCREMENT for table `survey_question3`
 --
 ALTER TABLE `survey_question3`
-  MODIFY `survey_qID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `survey_qID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT for table `survey_question4`
 --
 ALTER TABLE `survey_question4`
-  MODIFY `survey_qID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `survey_qID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
 --
 -- AUTO_INCREMENT for table `survey_question5`
 --
 ALTER TABLE `survey_question5`
-  MODIFY `survey_qID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `survey_qID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `survey_question6`
 --
 ALTER TABLE `survey_question6`
-  MODIFY `survey_qID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `survey_qID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `survey_question7`
 --
 ALTER TABLE `survey_question7`
-  MODIFY `survey_qID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `survey_qID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `survey_question8`
 --
 ALTER TABLE `survey_question8`
-  MODIFY `survey_qID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `survey_qID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
 --
 -- AUTO_INCREMENT for table `user_account`
 --
 ALTER TABLE `user_account`
-  MODIFY `user_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `user_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
 --
 -- AUTO_INCREMENT for table `user_admin_detail`
 --
 ALTER TABLE `user_admin_detail`
-  MODIFY `admin_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `admin_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `user_level`
 --
 ALTER TABLE `user_level`
   MODIFY `level_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT for table `user_notification`
---
-ALTER TABLE `user_notification`
-  MODIFY `notif_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
---
--- AUTO_INCREMENT for table `user_notif_state`
---
-ALTER TABLE `user_notif_state`
-  MODIFY `status_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `user_notif_type`
---
-ALTER TABLE `user_notif_type`
-  MODIFY `type_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT for table `user_student_detail`
 --
 ALTER TABLE `user_student_detail`
-  MODIFY `student_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `student_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT for table `user_teacher_detail`
 --
 ALTER TABLE `user_teacher_detail`
-  MODIFY `teacher_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `teacher_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=131;
+
 --
 -- AUTO_INCREMENT for table `view_counter`
 --
 ALTER TABLE `view_counter`
-  MODIFY `view_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `view_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- Constraints for dumped tables
 --
@@ -1287,14 +1044,67 @@ ALTER TABLE `view_counter`
 -- Constraints for table `cvsu_course`
 --
 ALTER TABLE `cvsu_course`
-  ADD CONSTRAINT `cvsu_course_ibfk_1` FOREIGN KEY (`course_departmentID`) REFERENCES `cvsu_department` (`department_ID`),
-  ADD CONSTRAINT `cvsu_course_ibfk_2` FOREIGN KEY (`course_departmentID`) REFERENCES `cvsu_department` (`department_ID`);
+  ADD CONSTRAINT `cvsu_course_ibfk_1` FOREIGN KEY (`course_departmentID`) REFERENCES `cvsu_department` (`department_ID`);
 
 --
 -- Constraints for table `cvsu_department`
 --
 ALTER TABLE `cvsu_department`
   ADD CONSTRAINT `cvsu_department_ibfk_1` FOREIGN KEY (`department_collegeID`) REFERENCES `cvsu_college` (`colleges_ID`);
+
+--
+-- Constraints for table `survey_forms`
+--
+ALTER TABLE `survey_forms`
+  ADD CONSTRAINT `survey_forms_ibfk_1` FOREIGN KEY (`form_ownerID`) REFERENCES `user_account` (`user_ID`);
+
+--
+-- Constraints for table `survey_maxcount`
+--
+ALTER TABLE `survey_maxcount`
+  ADD CONSTRAINT `survey_maxcount_ibfk_1` FOREIGN KEY (`survey_ownerID`) REFERENCES `user_account` (`user_ID`);
+
+--
+-- Constraints for table `survey_question1`
+--
+ALTER TABLE `survey_question1`
+  ADD CONSTRAINT `survey_question1_ibfk_1` FOREIGN KEY (`survey_formID`) REFERENCES `survey_forms` (`form_id`);
+
+--
+-- Constraints for table `survey_question2`
+--
+ALTER TABLE `survey_question2`
+  ADD CONSTRAINT `survey_question2_ibfk_1` FOREIGN KEY (`survey_formID`) REFERENCES `survey_forms` (`form_id`);
+
+--
+-- Constraints for table `survey_question3`
+--
+ALTER TABLE `survey_question3`
+  ADD CONSTRAINT `survey_question3_ibfk_1` FOREIGN KEY (`survey_formID`) REFERENCES `survey_forms` (`form_id`);
+
+--
+-- Constraints for table `survey_question4`
+--
+ALTER TABLE `survey_question4`
+  ADD CONSTRAINT `survey_question4_ibfk_1` FOREIGN KEY (`survey_formID`) REFERENCES `survey_forms` (`form_id`);
+
+--
+-- Constraints for table `survey_question5`
+--
+ALTER TABLE `survey_question5`
+  ADD CONSTRAINT `survey_question5_ibfk_1` FOREIGN KEY (`survey_formID`) REFERENCES `survey_forms` (`form_id`);
+
+--
+-- Constraints for table `survey_question6`
+--
+ALTER TABLE `survey_question6`
+  ADD CONSTRAINT `survey_question6_ibfk_1` FOREIGN KEY (`survey_formID`) REFERENCES `survey_forms` (`form_id`);
+
+--
+-- Constraints for table `survey_question7`
+--
+ALTER TABLE `survey_question7`
+  ADD CONSTRAINT `survey_question7_ibfk_1` FOREIGN KEY (`survey_formID`) REFERENCES `survey_forms` (`form_id`);
 
 --
 -- Constraints for table `user_account`
@@ -1312,14 +1122,14 @@ ALTER TABLE `user_admin_detail`
 -- Constraints for table `user_student_detail`
 --
 ALTER TABLE `user_student_detail`
-  ADD CONSTRAINT `user_student_detail_ibfk_1` FOREIGN KEY (`student_userID`) REFERENCES `user_account` (`user_ID`),
-  ADD CONSTRAINT `user_student_detail_ibfk_2` FOREIGN KEY (`student_userID`) REFERENCES `user_account` (`user_ID`);
+  ADD CONSTRAINT `user_student_detail_ibfk_1` FOREIGN KEY (`student_userID`) REFERENCES `user_account` (`user_ID`);
 
 --
 -- Constraints for table `user_teacher_detail`
 --
 ALTER TABLE `user_teacher_detail`
-  ADD CONSTRAINT `user_teacher_detail_ibfk_1` FOREIGN KEY (`teacher_userID`) REFERENCES `user_account` (`user_ID`);
+  ADD CONSTRAINT `user_teacher_detail_ibfk_1` FOREIGN KEY (`teacher_userID`) REFERENCES `user_account` (`user_ID`),
+  ADD CONSTRAINT `user_teacher_detail_ibfk_2` FOREIGN KEY (`teacher_department`) REFERENCES `cvsu_department` (`department_ID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
