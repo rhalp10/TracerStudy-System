@@ -4,6 +4,15 @@ include('db.php');
 
 
 $survey_maxcount_qry = mysqli_query($con,"SELECT survey_maxattemp FROM `survey_maxcount` WHERE survey_ownerID = '$login_id'");
+if ($survey_maxcount_qry) {
+    
+}
+{
+    mysqli_query($con,"INSERT INTO `survey_maxcount` (`survey_ownerID`, `survey_maxattemp`) VALUES ('$login_id', '2')");
+    $last_id = mysqli_insert_id($con);
+    $survey_maxcount_qry = mysqli_query($con,"SELECT survey_maxattemp FROM `survey_maxcount` WHERE survey_id = '$last_id'");
+    
+}
 $survey_maxattemp = mysqli_fetch_array($survey_maxcount_qry);
 //if user is teacher or admin disable survey form features
 if ($login_level == '3' || $login_level == '2' ) {
