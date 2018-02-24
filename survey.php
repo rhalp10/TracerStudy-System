@@ -3,41 +3,25 @@ include('session.php');
 include('db.php');
 
 
-$survey_maxcount_qry = mysqli_query($con,"SELECT survey_maxattemp FROM `survey_maxcount` WHERE survey_ownerID = '$login_id'");
-if ($survey_maxcount_qry) {
-    
+$survey_maxcount_qry = mysqli_query($con,"SELECT * FROM `survey_maxcount` WHERE survey_ownerID = '$login_id'");
+$survey_maxattemp = mysqli_fetch_array($survey_maxcount_qry);
+
+if ($survey_maxattemp['survey_ownerID'] == $login_id) {
+    //getting latest date base on server PC
+    $date_now = date("Y/m/d") ;
+    $year_now = date( "Y", strtotime( "$date_now"));
+    echo $date_now;
+    echo $survey_maxattemp['survey_maxattemp'];
+    if($survey_maxattemp['survey_maxattemp'] <= 0)
+    {
+       header('Location: surveyview.php');
+    }
 }
-{
+else {
     mysqli_query($con,"INSERT INTO `survey_maxcount` (`survey_ownerID`, `survey_maxattemp`) VALUES ('$login_id', '2')");
     $last_id = mysqli_insert_id($con);
     $survey_maxcount_qry = mysqli_query($con,"SELECT survey_maxattemp FROM `survey_maxcount` WHERE survey_id = '$last_id'");
     
-}
-$survey_maxattemp = mysqli_fetch_array($survey_maxcount_qry);
-//if user is teacher or admin disable survey form features
-if ($login_level == '3' || $login_level == '2' ) {
-    header('Location: dashboard.php'); 
-}
-
-if($survey_maxattemp['survey_maxattemp'] <= '0')
-{
-   header('Location: surveyview.php');
-}
-//getting latest date base on server PC
-$date_now = date("Y/m/d") ;
-$year_now = date( "Y", strtotime( "$date_now"));
-
-
-
-$survey_latest_form_sql = mysqli_query ($con,"SELECT form_id,year(max(form_taken)) as survey_year FROM `survey_forms` WHERE form_ownerID = '$login_id' ");
-$latest_survey_form = mysqli_fetch_array($survey_latest_form_sql);
-$latest_user_survey_formID = $latest_survey_form['form_id'];
-$latest_user_survey_year = $latest_survey_form['survey_year'];
-//checking if year now is greater tha your latest survey taken
-if ($year_now > $latest_user_survey_year)
-{
-    // survey_maxcount reset to 2
-    mysqli_query($con,"UPDATE `survey_maxcount` SET `survey_maxattemp` = '2' WHERE `survey_ownerID` = '$login_id' ");
 }
 
 $page = 'survey';
