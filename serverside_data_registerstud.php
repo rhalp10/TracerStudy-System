@@ -46,8 +46,13 @@ $data = array();
 while( $row=mysqli_fetch_array($query) ) {  // preparing an array
 	$nestedData=array(); 
 	$student_ID = $row["student_ID"];
+	$s2=mysqli_query($con,"SELECT c.course_acronym as course_acronym FROM `user_student_detail`  usd
+INNER JOIN cvsu_course c ON usd.student_department = c.course_ID WHERE usd.student_ID = $student_ID ");
+	$sd = mysqli_fetch_array($s2);
+
+	
 	$nestedData[] = $row["student_lName"].', '.$row["student_fName"].' '.$row["student_mName"].'.';
-	$nestedData[] = $row["student_department"];
+	$nestedData[] = $sd['course_acronym'];
 	$nestedData[] = $row["student_admission"];
 	$nestedData[] = $row["student_year_grad"];
 	$nestedData[] = "<div class='btn-group'>                                   
