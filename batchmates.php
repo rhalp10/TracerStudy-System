@@ -37,6 +37,7 @@ else
                 <div id="top">
                     <?php include ('top_navbar.php');?>
                 </div>
+
                 <!-- /#top -->
                     <?php  
                     if ($login_level == '1')
@@ -67,159 +68,133 @@ else
                             <!-- /.main-bar -->
                         </header>
                         <div class="inner bg-light lter">
+
                            <div class="box">
-                             <header> <?php 
+                             <ul class="nav nav-tabs">
+                              <?PHP 
+                              $student_sql = mysqli_query($con,"SELECT YEAR(usd.student_year_grad) as student_year_grad,cd.department_ID ,cd.department_name FROM `user_student_detail` usd
+                              INNER JOIN cvsu_department cd ON usd.student_department = cd.department_ID WHERE usd.student_ID = $login_id");
+                              $student_d = mysqli_fetch_array($student_sql);
+                              $s_department_ID = $student_d['department_ID'];
+                              $s_student_year_grad =$student_d['student_year_grad']; 
+                              $dep =mysqli_query($con,"SELECT * FROM `cvsu_department`"); 
+                              while ($data = mysqli_fetch_array($dep)) {
+                                
+                                if ($data['department_ID'] == $s_department_ID) {
+                                  
+                                  ?><li class="active"><a data-toggle="tab" href="#<?php echo  $data['department_ID'] ?>"><?php echo $data['department_name']; ?></a></li><?php
+                                }
+                                else{
+                                  ?><li><a data-toggle="tab" href="#<?php echo  $data['department_ID'] ?>"><?php echo  $data['department_name'] ?></a></li>
+                                  <?php
+                                }
+                              }
+                              ?>
+                              </ul>
 
-                            $query = mysqli_query($con,"SELECT * FROM `user_student_detail` WHERE `student_ID` = $login_id");
-                            $res = mysqli_fetch_array($query);
-                            $date = $res['student_year_grad'];
-                            $query_yr =  mysqli_query($con,"SELECT YEAR('$date') as year;");
-                            $yr_res = mysqli_fetch_array($query_yr);
-                            $req_course = $res['student_department'];
-                            $req_year = $yr_res['year'];
-                           ?>
-                           
-                            <hr>
-                             </header>
-                             <div class="col-sm-12">
-                             <br>
-<div class="btn-group">
-  <button type="button" class="btn btn-primary">Course</button>
-  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-    <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu" role="menu"> 
-    <li><a id="xIT">BSIT</a></li>
-    <li><a id="xCS">BSCS</a></li>
-    <li><a id="xOA">BSOA</a></li>
-  </ul>
-</div>
-<?php 
-    $zit = "";
-    $zcs = "";
-    $zoa = "";
-          if ($req_course == 'IT') {
-                $zit = "show";
-                $zcs = "hidden";
-                $zoa = "hidden";
-           }
-          if ($req_course == 'COMSCI') {
-                $zit = "hidden";
-                $zcs = "show";
-                $zoa = "hidden";
-           }
-          if ($req_course == 'OA') {
-              $zit = "hidden";
-              $zcs = "hidden";
-              $zoa = "show";
-           }
+                              <div class="tab-content">
 
-          ?>
+                              <?php 
+                              $dep =mysqli_query($con,"SELECT * FROM `cvsu_department`"); 
+                              while ($data = mysqli_fetch_array($dep)) {
+                                
+                                if ($data['department_ID'] == $s_department_ID) {
+                                  
+                                  ?>
+                                <div id="<?php echo $data['department_ID']; ?>" class="tab-pane fade in active">
+                                    <center><h3><?php echo $data['department_name']." Batch of ".$s_student_year_grad; ?></h3></center>
+                                  <p>
+                                    <table class="table table-bordered table-advance table-hover">
+                                    <thead>
+                                      <tr>
+                                        <th>Name</th>
+                                        <th>Student Number</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php 
+                                    $s = mysqli_query($con,"SELECT student_fName,student_mName,student_lName,student_IDNumber FROM `user_student_detail` usd INNER JOIN cvsu_department cd ON usd.student_department = cd.department_ID WHERE department_ID = ".$data['department_ID']." AND student_year_grad LIKE '%$s_student_year_grad%'");
+                                    $no = 0;
+                                    while ($f_all = mysqli_fetch_array($s)) {
+                                      $no+=$no+1;
+                                     ?>
+                                      <tr>
+                                             <td><?php echo $no ?>. <?php echo   $f_all['student_fName']." ".$f_all['student_mName']." ".  $f_all['student_lName']?></td>
+                                             <td><?php echo $f_all['student_IDNumber']?></td>
+                                         </tr>
+                                     <?php
+                                    }
+                                    ?>
+                                      
+                                    </tbody>
+                                    <tfoot>
+                                      <tr>
+                                        <th></th>
+                                        <th></th>
+                                      </tr>
+                                    </tfoot>
+                                    </table>
+                                  </p>
+                                </div>
+
+                                  <?php
+                                }
+                                else{
+                                  ?>  <div id="<?php echo $data['department_ID']; ?>" class="tab-pane fade">
+                                    <center><h3><?php echo $data['department_name']." Batch of ".$s_student_year_grad;  ?></h3></center>
+                                      <p>
+                                    <table class="table table-bordered table-advance table-hover">
+                                    <thead>
+                                      <tr>
+                                        <th>Name</th>
+                                        <th>Student Number</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php 
+                                    $s = mysqli_query($con,"SELECT student_fName,student_mName,student_lName,student_IDNumber FROM `user_student_detail` usd INNER JOIN cvsu_department cd ON usd.student_department = cd.department_ID WHERE department_ID = ".$data['department_ID']." AND student_year_grad LIKE '%$s_student_year_grad%'");
+                                    $no = 0;
+                                    while ($f_all = mysqli_fetch_array($s)) {
+                                      $no+=$no+1;
+                                     ?>
+                                      <tr>
+                                             <td><?php echo $no ?>. <?php echo   $f_all['student_fName']." ".$f_all['student_mName']." ".  $f_all['student_lName']?></td>
+                                             <td><?php echo $f_all['student_IDNumber']?></td>
+                                         </tr>
+                                     <?php
+                                    }
+                                    ?>
+                                      
+                                    </tbody>
+                                    <tfoot>
+                                      <tr>
+                                        <th></th>
+                                        <th></th>
+                                      </tr>
+                                    </tfoot>
+                                    </table>
+                                  </p>
+                                </div>
+
+                                  <?php
+                                }
+                              }
+                              ?>
 
 
-<div id="IT_con" <?php if($zit){ echo $zit."=''";}else{echo "";}?> >
-  <center><h3>Information Technology Batch of <?php echo $req_year; ?> </h3></center>
-  <table class="table table-bordered table-advance table-hover  ">
-    <thead>
-             <th>Names</th>
-             <th>Student Number</th>
-    </thead>
-    <tbody>
-      <?php 
+                              <!-- SELECT YEAR(usd.student_year_grad),cd.department_ID ,cd.department_name FROM `user_student_detail` usd
+                              INNER JOIN cvsu_department cd ON usd.student_department = cd.department_ID WHERE usd.student_ID = 1
 
-       $query = mysqli_query($con,"SELECT * FROM `user_student_detail`  WHERE student_department LIKE 'IT' AND student_year_grad LIKE '$req_year%' ORDER BY `student_fName`  ASC");
 
-        $no = 1;
-      while ($data = mysqli_fetch_array($query)) {
-        $data['student_fName']
-      
-       ?>
-           <tr>
-               <td><?php echo $no ?>. <?php echo   $data['student_fName']." ".$data['student_mName']." ".  $data['student_lName']?></td>
-               <td><?php echo $data['student_IDNumber']?></td>
-           </tr>
-           <?php 
-           $no = $no + 1;
-           }
-      ?>
-    </tbody>
-    <tfoot>
-      <tr>
-        <th></th>
-        <th></th>
-      </tr>
-    </tfoot>
-  </table>
-</div>
+                              SELECT YEAR(usd.student_year_grad),cd.department_ID ,cd.department_name FROM `user_student_detail` usd
+                              INNER JOIN cvsu_department cd ON usd.student_department = cd.department_ID 
 
-<div id="CS_con" <?php echo $zcs?>="">
-  <center><h3>Computer Science Batch of <?php echo $req_year; ?></h3></center>
-  <table class="table table-bordered table-advance table-hover  ">
-    <thead>
-             <th>Names</th>
-             <th>Student Number</th>
-    </thead>
-    <tbody>
-       <?php 
+                              SELECT YEAR(usd.student_year_grad),cd.department_ID ,cd.department_name,usd.student_fName FROM `user_student_detail` usd INNER JOIN cvsu_department cd ON usd.student_department = cd.department_ID WHERE department_ID = 1,2,3 -->
 
-       $query = mysqli_query($con,"SELECT * FROM `user_student_detail`  WHERE student_department LIKE 'COMSCI' AND student_year_grad LIKE '$req_year%' ORDER BY `student_fName`  ASC");
 
-        $no = 1;
-      while ($data = mysqli_fetch_array($query)) {
-        $data['student_fName']
-      
-       ?>
-           <tr>
-               <td><?php echo $no ?>. <?php echo   $data['student_fName']." ".$data['student_mName']." ".  $data['student_lName']?></td>
-               <td><?php echo $data['student_IDNumber']?></td>
-           </tr>
-           <?php 
-           $no = $no + 1;
-           }
-      ?>
-    </tbody>
-    <tfoot>
-      <tr>
-        <th></th>
-        <th></th>
-      </tr>
-    </tfoot>
-  </table>
-</div>
-<div id="OA_con" <?php echo $zoa?>="">
-  <center><h3>Office Administration Batch of <?php echo $req_year; ?></h3></center>
-  <table class="table table-bordered table-advance table-hover  ">
-    <thead>
-             <th>Names</th>
-             <th>Student Number</th>
-    </thead>
-    <tbody>
-      <?php 
+                              </div>
 
-       $query = mysqli_query($con,"SELECT * FROM `user_student_detail`  WHERE student_department LIKE 'OA' AND student_year_grad LIKE '$req_year%' ORDER BY `student_fName`  ASC");
 
-        $no = 1;
-      while ($data = mysqli_fetch_array($query)) {
-        $data['student_fName']
-      
-       ?>
-           <tr>
-               <td><?php echo $no ?>. <?php echo   $data['student_fName']." ".$data['student_mName']." ".  $data['student_lName']?></td>
-               <td><?php echo $data['student_IDNumber']?></td>
-           </tr>
-           <?php 
-           $no = $no + 1;
-           }
-      ?>
-    </tbody>
-    <tfoot>
-      <tr>
-        <th></th>
-        <th></th>
-      </tr>
-    </tfoot>
-  </table>
-</div>
                               
                             </div>
                          

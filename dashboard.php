@@ -122,10 +122,37 @@ $totalAcc_register_asAdmin = $json->DataCount($totalresult_ofAdmin);
 
                         <div class="inner bg-light lter">
                             <center><h1>Welcome</h1></center>
+                            <hr>
                            <div class="col-sm-6" >
                                 <div id="canvas-holder">
                                     <canvas id="chart-area" />
                                 </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <table class="table table-bordered table-advance table-hover">
+                                    <thead>
+                                        <tr>
+                                            <thead><b>SUGGESTED COMPATIBLE JOB FOR YOU</b></thead>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                <?php 
+                                $sj = mysqli_query($con,"SELECT sj.job_Title FROM `user_student_detail` usd
+INNER JOIN cvsu_department cd ON usd.student_department = cd.department_ID
+inner join suggested_job sj ON cd.department_ID = sj.job_ID
+ WHERE usd.student_ID = $login_id");
+                                while ($sj1 = mysqli_fetch_array($sj)){
+                                    
+                                    ?>
+                                    <tr>
+                                        <td><?php echo $sj1['job_Title']?></td>
+                                    </tr>
+                                    <?php
+                                }
+                                ?>
+                                    </tbody>
+                                </table>
+                                
                             </div>
                         </div>
 
