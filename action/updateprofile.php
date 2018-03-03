@@ -27,22 +27,22 @@ else if (isset($_POST['update_name'])) {
 	$sql = "UPDATE `user_".$user_type."_detail` SET `".$user_type."_fName` = '$update_fname',`".$user_type."_mName` = '$update_mname',`".$user_type."_lName` = '$update_lname' WHERE `".$user_type."_userID` = '$login_id'";
 	mysqli_query($con,$sql);
 
-	echo "<script>alert('successfully Update!');
-				window.location='../profile.php';
-			</script>";
+	// echo "<script>alert('successfully Update!');
+	// 			window.location='../profile.php';
+	// 		</script>";
 }
 
 else if (isset($_POST['update_gender'])) {
 	# code...update_gender
-	$selected_gende = $_POST['selected_gender'];
+	$selected_gender = $_POST['selected_gender'];
 	$selected_gender = stripslashes($selected_gender);
 	$selected_gender = mysqli_real_escape_string($con,$selected_gender);
 	$sql = "UPDATE `user_".$user_type."_detail` SET `".$user_type."_gender` = '$selected_gender' WHERE `".$user_type."_userID` = '$login_id'";
 	mysqli_query($con,$sql);
 	
-	echo "<script>alert('successfully Update!');
-				window.location='../profile.php';
-			</script>";
+	// echo "<script>alert('successfully Update!');
+	// 			window.location='../profile.php';
+	// 		</script>";
 }
 else if (isset($_POST['update_password'])) {
 	# code...update_password
@@ -55,17 +55,17 @@ else if (isset($_POST['update_password'])) {
 
 	if (empty($new_password) || empty($new_repassword)) 
 	{
-		echo "<script>alert('Empty!');
-				window.location='../index.php';
-			</script>";
+		// echo "<script>alert('Empty!');
+		// 		window.location='../index.php';
+		// 	</script>";
 	}
 	else if ($new_password == $new_repassword) {
 		$input = "$new_password";
 		include('../md5.php');
 		mysqli_query($con,"UPDATE `user_account` SET `user_password` = '$encrypted' WHERE `user_ID` = '$login_id'");
-		echo "<script>alert('Password successfully change!');
-				window.location='../index.php';
-			</script>";
+		// echo "<script>alert('Password successfully change!');
+		// 		window.location='../index.php';
+		// 	</script>";
 	}
 	else
 	{
@@ -82,9 +82,9 @@ else if (isset($_POST['update_address'])) {
 	$sql = "UPDATE `user_".$user_type."_detail` SET `".$user_type."_address` = '$new_address' WHERE `".$user_type."_userID` = '$login_id'";
 	mysqli_query($con,$sql);
 	
-	echo "<script>alert('successfully Update!');
-				window.location='../profile.php';
-			</script>";
+	// echo "<script>alert('successfully Update!');
+	// 			window.location='../profile.php';
+	// 		</script>";
 }
 else if (isset($_POST['update_cstatus'])) {
 	# code...update_cstatus
@@ -94,9 +94,9 @@ else if (isset($_POST['update_cstatus'])) {
 	$sql = "UPDATE `user_".$user_type."_detail` SET `".$user_type."_civilStat` = '$selected_cstatus' WHERE `".$user_type."_userID` = '$login_id'";
 	mysqli_query($con,$sql);
 	
-	echo "<script>alert('successfully Update!');
-				window.location='../profile.php';
-			</script>";
+	// echo "<script>alert('successfully Update!');
+	// 			window.location='../profile.php';
+	// 		</script>";
 }
 else if (isset($_POST['update_bday'])) {
 	# code...update_bday
@@ -106,9 +106,9 @@ else if (isset($_POST['update_bday'])) {
 	$sql = "UPDATE `user_".$user_type."_detail` SET `".$user_type."_dob` = '$new_bday' WHERE `".$user_type."_userID` = '$login_id'";
 	mysqli_query($con,$sql);
 	
-	echo "<script>alert('successfully Update!');
-				window.location='../profile.php';
-			</script>";
+	// echo "<script>alert('successfully Update!');
+	// 			window.location='../profile.php';
+	// 		</script>";
 }
 else if (isset($_POST['update_contact'])) {
 	# code...update_contact
@@ -118,9 +118,9 @@ else if (isset($_POST['update_contact'])) {
 	$sql = "UPDATE `user_".$user_type."_detail` SET `".$user_type."_contact` = '$new_contact' WHERE `".$user_type."_userID` = '$login_id'";
 	mysqli_query($con,$sql);
 	
-	echo "<script>alert('successfully Update!');
-				window.location='../profile.php';
-			</script>";
+	// echo "<script>alert('successfully Update!');
+	// 			window.location='../profile.php';
+	// 		</script>";
 }
 else if (isset($_POST['update_squestion'])) {
 	# code... update_squestion
@@ -132,16 +132,16 @@ else if (isset($_POST['update_squestion'])) {
 	$new_sanswer = mysqli_real_escape_string($con,$new_sanswer);
 	$sql = "UPDATE `user_".$user_type."_detail` SET `".$user_type."_secretquestion` = '$new_squestion',`".$user_type."_secretanswer` = '$new_sanswer' WHERE `".$user_type."_userID` = '$login_id'";
 	mysqli_query($con,$sql);
-	echo "<script>alert('successfully Update!');
-				window.location='../profile.php';
-			</script>";
+	// echo "<script>alert('successfully Update!');
+	// 			window.location='../profile.php';
+	// 		</script>";
 
 }
 
 else
 {
-  echo "<script>alert('!');
-      window.location='../index.php';
-    </script>";
+  // echo "<script>alert('!');
+  //     window.location='../index.php';
+  //   </script>";
 }
 ?>

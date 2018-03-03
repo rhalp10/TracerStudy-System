@@ -1,8 +1,7 @@
 <?php 
 
 // Establishing Connection with Server by passing server_name, user_id and password as a parameter
-include('../session.php'); 
-$con = mysqli_connect('localhost','root','','tracerdata') or die("ERROR");
+require_once('../session.php'); 
 // requested post data id
 $req_encypted_postID = $_REQUEST['req_encypted_postID'];
 $req_encypted_postID = stripslashes($req_encypted_postID);
@@ -18,17 +17,17 @@ while ($res_ver_id = mysqli_fetch_array($query_verify_id))
     //the requested hash checked original value if match then stored the verified value in verified_id
     if (password_verify($check_id, $req_encypted_postID)) 
       {
-      $verified_id = $check_id;//temporary value save to verified_id
+      $verified_id = $check_id;//temporary value to save  verified_id
       }  
       
 }
+$id = $verified_id;
+mysqli_query($con,"DELETE FROM `forum_comment_reply` WHERE `comment_reply_topicID` = $id");
+mysqli_query($con,"DELETE  FROM `forum_comment` WHERE `comment_topicID` = $id");
+mysqli_query($con,"DELETE FROM `view_counter` WHERE `view_topicID` = $id");
+mysqli_query($con,"DELETE FROM `forum_topic` WHERE `topic_ID` = $id");
 
 
-$result = mysqli_query($con,"DELETE  FROM `forum_topic` WHERE `topic_ID` = '$verified_id'");
-$result = mysqli_query($con,"DELETE  FROM `view_counter` WHERE `view_topicID` = '$verified_id'");
-$result = mysqli_query($con,"DELETE  FROM `forum_comment` WHERE `comment_topicID` = '$verified_id'");
-$last_id = mysqli_insert_id($result);
-$result = mysqli_query($con,"DELETE  FROM `forum_comment_reply` WHERE `comment_reply_parentID` = '$last_id'");
 
 echo "<script>alert('Successfully Deleted');
 						window.location='../forum.php';

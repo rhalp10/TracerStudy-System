@@ -10,8 +10,9 @@ if ($student_userID == 0) {
 }
 else
 {
-	mysqli_query($con,"DELETE FROM `user_student_detail` WHERE `student_ID` = '$studentID'");
+	
 	mysqli_query($con,"DELETE FROM `user_account` WHERE `user_ID` = '$student_userID'");
+	mysqli_query($con,"DELETE FROM `user_student_detail` WHERE `student_ID` = '$studentID'");
 }
 
 

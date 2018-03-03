@@ -216,18 +216,11 @@ if (isset($_POST['submit-survey'])) {
 			mysqli_query($con,$q2_sql);
 			
 		}
-		if ($Other_q2 == 'yes') {
+		
 			$q2_sql = "INSERT INTO survey_question2(`survey_qID`, `survey_row1`, `survey_col1`,`survey_formID`) ";
 			$q2_sql.= "VALUES (NULL, '5', '$Other_q2','$last_id')";
 			mysqli_query($con,$q2_sql);
-		}
-		else
-		{
-			$q2_sql = "INSERT INTO survey_question2(`survey_qID`, `survey_row1`, `survey_col1`,`survey_formID`) ";
-			$q2_sql.= "VALUES (NULL, '5', 'no','$last_id')";
-			mysqli_query($con,$q2_sql);
-			
-		}
+		
 		
 
 		

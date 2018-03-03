@@ -50,13 +50,12 @@
 		if ($teacher_Password == $teacher_rePassword)  
 		{
 
-			$sql ="SELECT * FROM";
-		    $sql.=" `user_teacher_detail` WHERE `teacher_facultyID` = '$teacher_finumber' ";
-		    $result = mysqli_query($con,$sql) or die(mysqli_error());
-		    $res = mysqli_fetch_array($result);
-			$res['teacher_facultyID'];
+			$sql ="SELECT * FROM `user_teacher_detail` WHERE `teacher_facultyID` = '$teacher_finumber' ";
+		    $result = mysqli_query($con,$sql);
+		    $res = mysqli_num_rows($result);
+			
 			// if student has record perform add query
-			if ($teacher_finumber == $res['teacher_facultyID'])  
+			if ($res > 0)  
 			{	
 				echo "<script>alert('You cannot use this id because its already exist!');
 												window.location='../recordteacher.php';
@@ -114,7 +113,7 @@
 							$res = mysqli_query($con,$sql);
 							$last_id = mysqli_insert_id($con);
 							$chk = "UPDATE `user_teacher_detail` 
-									SET `teacher_facultyID` = '$teacher_tfinumber' WHERE `user_teacher_detail`.`teacher_ID` = $last_id";
+									SET `teacher_facultyID` = '$teacher_finumber' WHERE `user_teacher_detail`.`teacher_ID` = $last_id";
 							
 							if ($chk = mysqli_query($con,$chk)){
 
@@ -152,5 +151,5 @@
 											</script>";
 		}
 		
-	}
+	
 ?>
