@@ -61,7 +61,7 @@ else
                         <header class="head">
                             <div class="main-bar">
                             <ol class="breadcrumb">
-                              <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                              <li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
                               <li class="breadcrumb-item active"> Alumni</li>
                             </ol>
                             </div>
@@ -213,26 +213,6 @@ else
             <?php include ('script.php');?>
         </body>
          
-        <script type="text/javascript">
 
-        $(document).ready(function(){
-                                $("#xIT").click(function(){
-                                    $("#IT_con").show();
-                                    $("#CS_con").hide();
-                                    $("#OA_con").hide();
-                                });
-                                $("#xCS").click(function(){
-                                    $("#IT_con").hide();
-                                    $("#CS_con").show();
-                                    $("#OA_con").hide();
-                                });
-                                $("#xOA").click(function(){
-                                     $("#IT_con").hide();
-                                    $("#CS_con").hide();
-                                    $("#OA_con").show();
-                                });
-                            });
-
-        </script>
 
 </html>

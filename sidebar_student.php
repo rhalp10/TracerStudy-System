@@ -124,7 +124,6 @@ $userType = "student";
                                   <?php
                                   }
                                    ?>
-
                                     <a href="<?php 
                                     if($survey_maxattemp['survey_maxattemp']  <= '1')
                                     {

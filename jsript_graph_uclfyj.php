@@ -1,4 +1,5 @@
 <script>
+    
     // REGISTERED VALUE Declaration of variable 
     var student_Percent = <?php echo $js_outStudent_Register; ?>;
     var Teacher_Percent = <?php echo $js_outTeacher_Register; ?>;

@@ -27,7 +27,7 @@ else
 {}
 
 //include convert scripts
-$category = $_REQUEST['category'];
+$category = $_GET['category'];
 if ($category == 'accountregister') {
     include('json_encode_accountregister.php');
 }

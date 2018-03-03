@@ -81,8 +81,11 @@
                                     <div class="modal-body">
                                     <center>
                                     <h1>Are you sure ?</h1>
+                                    <div class="btn-group">
                                       <a class="btn btn-success" href="action/post_status.php?stat=<?php echo $pin_stat;?>&pID=<?php echo $verified_id; ?>"><?php echo $pin_stat?></a>
                                       <a class="btn btn-danger"  data-dismiss="modal">CANCEL</a>
+                                    </div>
+                                      
                                       </center>
                                     </div>
                                     <div class="modal-footer">
@@ -104,9 +107,12 @@
                                     </div>
                                     <div class="modal-body">
                                     <center>
+                                      
                                     <h1>Are you sure ?</h1>
+                                    <div class="btn-group">
                                       <a class="btn btn-success" href="forum_topic_update.php?req_encypted_postID=<?php echo $req_encypted_postID ;?>">Edit</a>
                                       <a class="btn btn-danger"  data-dismiss="modal">CANCEL</a>
+                                    </div>
                                       </center>
                                     </div>
                                     <div class="modal-footer">
@@ -129,8 +135,10 @@
                                     <div class="modal-body">
                                     <center>
                                     <h1>Are you sure ?</h1>
+                                    <div class="btn-group">
                                       <a class="btn btn-success" href="action/delete_post.php?req_encypted_postID=<?php echo $req_encypted_postID ?>">DELETE</a>
                                       <a class="btn btn-danger"  data-dismiss="modal">CANCEL</a>
+                                    </div>
                                       </center>
                                     </div>
                                     <div class="modal-footer">

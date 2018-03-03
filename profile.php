@@ -3,8 +3,8 @@
 include('session.php'); 
 include('db.php');
 
-$survey_maxcount_qry = mysqli_query($con,"SELECT survey_maxattemp FROM `survey_maxcount` WHERE survey_ownerID = '$login_id'");
-$survey_maxattemp = mysqli_fetch_array($survey_maxcount_qry);
+// $survey_maxcount_qry = mysqli_query($con,"SELECT survey_maxattemp FROM `survey_maxcount` WHERE survey_ownerID = '$login_id'");
+// $survey_maxattemp = mysqli_fetch_array($survey_maxcount_qry);
 $page = 'dashboard';
 
 if ($login_level == '1')
@@ -12,18 +12,21 @@ if ($login_level == '1')
     $result = mysqli_query($con,"SELECT * FROM `user_student_detail` WHERE student_userID = $login_id");
     $data = mysqli_fetch_array($result);
     $data_img = $data['student_img']; 
+    $userType = "student";
 }
 else if ($login_level == '2')
 {
     $result = mysqli_query($con,"SELECT * FROM `user_teacher_detail` WHERE teacher_userID = $login_id");
     $data = mysqli_fetch_array($result);
     $data_img = $data['teacher_img']; 
+    $userType = "teacher";
 }
 else if ($login_level == '3')
 {
     $result = mysqli_query($con,"SELECT * FROM `user_admin_detail` WHERE admin_userID = $login_id");
     $data = mysqli_fetch_array($result);
     $data_img = $data['admin_img']; 
+    $userType = "admin";
 }
 else
 {
@@ -67,7 +70,7 @@ else
                             <div class="main-bar">
                             <ol class="breadcrumb">
                               <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-                              <li class="breadcrumb-item active"> Forum</li>
+                              <li class="breadcrumb-item active"> Profile</li>
                             </ol>
                             </div>
                             <!-- /.main-bar -->
@@ -176,7 +179,7 @@ else
                                               </div>
                                               <div class="bio-row"></div>
                                               <div class="bio-row">
-                                                  <p><span>Full Name </span>: <?php echo $res_sidebar[$userType.'_fName']." ",$res_sidebar[$userType.'_fName']." ",$res_sidebar[$userType.'_lName'];?></p>
+                                                  <p><span>Full Name </span>: <?php echo $res_sidebar[$userType.'_fName']." ",$res_sidebar[$userType.'_mName']." ",$res_sidebar[$userType.'_lName'];?></p>
                                               </div>
                                               <div class="bio-row">
                                                   <p><span>Address </span>: <?php echo $res_sidebar[$userType.'_address'];?></p>
@@ -236,16 +239,21 @@ else
                                                     ?>
                                                      <p><span>Course </span>: 
                                                     <?php
-                                                   echo $res_sidebar[$userType.'_department'];
+                                                    $z = mysqli_query($con,"SELECT cc.course_name FROM `user_student_detail` usd
+INNER JOIN cvsu_course cc ON usd.student_department = cc.course_ID WHERE student_ID = $login_id");
+                                                    $z = mysqli_fetch_array($z);
+                                                   echo $z['course_name'];
                                                   }
-                                                  else
+                                                  else if ($userType == "teacher")
                                                   {
                                                     ?>
                                                      <p><span>Department </span>: <?php
-                                                     $department_ID  = $res_sidebar[$userType.'_department'];
-                                                     $q = mysqli_query($con,"SELECT * FROm cvsu_department where department_ID ='$department_ID' ");
-                                                     $res = mysqli_fetch_array($q);
-                                                     echo $res['department_name'];
+                                                     $department_ID  = $res_sidebar[$userType.'_department']; 
+                                                     
+                                                     echo $department_ID;
+                                                  }
+                                                  else{
+
                                                   }
 
                                                   ?></p>
@@ -607,8 +615,8 @@ else
               <div class="form-group">
                   <label class="control-label col-lg-4">Gender</label>
                   <div class="col-lg-4">
-                    <select name="selected_gender" id="sport" class="validate[required] form-control">
-                        <option value="">Choose a gender</option>
+                    <select name="selected_gender"  class="validate[required] form-control">
+                        <option value="" disabled="">Choose a gender</option>
                         <option value="M">Male</option>
                         <option value="F">Female</option>
                     </select>

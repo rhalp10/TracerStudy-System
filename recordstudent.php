@@ -186,7 +186,7 @@ else
                                             $mstat_q = mysqli_query($con,"SELECT * FROM `marital_status`");
                                             while ($mstat = mysqli_fetch_array($mstat_q)) {
                                                ?>
-                                                <option value="<?php echo $mstat['id']; ?>"><?php echo $mstat['marital_Name']; ?></option>
+                                                <option value="<?php echo $mstat['ID']; ?>"><?php echo $mstat['marital_Name']; ?></option>
                                                <?php
                                             }
                                             ?>
@@ -212,7 +212,7 @@ else
                                         while ($res_dep = mysqli_fetch_array($query_dep)) {
                                         
                                         ?>
-                                            <option value="<?php echo $res_dep['department_acronym'] ?>"><?php echo $res_dep['department_name'];?></option>
+                                            <option value="<?php echo $res_dep['department_ID'] ?>"><?php echo $res_dep['department_name'];?></option>
                                         <?php 
                                         }
                                         ?>
@@ -245,7 +245,7 @@ else
                                     <label for="text1" class="control-label col-lg-4"></label>
                                     <div class="col-lg-8">
                                     <div class="input-group date" id="">
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#register-new">Submit</button>
+                                        <input class="btn btn-success" type="submit" name="submit_recordstudent" value="Submit">
                                       </span>
                                     </div>
                                     </div>
@@ -269,28 +269,6 @@ else
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
-                                   <!--  modal for submit -->
-                                    <div class="modal fade" id="register-new" data-modal-index="2">
-                                      <div class="modal-dialog">
-                                        <div class="modal-content">
-                                          <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                                            <h4 class="modal-title">Register New Student</h4>
-                                          </div>
-                                          <div class="modal-body text-center">
-                                              <div class="btn-group ">
-                                                <input class="btn btn-success" type="submit" name="submit_recordstudent" value="Submit"  form="myform">
-                                                  
-                                                  <button type="button" class="btn btn-metis-1" data-dismiss="modal">Close</button>
-                                                </div>
-                                          </div>
-                                          <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                            
-                                          </div>
-                                        </div><!-- /.modal-content -->
-                                      </div><!-- /.modal-dialog -->
-                                    </div><!-- /.modal -->
 
 </div>
   
@@ -372,23 +350,5 @@ else
                 
             } );
         </script>
-<div id="myModal" class="modal hide fade" role="dialog">
-  <div class="modal-dialog">
 
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Modal Header</h4>
-      </div>
-      <div class="modal-body">
-        <p>Some text in the modal.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-
-  </div>
-</div>
 </html>

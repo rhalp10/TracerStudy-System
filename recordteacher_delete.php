@@ -84,7 +84,7 @@ $teacherID = $_REQUEST['teacherID'];
 <center>
 <div class="btn-group">
   <a href="action/recordteacher_delete_action.php?teacherID=<?php echo $teacherID;?>" class="btn btn-primary">Submit</a>
-  <a href="recordstudent.php"  class="btn btn-danger" >Cancel</a>
+  <a href="recordteacher.php"  class="btn btn-danger" >Cancel</a>
 </div>
 </center>
 <br><br>

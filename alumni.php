@@ -67,86 +67,195 @@ else
                             <!-- /.main-bar -->
                         </header>
                         <div class="inner bg-light lter">
-                           <div class="box">
-                             <header>
-                              <h5 class="pull-right">
-                              </h5>
-                             </header>
-                             
-
-                              <ul class="nav nav-tabs">
-                                <li class="dropdown">
-                                  <a class="dropdown-toggle btn btn-primary" data-toggle="dropdown" href="#">Course menu
-                                  <span class="caret"></span></a>
-                                  <ul class="dropdown-menu">
-                                    <li><a data-toggle="tab" data-target="#IT">IT</a></li>
-                                    <li><a data-toggle="tab" data-target="#CS">CS</a></li>
-                                    <li><a data-toggle="tab" data-target="#OA">OA</a></li> 
-                                  </ul>
-                                </li>
-                              </ul>
-
-                              
-                            </div>
-                             <div class="tab-content">
-                                <div id="IT" class="tab-pane fade in active">
-                                  <div class="body col-sm-12">
-                                    <table  id="alumniIT" class="table table-bordered table-advance table-hover  dataTable">
-                                      <thead>
-                                        <tr>
-                                          <th><h3>Information Technology Alumni List</h3></th>
-
-                                        </tr>
-                                      </thead>
-                                      <tfoot>
-                                        <tr>
-                                          <th></th>
-                                          
-                                        </tr>
-                                      </tfoot>
+                          <!-- Nav tabs -->
+<ul class="nav nav-tabs" role="tablist">
+  <?php
+  $dep =mysqli_query($con,"SELECT * FROM `cvsu_department`"); 
+                              while ($data = mysqli_fetch_array($dep)) {
+                                
+                                if ($data['department_ID'] == 1) {
                                   
-                                  </table>
-                                </div>
-                              </div>
-                                <div id="CS" class="tab-pane fade in fade">
-                                  <div class="body col-sm-12">
-                                    <table  id="alumniCS" class="table table-bordered table-advance table-hover  dataTable">
+                                  ?><li class="active"><a data-toggle="tab" href="#<?php echo  $data['department_ID'] ?>"><?php echo $data['department_name']; ?></a></li><?php
+                                }
+                                else{
+                                  ?><li><a data-toggle="tab" href="#<?php echo  $data['department_ID'] ?>"><?php echo  $data['department_name'] ?></a></li>
+                                  <?php
+                                }
+                              }
+                              ?>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+   <?php 
+    $dep =mysqli_query($con,"SELECT * FROM `cvsu_department`"); 
+    while ($data = mysqli_fetch_array($dep)) {
+      
+      if ($data['department_ID'] == 1) {
+        
+        ?>
+  <div class="tab-pane active" id="<?php echo $data['department_ID']; ?>" role="tabpanel">
+   
+  
+    <?php
+     $dID =  $data['department_ID']; 
+      $s =mysqli_query($con,"SELECT DISTINCT (year(student_year_grad)) as year_list FROM `user_student_detail` WHERE student_department = $dID");
+      ?>
+      <br>
+      <table  id="c" class="table table-bordered table-advance table-hover  dataTable">
                                       <thead>
                                         <tr>
                                           <th><h3>Computer Science Alumni List</h3></th>
 
                                         </tr>
                                       </thead>
+                                      <tbody>
+                                         <?php 
+                                        while ($d = mysqli_fetch_array($s)) {
+                                          $year_list = $d['year_list'];
+                                          ?>
+
+                    <tr>
+                    <td><div class='forum-list-hover col-sm-1' style='height: 20px;'>
+                    <br>
+                      </div>
+                      <div class='col-sm-6 forum-list-content' data-id='"<?php echo $year_list;?>"'>
+                      <a href='alumni_view.php?course="<?php echo $dID;?>"&year="<?php echo $year_list;?>" ' ><?php echo $year_list;?></a>
+
+                     <br>
+                      </div>
+                      <div class='col-sm-2 forum-list-content-stat'>
+                      <br>
+                      </div>
+                      <div class='col-sm-3' style='background-color: #444444;color: white;' >
+                      <a href='alumni_view.php?course=<?php echo $dID;?>&year=<?php echo $year_list;?> ' style='background-color: #444444;color: white;'> VIEW</a>
+                      </div></td>
+                      </tr>
+                                          <?php
+                                        }
+                                        ?>
+                                      </tbody>
                                       <tfoot>
                                         <tr>
                                           <th></th>
-                                          
                                         </tr>
                                       </tfoot>
                                   
                                   </table>
-                                </div>
-                              </div>
-                           
-                              <div id="OA" class="tab-pane fade">
-                                <div class="body col-sm-12">
-                                  <table  id="alumniOA" class="table table-bordered table-advance table-hover  dataTable">
-                                    <thead>
-                                      <tr>
-                                        <th><h3>Office Administration Alumni List</h3></th>
-                                      </tr>
-                                    </thead>
-                                    <tfoot>
-                                      <tr>
-                                        <th></th>
-                                      </tr>
-                                    </tfoot>
-                                 
-                                </table>
-                                </div>
-                            </div>
-                          </div>
+      </div>
+    <?php 
+    }
+        if ($data['department_ID'] == 2) {
+        
+        ?>
+  <div class="tab-pane " id="<?php echo $data['department_ID']; ?>" role="tabpanel">
+   
+  
+    <?php
+     $dID =  $data['department_ID']; 
+      $s =mysqli_query($con,"SELECT DISTINCT (year(student_year_grad)) as year_list FROM `user_student_detail` WHERE student_department = $dID");
+      ?>
+      <br>
+      <table  id="i" class="table table-bordered table-advance table-hover  dataTable">
+                                      <thead>
+                                        <tr>
+                                          <th><h3>Information Technology Alumni List</h3></th>
 
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        <?php 
+                                        while ($d = mysqli_fetch_array($s)) {
+                                          $year_list = $d['year_list'];
+                                          ?>
+                    <tr>
+                    <td><div class='forum-list-hover col-sm-1' style='height: 20px;'>
+                    <br>
+                      </div>
+                      <div class='col-sm-6 forum-list-content' data-id='"<?php echo $year_list;?>"'>
+                      <a href='alumni_view.php?course=<?php echo $dID;?>&year="<?php echo $year_list;?>" ' ><?php echo $year_list;?></a>
+
+                     <br>
+                      </div>
+                      <div class='col-sm-2 forum-list-content-stat'>
+                      <br>
+                      </div>
+                      <div class='col-sm-3' style='background-color: #444444;color: white;' >
+                      <a href='alumni_view.php?course=<?php echo $dID;?>&year=<?php echo $year_list;?> ' style='background-color: #444444;color: white;'> VIEW</a>
+                      </div></td>
+                      </tr>
+                                          <?php
+                                        }
+                                        ?>
+                                        
+                                      </tbody>
+                                      <tfoot>
+                                        <tr>
+                                          <th></th>
+                                        </tr>
+                                      </tfoot>
+                                  
+                                  </table>
+      </div>
+    <?php 
+    }
+      if ($data['department_ID'] == 3) {
+        
+        ?>
+  <div class="tab-pane " id="<?php echo $data['department_ID']; ?>" role="tabpanel">
+   
+  
+    <?php
+     $dID =  $data['department_ID']; 
+      $s =mysqli_query($con,"SELECT DISTINCT (year(student_year_grad)) as year_list FROM `user_student_detail` WHERE student_department = $dID");
+      ?>
+      <br>
+      <table  id="o" class="table table-bordered table-advance table-hover  dataTable">
+                                      <thead>
+                                        <tr>
+                                          <th><h3>Office Administration Alumni List</h3></th>
+
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                         <?php 
+                                        while ($d = mysqli_fetch_array($s)) {
+                                          $year_list = $d['year_list'];
+                                          ?>
+                    <tr>
+                    <td><div class='forum-list-hover col-sm-1' style='height: 20px;'>
+                    <br>
+                      </div>
+                      <div class='col-sm-6 forum-list-content' data-id='"<?php echo $year_list;?>"'>
+                      <a href='alumni_view.php?course="<?php echo $dID;?>"&year="<?php echo $year_list;?>" ' ><?php echo $year_list;?></a>
+
+                     <br>
+                      </div>
+                      <div class='col-sm-2 forum-list-content-stat'>
+                      <br>
+                      </div>
+                      <div class='col-sm-3' style='background-color: #444444;color: white;' >
+                      <a href='alumni_view.php?course=<?php echo $dID;?>&year=<?php echo $year_list;?> ' style='background-color: #444444;color: white;'> VIEW</a>
+                      </div></td>
+                      </tr>
+                                          <?php
+                                        }
+                                        ?>
+                                      </tbody>
+                                      <tfoot>
+                                        <tr>
+                                          <th></th>
+                                        </tr>
+                                      </tfoot>
+                                  
+                                  </table>
+      </div>
+    <?php 
+    }
+  }
+    ?>
+  </div>
+</div>
 
                         </div>
                         <!-- /.inner -->
@@ -163,8 +272,17 @@ else
 
 <script type="text/javascript">
 
-
+$(document).ready( function () {
+    $('#c').DataTable();
+} );
+$(document).ready( function () {
+    $('#i').DataTable();
+} );
+$(document).ready( function () {
+    $('#o').DataTable();
+} );
  $(document).ready(function() {
+
         var dataTable = $('#forumData_Unpin').DataTable( {
           "processing": true,
           "serverSide": true,

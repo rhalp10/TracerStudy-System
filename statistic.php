@@ -62,38 +62,14 @@ else
                         <header class="head">
                             <div class="main-bar">
                             <ol class="breadcrumb">
-                              <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                              <li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
                               <li class="breadcrumb-item active"> Statistic</li>
                             </ol>
                             </div>
                             <!-- /.main-bar -->
                         </header>
                         <div class="inner bg-light lter">
-                       <!--      <div class="col-sm-6" style="border:solid 1px;">
-                                <div id="canvas-holder">
-                                    <canvas id="chart-area" />
-                                </div>
-                            </div>
-                            <div class="col-sm-6" style="border:solid 1px;">
-                              <div id="canvas-holder">
-                                    <canvas id="chart-area1" />
-                                </div>
-                            </div>
-                            <div class="col-sm-6" style="border:solid 1px;">
-                                <div id="canvas-holder">
-                                    <canvas id="bar-chart" />
-                                </div>
-                            </div>
-                            <div class="col-sm-6" style="border:solid 1px;">
-                              <div id="canvas-holder">
-                                    <canvas id="bar-chart1" />
-                                </div>
-                            </div>
-                            <div class="col-sm-6" style="border:solid 1px;">
-                              <div id="canvas-holder">
-                                    <canvas id="chart-line" />
-                                </div>
-                            </div> -->
+                      
                             <table id=""  class="table table-bordered table-advance table-hover  dataTable">
                                   <thead>
                                     <tr>
@@ -111,9 +87,9 @@ else
                                             <span class="caret"></span>
                                           </button>
                                           <ul class="dropdown-menu" role="menu">
-                                             <li><a href="statistic_piegraph.php?category=accountregister" target="_blank">PIE CHART</a></li>
-                                            <li><a href="statistic_bargraph.php?category=accountregister"  target="_blank">BAR GRAPH</a></li>
-                                            <li><a href="statistic_linegraph.php?category=accountregister"  target="_blank">LINE GRAPH</a></li>
+                                             <li><a href="result.php?category=accountregister" target="_blank">PIE CHART</a></li>
+                                            <li><a href="result.php?category=accountregister"  target="_blank">BAR GRAPH</a></li>
+                                            <li><a href="result.php?category=accountregister"  target="_blank">LINE GRAPH</a></li>
                                           </ul>
                                         </div>
                                         </td>
@@ -127,14 +103,30 @@ else
                                             <span class="caret"></span>
                                           </button>
                                           <ul class="dropdown-menu" role="menu">
-                                             <li><a href="statistic_piegraph.php?category=accountunregister" target="_blank">PIE CHART</a></li>
-                                            <li><a href="statistic_bargraph.php?category=accountunregister"  target="_blank">BAR GRAPH</a></li>
-                                            <li><a href="statistic_linegraph.php?category=accountunregister"  target="_blank">LINE GRAPH</a></li>
+                                             <li><a href="result.php?category=accountunregister" target="_blank">PIE CHART</a></li>
+                                            <li><a href="result.php?category=accountunregister"  target="_blank">BAR GRAPH</a></li>
+                                            <li><a href="result.php?category=accountunregister"  target="_blank">LINE GRAPH</a></li>
                                           </ul>
                                         </div>
                                         </td>
                                     </tr>
                                      <tr>
+                                        <td>PURSUING DEGREE REASON</td>
+                                        <td>
+                                        <div class="btn-group">
+                                          <button type="button" class="btn btn-primary">Graphs</button>
+                                          <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                            <span class="caret"></span>
+                                          </button>
+                                          <ul class="dropdown-menu" role="menu">
+                                             <li><a href="result.php?category=acceptingjobreason" target="_blank">PIE CHART</a></li>
+                                            <li><a href="result.php?category=acceptingjobreason"  target="_blank">BAR GRAPH</a></li>
+                                            <li><a href="result.php?category=acceptingjobreason"  target="_blank">LINE GRAPH</a></li>
+                                          </ul>
+                                        </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
                                         <td>ACCEPTING JOB REASON</td>
                                         <td>
                                         <div class="btn-group">
@@ -143,46 +135,13 @@ else
                                             <span class="caret"></span>
                                           </button>
                                           <ul class="dropdown-menu" role="menu">
-                                             <li><a href="statistic_piegraph.php?category=acceptingjobreason" target="_blank">PIE CHART</a></li>
-                                            <li><a href="statistic_bargraph.php?category=acceptingjobreason"  target="_blank">BAR GRAPH</a></li>
-                                            <li><a href="statistic_linegraph.php?category=acceptingjobreason"  target="_blank">LINE GRAPH</a></li>
+                                             <li><a href="result.php?category=relevantjob" target="_blank">PIE CHART</a></li>
+                                            <li><a href="result.php?category=relevantjob"  target="_blank">BAR GRAPH</a></li>
+                                            <li><a href="result.php?category=relevantjob"  target="_blank">LINE GRAPH</a></li>
                                           </ul>
                                         </div>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>COLLEGE CURRICULUM  RELEVANT TO YOUR JOB</td>
-                                        <td>
-                                        <div class="btn-group">
-                                          <button type="button" class="btn btn-primary">Graphs</button>
-                                          <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                                            <span class="caret"></span>
-                                          </button>
-                                          <ul class="dropdown-menu" role="menu">
-                                             <li><a href="statistic_piegraph.php?category=relevantjob" target="_blank">PIE CHART</a></li>
-                                            <li><a href="statistic_bargraph.php?category=relevantjob"  target="_blank">BAR GRAPH</a></li>
-                                            <li><a href="statistic_linegraph.php?category=relevantjob"  target="_blank">LINE GRAPH</a></li>
-                                          </ul>
-                                        </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>INITIAL GROSS MONTHLY EARNING IN YOUR FIRST JOB</td>
-                                        <td>
-                                        <div class="btn-group">
-                                          <button type="button" class="btn btn-primary">Graphs</button>
-                                          <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                                            <span class="caret"></span>
-                                          </button>
-                                          <ul class="dropdown-menu" role="menu">
-                                             <li><a href="statistic_piegraph.php?category=grossearning" target="_blank">PIE CHART</a></li>
-                                            <li><a href="statistic_bargraph.php?category=grossearning"  target="_blank">BAR GRAPH</a></li>
-                                            <li><a href="statistic_linegraph.php?category=grossearning"  target="_blank">LINE GRAPH</a></li>
-                                          </ul>
-                                        </div>
-                                        </td>
-                                    </tr>
-                                   
                                     <tr>
                                         <td>JOB LEVEL POSITION</td>
                                         <td>
@@ -192,15 +151,32 @@ else
                                             <span class="caret"></span>
                                           </button>
                                           <ul class="dropdown-menu" role="menu">
-                                             <li><a href="statistic_piegraph.php?category=joblevelpos" target="_blank">PIE CHART</a></li>
-                                            <li><a href="statistic_bargraph.php?category=joblevelpos"  target="_blank">BAR GRAPH</a></li>
-                                            <li><a href="statistic_linegraph.php?category=joblevelpos"  target="_blank">LINE GRAPH</a></li>
+                                             <li><a href="result.php?category=grossearning" target="_blank">PIE CHART</a></li>
+                                            <li><a href="result.php?category=grossearning"  target="_blank">BAR GRAPH</a></li>
+                                            <li><a href="result.php?category=grossearning"  target="_blank">LINE GRAPH</a></li>
+                                          </ul>
+                                        </div>
+                                        </td>
+                                    </tr>
+                                   
+                                    <tr>
+                                        <td>INITIAL GROSS MONTHLY EARNING IN YOUR FIRST JOB</td>
+                                        <td>
+                                        <div class="btn-group">
+                                          <button type="button" class="btn btn-primary">Graphs</button>
+                                          <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                            <span class="caret"></span>
+                                          </button>
+                                          <ul class="dropdown-menu" role="menu">
+                                             <li><a href="result.php?category=joblevelpos" target="_blank">PIE CHART</a></li>
+                                            <li><a href="result.php?category=joblevelpos"  target="_blank">BAR GRAPH</a></li>
+                                            <li><a href="result.php?category=joblevelpos"  target="_blank">LINE GRAPH</a></li>
                                           </ul>
                                         </div>
                                         </td>
                                     </tr>
                                       <tr>
-                                        <td>PRESENT EMPLOYEE STATUS</td>
+                                        <td>PRESENT EMPLOYEE</td>
                                         <td>
                                         <div class="btn-group">
                                           <button type="button" class="btn btn-primary">Graphs</button>
@@ -208,15 +184,15 @@ else
                                             <span class="caret"></span>
                                           </button>
                                           <ul class="dropdown-menu" role="menu">
-                                             <li><a href="statistic_piegraph.php?category=empystat" target="_blank">PIE CHART</a></li>
-                                            <li><a href="statistic_bargraph.php?category=empystat"  target="_blank">BAR GRAPH</a></li>
-                                            <li><a href="statistic_linegraph.php?category=empystat"  target="_blank">LINE GRAPH</a></li>
+                                             <li><a href="result.php?category=empystat" target="_blank">PIE CHART</a></li>
+                                            <li><a href="result.php?category=empystat"  target="_blank">BAR GRAPH</a></li>
+                                            <li><a href="result.php?category=empystat"  target="_blank">LINE GRAPH</a></li>
                                           </ul>
                                         </div>
                                         </td>
                                     </tr>
                                        <tr>
-                                        <td>PURSUING DEGREE REASON</td>
+                                        <td>PRESENT EMPLOYEE PER STATUS</td>
                                         <td>
                                         <div class="btn-group">
                                           <button type="button" class="btn btn-primary">Graphs</button>
@@ -224,16 +200,16 @@ else
                                             <span class="caret"></span>
                                           </button>
                                           <ul class="dropdown-menu" role="menu">
-                                            <li><a href="statistic_piegraph.php?category=purdegres" target="_blank">PIE CHART</a></li>
-                                            <li><a href="statistic_bargraph.php?category=purdegres"  target="_blank">BAR GRAPH</a></li>
-                                            <li><a href="statistic_linegraph.php?category=purdegres"  target="_blank">LINE GRAPH</a></li>
+                                            <li><a href="result.php?category=purdegres" target="_blank">PIE CHART</a></li>
+                                            <li><a href="result.php?category=purdegres"  target="_blank">BAR GRAPH</a></li>
+                                            <li><a href="result.php?category=purdegres"  target="_blank">LINE GRAPH</a></li>
                                           </ul>
                                         </div>
                                         </td>
                                     </tr>
 
                                     <tr>
-                                        <td>UNEMPLOYED REASON</td>
+                                        <td>COLLEGE CURRICULUM THAT RELEVANT TO YOUR JOB</td>
                                         <td>
                                         <div class="btn-group">
                                           <button type="button" class="btn btn-primary">Graphs</button>
@@ -241,9 +217,9 @@ else
                                             <span class="caret"></span>
                                           </button>
                                           <ul class="dropdown-menu" role="menu">
-                                             <li><a href="statistic_piegraph.php?category=unres" target="_blank">PIE CHART</a></li>
-                                            <li><a href="statistic_bargraph.php?category=unres"  target="_blank">BAR GRAPH</a></li>
-                                            <li><a href="statistic_linegraph.php?category=unres"  target="_blank">LINE GRAPH</a></li>
+                                             <li><a href="result.php?category=unres" target="_blank">PIE CHART</a></li>
+                                            <li><a href="result.php?category=unres"  target="_blank">BAR GRAPH</a></li>
+                                            <li><a href="result.php?category=unres"  target="_blank">LINE GRAPH</a></li>
                                           </ul>
                                         </div>
                                         </td>
@@ -257,9 +233,9 @@ else
                                             <span class="caret"></span>
                                           </button>
                                           <ul class="dropdown-menu" role="menu">
-                                             <li><a href="statistic_piegraph.php?category=uclfyj" target="_blank">PIE CHART</a></li>
-                                            <li><a href="statistic_bargraph.php?category=uclfyj"  target="_blank">BAR GRAPH</a></li>
-                                            <li><a href="statistic_linegraph.php?category=uclfyj"  target="_blank">LINE GRAPH</a></li>
+                                             <li><a href="result.php?category=uclfyj" target="_blank">PIE CHART</a></li>
+                                            <li><a href="result.php?category=uclfyj"  target="_blank">BAR GRAPH</a></li>
+                                            <li><a href="result.php?category=uclfyj"  target="_blank">LINE GRAPH</a></li>
                                           </ul>
                                         </div>
                                         </td>

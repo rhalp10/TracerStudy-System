@@ -113,8 +113,7 @@ $totalAcc_register_asAdmin = $json->DataCount($totalresult_ofAdmin);
                         <header class="head">
                             <div class="main-bar">
                             <ol class="breadcrumb">
-                              <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-                              <li class="breadcrumb-item active"> Forum</li>
+                              <li class="breadcrumb-item active"> Dashboard</li>
                             </ol>
                             </div>
                             <!-- /.main-bar -->
@@ -129,7 +128,18 @@ $totalAcc_register_asAdmin = $json->DataCount($totalresult_ofAdmin);
                                 </div>
                             </div>
                             <div class="col-sm-6">
+<<<<<<< HEAD
+                                <?php 
+                                if ($userType == "teacher") {
+                                }
+                                else{
+
+                                
+                                   ?>
+                                   <table class="table table-bordered table-advance table-hover">
+=======
                                 <table class="table table-bordered table-advance table-hover">
+>>>>>>> a105e03bb2749320cf538993f275fdfce6d306bc
                                     <thead>
                                         <tr>
                                             <thead><b>SUGGESTED COMPATIBLE JOB FOR YOU</b></thead>
@@ -152,6 +162,13 @@ inner join suggested_job sj ON cd.department_ID = sj.job_ID
                                 ?>
                                     </tbody>
                                 </table>
+<<<<<<< HEAD
+                                   <?php
+                                }
+                                ?>
+                                
+=======
+>>>>>>> a105e03bb2749320cf538993f275fdfce6d306bc
                                 
                             </div>
                         </div>

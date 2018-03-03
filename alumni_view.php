@@ -77,13 +77,14 @@ else
                            <div class="col-sm-12">
                                 <h2 class="text-center">
                                 <?php 
-                                if ($req_course == 'IT') {
+                                if ($req_course == 1) {
+                                  echo "Computer Science";
+                                }
+                                if ($req_course == 2) {
+                                    
                                     echo "Information Technology";
                                 }
-                                if ($req_course == 'COMSCI') {
-                                    echo "Computer Science";
-                                }
-                                if ($req_course == 'OA') {
+                                if ($req_course == 3) {
                                     echo "Office Addministration";
                                 }
                                 ?>
@@ -100,7 +101,7 @@ else
                                    <tbody>
                                    <?php 
 
-                                   $query = mysqli_query($con,"SELECT * FROM `user_student_detail`  WHERE student_department LIKE '$req_course' AND student_year_grad LIKE '$req_year%' ORDER BY `student_fName`  ASC");
+                                   $query = mysqli_query($con,"SELECT * FROM `user_student_detail` WHERE student_department = $req_course AND student_year_grad LIKE '%$req_year%' ORDER BY `student_fName`  ASC");
 
                                     $no = 1;
                                   while ($data = mysqli_fetch_array($query)) {
@@ -124,6 +125,8 @@ else
                                    </tfoot>
                                </table>
                            </div>
+                           
+
                            
                         </div>
                         <!-- /.inner -->

@@ -54,7 +54,7 @@ else {}
                         <header class="head">
                             <div class="main-bar">
                             <ol class="breadcrumb">
-                              <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                              <li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
                               <li class="breadcrumb-item active"> Forum</li>
                             </ol>
                             </div>
@@ -85,7 +85,7 @@ else {}
                                   <i class="fa fa-plus"></i>
                                     </div>
                                     <div class="col-sm-6 forum-list-content">
-                                   <strong><a href="content.php">Post new topic</a>
+                                   <strong><a href="forum_topic_create.php">Post new topic</a>
                                    <br>&nbsp;</strong>
                                     </div>
                                     <div class="col-sm-2 forum-list-content-stat">
