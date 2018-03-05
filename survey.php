@@ -10,8 +10,8 @@ if ($survey_maxattemp['survey_ownerID'] == $login_id) {
     //getting latest date base on server PC
     $date_now = date("Y/m/d") ;
     $year_now = date( "Y", strtotime( "$date_now"));
-    echo $date_now;
-    echo $survey_maxattemp['survey_maxattemp'];
+     $date_now;
+     $survey_maxattemp['survey_maxattemp'];
     if($survey_maxattemp['survey_maxattemp'] <= 0)
     {
        header('Location: surveyview.php');

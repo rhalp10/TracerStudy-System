@@ -17,13 +17,13 @@ class PDF extends FPDF{
 		$this->Cell(30,10,'CvSU - CEIT DIT ONLINE TRACER STUDY',0,1,'C');
 		$this->Cell(80);
 
-		if ($req_course == 'IT') {
+		if ($req_course == 2) {
 		$this->Cell(30,10,'Information Technology',0,1,'C');
         }
-        if ($req_course == 'COMSCI') {
+        if ($req_course == 1) {
 		$this->Cell(30,10,'Computer Science',0,1,'C');
         }
-        if ($req_course == 'OA') {
+        if ($req_course == 3) {
 
 		$this->Cell(30,10,'Office Addministration',0,1,'C');
 

@@ -3,11 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
-<<<<<<< HEAD
 -- Generation Time: Mar 03, 2018 at 06:37 PM
-=======
--- Generation Time: Feb 23, 2018 at 01:41 PM
->>>>>>> a105e03bb2749320cf538993f275fdfce6d306bc
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -104,7 +100,6 @@ CREATE TABLE `forum_comment` (
   `comment_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-<<<<<<< HEAD
 --
 -- Dumping data for table `forum_comment`
 --
@@ -113,8 +108,6 @@ INSERT INTO `forum_comment` (`comment_ID`, `comment_topicID`, `comment_userID`, 
 (1, 15, 1, 'zxczxc', '2018-02-24 14:51:06'),
 (2, 15, 4, 'asdasdasd', '2018-03-03 15:35:39');
 
-=======
->>>>>>> a105e03bb2749320cf538993f275fdfce6d306bc
 -- --------------------------------------------------------
 
 --
@@ -123,10 +116,7 @@ INSERT INTO `forum_comment` (`comment_ID`, `comment_topicID`, `comment_userID`, 
 
 CREATE TABLE `forum_comment_reply` (
   `comment_reply_ID` int(11) UNSIGNED NOT NULL,
-<<<<<<< HEAD
   `comment_reply_topicID` int(10) UNSIGNED DEFAULT NULL,
-=======
->>>>>>> a105e03bb2749320cf538993f275fdfce6d306bc
   `comment_reply_parentID` int(11) UNSIGNED DEFAULT NULL,
   `comment_reply_userID` int(11) UNSIGNED DEFAULT NULL,
   `comment_reply_content` varchar(500) DEFAULT NULL,
@@ -153,13 +143,8 @@ CREATE TABLE `forum_topic` (
 --
 
 INSERT INTO `forum_topic` (`topic_ID`, `post_title`, `post_owner_id`, `post_date`, `post_content`, `post_status`) VALUES
-<<<<<<< HEAD
 (15, '1231231', 1, '2018-02-24 14:48:22', '<p>asda</p>\r\n', 'UNPIN'),
 (16, 'asda', 4, '2018-02-24 15:09:46', '<p>asdasd</p>\r\n', 'UNPIN');
-=======
-(1, 'first topic', 1, '2018-02-04 13:26:40', '<p>da reyt weeyy</p>\r\n', 'UNPIN'),
-(2, 'adsasd', 1, '2018-02-23 07:40:37', '<p>asdasdasd</p>\r\n', 'UNPIN');
->>>>>>> a105e03bb2749320cf538993f275fdfce6d306bc
 
 -- --------------------------------------------------------
 
@@ -252,7 +237,6 @@ CREATE TABLE `message_thread_participant` (
   `participant_ID` int(11) UNSIGNED NOT NULL,
   `participant_threadID` int(11) UNSIGNED DEFAULT NULL,
   `participant_userID` int(11) UNSIGNED DEFAULT NULL
-<<<<<<< HEAD
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -275,30 +259,6 @@ CREATE TABLE `suggested_job` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
-=======
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `message_thread_participant`
---
-
-INSERT INTO `message_thread_participant` (`participant_ID`, `participant_threadID`, `participant_userID`) VALUES
-(1, 1, 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `suggested_job`
---
-
-CREATE TABLE `suggested_job` (
-  `job_ID` int(11) UNSIGNED NOT NULL,
-  `job_Title` varchar(250) DEFAULT NULL,
-  `job_Course` int(11) UNSIGNED DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
->>>>>>> a105e03bb2749320cf538993f275fdfce6d306bc
 -- Dumping data for table `suggested_job`
 --
 
@@ -583,11 +543,7 @@ CREATE TABLE `user_account` (
   `user_ID` int(11) UNSIGNED NOT NULL,
   `user_level` int(11) UNSIGNED DEFAULT NULL,
   `user_name` varchar(25) DEFAULT NULL,
-<<<<<<< HEAD
   `user_password` mediumtext,
-=======
-  `user_password` varchar(50) DEFAULT NULL,
->>>>>>> a105e03bb2749320cf538993f275fdfce6d306bc
   `user_created` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -601,13 +557,9 @@ INSERT INTO `user_account` (`user_ID`, `user_level`, `user_name`, `user_password
 (3, 3, 'admin', 'QrUgcNdRjaE74hfEIeThKa/RaqA9N/KpBI+X7VeiyfE=', '2017-09-06 02:23:49'),
 (4, 2, 'teacher', 'EubGHmBLzl/vo4QaEmMmq+4VBNihTeZ5V4ob1H/u0IY=', '2018-02-23 07:40:23'),
 (6, 2, 'daaa1', 'nmJlYI9M3qXXfMBP75rfDTf9c9s0Jq8ZiEdlRCxtmB4=', '2018-02-07 16:04:01'),
-<<<<<<< HEAD
 (7, 2, 'teacher', '6Bgzqn4mnCPjx432mpfOVbU87Mi3sy29KRe8A1l+2X0=', '2018-02-23 12:03:49'),
 (8, 2, 'wazhing', 'URjLyLIMsc9I0ZW7XvIK3mgelVSCKSw1n7HpVV9w1/s=', '2018-02-24 15:15:10'),
 (17, 2, 'z1', 'nLe8cKSpGGeDLKRpMNgQUIYGtrDwaVOny7JFE7V8BK0=', '2018-03-03 16:27:06');
-=======
-(7, 2, 'teacher', '6Bgzqn4mnCPjx432mpfOVbU87Mi3sy29KRe8A1l+2X0=', '2018-02-23 12:03:49');
->>>>>>> a105e03bb2749320cf538993f275fdfce6d306bc
 
 -- --------------------------------------------------------
 
@@ -637,11 +589,7 @@ CREATE TABLE `user_admin_detail` (
 --
 
 INSERT INTO `user_admin_detail` (`admin_ID`, `admin_userID`, `admin_img`, `admin_fName`, `admin_mName`, `admin_lName`, `admin_address`, `admin_status`, `admin_gender`, `admin_dob`, `admin_contact`, `admin_civilStat`, `admin_secretquestion`, `admin_secretanswer`) VALUES
-<<<<<<< HEAD
 (1, 3, '123123.jpg', 'admin', 'admin', 'admin', 'zxczxczxc', 'register', 'M', '0000-00-00', '09169158798', 1, '', '');
-=======
-(1, 3, '14947656_10157945054590556_4562629325253249716_n.png', '', '', '', '', 'register', '', '0000-00-00', '48949494984', 1, '', '');
->>>>>>> a105e03bb2749320cf538993f275fdfce6d306bc
 
 -- --------------------------------------------------------
 
@@ -685,12 +633,8 @@ CREATE TABLE `user_notification` (
 --
 
 INSERT INTO `user_notification` (`notif_ID`, `notif_typeID`, `notif_topicID`, `notif_userID`, `notif_receiverID`, `notif_date`, `notif_state`) VALUES
-<<<<<<< HEAD
 (3, NULL, NULL, NULL, NULL, '2018-02-23 16:49:20', NULL),
 (4, 3, 15, 4, 1, '2018-03-03 15:35:39', 0);
-=======
-(1, NULL, 1, 1, 3, '2018-02-22 15:32:46', NULL);
->>>>>>> a105e03bb2749320cf538993f275fdfce6d306bc
 
 -- --------------------------------------------------------
 
@@ -746,14 +690,9 @@ CREATE TABLE `user_student_detail` (
 --
 
 INSERT INTO `user_student_detail` (`student_ID`, `student_userID`, `student_img`, `student_IDNumber`, `student_fName`, `student_mName`, `student_lName`, `student_address`, `student_civilStat`, `student_dob`, `student_gender`, `student_contact`, `student_admission`, `student_year_grad`, `student_department`, `student_status`, `student_secretquestion`, `student_secretanswer`) VALUES
-<<<<<<< HEAD
 (1, 1, 'captain.jpg', 201310656, 'Rhalp Darren', 'R', 'Cabrera', 'Blk 38 Lot 11 Phase2b Southville2 Trece Martires City', 1, '2018-03-29', 'M', '1947', '2013-06-01', '2018-10-30', 1, 'register', 'd', 'd'),
 (8, 0, 'temp.gif', 321, 'asdasdd', 'D', 'Cabrera', 'Blk 38 Lot 11 Phase2b Southville2 Trece Martires City', 1, '0000-00-00', 'F', '3123', '2018-02-26', '2018-03-08', 2, 'unregister', NULL, NULL),
 (9, 0, 'temp.gif', 99, 'ewq', 'e', 'eqw', 'asdasd', 1, '2018-03-07', 'M', '097', '1995-01-02', '1997-01-02', 3, 'unregister', NULL, NULL);
-=======
-(1, 1, '14963384_10157945054480556_5814871009565891544_n.png', 201310656, 'Rhalp Darren', 'R', 'Cabrera', 'Blk 38 Lot 11 Phase2b Southville2 Trece Martires City', 1, '0000-00-00', '', '1947', '2013-06-01', '2018-10-30', 1, 'register', '', ''),
-(4, 0, 'temp.gif', 132131321, 'sd', 'g', 'jhgjhg', '123123', 1, '2018-02-07', 'F', '123123', '2018-02-08', '2018-02-14', 3, 'unregister', '', '');
->>>>>>> a105e03bb2749320cf538993f275fdfce6d306bc
 
 -- --------------------------------------------------------
 
@@ -785,12 +724,8 @@ CREATE TABLE `user_teacher_detail` (
 --
 
 INSERT INTO `user_teacher_detail` (`teacher_ID`, `teacher_userID`, `teacher_img`, `teacher_facultyID`, `teacher_fName`, `teacher_mName`, `teacher_lName`, `teacher_gender`, `teacher_dob`, `teacher_contact`, `teacher_address`, `teacher_civilStat`, `teacher_department`, `teacher_status`, `teacher_secretquestion`, `teacher_secretanswer`) VALUES
-<<<<<<< HEAD
 (130, 8, 'temp.gif', 68, 'sarada', '', 'uchiha', 'F', '2018-01-28', '123123', '123123', 1, 2, 'register', '', ''),
 (140, 17, 'temp.gif', 54, 'z', 'z', 'z', 'M', '0004-08-05', '85', 'z', 1, 1, 'register', '', '');
-=======
-(129, 7, 'temp.gif', 0, 'teacher', 'R', 'teacher', 'M', '2018-02-01', '09169158798', 'asdasd;khyyu t2', 1, 2, 'register', '', '');
->>>>>>> a105e03bb2749320cf538993f275fdfce6d306bc
 
 -- --------------------------------------------------------
 
@@ -809,13 +744,8 @@ CREATE TABLE `view_counter` (
 --
 
 INSERT INTO `view_counter` (`view_ID`, `view_topicID`, `view_count`) VALUES
-<<<<<<< HEAD
 (3, 15, 13),
 (4, 16, 6);
-=======
-(1, 1, 7),
-(2, 2, 4);
->>>>>>> a105e03bb2749320cf538993f275fdfce6d306bc
 
 --
 -- Indexes for dumped tables
@@ -855,12 +785,8 @@ ALTER TABLE `forum_comment`
 ALTER TABLE `forum_comment_reply`
   ADD PRIMARY KEY (`comment_reply_ID`),
   ADD KEY `comment_reply_parentID` (`comment_reply_parentID`),
-<<<<<<< HEAD
   ADD KEY `comment_reply_userID` (`comment_reply_userID`),
   ADD KEY `comment_reply_topicID` (`comment_reply_topicID`);
-=======
-  ADD KEY `comment_reply_userID` (`comment_reply_userID`);
->>>>>>> a105e03bb2749320cf538993f275fdfce6d306bc
 
 --
 -- Indexes for table `forum_topic`
@@ -1078,11 +1004,7 @@ ALTER TABLE `cvsu_department`
 -- AUTO_INCREMENT for table `forum_comment`
 --
 ALTER TABLE `forum_comment`
-<<<<<<< HEAD
   MODIFY `comment_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-=======
-  MODIFY `comment_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
->>>>>>> a105e03bb2749320cf538993f275fdfce6d306bc
 
 --
 -- AUTO_INCREMENT for table `forum_comment_reply`
@@ -1094,11 +1016,7 @@ ALTER TABLE `forum_comment_reply`
 -- AUTO_INCREMENT for table `forum_topic`
 --
 ALTER TABLE `forum_topic`
-<<<<<<< HEAD
   MODIFY `topic_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
-=======
-  MODIFY `topic_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
->>>>>>> a105e03bb2749320cf538993f275fdfce6d306bc
 
 --
 -- AUTO_INCREMENT for table `marital_status`
@@ -1146,11 +1064,7 @@ ALTER TABLE `survey_forms`
 -- AUTO_INCREMENT for table `survey_maxcount`
 --
 ALTER TABLE `survey_maxcount`
-<<<<<<< HEAD
   MODIFY `survey_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-=======
-  MODIFY `survey_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=158;
->>>>>>> a105e03bb2749320cf538993f275fdfce6d306bc
 
 --
 -- AUTO_INCREMENT for table `survey_question1`
@@ -1204,11 +1118,7 @@ ALTER TABLE `survey_question8`
 -- AUTO_INCREMENT for table `user_account`
 --
 ALTER TABLE `user_account`
-<<<<<<< HEAD
   MODIFY `user_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
-=======
-  MODIFY `user_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
->>>>>>> a105e03bb2749320cf538993f275fdfce6d306bc
 
 --
 -- AUTO_INCREMENT for table `user_admin_detail`
@@ -1226,11 +1136,7 @@ ALTER TABLE `user_level`
 -- AUTO_INCREMENT for table `user_notification`
 --
 ALTER TABLE `user_notification`
-<<<<<<< HEAD
   MODIFY `notif_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-=======
-  MODIFY `notif_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
->>>>>>> a105e03bb2749320cf538993f275fdfce6d306bc
 
 --
 -- AUTO_INCREMENT for table `user_notif_state`
@@ -1248,31 +1154,19 @@ ALTER TABLE `user_notif_type`
 -- AUTO_INCREMENT for table `user_student_detail`
 --
 ALTER TABLE `user_student_detail`
-<<<<<<< HEAD
   MODIFY `student_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-=======
-  MODIFY `student_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
->>>>>>> a105e03bb2749320cf538993f275fdfce6d306bc
 
 --
 -- AUTO_INCREMENT for table `user_teacher_detail`
 --
 ALTER TABLE `user_teacher_detail`
-<<<<<<< HEAD
   MODIFY `teacher_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=141;
-=======
-  MODIFY `teacher_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=130;
->>>>>>> a105e03bb2749320cf538993f275fdfce6d306bc
 
 --
 -- AUTO_INCREMENT for table `view_counter`
 --
 ALTER TABLE `view_counter`
-<<<<<<< HEAD
   MODIFY `view_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-=======
-  MODIFY `view_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
->>>>>>> a105e03bb2749320cf538993f275fdfce6d306bc
 
 --
 -- Constraints for dumped tables
@@ -1302,12 +1196,8 @@ ALTER TABLE `forum_comment`
 --
 ALTER TABLE `forum_comment_reply`
   ADD CONSTRAINT `forum_comment_reply_ibfk_1` FOREIGN KEY (`comment_reply_parentID`) REFERENCES `forum_comment` (`comment_ID`),
-<<<<<<< HEAD
   ADD CONSTRAINT `forum_comment_reply_ibfk_2` FOREIGN KEY (`comment_reply_userID`) REFERENCES `user_account` (`user_ID`),
   ADD CONSTRAINT `forum_comment_reply_ibfk_3` FOREIGN KEY (`comment_reply_topicID`) REFERENCES `forum_topic` (`topic_ID`);
-=======
-  ADD CONSTRAINT `forum_comment_reply_ibfk_2` FOREIGN KEY (`comment_reply_userID`) REFERENCES `user_account` (`user_ID`);
->>>>>>> a105e03bb2749320cf538993f275fdfce6d306bc
 
 --
 -- Constraints for table `forum_topic`
@@ -1419,10 +1309,6 @@ ALTER TABLE `user_admin_detail`
 -- Constraints for table `user_notification`
 --
 ALTER TABLE `user_notification`
-<<<<<<< HEAD
-=======
-  ADD CONSTRAINT `user_notification_ibfk_1` FOREIGN KEY (`notif_topicID`) REFERENCES `forum_topic` (`topic_ID`),
->>>>>>> a105e03bb2749320cf538993f275fdfce6d306bc
   ADD CONSTRAINT `user_notification_ibfk_2` FOREIGN KEY (`notif_userID`) REFERENCES `user_account` (`user_ID`),
   ADD CONSTRAINT `user_notification_ibfk_3` FOREIGN KEY (`notif_receiverID`) REFERENCES `user_account` (`user_ID`);
 

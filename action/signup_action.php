@@ -46,7 +46,7 @@
 					$result1 = mysqli_query($con,"UPDATE `user_student_detail` SET `student_status` = 'register',`student_secretquestion` = '$secret_question',`student_secretanswer` = '$secret_answer',`student_userID` = '$last_id' WHERE `student_IDNumber` = '$student_number'");
 
 					// add survey record default
-					mysql_query($con,"INSERT INTO `survey_maxcount` (`survey_id`, `survey_ownerID`, `survey_maxattemp`) VALUES (NULL, '$last_id', '2');");
+					mysqli_query($con,"INSERT INTO `survey_maxcount` (`survey_id`, `survey_ownerID`, `survey_maxattemp`) VALUES (NULL, '$last_id', '2');");
 								echo "<script>alert('Register Successfully !');
 												window.location='../index.php';
 											</script>";

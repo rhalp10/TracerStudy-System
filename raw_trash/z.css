@@ -1,0 +1,30 @@
+@media print {
+	@page{
+		margin-top:10px;
+		margin-bottom:10px;
+		size: A4 landscape;
+		-webkit-print-color-adjust: exact;
+	}
+
+	* html{
+		visibility: hidden;
+	}
+#print_form{
+	visibility: hidden !important; 
+}
+	#divForPrinting, #divForPrinting * {
+		display: block; 
+		visibility: visible;
+		margin-top: -500 !important;
+	}
+	#divForPrinting{
+		position: absolute;
+		left: 0;
+		top: 0;
+	}/*
+	 #xx{
+        background-color: red;
+        color: white;
+    }*/
+
+}

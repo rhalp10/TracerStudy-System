@@ -123,7 +123,7 @@ $userType = "teacher";
                                   <?php
                                   }
                                    ?>
-                                    <a href="statistic.php">
+                                    <a href="statistic.php?category=accountregister&date=">
                                       <span class="link-title">
                                     Statistic
                                   </span>
