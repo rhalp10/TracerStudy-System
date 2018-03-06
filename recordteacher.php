@@ -72,12 +72,16 @@ else
                             <!-- /.main-bar -->
                         </header>
                         <div class="inner bg-light lter">
+
                             <div class="box col-sm-5">
                              <header>
                               <h5>Add Teacher Record</h5>
                              </header>
                              <div class="body">
+
                                 <form class="form-horizontal" method="POST" action="action/recordteacher_action.php">
+
+                                
                                 <div class="form-group">
                                     <label for="text1" class="control-label col-lg-4">Username</label>
 
@@ -194,7 +198,12 @@ else
                                 </div>
                                 
                                 <!-- /.form-group -->
-                                <input class="btn btn-success" type="submit" name="submit_recordteacher" value="Submit">
+                                
+                                <div class="form-group text-center">
+                                    <input class="btn btn-success" type="submit" name="submit_recordteacher" value="Submit">
+
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal1">Import Excel</button>
+                                </div>
                             </form>
                              </div>
                             </div>
@@ -316,3 +325,52 @@ else
         </script>
 
 </html>
+<div class="container">
+      <div class="modal fade" id="myModal1" data-modal-index="1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-primary">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Import Excel CSV Format</h4>
+      </div>
+      <div class="modal-body">
+    <div class="row">
+
+                <form class="form-horizontal" action="action/csv.php" method="post" name="upload_excel" enctype="multipart/form-data">
+                    <fieldset>
+
+                        <!-- Form Name -->
+                      
+
+                        <!-- File Button -->
+<div class="form-group">
+    <label for="text1" class="control-label col-lg-4">Select File</label>
+
+    <div class="col-lg-8">
+    <div class="input-group date" id="">
+        <input type="file" class="form-control"  name="file" id="file" class="input-large">
+        
+    </div>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="text1" class="control-label col-lg-4">Import data</label>
+
+    <div class="col-lg-8">
+    <div class="input-group date" id="">
+        <button type="submit" id="submit" name="Import_student" class="btn btn-primary button-loading" data-loading-text="Loading...">Import</button>
+        
+    </div>
+    </div>
+</div>
+
+                    </fieldset>
+                </form>
+
+            </div>
+      </div>
+  </div>
+</div>
+</div>
+</div>

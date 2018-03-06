@@ -79,6 +79,7 @@ else
                              </header>
                              <div class="body" >
                                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Add New</button>
+                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal1">Import Excel</button>
 
                                 <table id="registerstud_serverside" class="table table-bordered table-advance table-hover  dataTable">
                                 <thead>
@@ -352,3 +353,55 @@ else
         </script>
 
 </html>
+
+<div class="container">
+      <div class="modal fade" id="myModal1" data-modal-index="1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-primary">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Import Excel CSV Format</h4>
+      </div>
+      <div class="modal-body">
+    <div class="row">
+
+                <form class="form-horizontal" action="action/csv.php" method="post" name="upload_excel" enctype="multipart/form-data">
+                    <fieldset>
+
+                        <!-- Form Name -->
+                      
+
+                        <!-- File Button -->
+<div class="form-group">
+    <label for="text1" class="control-label col-lg-4">Select File</label>
+
+    <div class="col-lg-8">
+    <div class="input-group date" id="">
+        <input type="file" class="form-control"  name="file" id="file" class="input-large">
+        
+    </div>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="text1" class="control-label col-lg-4">Import data</label>
+
+    <div class="col-lg-8">
+    <div class="input-group date" id="">
+        <button type="submit" id="submit" name="Import_student" class="btn btn-primary button-loading" data-loading-text="Loading...">Import</button>
+        
+    </div>
+    </div>
+</div>
+
+                    </fieldset>
+                </form>
+
+            </div>
+      </div>
+  </div>
+</div>
+</div>
+</div>
+
+
