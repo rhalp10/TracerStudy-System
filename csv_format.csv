@@ -1,14 +1,14 @@
-student_IDNumber,student_fName,student_mName,student_lName,student_address,student_civilStat,student_dob,student_gender,student_contact,student_admission,student_year_grad,student_department,
-3123,z,z,z,z,1,z,m,123123,6/1/2013,6/1/2013,1,
-3123,z,z,z,z,1,z,m,123123,6/1/2013,6/1/2013,1,
-3123,z,z,z,z,1,z,m,123123,6/1/2013,6/1/2013,1,
-3123,z,z,z,z,1,z,m,123123,6/1/2013,6/1/2013,1,
-3123,z,z,z,z,1,z,m,123123,6/1/2013,6/1/2013,1,
-3123,z,z,z,z,1,z,m,123123,6/1/2013,6/1/2013,1,
-3123,z,z,z,z,1,z,m,123123,6/1/2013,6/1/2013,1,
-3123,z,z,z,z,1,z,m,123123,6/1/2013,6/1/2013,1,
-3123,z,z,z,z,1,z,m,123123,6/1/2013,6/1/2013,1,
-3123,z,z,z,z,1,z,m,123123,6/1/2013,6/1/2013,1,
-3123,z,z,z,z,1,z,m,123123,6/1/2013,6/1/2013,1,
-3123,z,z,z,z,1,z,m,123123,6/1/2013,6/1/2013,1,
-3123,z,z,z,z,1,z,m,123123,6/1/2013,6/1/2013,1,
+student_IDNumber,student_fName,student_mName,student_lName,student_address,student_civilStat,student_dob,student_gender,student_contact,student_admission,student_year_grad,student_department
+1321,h,z,z,czxczzxc,Single,3/29/2018,Male,123123,6/1/2013,6/1/2013,Computer Science
+1322,fgh,z,z,ret,Single,3/29/2018,Female,123123,6/1/2013,6/1/2013,Information Technology
+1323,ty,z,z,rt,Widowed,3/29/2018,Male,123123,6/1/2013,6/1/2013,Office Administration
+1324,fgh,z,z,fg,Single,3/29/2018,Male,123123,6/1/2013,6/1/2013,Office Administration
+1325,gfh,z,z,asdasdasd,Married,3/29/2018,Male,123123,6/1/2013,6/1/2013,Information Technology
+1326,fgh,z,z,vbc,Single,3/29/2018,Male,123123,6/1/2013,6/1/2013,Office Administration
+1327,z,z,z,cxv,Single,3/29/2018,Male,123123,6/1/2013,6/1/2013,Office Administration
+1328,fgh,z,z,fgh,Single,5/29/2018,Male,123123,6/1/2013,6/1/2013,Information Technology
+1329,fgh,z,z,asdasdasd,Single,3/29/2018,Female,123123,6/1/2013,6/1/2013,Information Technology
+1330,fgh,z,z,fgh,Single,3/29/2018,Female,123123,6/1/2013,6/1/2013,Office Administration
+1331,vbnvb,z,z,zxcasd,Single,3/29/2018,Female,123123,6/1/2013,6/1/2013,Office Administration
+1332,vbnvb,z,z,bvnfgh,Single,4/29/2018,Female,123123,6/1/2013,6/1/2013,Office Administration
+1333,ertert,z,z,asdasdasd,Single,3/30/2018,Female,123123,6/1/2013,6/1/2013,Office Administration

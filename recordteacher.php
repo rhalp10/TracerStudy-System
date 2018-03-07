@@ -202,7 +202,7 @@ else
                                 <div class="form-group text-center">
                                     <input class="btn btn-success" type="submit" name="submit_recordteacher" value="Submit">
 
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal1">Import Excel</button>
+                                    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal1">Import Excel</button> -->
                                 </div>
                             </form>
                              </div>

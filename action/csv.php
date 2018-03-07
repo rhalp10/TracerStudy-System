@@ -17,50 +17,84 @@
  					
  				}
  				else{
-	 				$sql = "INSERT into user_student_detail (
-	 				student_IDNumber
-	 				,student_fName
-,student_mName
-,student_lName
-,student_address
-,student_civilStat
-,student_dob
-,student_gender
-,student_contact
-,student_admission
-,student_year_grad
-,student_department
-
-) 
-	                   values (
-	                   '".$getData[0]."',
-	                   '".$getData[1]."',
-	                   '".$getData[2]."',
-	                   '".$getData[3]."',
-	                   '".$getData[4]."',
-	                   '".$getData[5]."',
-	                   '".$getData[6]."',
-	                   '".$getData[7]."',
-	                   '".$getData[8]."',
-	                   '".$getData[9]."',
-	                   '".$getData[10]."',
-	                   '".$getData[11]."',
-
-	               )
-	                   ";
+					$student_IDNumber = $getData[0]	;			
+					$student_fName = $getData[1];
+					$student_mName = $getData[2];
+					$student_lName = $getData[3];
+					$student_address = $getData[4];
+					$student_civilStat = $getData[5];
+					$student_dob = $getData[6];
+					$student_gender = $getData[7];
+					$student_contact = $getData[8];
+					$student_admission = $getData[9];
+					$student_year_grad = $getData[10];
+					$student_department = $getData[11];
+					$sql = mysqli_query($con,"SELECT * FROM `marital_status` WHERE marital_Name like '%$student_civilStat%'");
+					$mstat = mysqli_fetch_array($sql);
+					$student_civilStat = $mstat['ID'];
+					
+					$sql = mysqli_query($con,"SELECT * FROM `cvsu_department` WHERE department_name like '%$student_department%'");
+					$dep = mysqli_fetch_array($sql);
+					$student_department = $dep['department_ID'];
+					if (strtoupper($student_gender) == 'MALE') {
+						$student_gender = "M";
+					}
+					if (strtoupper($student_gender) == 'FEMALE') {
+						$student_gender = "F";
+					}
+	 				$sql = "INSERT INTO `user_student_detail` 
+(
+`student_ID`, 
+`student_userID`,
+ `student_img`,
+ `student_IDNumber`,
+ `student_fName`,
+ `student_mName`, 
+`student_lName`,
+ `student_address`,
+ `student_civilStat`,
+ `student_dob`,
+ `student_gender`,
+ `student_contact`,
+ `student_admission`,
+ `student_year_grad`,
+ `student_department`,
+ `student_status`,
+ `student_secretquestion`,
+ `student_secretanswer`) 
+VALUES 
+(
+NULL,
+ NULL,
+ 'temp.gif',
+ '".$student_IDNumber."',
+ '".$student_fName."',
+ '".$student_mName."',
+ '".$student_lName."',
+ '".$student_address."',
+ '".$student_civilStat."',
+ '".$student_dob."',
+ '".$student_gender."',
+ '".$student_contact."',
+ '".$student_admission."',
+ '".$student_year_grad."',
+ '".$student_department."',
+ 'unregister',
+ NULL,
+ NULL)";
 	                   $result = mysqli_query($con, $sql);
 					if(!isset($result))
 					{
-						echo "<script type=\"text/javascript\">
-								alert(\"Invalid File:Please Upload CSV File.\");
-								window.location = \"index.php\"
-							  </script>";		
+						// echo "<script type=\"text/javascript\">
+						// 		alert(\"Invalid File:Please Upload CSV File.\");
+						// 		window.location = \"recordstudent.php\"
+						// 	  </script>";		
 					}
 					else {
-						  echo "<script type=\"text/javascript\">
-							alert(\"CSV File has been successfully Imported.\");
-							window.location = \"index.php\"
-						</script>";
+						//   echo "<script type=\"text/javascript\">
+						// 	alert(\"CSV File has been successfully Imported.\");
+						// 	window.location = \"recordstudent.php\"
+						// </script>";
 					}
  					
  				}
@@ -70,9 +104,44 @@
 	         fclose($file);	
 		 }
 	}	 
-if(isset($_POST["Import_teacher"])){
+// if(isset($_POST["Import_teacher"])){
 
-}
+// 	"INSERT INTO `user_teacher_detail` 
+// 	(`teacher_ID`,
+// 	`teacher_userID`,
+// 	`teacher_img`,
+// 	`teacher_facultyID`,
+// 	`teacher_fName`,
+// 	`teacher_mName`,
+// 	`teacher_lName`,
+// 	`teacher_gender`,
+// 	`teacher_dob`,
+// 	`teacher_contact`,
+// 	`teacher_address`,
+// 	`teacher_civilStat`,
+// 	`teacher_department`,
+// 	`teacher_status`,
+// 	`teacher_secretquestion`,
+// 	`teacher_secretanswer`) 
+// 	VALUES (
+// 	NULL,
+// 	NULL,
+// 	'temp.gif',
+// 	NULL,
+// 	NULL,
+// 	NULL,
+// 	NULL,
+// 	NULL,
+// 	NULL,
+// 	NULL,
+// 	NULL,
+// 	NULL,
+// 	NULL,
+// 	'unregister',
+// 	NULL,
+// 	NULL);"
+
+// }
   if(isset($_POST["Export"])){
 		 
       header('Content-Type: text/csv; charset=utf-8');  
