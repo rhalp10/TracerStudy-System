@@ -453,7 +453,11 @@ else
                                          </select>
                                     </div>
                                     <div id="Yes" class="x" style="display: inline-block; vertical-align: top; width: 100%;">
-                                        <h5 class=""><span style="">6. Present Employment Status</span></h5>
+                                        <h5 class=""><span style="">6. Current Job</span></h5>
+                                        <input type="text" name="job" class="form-control">
+                                    </div>
+                                     <div id="" class="x" style="display: inline-block; vertical-align: top; width: 100%;">
+                                        <h5 class=""><span style="">7. Rank</span></h5>
                                         <select id="" class="form-control" style="width: 300px;" name="pre_stat">
                                              <option value="rop" >Regular or Permanent</option>
                                              <option value="temp">Temporary</option>
@@ -463,7 +467,7 @@ else
                                          </select>
                                     </div>
                                     <div id="sq_106" class="" style="display: inline-block; vertical-align: top; width: 100%;">
-                                        <h5 class=""><span style="">7. Was the curriculum you had in college relevant to your first job?</span></h5>
+                                        <h5 class=""><span style="">8. Was the curriculum you had in college relevant to your first job?</span></h5>
                                         <table class="table">
                                             <thead>
                                                 <tr>
@@ -508,7 +512,7 @@ else
                                     <div id="id2"></div>
                                 <div id="id1"  style="display: inline-block; vertical-align: top; width: 100%;display:none;">
                                     
-                                     <h5 class=""><span style="">8. what competencies learned in college did you find very useful in your first job?  You may check (/) more than one answer.</span></h5>
+                                     <h5 class=""><span style="">9. what competencies learned in college did you find very useful in your first job?  You may check (/) more than one answer.</span></h5>
                                         <table class="table">
                                             <thead>
                                                 <tr>

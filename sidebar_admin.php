@@ -155,6 +155,28 @@ $userType = "admin";
                                     </a>
                                     
                                   </li>
+                                  <?php 
+                                  if ($page == 'suggestedjob')
+                                  {
+                                    ?>
+                                     <li class="active">
+                                    <?php
+                                  }
+                                  else
+                                  {
+                                    ?>
+                                   <li class="">
+                                  <?php
+                                  }
+                                   ?>
+                                    <a href="suggestedjob.php">
+                                      <span class="link-title">
+                                    Suggested Job
+                                  </span>
+                                      <span class="fa arrow"></span>
+                                    </a>
+                                    
+                                  </li>
                                 </ul>
                         <!-- /#menu -->
                       

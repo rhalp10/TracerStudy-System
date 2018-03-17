@@ -104,7 +104,9 @@ if (isset($_POST['submit-survey'])) {
 		$k20lessthan25k = $_POST['k20_less_than_25k'];//5
 		$k25andabove = $_POST['k25_and_above'];//6
 		$pre_emp = $_POST['pre_emp'];
+		$job= $_POST['job'];
 		$pre_stat = $_POST['pre_stat'];
+
 	 	$Communication_skills = $_POST['Communication_skills'];//1
 		$HumRelSkills = $_POST['HumRelSkills'];//2
 		$EntreSkill = $_POST['EntreSkill'];//3
@@ -260,8 +262,8 @@ if (isset($_POST['submit-survey'])) {
 		$q5_sql = "INSERT INTO survey_question5 (`survey_qID`, `ans`,`survey_formID`) ";
 		$q5_sql.= "VALUES (NULL, '$pre_emp','$last_id')";
 		mysqli_query($con,$q5_sql);
-		$q6_sql = "INSERT INTO survey_question6 (`survey_qID`, `ans`,`survey_formID`) ";
-		$q6_sql.= "VALUES (NULL, '$pre_stat','$last_id')";
+		$q6_sql = "INSERT INTO survey_question6 (`survey_qID`, `ans`,`survey_formID`,`job`) ";
+		$q6_sql.= "VALUES (NULL, '$pre_stat','$last_id','$job')";
 		mysqli_query($con,$q6_sql);
 
 		

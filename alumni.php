@@ -120,7 +120,7 @@ else
                     <br>
                       </div>
                       <div class='col-sm-6 forum-list-content' data-id='"<?php echo $year_list;?>"'>
-                      <a href='alumni_view.php?course="<?php echo $dID;?>"&year="<?php echo $year_list;?>" ' ><?php echo $year_list;?></a>
+                      <a href='alumni_view.php?course=<?php echo $dID;?>&year=<?php echo $year_list;?> ' ><?php echo $year_list;?></a>
 
                      <br>
                       </div>
@@ -173,7 +173,7 @@ else
                     <br>
                       </div>
                       <div class='col-sm-6 forum-list-content' data-id='"<?php echo $year_list;?>"'>
-                      <a href='alumni_view.php?course=<?php echo $dID;?>&year="<?php echo $year_list;?>" ' ><?php echo $year_list;?></a>
+                      <a href='alumni_view.php?course=<?php echo $dID;?>&year=<?php echo $year_list;?> ' ><?php echo $year_list;?></a>
 
                      <br>
                       </div>
@@ -227,7 +227,7 @@ else
                     <br>
                       </div>
                       <div class='col-sm-6 forum-list-content' data-id='"<?php echo $year_list;?>"'>
-                      <a href='alumni_view.php?course="<?php echo $dID;?>"&year="<?php echo $year_list;?>" ' ><?php echo $year_list;?></a>
+                      <a href='alumni_view.php?course=<?php echo $dID;?>&year=<?php echo $year_list;?> ' ><?php echo $year_list;?></a>
 
                      <br>
                       </div>

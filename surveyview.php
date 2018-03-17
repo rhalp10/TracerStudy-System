@@ -981,13 +981,17 @@ else
                                              ?>" disabled=""  style="width: 300px;">
 
                                             </div>
+                                            <div id="Yes" class="x" style="display: inline-block; vertical-align: top; width: 100%;">
+                                        <h5 class=""><span style="">7. Current Job</span></h5>
+                                        <input type="text" name="job" class="form-control" disabled="" value="<?php echo $q6_data['job']?>">
+                                    </div>
                                            <?php
-                                           $num = 7;
+                                           $num = 8;
                                         }
                                         else
                                         {
                                            
-                                             $num = 6;
+                                             $num = 7;
                                         }
                                         ?>
 

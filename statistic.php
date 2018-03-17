@@ -545,7 +545,7 @@ $total_percent = ($total_true_percent + $total_false_percent);
 }
 
 if ($category == 'pes') {
-	echo "<H1>$category</H1>";
+	// echo "<H1>$category</H1>";
 	$sql = mysqli_query($con,"
 SELECT 
 SUM(CASE WHEN sq6.ans='rop' THEN 1 ELSE 0 END) rop, 
@@ -1160,7 +1160,7 @@ if (isset($_GET['date'])) {
         type: "pie",
         dataPoints: [
 			{ label: "Yes",  y:<?php echo $aYES?> },
-			{ label: "Yes",  y:<?php echo $aNO?> }
+			{ label: "No",  y:<?php echo $aNO?> }
 		]
       }
       ]

@@ -22,13 +22,20 @@
 					$student_mName = $getData[2];
 					$student_lName = $getData[3];
 					$student_address = $getData[4];
-					$student_civilStat = $getData[5];
+					$student_civilStat = ucwords($getData[5]);
 					$student_dob = $getData[6];
 					$student_gender = $getData[7];
 					$student_contact = $getData[8];
-					$student_admission = $getData[9];
-					$student_year_grad = $getData[10];
-					$student_department = $getData[11];
+					// $student_admission = strtotime($getData[9]);
+					$student_admission = new DateTime($getData[9]);
+					$student_admission = $student_admission->format('Y-m-d');
+					// $student_admission = date('Y-m-d',$student_admission);
+					// $student_year_grad = strtotime($getData[10]);
+					// $student_year_grad = date('Y-m-d',$student_year_grad);
+
+					$student_year_grad = new DateTime($getData[10]);
+					$student_year_grad = $student_year_grad->format('Y-m-d');
+					$student_department = ucwords($getData[11]);
 					$sql = mysqli_query($con,"SELECT * FROM `marital_status` WHERE marital_Name like '%$student_civilStat%'");
 					$mstat = mysqli_fetch_array($sql);
 					$student_civilStat = $mstat['ID'];
@@ -85,17 +92,20 @@ NULL,
 	                   $result = mysqli_query($con, $sql);
 					if(!isset($result))
 					{
-						// echo "<script type=\"text/javascript\">
-						// 		alert(\"Invalid File:Please Upload CSV File.\");
-						// 		window.location = \"recordstudent.php\"
-						// 	  </script>";		
+						echo "<script type=\"text/javascript\">
+								alert(\"Invalid File:Please Upload CSV File.\");
+								window.location = \"../recordstudent.php\"
+							  </script>";		
 					}
 					else {
-						//   echo "<script type=\"text/javascript\">
-						// 	alert(\"CSV File has been successfully Imported.\");
-						// 	window.location = \"recordstudent.php\"
-						// </script>";
+						  echo "<script type=\"text/javascript\">
+							alert(\"CSV File has been successfully Imported.\");
+							window.location = \"../recordstudent.php\"
+						</script>";
 					}
+					// echo "<script>alert('successfully Imported!');
+					// 									window.location='../recordstudent.php';
+					// 								</script>";
  					
  				}
 	         $count++;
@@ -103,6 +113,7 @@ NULL,
 			
 	         fclose($file);	
 		 }
+
 	}	 
 // if(isset($_POST["Import_teacher"])){
 

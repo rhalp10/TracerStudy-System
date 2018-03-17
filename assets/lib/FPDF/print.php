@@ -116,9 +116,9 @@ $pdf->SetFont('Arial','',9);
 $pdf->Cell(100,10,'Student',1,0,'C');
 $pdf->Cell(0,10,$totalAcc_register_asStudent,1,1,'C');
 $pdf->Cell(100,10,'Teacher',1,0,'C');
-$pdf->Cell(0,10,$totalAcc_register_asStudent,1,1,'C');
+$pdf->Cell(0,10,$totalAcc_register_asTeacher,1,1,'C');
 $pdf->Cell(100,10,'Admin',1,0,'C');
-$pdf->Cell(0,10,$totalAcc_register_asStudent,1,1,'C');
+$pdf->Cell(0,10,$totalAcc_register_asAdmin,1,1,'C');
 
 
 $pdf->Output();
@@ -149,9 +149,9 @@ $pdf->SetFont('Arial','',9);
 $pdf->Cell(100,10,'Student',1,0,'C');
 $pdf->Cell(0,10,$totalAcc_register_asStudent,1,1,'C');
 $pdf->Cell(100,10,'Teacher',1,0,'C');
-$pdf->Cell(0,10,$totalAcc_register_asStudent,1,1,'C');
+$pdf->Cell(0,10,$totalAcc_register_asTeacher,1,1,'C');
 $pdf->Cell(100,10,'Admin',1,0,'C');
-$pdf->Cell(0,10,$totalAcc_register_asStudent,1,1,'C');
+$pdf->Cell(0,10,$totalAcc_register_asAdmin,1,1,'C');
 
 
 $pdf->Output();

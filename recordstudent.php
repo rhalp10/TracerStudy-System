@@ -78,9 +78,10 @@ else
                               <h5>List</h5>
                              </header>
                              <div class="body" >
+                                <div class="btn-group">
                                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Add New</button>
                                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal1">Import Excel</button>
-
+                                    </div>
                                 <table id="registerstud_serverside" class="table table-bordered table-advance table-hover  dataTable">
                                 <thead>
                                     <tr>
