@@ -74,7 +74,7 @@ while($jcc = mysqli_fetch_array($jobCount)){
 
                     $datajcc[] = $jcc[0];
        }  
-$jobCount = mysqli_query($con,"SELECT DISTINCT(sq6.job) as label,(SELECT COUNT( job) from  survey_question6 WHERE job=sq6.job) as y from  survey_question6 sq6  WHERE sq6.job is not null");
+$jobCount = mysqli_query($con,"SELECT DISTINCT(sq6.job) as label,(SELECT COUNT( job) from  survey_question6 WHERE job=sq6.job) as y from  survey_question6 sq6  WHERE sq6.job is not null LIMIT 10");
 
  // $row_count = mysqli_num_rows($jobCount);
 
@@ -137,7 +137,10 @@ while($rowCount = mysqli_fetch_array($jobCount)){
                             <center><h1>Welcome</h1></center>
                             <hr>
                             <?php 
-                              if ($userType != "teacher" OR $userType != "admin" ) {
+                              if ($userType == "teacher" || $userType == "admin" ) {
+                               
+                              }
+                              else{
                                 ?>
                             <button type="button" class="btn btn-info btn-sm pull-right" data-toggle="modal" data-target="#myModal">Suggested Job</button>
                                 <?php
@@ -207,8 +210,10 @@ inner join suggested_job sj ON cd.department_ID = sj.job_ID
             <!-- /#wrap -->
             <?php include('footer.php');?>
             <!-- /#footer -->
-            <?php include ('script.php');?>
-            <script>
+            <?php include ('script.php');?>    
+
+            <script type="text/javascript">
+ 
     // REGISTERED VALUE Declaration of variable 
     var student_Percent = <?php echo $totalAcc_register_asStudent; ?>;
     var Teacher_Percent = <?php echo $totalAcc_register_asTeacher; ?>;
@@ -234,7 +239,12 @@ inner join suggested_job sj ON cd.department_ID = sj.job_ID
                     window.chartColors.red,
                     window.chartColors.orange,
                     window.chartColors.blue,
-                ],
+                ]
+ // backgroundColor: palette('tol', myData.length).map(function(hex) {
+ //        return '#' + hex;
+ //      })
+  // backgroundColor: fillPattern
+                ,
                 label: 'Dataset 1'
             }],
             labels: 
@@ -251,6 +261,7 @@ inner join suggested_job sj ON cd.department_ID = sj.job_ID
          }
     };
     window.onload = function() {
+
         var ctx = document.getElementById("chart-area").getContext("2d");
         window.myPie = new Chart(ctx, config);
     };
@@ -271,12 +282,26 @@ inner join suggested_job sj ON cd.department_ID = sj.job_ID
         <h4 class="modal-title">Suggested Job</h4>
       </div>
       <div class="modal-body">
-        <table class="table table-bordered table-advance table-hover" id="11">
+        <script type="text/javascript">
+            $(document).ready(function() {
+                var dataTable = $('#zzz').DataTable();
+                } );
+        </script>
+        <table  id="zzz" class="table table-bordered table-advance table-hover">
                                     <thead>
-                                        <tr>
-                                            <thead><b>SUGGESTED COMPATIBLE JOB FOR YOU</b></thead>
-                                        </tr>
+                                            <b>SUGGESTED COMPATIBLE JOB FOR YOU</b>
+                                        
                                     </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>
+                                            </th>
+                                            <th>
+                                            </th>
+                                            <th>
+                                            </th>
+                                        </tr>
+                                    </tfoot>
                                     <tbody>
                                 <?php 
                                 $sj = mysqli_query($con,"SELECT sj.job_Title FROM `suggested_job` sj,user_student_detail usd
@@ -288,12 +313,15 @@ ORDER by rand() LIMIT 25");
                                     ?>
                                     <tr>
                                         <td><?php echo $sj1['job_Title']?></td>
+                                        <td><?php echo $sj1['job_Title']?></td>
+                                        <td><?php echo $sj1['job_Title']?></td>
                                     </tr>
                                     <?php
                                 }
                                 ?>
                                     </tbody>
                                 </table>
+                                <table></table>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

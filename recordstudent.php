@@ -85,15 +85,17 @@ else
                                 <table id="registerstud_serverside" class="table table-bordered table-advance table-hover  dataTable">
                                 <thead>
                                     <tr>
+                                        <th class="text-center col-sm-1">Student #</th>
                                         <th class="text-center col-sm-3">Name</th>
                                         <th class="text-center col-sm-1">Course</th>
                                         <th class="text-center col-sm-2">Year Admitted</th>
                                         <th class="text-center">Year graduated</th>
-                                        <th class="text-center text-center">Action</th>
+                                        <th class="text-center ">Action</th>
                                     </tr>
                                 </thead>
                                 <tfoot>
                                     <tr>
+                                      <th></th>
                                       <th></th>
                                       <th></th>
                                       <th></th>
@@ -207,14 +209,14 @@ else
 
                                     <div class="col-lg-8">
                                     <?php 
-                                    $query_dep = mysqli_query($con,"SELECT * FROM `cvsu_department`");
+                                    $query_dep = mysqli_query($con,"SELECT * FROM `cvsu_course`");
                                     ?>
                                         <select class="form-control" name="student_department" required="">
                                         <?php
                                         while ($res_dep = mysqli_fetch_array($query_dep)) {
                                         
                                         ?>
-                                            <option value="<?php echo $res_dep['department_ID'] ?>"><?php echo $res_dep['department_name'];?></option>
+                                            <option value="<?php echo $res_dep['course_ID'] ?>"><?php echo $res_dep['course_name'];?></option>
                                         <?php 
                                         }
                                         ?>

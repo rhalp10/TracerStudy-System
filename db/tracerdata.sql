@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 17, 2018 at 11:25 AM
+-- Generation Time: Mar 30, 2018 at 10:46 AM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -319,7 +319,8 @@ INSERT INTO `survey_forms` (`form_id`, `form_ownerID`, `form_taken`) VALUES
 (3, 18, '2018-03-17 04:47:43'),
 (4, 18, '2018-03-17 04:57:57'),
 (5, 21, '2018-03-17 09:57:10'),
-(6, 22, '2018-03-17 10:00:10');
+(6, 22, '2018-03-17 10:00:10'),
+(7, 1, '2018-03-30 03:14:57');
 
 -- --------------------------------------------------------
 
@@ -339,7 +340,7 @@ CREATE TABLE `survey_maxcount` (
 --
 
 INSERT INTO `survey_maxcount` (`survey_id`, `survey_ownerID`, `survey_maxattemp`, `survey_date`) VALUES
-(1, 1, 0, '2018-02-07 16:00:00'),
+(1, 1, 1, '2018-03-30 03:14:57'),
 (2, 3, 2, '2018-02-19 16:00:00'),
 (3, 6, 2, '2018-02-18 16:00:00'),
 (4, 18, 0, '2018-03-17 04:57:57'),
@@ -455,7 +456,22 @@ INSERT INTO `survey_question1` (`survey_qID`, `row`, `col1`, `col2`, `survey_for
 (87, 12, '', 'G_MS_MA_PHD12', 6),
 (88, 13, '', 'G_MS_MA_PHD13', 6),
 (89, 14, '', 'G_MS_MA_PHD14', 6),
-(90, 15, 'other', '', 6);
+(90, 15, 'other', '', 6),
+(91, 1, '', '', 7),
+(92, 2, '', '', 7),
+(93, 3, '', '', 7),
+(94, 4, '', '', 7),
+(95, 5, '', '', 7),
+(96, 6, '', '', 7),
+(97, 7, '', '', 7),
+(98, 8, '', '', 7),
+(99, 9, '', '', 7),
+(100, 10, '', '', 7),
+(101, 11, '', '', 7),
+(102, 12, '', '', 7),
+(103, 13, '', '', 7),
+(104, 14, '', '', 7),
+(105, 15, 'other', '', 7);
 
 -- --------------------------------------------------------
 
@@ -504,7 +520,12 @@ INSERT INTO `survey_question2` (`survey_qID`, `survey_row1`, `survey_col1`, `sur
 (27, 2, 'yes', 6),
 (28, 3, 'no', 6),
 (29, 4, 'no', 6),
-(30, 5, '', 6);
+(30, 5, '', 6),
+(31, 1, 'no', 7),
+(32, 2, 'no', 7),
+(33, 3, 'no', 7),
+(34, 4, 'no', 7),
+(35, 5, '', 7);
 
 -- --------------------------------------------------------
 
@@ -548,7 +569,11 @@ INSERT INTO `survey_question3` (`survey_qID`, `row`, `col1`, `col2`, `survey_for
 (21, 1, '', '1', 6),
 (22, 2, '', '1', 6),
 (23, 3, '', '1', 6),
-(24, 4, '', '1', 6);
+(24, 4, '', '1', 6),
+(25, 1, '', '', 7),
+(26, 2, '', '', 7),
+(27, 3, '', '', 7),
+(28, 4, '', '', 7);
 
 -- --------------------------------------------------------
 
@@ -603,7 +628,13 @@ INSERT INTO `survey_question4` (`survey_qID`, `row1`, `col1`, `survey_formID`) V
 (33, 3, '', 6),
 (34, 4, '', 6),
 (35, 5, '', 6),
-(36, 6, '1', 6);
+(36, 6, '1', 6),
+(37, 1, '', 7),
+(38, 2, '', 7),
+(39, 3, '1', 7),
+(40, 4, '1', 7),
+(41, 5, '1', 7),
+(42, 6, '1', 7);
 
 -- --------------------------------------------------------
 
@@ -627,7 +658,8 @@ INSERT INTO `survey_question5` (`survey_qID`, `ans`, `survey_formID`) VALUES
 (3, 'yes', 3),
 (4, 'yes', 4),
 (5, 'yes', 5),
-(6, 'yes', 6);
+(6, 'yes', 6),
+(7, '', 7);
 
 -- --------------------------------------------------------
 
@@ -652,7 +684,8 @@ INSERT INTO `survey_question6` (`survey_qID`, `ans`, `survey_formID`, `job`) VAL
 (3, 'temp', 3, 'Web Developer'),
 (4, 'con', 4, 'Data Scientist'),
 (5, 'rop', 5, 'Executive Assistant'),
-(6, 'rop', 6, 'Web Developer');
+(6, 'rop', 6, 'Web Developer'),
+(7, '', 7, 'asdasdasd');
 
 -- --------------------------------------------------------
 
@@ -676,7 +709,8 @@ INSERT INTO `survey_question7` (`survey_qID`, `survey_ans`, `survey_formID`) VAL
 (3, '1', 3),
 (4, '0', 4),
 (5, '1', 5),
-(6, '1', 6);
+(6, '1', 6),
+(7, '1', 7);
 
 -- --------------------------------------------------------
 
@@ -719,7 +753,13 @@ INSERT INTO `survey_question8` (`survey_qID`, `row1`, `col1`, `survey_formID`) V
 (21, 3, '', 6),
 (22, 4, '', 6),
 (23, 5, '', 6),
-(24, 6, '', 6);
+(24, 6, '', 6),
+(25, 1, '', 7),
+(26, 2, '', 7),
+(27, 3, '', 7),
+(28, 4, '', 7),
+(29, 5, '1', 7),
+(30, 6, '11', 7);
 
 -- --------------------------------------------------------
 
@@ -883,27 +923,7 @@ CREATE TABLE `user_student_detail` (
 --
 
 INSERT INTO `user_student_detail` (`student_ID`, `student_userID`, `student_img`, `student_IDNumber`, `student_fName`, `student_mName`, `student_lName`, `student_address`, `student_civilStat`, `student_dob`, `student_gender`, `student_contact`, `student_admission`, `student_year_grad`, `student_department`, `student_status`, `student_secretquestion`, `student_secretanswer`) VALUES
-(1, 1, 'captain.jpg', 201310656, 'Rhalp Darren', 'R', 'Cabrera', 'Blk 38 Lot 11 Phase2b Southville2 Trece Martires City', 1, '2018-03-29', 'M', '1947', '2013-06-01', '2018-10-30', 1, 'register', 'd', 'd'),
-(9, 0, 'temp.gif', 99, 'ewq', 'e', 'eqw', 'asdasd', 1, '2018-03-07', 'M', '097', '1995-01-02', '1997-01-02', 3, 'unregister', NULL, NULL),
-(10, 18, 'temp.gif', 123, 'asdasddasdasd', 'A', 'CABRERA', 'Blk 38 Lot 11 Phase2b Southville2 Trece Martires City', 2, '2018-03-15', 'M', '123123123', '2018-02-25', '2018-03-31', 1, 'register', 'asdasdasd', 'asdasdasda'),
-(26, 19, 'temp.gif', 123456, 'dsa', 'D', 'Cabrera', 'Blk 38 Lot 11 Phase2b Southville2 Trece Martires City', 1, '2018-03-18', 'M', '3123123123', '2018-02-25', '2018-03-15', 1, 'register', 'dsa', 'asd'),
-(107, NULL, 'temp.gif', 1321, 'h', 'z', 'z', 'czxczzxc', 1, '0000-00-00', 'M', '123123', '2013-06-01', '2013-06-01', 1, 'unregister', NULL, NULL),
-(108, NULL, 'temp.gif', 1322, 'fgh', 'z', 'z', 'ret', 1, '0000-00-00', 'F', '123123', '2013-06-01', '2013-06-01', 2, 'unregister', NULL, NULL),
-(109, NULL, 'temp.gif', 1323, 'ty', 'z', 'z', 'rt', 3, '0000-00-00', 'M', '123123', '2013-06-01', '2013-06-01', 3, 'unregister', NULL, NULL),
-(110, NULL, 'temp.gif', 1324, 'fgh', 'z', 'z', 'fg', 1, '0000-00-00', 'M', '123123', '2013-06-01', '2013-06-01', 3, 'unregister', NULL, NULL),
-(111, NULL, 'temp.gif', 1325, 'gfh', 'z', 'z', 'asdasdasd', 2, '0000-00-00', 'M', '123123', '2013-06-01', '2013-06-01', 2, 'unregister', NULL, NULL),
-(112, NULL, 'temp.gif', 1326, 'fgh', 'z', 'z', 'vbc', 1, '0000-00-00', 'M', '123123', '2013-06-01', '2013-06-01', 3, 'unregister', NULL, NULL),
-(113, NULL, 'temp.gif', 1327, 'z', 'z', 'z', 'cxv', 1, '0000-00-00', 'M', '123123', '2013-06-01', '2013-06-01', 3, 'unregister', NULL, NULL),
-(114, NULL, 'temp.gif', 1328, 'fgh', 'z', 'z', 'fgh', 1, '0000-00-00', 'M', '123123', '2013-06-01', '2013-06-01', 2, 'unregister', NULL, NULL),
-(115, NULL, 'temp.gif', 1329, 'fgh', 'z', 'z', 'asdasdasd', 1, '0000-00-00', 'F', '123123', '2013-06-01', '2013-06-01', 2, 'unregister', NULL, NULL),
-(116, NULL, 'temp.gif', 1330, 'fgh', 'z', 'z', 'fgh', 1, '0000-00-00', 'F', '123123', '2013-06-01', '2013-06-01', 3, 'unregister', NULL, NULL),
-(117, NULL, 'temp.gif', 1331, 'vbnvb', 'z', 'z', 'zxcasd', 1, '0000-00-00', 'F', '123123', '2013-06-01', '2013-06-01', 3, 'unregister', NULL, NULL),
-(118, NULL, 'temp.gif', 1332, 'vbnvb', 'z', 'z', 'bvnfgh', 1, '0000-00-00', 'F', '123123', '2013-06-01', '2013-06-01', 3, 'unregister', NULL, NULL),
-(119, NULL, 'temp.gif', 1333, 'ertert', 'z', 'z', 'asdasdasd', 1, '0000-00-00', 'F', '123123', '2013-06-01', '2013-06-01', 3, 'unregister', NULL, NULL),
-(120, 22, 'temp.gif', 201310184, 'John Ervin', 'N', 'Villadolid', 'Naic, Cavite', 1, '0000-00-00', 'M', '9994330337', '2009-01-01', '2013-01-01', 1, 'register', 'name', 'kimi no nawa'),
-(121, NULL, 'temp.gif', 3213213, 'john ervin', 'n', 'villadolid', 'naic, cavite', 1, '0000-00-00', 'M', '9994330337', '2018-01-17', '2018-01-17', 2, 'unregister', NULL, NULL),
-(122, NULL, 'temp.gif', 213213, 'John Ervin', 'n', 'Villadolid', 'Naic, Cavite', 1, '0000-00-00', 'F', '9994330337', '2009-01-01', '2013-01-01', 3, 'unregister', NULL, NULL),
-(123, 21, 'temp.gif', 201478545, 'mae', 'y', 'young', 'mars', 1, '1991-01-01', 'F', '09987542178', '2005-01-01', '2011-01-01', 3, 'register', 'say my name?', 'delty');
+(1, 1, 'temp.gif', 201310656, 'asd', 'asd', 'asdasd', 'asd321', 1, NULL, 'M', '21', '2018-03-06', '2018-03-30', 1, 'unregister', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -937,7 +957,6 @@ CREATE TABLE `user_teacher_detail` (
 INSERT INTO `user_teacher_detail` (`teacher_ID`, `teacher_userID`, `teacher_img`, `teacher_facultyID`, `teacher_fName`, `teacher_mName`, `teacher_lName`, `teacher_gender`, `teacher_dob`, `teacher_contact`, `teacher_address`, `teacher_civilStat`, `teacher_department`, `teacher_status`, `teacher_secretquestion`, `teacher_secretanswer`) VALUES
 (130, 8, 'temp.gif', 68, 'sarada', '', 'uchiha', 'F', '2018-01-28', '123123', '123123', 1, 2, 'register', '', ''),
 (140, 17, 'temp.gif', 54, 'z', 'z', 'z', 'M', '0004-08-05', '85', 'z', 1, 1, 'register', '', ''),
-(141, NULL, 'temp.gif', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'unregister', NULL, NULL),
 (142, 20, 'temp.gif', 654, 'asd', 'asd', 'asd', 'M', '1689-09-01', '654', 'asd', 1, 1, 'register', '', '');
 
 -- --------------------------------------------------------
@@ -1170,9 +1189,8 @@ ALTER TABLE `user_notif_type`
 --
 ALTER TABLE `user_student_detail`
   ADD PRIMARY KEY (`student_ID`),
-  ADD UNIQUE KEY `student_IDNumber` (`student_IDNumber`),
-  ADD KEY `student_userID` (`student_userID`),
   ADD KEY `student_department` (`student_department`),
+  ADD KEY `student_userID` (`student_userID`),
   ADD KEY `student_civilStat` (`student_civilStat`);
 
 --
@@ -1206,7 +1224,7 @@ ALTER TABLE `cvsu_college`
 -- AUTO_INCREMENT for table `cvsu_course`
 --
 ALTER TABLE `cvsu_course`
-  MODIFY `course_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `course_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `cvsu_department`
@@ -1266,13 +1284,13 @@ ALTER TABLE `message_thread_participant`
 -- AUTO_INCREMENT for table `suggested_job`
 --
 ALTER TABLE `suggested_job`
-  MODIFY `job_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `job_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `survey_forms`
 --
 ALTER TABLE `survey_forms`
-  MODIFY `form_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `form_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `survey_maxcount`
@@ -1284,49 +1302,49 @@ ALTER TABLE `survey_maxcount`
 -- AUTO_INCREMENT for table `survey_question1`
 --
 ALTER TABLE `survey_question1`
-  MODIFY `survey_qID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
+  MODIFY `survey_qID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
 
 --
 -- AUTO_INCREMENT for table `survey_question2`
 --
 ALTER TABLE `survey_question2`
-  MODIFY `survey_qID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `survey_qID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `survey_question3`
 --
 ALTER TABLE `survey_question3`
-  MODIFY `survey_qID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `survey_qID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `survey_question4`
 --
 ALTER TABLE `survey_question4`
-  MODIFY `survey_qID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `survey_qID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `survey_question5`
 --
 ALTER TABLE `survey_question5`
-  MODIFY `survey_qID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `survey_qID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `survey_question6`
 --
 ALTER TABLE `survey_question6`
-  MODIFY `survey_qID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `survey_qID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `survey_question7`
 --
 ALTER TABLE `survey_question7`
-  MODIFY `survey_qID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `survey_qID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `survey_question8`
 --
 ALTER TABLE `survey_question8`
-  MODIFY `survey_qID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `survey_qID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `user_account`
@@ -1368,7 +1386,7 @@ ALTER TABLE `user_notif_type`
 -- AUTO_INCREMENT for table `user_student_detail`
 --
 ALTER TABLE `user_student_detail`
-  MODIFY `student_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
+  MODIFY `student_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 
 --
 -- AUTO_INCREMENT for table `user_teacher_detail`
@@ -1530,8 +1548,8 @@ ALTER TABLE `user_notification`
 -- Constraints for table `user_student_detail`
 --
 ALTER TABLE `user_student_detail`
-  ADD CONSTRAINT `user_student_detail_ibfk_1` FOREIGN KEY (`student_userID`) REFERENCES `user_account` (`user_ID`),
-  ADD CONSTRAINT `user_student_detail_ibfk_2` FOREIGN KEY (`student_department`) REFERENCES `cvsu_department` (`department_ID`),
+  ADD CONSTRAINT `user_student_detail_ibfk_1` FOREIGN KEY (`student_department`) REFERENCES `cvsu_course` (`course_ID`),
+  ADD CONSTRAINT `user_student_detail_ibfk_2` FOREIGN KEY (`student_userID`) REFERENCES `user_account` (`user_ID`),
   ADD CONSTRAINT `user_student_detail_ibfk_3` FOREIGN KEY (`student_civilStat`) REFERENCES `marital_status` (`ID`);
 
 --

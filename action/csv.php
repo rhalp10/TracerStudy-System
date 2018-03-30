@@ -40,9 +40,9 @@
 					$mstat = mysqli_fetch_array($sql);
 					$student_civilStat = $mstat['ID'];
 					
-					$sql = mysqli_query($con,"SELECT * FROM `cvsu_department` WHERE department_name like '%$student_department%'");
+					$sql = mysqli_query($con,"SELECT * FROM `cvsu_course` WHERE course_name like '%$student_department%' || course_acronym like '%$student_department%'");
 					$dep = mysqli_fetch_array($sql);
-					$student_department = $dep['department_ID'];
+					$student_department = $dep['course_ID'];
 					if (strtoupper($student_gender) == 'MALE') {
 						$student_gender = "M";
 					}

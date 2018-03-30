@@ -58,7 +58,7 @@ $userType = "student";
                                     
                                   </li>
                                   <?php 
-                                  if ($page == 'batchmates')
+                                  if ($page == 'batchmates' || $page == 'alumni' )
                                   {
                                     ?>
                                      <li class="active">

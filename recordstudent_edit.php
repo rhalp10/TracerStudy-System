@@ -168,7 +168,7 @@ else
                                             $mstat_q = mysqli_query($con,"SELECT * FROM `marital_status`");
                                             while ($mstat = mysqli_fetch_array($mstat_q)) {
                                                ?>
-                                                <option value="<?php echo $mstat['id']; ?>"><?php echo $mstat['marital_Name']; ?></option>
+                                                <option value="<?php echo $mstat['ID']; ?>"><?php echo $mstat['marital_Name']; ?></option>
                                                <?php
                                             }
                                             ?>
@@ -176,18 +176,18 @@ else
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="text1" class="control-label col-lg-4">Department</label>
+                                    <label for="text1" class="control-label col-lg-4">Course</label>
 
                                     <div class="col-lg-8">
                                     <?php 
-                                    $query_dep = mysqli_query($con,"SELECT * FROM `cvsu_department`");
+                                    $query_dep = mysqli_query($con,"SELECT * FROM `cvsu_course`");
                                     ?>
                                         <select class="form-control" name="student_department" required=""  value="<?php echo $student_address;?>">
                                         <?php
                                         while ($res_dep = mysqli_fetch_array($query_dep)) {
                                         
                                         ?>
-                                            <option value="<?php echo $res_dep['department_acronym'] ?>"><?php echo $res_dep['department_name'];?></option>
+                                            <option value="<?php echo $res_dep['course_ID'] ?>"><?php echo $res_dep['course_name'];?></option>
                                         <?php 
                                         }
                                         ?>

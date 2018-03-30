@@ -177,6 +177,28 @@ $userType = "admin";
                                     </a>
                                     
                                   </li>
+                                  <?php 
+                                  if ($page == 'course')
+                                  {
+                                    ?>
+                                     <li class="active">
+                                    <?php
+                                  }
+                                  else
+                                  {
+                                    ?>
+                                   <li class="">
+                                  <?php
+                                  }
+                                   ?>
+                                    <a href="course.php">
+                                      <span class="link-title">
+                                    Course 
+                                  </span>
+                                      <span class="fa arrow"></span>
+                                    </a>
+                                    
+                                  </li>
                                 </ul>
                         <!-- /#menu -->
                       

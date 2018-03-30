@@ -3,16 +3,16 @@
 	if (isset($_POST['Submit'])) {
 		$studentID = $_REQUEST['studentID'];
 		// Defining post variable names 
-		$student_sinumber = $_POST['student_sinumber'];
-		$student_firstname = $_POST['student_firstname'];
-		$student_middlename = $_POST['student_middlename'];
-		$student_lastname = $_POST['student_lastname'];
-		$student_adress = $_POST['student_adress'];
-		$student_year_grad = $_POST['student_year_grad'];
-		$student_year_admission = $_POST['student_year_admission'];
-		$student_department = $_POST['student_department'];
-		$student_civil = $_POST['student_civil'];
-		$student_contact = $_POST['student_contact'];
+		echo $student_sinumber = $_POST['student_sinumber'];
+		echo $student_firstname = $_POST['student_firstname'];
+		echo $student_middlename = $_POST['student_middlename'];
+		echo $student_lastname = $_POST['student_lastname'];
+		echo $student_adress = $_POST['student_adress'];
+		echo $student_year_grad = $_POST['student_year_grad'];
+		echo $student_year_admission = $_POST['student_year_admission'];
+		echo $student_department = $_POST['student_department'];
+		echo $student_civil = $_POST['student_civil'];
+		echo $student_contact = $_POST['student_contact'];
 		// To protect MySQL injection for Security purpose
 		$student_sinumber = stripslashes($student_sinumber);
 		$student_firstname = stripslashes($student_firstname);
@@ -103,7 +103,7 @@ else{
 		}
 		else{
 			echo "<script>alert('Faculty Id Must be unique!');
-															window.location='../recordteacher.php';
+															window.location='../recordstudent.php';
 														</script>";
 		}
 }

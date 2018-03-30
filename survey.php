@@ -447,6 +447,7 @@ else
                                         <h5 class=""><span style="">5. Are you presently employed?</span></h5>
                                         <select id="" class="form-control" style="width: 300px;" name="pre_emp">
 
+                                             <option value=""></option>
                                              <option value="yes">Yes</option>
                                              <option value="no">No</option>
                                              <option value="never">Never Employed</option>
@@ -459,6 +460,8 @@ else
                                      <div id="" class="x" style="display: inline-block; vertical-align: top; width: 100%;">
                                         <h5 class=""><span style="">7. Rank</span></h5>
                                         <select id="" class="form-control" style="width: 300px;" name="pre_stat">
+                                            
+                                             <option value=""></option>
                                              <option value="rop" >Regular or Permanent</option>
                                              <option value="temp">Temporary</option>
                                              <option value="cas">Casual</option>
