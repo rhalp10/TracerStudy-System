@@ -91,6 +91,7 @@
             loadingIndicator: true
         }
     } );
+     $('#example1').DataTable( {  "aaSorting": []  } );
     
 } );
 

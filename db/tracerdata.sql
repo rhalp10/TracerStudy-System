@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 30, 2018 at 10:46 AM
+-- Generation Time: May 01, 2018 at 01:28 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -299,6 +299,116 @@ INSERT INTO `suggested_job` (`job_ID`, `job_Title`, `job_Course`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `survey`
+--
+
+CREATE TABLE `survey` (
+  `survey_ID` int(11) UNSIGNED NOT NULL,
+  `survey_name` varchar(255) DEFAULT NULL,
+  `survey_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `visibility` tinyint(1) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `survey`
+--
+
+INSERT INTO `survey` (`survey_ID`, `survey_name`, `survey_date`, `visibility`) VALUES
+(1, 'survey 1', '2018-05-01 09:11:37', 1),
+(2, 'survey 2', '2018-05-01 09:11:12', 0),
+(10, 'asdasdasd', '2018-05-01 09:11:37', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `survey_answer`
+--
+
+CREATE TABLE `survey_answer` (
+  `a_ID` int(11) UNSIGNED NOT NULL,
+  `survey_aID` int(11) UNSIGNED DEFAULT NULL,
+  `user_ID` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `survey_answer`
+--
+
+INSERT INTO `survey_answer` (`a_ID`, `survey_aID`, `user_ID`) VALUES
+(1, 1, 22),
+(2, 2, 22),
+(3, 3, 22),
+(4, 4, 22),
+(5, 5, 22),
+(6, 6, 22),
+(7, 3, 22),
+(8, 4, 22),
+(10, 4, 1),
+(11, 5, 1),
+(12, 6, 1),
+(13, 7, 1),
+(14, 4, 1),
+(15, 5, 1),
+(16, 6, 1),
+(17, 7, 1),
+(18, 4, 1),
+(19, 5, 1),
+(20, 6, 1),
+(21, 7, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `survey_answer_other`
+--
+
+CREATE TABLE `survey_answer_other` (
+  `ao_ID` int(11) NOT NULL,
+  `user_ID` int(11) DEFAULT NULL,
+  `survey_aID` int(11) NOT NULL,
+  `survey_aString` varchar(250) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `survey_anweroptions`
+--
+
+CREATE TABLE `survey_anweroptions` (
+  `survey_aID` int(11) UNSIGNED NOT NULL,
+  `survey_qID` int(11) UNSIGNED DEFAULT NULL,
+  `answer` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `survey_anweroptions`
+--
+
+INSERT INTO `survey_anweroptions` (`survey_aID`, `survey_qID`, `answer`) VALUES
+(1, 1, 'a'),
+(2, 1, 'other(s)'),
+(3, 2, 'aa'),
+(4, 3, 'bb'),
+(5, 4, 'a'),
+(6, 5, 'b'),
+(7, 6, 'aa'),
+(8, 2, 'other(s)'),
+(10, 8, 'asdasd'),
+(11, 8, 'asdasdasd'),
+(12, 8, '3'),
+(13, 8, '2'),
+(15, 9, 'a'),
+(16, 9, 'b'),
+(17, 9, 'c'),
+(18, 9, ''),
+(19, 10, 'asdasdasd'),
+(20, 10, 'asdd'),
+(21, 10, 'dsd');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `survey_forms`
 --
 
@@ -340,7 +450,7 @@ CREATE TABLE `survey_maxcount` (
 --
 
 INSERT INTO `survey_maxcount` (`survey_id`, `survey_ownerID`, `survey_maxattemp`, `survey_date`) VALUES
-(1, 1, 1, '2018-03-30 03:14:57'),
+(1, 1, 2, '2018-05-01 07:08:27'),
 (2, 3, 2, '2018-02-19 16:00:00'),
 (3, 6, 2, '2018-02-18 16:00:00'),
 (4, 18, 0, '2018-03-17 04:57:57'),
@@ -764,6 +874,34 @@ INSERT INTO `survey_question8` (`survey_qID`, `row1`, `col1`, `survey_formID`) V
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `survey_questionnaire`
+--
+
+CREATE TABLE `survey_questionnaire` (
+  `survey_qID` int(11) UNSIGNED NOT NULL,
+  `survey_ID` int(11) UNSIGNED DEFAULT NULL,
+  `question` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `survey_questionnaire`
+--
+
+INSERT INTO `survey_questionnaire` (`survey_qID`, `survey_ID`, `question`) VALUES
+(1, 1, 'sagutan mo to'),
+(2, 1, 'asdasdasdasd'),
+(3, 1, '3333333333'),
+(4, 1, '44444'),
+(5, 1, 'xxxxxx'),
+(6, 1, 'zzzzzzzz'),
+(7, NULL, ''),
+(8, 2, '1'),
+(9, 2, 'hey'),
+(10, 2, '123123123123');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user_account`
 --
 
@@ -978,7 +1116,7 @@ CREATE TABLE `view_counter` (
 INSERT INTO `view_counter` (`view_ID`, `view_topicID`, `view_count`) VALUES
 (3, 15, 16),
 (4, 16, 6),
-(5, 17, 3);
+(5, 17, 4);
 
 --
 -- Indexes for dumped tables
@@ -1072,6 +1210,30 @@ ALTER TABLE `suggested_job`
   ADD KEY `job_Course` (`job_Course`);
 
 --
+-- Indexes for table `survey`
+--
+ALTER TABLE `survey`
+  ADD PRIMARY KEY (`survey_ID`);
+
+--
+-- Indexes for table `survey_answer`
+--
+ALTER TABLE `survey_answer`
+  ADD PRIMARY KEY (`a_ID`);
+
+--
+-- Indexes for table `survey_answer_other`
+--
+ALTER TABLE `survey_answer_other`
+  ADD PRIMARY KEY (`ao_ID`);
+
+--
+-- Indexes for table `survey_anweroptions`
+--
+ALTER TABLE `survey_anweroptions`
+  ADD PRIMARY KEY (`survey_aID`);
+
+--
 -- Indexes for table `survey_forms`
 --
 ALTER TABLE `survey_forms`
@@ -1141,6 +1303,12 @@ ALTER TABLE `survey_question7`
 ALTER TABLE `survey_question8`
   ADD PRIMARY KEY (`survey_qID`),
   ADD KEY `survey_formID` (`survey_formID`);
+
+--
+-- Indexes for table `survey_questionnaire`
+--
+ALTER TABLE `survey_questionnaire`
+  ADD PRIMARY KEY (`survey_qID`);
 
 --
 -- Indexes for table `user_account`
@@ -1224,7 +1392,7 @@ ALTER TABLE `cvsu_college`
 -- AUTO_INCREMENT for table `cvsu_course`
 --
 ALTER TABLE `cvsu_course`
-  MODIFY `course_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `course_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `cvsu_department`
@@ -1284,7 +1452,31 @@ ALTER TABLE `message_thread_participant`
 -- AUTO_INCREMENT for table `suggested_job`
 --
 ALTER TABLE `suggested_job`
-  MODIFY `job_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `job_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+
+--
+-- AUTO_INCREMENT for table `survey`
+--
+ALTER TABLE `survey`
+  MODIFY `survey_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `survey_answer`
+--
+ALTER TABLE `survey_answer`
+  MODIFY `a_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
+--
+-- AUTO_INCREMENT for table `survey_answer_other`
+--
+ALTER TABLE `survey_answer_other`
+  MODIFY `ao_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `survey_anweroptions`
+--
+ALTER TABLE `survey_anweroptions`
+  MODIFY `survey_aID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `survey_forms`
@@ -1347,6 +1539,12 @@ ALTER TABLE `survey_question8`
   MODIFY `survey_qID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
+-- AUTO_INCREMENT for table `survey_questionnaire`
+--
+ALTER TABLE `survey_questionnaire`
+  MODIFY `survey_qID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
 -- AUTO_INCREMENT for table `user_account`
 --
 ALTER TABLE `user_account`
@@ -1386,7 +1584,7 @@ ALTER TABLE `user_notif_type`
 -- AUTO_INCREMENT for table `user_student_detail`
 --
 ALTER TABLE `user_student_detail`
-  MODIFY `student_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `student_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `user_teacher_detail`

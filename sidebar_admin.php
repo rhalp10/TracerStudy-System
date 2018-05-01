@@ -199,6 +199,28 @@ $userType = "admin";
                                     </a>
                                     
                                   </li>
+                                  <?php 
+                                  if ($page == 'survey')
+                                  {
+                                    ?>
+                                     <li class="active">
+                                    <?php
+                                  }
+                                  else
+                                  {
+                                    ?>
+                                   <li class="">
+                                  <?php
+                                  }
+                                   ?>
+                                    <a href="survey_mng.php">
+                                      <span class="link-title">
+                                    Survey 
+                                  </span>
+                                      <span class="fa arrow"></span>
+                                    </a>
+                                    
+                                  </li>
                                 </ul>
                         <!-- /#menu -->
                       

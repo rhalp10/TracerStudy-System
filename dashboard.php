@@ -214,19 +214,6 @@ inner join suggested_job sj ON cd.department_ID = sj.job_ID
 
             <script type="text/javascript">
  
-    // REGISTERED VALUE Declaration of variable 
-    var student_Percent = <?php echo $totalAcc_register_asStudent; ?>;
-    var Teacher_Percent = <?php echo $totalAcc_register_asTeacher; ?>;
-    var Admin_Percent = <?php echo $totalAcc_register_asAdmin; ?>;
-    // REGISTERED VALUE Parsing of variable
-    var student_Parse = parseInt(student_Percent);
-    var teacher_Parse = parseInt(Teacher_Percent);
-    var admin_Parse = parseInt(Admin_Percent);
-    //REGISTERED VALUE Parsed Data passed on variable
-    var a = student_Parse;
-    var b = teacher_Parse;
-    var c = admin_Parse;
-    var total_register = a+b+c;
    
     var config = {
         type: 'pie',
