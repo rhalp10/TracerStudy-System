@@ -688,7 +688,7 @@ $r6 = mysqli_fetch_array($sql);
                             <div class="main-bar">
                             <ol class="breadcrumb">
                               <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-                              <li class="breadcrumb-item active"> Forum</li>
+                              <li class="breadcrumb-item active"> Statistics</li>
                             </ol>
                             </div>
                             <!-- /.main-bar -->
