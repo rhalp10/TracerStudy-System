@@ -103,7 +103,7 @@ $userType = "admin";
                                   <?php
                                   }
                                    ?>
-                                    <a href="statistic.php?category=accountregister&date=">
+                                    <a href="statistic.php">
                                       <span class="link-title">
                                     Statistic
                                   </span>
@@ -200,7 +200,7 @@ $userType = "admin";
                                     
                                   </li>
                                   <?php 
-                                  if ($page == 'survey')
+                                  if ($page == 'survey_mng')
                                   {
                                     ?>
                                      <li class="active">

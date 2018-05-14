@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 01, 2018 at 01:28 PM
+-- Generation Time: May 14, 2018 at 10:31 AM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -314,8 +314,8 @@ CREATE TABLE `survey` (
 --
 
 INSERT INTO `survey` (`survey_ID`, `survey_name`, `survey_date`, `visibility`) VALUES
-(1, 'survey 1', '2018-05-01 09:11:37', 1),
-(2, 'survey 2', '2018-05-01 09:11:12', 0),
+(1, 'survey 1', '2018-05-04 17:25:50', 1),
+(2, 'survey 2', '2018-05-04 17:25:50', 0),
 (10, 'asdasdasd', '2018-05-01 09:11:37', 0);
 
 -- --------------------------------------------------------
@@ -327,34 +327,27 @@ INSERT INTO `survey` (`survey_ID`, `survey_name`, `survey_date`, `visibility`) V
 CREATE TABLE `survey_answer` (
   `a_ID` int(11) UNSIGNED NOT NULL,
   `survey_aID` int(11) UNSIGNED DEFAULT NULL,
-  `user_ID` int(11) DEFAULT NULL
+  `user_ID` int(11) DEFAULT NULL,
+  `form_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `survey_answer`
 --
 
-INSERT INTO `survey_answer` (`a_ID`, `survey_aID`, `user_ID`) VALUES
-(1, 1, 22),
-(2, 2, 22),
-(3, 3, 22),
-(4, 4, 22),
-(5, 5, 22),
-(6, 6, 22),
-(7, 3, 22),
-(8, 4, 22),
-(10, 4, 1),
-(11, 5, 1),
-(12, 6, 1),
-(13, 7, 1),
-(14, 4, 1),
-(15, 5, 1),
-(16, 6, 1),
-(17, 7, 1),
-(18, 4, 1),
-(19, 5, 1),
-(20, 6, 1),
-(21, 7, 1);
+INSERT INTO `survey_answer` (`a_ID`, `survey_aID`, `user_ID`, `form_id`) VALUES
+(24, 4, 3, 18),
+(25, 5, 3, 18),
+(26, 6, 3, 18),
+(27, 7, 3, 18),
+(28, 17, 3, 18),
+(29, 1, 3, 19),
+(30, 3, 3, 19),
+(31, 4, 3, 19),
+(32, 5, 3, 19),
+(33, 6, 3, 19),
+(34, 7, 3, 19),
+(35, 17, 3, 19);
 
 -- --------------------------------------------------------
 
@@ -366,8 +359,17 @@ CREATE TABLE `survey_answer_other` (
   `ao_ID` int(11) NOT NULL,
   `user_ID` int(11) DEFAULT NULL,
   `survey_aID` int(11) NOT NULL,
-  `survey_aString` varchar(250) DEFAULT NULL
+  `survey_aString` varchar(250) DEFAULT NULL,
+  `form_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `survey_answer_other`
+--
+
+INSERT INTO `survey_answer_other` (`ao_ID`, `user_ID`, `survey_aID`, `survey_aString`, `form_id`) VALUES
+(10, 3, 2, '11111111111111', 18),
+(11, 3, 8, '1111111111111111111', 18);
 
 -- --------------------------------------------------------
 
@@ -386,7 +388,7 @@ CREATE TABLE `survey_anweroptions` (
 --
 
 INSERT INTO `survey_anweroptions` (`survey_aID`, `survey_qID`, `answer`) VALUES
-(1, 1, 'a'),
+(1, 1, 'aaaaa'),
 (2, 1, 'other(s)'),
 (3, 2, 'aa'),
 (4, 3, 'bb'),
@@ -396,12 +398,12 @@ INSERT INTO `survey_anweroptions` (`survey_aID`, `survey_qID`, `answer`) VALUES
 (8, 2, 'other(s)'),
 (10, 8, 'asdasd'),
 (11, 8, 'asdasdasd'),
-(12, 8, '3'),
+(12, 8, '31'),
 (13, 8, '2'),
 (15, 9, 'a'),
 (16, 9, 'b'),
-(17, 9, 'c'),
-(18, 9, ''),
+(17, 7, 'c'),
+(18, 9, '123'),
 (19, 10, 'asdasdasd'),
 (20, 10, 'asdd'),
 (21, 10, 'dsd');
@@ -415,22 +417,33 @@ INSERT INTO `survey_anweroptions` (`survey_aID`, `survey_qID`, `answer`) VALUES
 CREATE TABLE `survey_forms` (
   `form_id` int(11) UNSIGNED NOT NULL,
   `form_ownerID` int(11) UNSIGNED DEFAULT NULL,
-  `form_taken` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `form_taken` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `survey_ID` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `survey_forms`
 --
 
-INSERT INTO `survey_forms` (`form_id`, `form_ownerID`, `form_taken`) VALUES
-(0, 0, '2018-02-04 12:23:39'),
-(1, 1, '2018-02-04 13:24:38'),
-(2, 1, '2018-02-07 16:41:32'),
-(3, 18, '2018-03-17 04:47:43'),
-(4, 18, '2018-03-17 04:57:57'),
-(5, 21, '2018-03-17 09:57:10'),
-(6, 22, '2018-03-17 10:00:10'),
-(7, 1, '2018-03-30 03:14:57');
+INSERT INTO `survey_forms` (`form_id`, `form_ownerID`, `form_taken`, `survey_ID`) VALUES
+(0, 0, '2018-02-04 12:23:39', NULL),
+(1, 1, '2018-02-04 13:24:38', NULL),
+(2, 1, '2018-02-07 16:41:32', NULL),
+(3, 18, '2018-03-17 04:47:43', NULL),
+(4, 18, '2018-03-17 04:57:57', NULL),
+(5, 21, '2018-03-17 09:57:10', NULL),
+(6, 22, '2018-03-17 10:00:10', NULL),
+(7, 1, '2018-03-30 03:14:57', NULL),
+(10, 3, '2018-05-04 15:30:07', NULL),
+(11, 3, '2018-05-04 15:30:58', NULL),
+(12, 3, '2018-05-04 16:12:47', 1),
+(13, 3, '2018-05-04 17:09:01', 1),
+(14, 3, '2018-05-04 17:18:32', 1),
+(15, 3, '2018-05-04 17:21:25', 2),
+(16, 3, '2018-05-04 17:26:24', 1),
+(17, 3, '2018-05-04 17:26:43', 1),
+(18, 3, '2018-05-04 17:42:26', 1),
+(19, 3, '2018-05-04 17:42:35', 1);
 
 -- --------------------------------------------------------
 
@@ -451,7 +464,7 @@ CREATE TABLE `survey_maxcount` (
 
 INSERT INTO `survey_maxcount` (`survey_id`, `survey_ownerID`, `survey_maxattemp`, `survey_date`) VALUES
 (1, 1, 2, '2018-05-01 07:08:27'),
-(2, 3, 2, '2018-02-19 16:00:00'),
+(2, 3, 0, '2018-05-04 17:42:35'),
 (3, 6, 2, '2018-02-18 16:00:00'),
 (4, 18, 0, '2018-03-17 04:57:57'),
 (5, 19, 2, '2018-03-07 17:46:58'),
@@ -890,11 +903,11 @@ CREATE TABLE `survey_questionnaire` (
 INSERT INTO `survey_questionnaire` (`survey_qID`, `survey_ID`, `question`) VALUES
 (1, 1, 'sagutan mo to'),
 (2, 1, 'asdasdasdasd'),
-(3, 1, '3333333333'),
+(3, 1, 'xxxxxxxxxxxxxxxxxxxx'),
 (4, 1, '44444'),
 (5, 1, 'xxxxxx'),
 (6, 1, 'zzzzzzzz'),
-(7, NULL, ''),
+(7, 1, '545646'),
 (8, 2, '1'),
 (9, 2, 'hey'),
 (10, 2, '123123123123');
@@ -1116,7 +1129,7 @@ CREATE TABLE `view_counter` (
 INSERT INTO `view_counter` (`view_ID`, `view_topicID`, `view_count`) VALUES
 (3, 15, 16),
 (4, 16, 6),
-(5, 17, 4);
+(5, 17, 6);
 
 --
 -- Indexes for dumped tables
@@ -1464,13 +1477,13 @@ ALTER TABLE `survey`
 -- AUTO_INCREMENT for table `survey_answer`
 --
 ALTER TABLE `survey_answer`
-  MODIFY `a_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `a_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `survey_answer_other`
 --
 ALTER TABLE `survey_answer_other`
-  MODIFY `ao_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `ao_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `survey_anweroptions`
@@ -1482,7 +1495,7 @@ ALTER TABLE `survey_anweroptions`
 -- AUTO_INCREMENT for table `survey_forms`
 --
 ALTER TABLE `survey_forms`
-  MODIFY `form_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `form_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `survey_maxcount`

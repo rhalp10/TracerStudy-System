@@ -81,25 +81,80 @@ ORDER  BY sq.survey_qid ");
   $jencode_title = str_replace("\"","",$jencode_title);
    $jencode_title = str_replace("}","\"}",$jencode_title);
    $jencode_title = str_replace("label:","label:\"",$jencode_title);
+
+   class json
+    {
+     public $value = 0;
+     function EncodeParsing($parse){
+        $j_encode = json_encode($parse);
+        return $j_encode;
+      }
+     function DataCount($count){
+
+        $total_count = mysqli_num_rows($count);
+        return $total_count;
+      }
+     function DataCountPercent($countVal, $totalCount){
+      $dataCount_Percent = (($countVal / $totalCount) * 100);
+
+    return $dataCount_Percent;
+    }   
+
+     function stackValue($val)
+      {
+          $this->value += $val;
+      }
+     
+     function getSum()
+      {
+          return $this->value . "<br />";
+      }
+     function addtoString($str, $item) {
+    $parts = explode(',', $str);
+    $parts[] = $item;
+
+    return implode(',', $parts);
+    }
+ 
+
+   
+    }
+    $json = new json();
 ?>
  <center>
-<h1>asdasd</h1>
+<h1>Statistics</h1>
 
 </center>
 <hr>
-<form class="form-inline" method='get'>
+<form class="form-inline" method='get'  target="_blank" action="assets/lib/FPDF/print" >
   <div class="form-group">
        
         <select name="category" id="category" onchange="showCategory(this.value)">
-        <option value="ACCOUNT REGISTER" >ACCOUNT REGISTER</option>
-        <option value="ACCOUNT UNREGISTER" >ACCOUNT UNREGISTER</option>
-        <option value="CATEGORY 1">CATEGORY 1</option>
-        <option value="CATEGORY 2">CATEGORY 2</option>
-        <option value="CATEGORY 3">CATEGORY 3</option>
+        <option value="accountregister" >ACCOUNT REGISTER</option>
+        <option value="accountununregister" >ACCOUNT UNREGISTER</option>
+        <?php 
+        $sql = "SELECT * FROM `survey_questionnaire` sq 
+INNER JOIN survey s ON s.survey_ID = sq.survey_ID
+where s.visibility = 1";
+
+$result = $con->query($sql);
+
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+       ?>
+       <option value="<?php echo $row['survey_qID']?>" ><?php echo $row['question']?></option>
+       <?php
+    }
+} else {
+    echo "0 results";
+}
+        ?>
+        
         </select>
     </div>
     <div class="form-group">
-        <input class="form-control" id="monthx" type="month" name="monthx" onchange="filter_datex(this.value)">
+        <input class="form-control" id="date" type="month" name="date" onchange="filter_datex(this.value)">
     </div>
 
   <select class="form-control input-sm" id="chartType" name="Chart Type">
@@ -110,12 +165,36 @@ ORDER  BY sq.survey_qid ");
     <option value="doughnut">Doughnut</option>
   </select>  
     <div class="form-group">
-        <a class="btn btn-primary pull-right" onclick="printDoc()"  target="_blank" >PRINT</a>
+      <input type="submit" name="print" class="btn btn-primary pull-right" value="PRINT">
+        
     </div>
     
 </form>
 
+<?php 
 
+  $totalresult_ofStudent = mysqli_query($con,"SELECT * FROM `user_student_detail` WHERE `student_status` = 'register'");
+$totalresult_ofTeacher = mysqli_query($con,"SELECT * FROM `user_teacher_detail` WHERE `teacher_status` = 'register'");
+$totalresult_ofAdmin = mysqli_query($con,"SELECT * FROM `user_admin_detail` WHERE `admin_status` = 'register'");
+
+$totalAcc_register_asStudent = $json->DataCount($totalresult_ofStudent);
+$totalAcc_register_asTeacher = $json->DataCount($totalresult_ofTeacher);
+$totalAcc_register_asAdmin = $json->DataCount($totalresult_ofAdmin);
+
+
+  $totalresult_ofStudent = mysqli_query($con,"SELECT * FROM `user_student_detail` WHERE `student_status` = 'unregister'");
+$totalresult_ofTeacher = mysqli_query($con,"SELECT * FROM `user_teacher_detail` WHERE `teacher_status` = 'unregister'");
+$totalresult_ofAdmin = mysqli_query($con,"SELECT * FROM `user_admin_detail` WHERE `admin_status` = 'unregister'");
+
+$totalAcc_unregister_asStudent = $json->DataCount($totalresult_ofStudent);
+$totalAcc_unregister_asTeacher = $json->DataCount($totalresult_ofTeacher);
+$totalAcc_unregister_asAdmin = $json->DataCount($totalresult_ofAdmin);
+
+// $totalAcc_unregister_asStudent = $json->EncodeParsing($totalAcc_unregister_asStudent);
+// $totalAcc_unregister_asTeacher = $json->EncodeParsing($totalAcc_unregister_asTeacher);
+// $totalAcc_unregister_asAdmin = $json->EncodeParsing($totalAcc_unregister_asAdmin);
+
+?>
 
   <div  id="printDiv" >
     <div id="displayChart">
@@ -123,20 +202,22 @@ ORDER  BY sq.survey_qid ");
      
     window.onload = function() {
      
-
+ $('#date').hide();
       var chart = new CanvasJS.Chart("chartContainer", {
       animationEnabled: true,
       title: {
-        text: "First Default Chart Before Onchange"
+        text: "Account Register"
       },
       data: [{
         type: "pie",
         startAngle: 240,
         yValueFormatString: "##0.00'%'",
         indexLabel: "{label} {y}",
-        dataPoints: <?php 
-      echo $jencode_title;
-      ?> 
+        dataPoints:  [
+      { label: "Student",  y:<?php echo $totalAcc_register_asStudent ?> },
+      { label: "Teacher", y: <?php echo $totalAcc_register_asTeacher ?> },
+      { label: "Admin", y: <?php echo $totalAcc_register_asAdmin ?> }
+    ]
       
       }]
     });
@@ -158,7 +239,7 @@ ORDER  BY sq.survey_qid ");
 <div id="thediv"></div>
 <script type="text/javascript">
   function getDate(){
-    var monthx =document.getElementById('monthx').value;
+    var date =document.getElementById('date').value;
   
   }
   function getCategory(){
@@ -171,51 +252,38 @@ ORDER  BY sq.survey_qid ");
     // window.location='assets/lib/FPDF/print?category='+getCategory+'&date='+getDate;
     // alert('assets/lib/FPDF/print?category='+getCategory+'&date='+getDate);
   }
-  $('#monthx').hide();
+  $('#date').hide();
   function showCategory(str) {
   var xhttp; 
   if (str == "") {
     document.getElementById("displayChart").innerHTML = "";
     return;
   }
-  if (str == "ACCOUNT REGISTER" || str == "ACCOUNT UNREGISTER" || str == "default") {
-    $('#monthx').hide();
+  if (str == "accountununregister" || str == "accountregister" || str == "default") {
+    $('#date').hide();
+
   }
   else{
-    $('#monthx').show();
+    $('#date').show();
   }
   xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
-                    
-
                     var json_datax = this.responseText;
-                    var monthx =document.getElementById('monthx').value;
+                    var date =document.getElementById('date').value;
                     var category =document.getElementById('category').value;
-                    alert(json_datax);
                     console.log(this.responseText)
                     var chart=new CanvasJS.Chart("chartContainer", {
                         animationEnabled: true, title: {
-                            text: ''+category+" "+monthx+''
+                            text: ''+category+" "+date+''
                         }
                         , data: [ {
                             type: "pie", startAngle: 240, yValueFormatString: "##0.00'%'", indexLabel: "{label} {y}", dataPoints: 
-                            [ {
-                                y: 79.45, label: 3123
-                            }
-                            , {
-                                y: 7.31, label: "x"
-                            }
-                            , {
-                                y: 7.06, label: "Baidu"
-                            }
-                            , {
-                                y: 4.91, label: "Yahoo"
-                            }
-                            , {
-                                y: 11.26, label: "Others"
-                            }
-                            ]
+                            [
+      { label: "Student",  y:<?php echo $totalAcc_register_asStudent ?> },
+      { label: "Teacher", y: <?php echo $totalAcc_register_asTeacher ?> },
+      { label: "Admin", y: <?php echo $totalAcc_register_asAdmin ?> }
+    ]
                         }
                         ]
                     }
@@ -230,7 +298,7 @@ ORDER  BY sq.survey_qid ");
                     );
                 }
             };
-  xhttp.open("GET", "chart_ajax.php?category="+str+"&date="+monthx, true);
+  xhttp.open("GET", "chart_ajax.php?category="+date+"&date="+str, true);
   xhttp.send();
 }
 
@@ -244,12 +312,12 @@ ORDER  BY sq.survey_qid ");
   xhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     var json_datax = this.responseText;
-                    var monthx =document.getElementById('monthx').value;
+                    var date =document.getElementById('date').value;
                     var category =document.getElementById('category').value;
                     console.log(this.responseText)
                     var chart=new CanvasJS.Chart("chartContainer", {
                         animationEnabled: true, title: {
-                            text: ''+category+" "+monthx+''
+                            text: ''+category+" "+date+''
                         }
                         , data: [ {
                             type: "pie", startAngle: 240, yValueFormatString: "##0.00'%'", indexLabel: "{label} {y}", dataPoints: 
@@ -283,15 +351,12 @@ ORDER  BY sq.survey_qid ");
                     );
                 }
             };
-  xhttp.open("GET", "chart_ajax.php?category="+monthx+"&date="+str, true);
+  xhttp.open("GET", "chart_ajax.php?category="+date+"&date="+str, true);
   xhttp.send();
   }
  
 </script>
 
-            <!-- /#wrap -->
-            <?php include('footer.php');?>
-            <!-- /#footer -->
             <?php include ('script.php');?>
             <script type="text/javascript">
               // function updateContent(){
