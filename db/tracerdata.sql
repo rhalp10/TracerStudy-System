@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.7
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: May 14, 2018 at 10:31 AM
--- Server version: 10.1.26-MariaDB
--- PHP Version: 7.1.8
+-- Host: 127.0.0.1:3307
+-- Generation Time: Jan 18, 2022 at 05:08 PM
+-- Server version: 10.4.10-MariaDB
+-- PHP Version: 7.1.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -28,11 +27,13 @@ SET time_zone = "+00:00";
 -- Table structure for table `cvsu_college`
 --
 
-CREATE TABLE `cvsu_college` (
-  `colleges_ID` int(11) UNSIGNED NOT NULL,
+DROP TABLE IF EXISTS `cvsu_college`;
+CREATE TABLE IF NOT EXISTS `cvsu_college` (
+  `colleges_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   `college_name` varchar(150) DEFAULT NULL,
-  `college_acronym` varchar(25) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `college_acronym` varchar(25) DEFAULT NULL,
+  PRIMARY KEY (`colleges_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `cvsu_college`
@@ -48,12 +49,15 @@ INSERT INTO `cvsu_college` (`colleges_ID`, `college_name`, `college_acronym`) VA
 -- Table structure for table `cvsu_course`
 --
 
-CREATE TABLE `cvsu_course` (
-  `course_ID` int(11) UNSIGNED NOT NULL,
+DROP TABLE IF EXISTS `cvsu_course`;
+CREATE TABLE IF NOT EXISTS `cvsu_course` (
+  `course_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   `course_departmentID` int(11) UNSIGNED DEFAULT NULL,
   `course_name` varchar(100) DEFAULT NULL,
-  `course_acronym` varchar(10) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `course_acronym` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`course_ID`),
+  KEY `course_departmentID` (`course_departmentID`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `cvsu_course`
@@ -70,12 +74,15 @@ INSERT INTO `cvsu_course` (`course_ID`, `course_departmentID`, `course_name`, `c
 -- Table structure for table `cvsu_department`
 --
 
-CREATE TABLE `cvsu_department` (
-  `department_ID` int(11) UNSIGNED NOT NULL,
+DROP TABLE IF EXISTS `cvsu_department`;
+CREATE TABLE IF NOT EXISTS `cvsu_department` (
+  `department_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   `department_collegeID` int(11) UNSIGNED DEFAULT NULL,
   `department_name` varchar(100) DEFAULT NULL,
-  `department_acronym` varchar(25) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `department_acronym` varchar(25) DEFAULT NULL,
+  PRIMARY KEY (`department_ID`),
+  KEY `department_collegeID` (`department_collegeID`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `cvsu_department`
@@ -92,13 +99,17 @@ INSERT INTO `cvsu_department` (`department_ID`, `department_collegeID`, `departm
 -- Table structure for table `forum_comment`
 --
 
-CREATE TABLE `forum_comment` (
-  `comment_ID` int(11) UNSIGNED NOT NULL,
+DROP TABLE IF EXISTS `forum_comment`;
+CREATE TABLE IF NOT EXISTS `forum_comment` (
+  `comment_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   `comment_topicID` int(11) UNSIGNED DEFAULT NULL,
   `comment_userID` int(11) UNSIGNED DEFAULT NULL,
   `comment_content` varchar(500) DEFAULT NULL,
-  `comment_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `comment_date` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`comment_ID`),
+  KEY `comment_topicID` (`comment_topicID`),
+  KEY `comment_userID` (`comment_userID`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `forum_comment`
@@ -106,7 +117,8 @@ CREATE TABLE `forum_comment` (
 
 INSERT INTO `forum_comment` (`comment_ID`, `comment_topicID`, `comment_userID`, `comment_content`, `comment_date`) VALUES
 (2, 15, 4, 'asdasdasd', '2018-03-03 15:35:39'),
-(3, 17, 3, 'ytyutyu', '2018-03-12 08:04:12');
+(3, 17, 3, 'ytyutyu', '2018-03-12 08:04:12'),
+(5, 17, 4, 'Hey', '2022-01-17 18:41:02');
 
 -- --------------------------------------------------------
 
@@ -114,13 +126,18 @@ INSERT INTO `forum_comment` (`comment_ID`, `comment_topicID`, `comment_userID`, 
 -- Table structure for table `forum_comment_reply`
 --
 
-CREATE TABLE `forum_comment_reply` (
-  `comment_reply_ID` int(11) UNSIGNED NOT NULL,
+DROP TABLE IF EXISTS `forum_comment_reply`;
+CREATE TABLE IF NOT EXISTS `forum_comment_reply` (
+  `comment_reply_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   `comment_reply_topicID` int(10) UNSIGNED DEFAULT NULL,
   `comment_reply_parentID` int(11) UNSIGNED DEFAULT NULL,
   `comment_reply_userID` int(11) UNSIGNED DEFAULT NULL,
   `comment_reply_content` varchar(500) DEFAULT NULL,
-  `comment_reply_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `comment_reply_date` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`comment_reply_ID`),
+  KEY `comment_reply_parentID` (`comment_reply_parentID`),
+  KEY `comment_reply_userID` (`comment_reply_userID`),
+  KEY `comment_reply_topicID` (`comment_reply_topicID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -129,23 +146,26 @@ CREATE TABLE `forum_comment_reply` (
 -- Table structure for table `forum_topic`
 --
 
-CREATE TABLE `forum_topic` (
-  `topic_ID` int(11) UNSIGNED NOT NULL,
+DROP TABLE IF EXISTS `forum_topic`;
+CREATE TABLE IF NOT EXISTS `forum_topic` (
+  `topic_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   `post_title` varchar(150) DEFAULT NULL,
   `post_owner_id` int(11) UNSIGNED DEFAULT NULL,
-  `post_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `post_date` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `post_content` varchar(50000) DEFAULT NULL,
-  `post_status` varchar(25) DEFAULT 'UNPIN'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `post_status` varchar(25) DEFAULT 'UNPIN',
+  PRIMARY KEY (`topic_ID`),
+  KEY `post_owner_id` (`post_owner_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `forum_topic`
 --
 
 INSERT INTO `forum_topic` (`topic_ID`, `post_title`, `post_owner_id`, `post_date`, `post_content`, `post_status`) VALUES
-(15, '1231231', 1, '2018-02-24 14:48:22', '<p>asda</p>\r\n', 'UNPIN'),
-(16, 'asda', 4, '2018-02-24 15:09:46', '<p>asdasd</p>\r\n', 'UNPIN'),
-(17, 'asdasdas', 3, '2018-03-12 08:03:57', '<p>d213123123</p>\r\n', 'UNPIN');
+(15, 'Update Title', 1, '2022-01-16 22:02:21', '<p>edited</p>\r\n', 'UNPIN'),
+(16, 'Sample Post', 4, '2022-01-17 18:40:19', '<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>\r\n', 'UNPIN'),
+(17, 'Pin: Post Test', 3, '2022-01-17 19:42:47', '<p>d213123123</p>\r\n', 'PIN');
 
 -- --------------------------------------------------------
 
@@ -153,10 +173,12 @@ INSERT INTO `forum_topic` (`topic_ID`, `post_title`, `post_owner_id`, `post_date
 -- Table structure for table `marital_status`
 --
 
-CREATE TABLE `marital_status` (
-  `ID` int(11) UNSIGNED NOT NULL,
-  `marital_Name` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+DROP TABLE IF EXISTS `marital_status`;
+CREATE TABLE IF NOT EXISTS `marital_status` (
+  `ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `marital_Name` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `marital_status`
@@ -173,13 +195,17 @@ INSERT INTO `marital_status` (`ID`, `marital_Name`) VALUES
 -- Table structure for table `message_send`
 --
 
-CREATE TABLE `message_send` (
-  `message_ID` int(11) UNSIGNED NOT NULL,
+DROP TABLE IF EXISTS `message_send`;
+CREATE TABLE IF NOT EXISTS `message_send` (
+  `message_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   `message_threadID` int(11) UNSIGNED DEFAULT NULL,
-  `message_sendDate` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `message_sendDate` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `message_content` varchar(1500) DEFAULT NULL,
-  `message_receiver` int(11) UNSIGNED DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `message_receiver` int(11) UNSIGNED DEFAULT NULL,
+  PRIMARY KEY (`message_ID`),
+  KEY `message_threadID` (`message_threadID`),
+  KEY `message_receiver` (`message_receiver`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `message_send`
@@ -195,12 +221,16 @@ INSERT INTO `message_send` (`message_ID`, `message_threadID`, `message_sendDate`
 -- Table structure for table `message_send_state`
 --
 
-CREATE TABLE `message_send_state` (
-  `state_ID` int(11) UNSIGNED NOT NULL,
+DROP TABLE IF EXISTS `message_send_state`;
+CREATE TABLE IF NOT EXISTS `message_send_state` (
+  `state_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   `state_msgID` int(11) UNSIGNED DEFAULT NULL,
   `state_readerID` int(11) UNSIGNED DEFAULT NULL,
-  `state_dateRead` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `state_dateRead` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`state_ID`),
+  KEY `state_msgID` (`state_msgID`),
+  KEY `state_readerID` (`state_readerID`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `message_send_state`
@@ -215,11 +245,13 @@ INSERT INTO `message_send_state` (`state_ID`, `state_msgID`, `state_readerID`, `
 -- Table structure for table `message_thread`
 --
 
-CREATE TABLE `message_thread` (
-  `thread_ID` int(11) UNSIGNED NOT NULL,
+DROP TABLE IF EXISTS `message_thread`;
+CREATE TABLE IF NOT EXISTS `message_thread` (
+  `thread_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   `thread_name` varchar(150) DEFAULT NULL,
-  `thread_created` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `thread_created` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`thread_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `message_thread`
@@ -234,11 +266,15 @@ INSERT INTO `message_thread` (`thread_ID`, `thread_name`, `thread_created`) VALU
 -- Table structure for table `message_thread_participant`
 --
 
-CREATE TABLE `message_thread_participant` (
-  `participant_ID` int(11) UNSIGNED NOT NULL,
+DROP TABLE IF EXISTS `message_thread_participant`;
+CREATE TABLE IF NOT EXISTS `message_thread_participant` (
+  `participant_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   `participant_threadID` int(11) UNSIGNED DEFAULT NULL,
-  `participant_userID` int(11) UNSIGNED DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `participant_userID` int(11) UNSIGNED DEFAULT NULL,
+  PRIMARY KEY (`participant_ID`),
+  KEY `participant_threadID` (`participant_threadID`),
+  KEY `participant_userID` (`participant_userID`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `message_thread_participant`
@@ -253,11 +289,14 @@ INSERT INTO `message_thread_participant` (`participant_ID`, `participant_threadI
 -- Table structure for table `suggested_job`
 --
 
-CREATE TABLE `suggested_job` (
-  `job_ID` int(11) UNSIGNED NOT NULL,
+DROP TABLE IF EXISTS `suggested_job`;
+CREATE TABLE IF NOT EXISTS `suggested_job` (
+  `job_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   `job_Title` varchar(250) DEFAULT NULL,
-  `job_Course` int(11) UNSIGNED DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `job_Course` int(11) UNSIGNED DEFAULT NULL,
+  PRIMARY KEY (`job_ID`),
+  KEY `job_Course` (`job_Course`)
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `suggested_job`
@@ -290,7 +329,7 @@ INSERT INTO `suggested_job` (`job_ID`, `job_Title`, `job_Course`) VALUES
 (25, 'Desktop Support Specialist', 2),
 (26, 'Desktop Support Manager', 2),
 (30, 'Receptionist', 3),
-(31, 'Administration Assistant', 3),
+(31, 'Administration Assistant', 1),
 (33, 'Office Manager', 3),
 (34, 'Personal Assistant', 3),
 (35, 'Executive Assistant', 3),
@@ -302,19 +341,21 @@ INSERT INTO `suggested_job` (`job_ID`, `job_Title`, `job_Course`) VALUES
 -- Table structure for table `survey`
 --
 
-CREATE TABLE `survey` (
-  `survey_ID` int(11) UNSIGNED NOT NULL,
+DROP TABLE IF EXISTS `survey`;
+CREATE TABLE IF NOT EXISTS `survey` (
+  `survey_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   `survey_name` varchar(255) DEFAULT NULL,
-  `survey_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `visibility` tinyint(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `survey_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `visibility` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`survey_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `survey`
 --
 
 INSERT INTO `survey` (`survey_ID`, `survey_name`, `survey_date`, `visibility`) VALUES
-(1, 'survey 1', '2018-05-04 17:25:50', 1),
+(1, 'HTML Quiz', '2022-01-18 16:51:03', 1),
 (2, 'survey 2', '2018-05-04 17:25:50', 0),
 (10, 'asdasdasd', '2018-05-01 09:11:37', 0);
 
@@ -324,12 +365,14 @@ INSERT INTO `survey` (`survey_ID`, `survey_name`, `survey_date`, `visibility`) V
 -- Table structure for table `survey_answer`
 --
 
-CREATE TABLE `survey_answer` (
-  `a_ID` int(11) UNSIGNED NOT NULL,
+DROP TABLE IF EXISTS `survey_answer`;
+CREATE TABLE IF NOT EXISTS `survey_answer` (
+  `a_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   `survey_aID` int(11) UNSIGNED DEFAULT NULL,
   `user_ID` int(11) DEFAULT NULL,
-  `form_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `form_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`a_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `survey_answer`
@@ -347,7 +390,14 @@ INSERT INTO `survey_answer` (`a_ID`, `survey_aID`, `user_ID`, `form_id`) VALUES
 (32, 5, 3, 19),
 (33, 6, 3, 19),
 (34, 7, 3, 19),
-(35, 17, 3, 19);
+(35, 17, 3, 19),
+(36, 1, 3, NULL),
+(37, 3, 3, NULL),
+(38, 4, 3, NULL),
+(39, 5, 3, NULL),
+(40, 6, 3, NULL),
+(41, 7, 3, NULL),
+(42, 17, 3, NULL);
 
 -- --------------------------------------------------------
 
@@ -355,13 +405,15 @@ INSERT INTO `survey_answer` (`a_ID`, `survey_aID`, `user_ID`, `form_id`) VALUES
 -- Table structure for table `survey_answer_other`
 --
 
-CREATE TABLE `survey_answer_other` (
-  `ao_ID` int(11) NOT NULL,
+DROP TABLE IF EXISTS `survey_answer_other`;
+CREATE TABLE IF NOT EXISTS `survey_answer_other` (
+  `ao_ID` int(11) NOT NULL AUTO_INCREMENT,
   `user_ID` int(11) DEFAULT NULL,
   `survey_aID` int(11) NOT NULL,
   `survey_aString` varchar(250) DEFAULT NULL,
-  `form_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `form_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`ao_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `survey_answer_other`
@@ -377,36 +429,44 @@ INSERT INTO `survey_answer_other` (`ao_ID`, `user_ID`, `survey_aID`, `survey_aSt
 -- Table structure for table `survey_anweroptions`
 --
 
-CREATE TABLE `survey_anweroptions` (
-  `survey_aID` int(11) UNSIGNED NOT NULL,
+DROP TABLE IF EXISTS `survey_anweroptions`;
+CREATE TABLE IF NOT EXISTS `survey_anweroptions` (
+  `survey_aID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   `survey_qID` int(11) UNSIGNED DEFAULT NULL,
-  `answer` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `answer` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`survey_aID`)
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `survey_anweroptions`
 --
 
 INSERT INTO `survey_anweroptions` (`survey_aID`, `survey_qID`, `answer`) VALUES
-(1, 1, 'aaaaa'),
-(2, 1, 'other(s)'),
-(3, 2, 'aa'),
-(4, 3, 'bb'),
-(5, 4, 'a'),
-(6, 5, 'b'),
-(7, 6, 'aa'),
-(8, 2, 'other(s)'),
-(10, 8, 'asdasd'),
-(11, 8, 'asdasdasd'),
-(12, 8, '31'),
-(13, 8, '2'),
-(15, 9, 'a'),
-(16, 9, 'b'),
-(17, 7, 'c'),
-(18, 9, '123'),
-(19, 10, 'asdasdasd'),
-(20, 10, 'asdd'),
-(21, 10, 'dsd');
+(1, 1, 'Home Tool Markup Language\r\n'),
+(2, 1, 'Hyperlinks and Text Markup Language\r\n'),
+(3, 2, 'Microsoft\r\n'),
+(4, 3, '<head>\r\n'),
+(5, 3, '<h6>'),
+(6, 3, '<heading>'),
+(7, 3, '<h1>'),
+(8, 2, 'The World Wide Web Consortium\r\n'),
+(10, 5, '<body style=\"background-color:yellow;\">\r\n'),
+(11, 10, '<h1>'),
+(12, 4, '<break>'),
+(13, 4, '<br>'),
+(15, 5, '<body bg=\"yellow\">\r\n'),
+(16, 6, '<i>'),
+(17, 4, '<lb>'),
+(18, 6, '<important>'),
+(19, 6, '<strong>'),
+(20, 10, '<h6>'),
+(21, 7, '<italic>'),
+(22, 7, '<i>'),
+(23, 7, '<emphasize>'),
+(24, 8, '<a href=\"http://www.sample.com\">Sample</a>'),
+(25, 9, '<br>'),
+(26, 6, '<b>'),
+(27, 7, '<em>');
 
 -- --------------------------------------------------------
 
@@ -414,12 +474,15 @@ INSERT INTO `survey_anweroptions` (`survey_aID`, `survey_qID`, `answer`) VALUES
 -- Table structure for table `survey_forms`
 --
 
-CREATE TABLE `survey_forms` (
-  `form_id` int(11) UNSIGNED NOT NULL,
+DROP TABLE IF EXISTS `survey_forms`;
+CREATE TABLE IF NOT EXISTS `survey_forms` (
+  `form_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   `form_ownerID` int(11) UNSIGNED DEFAULT NULL,
-  `form_taken` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `survey_ID` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `form_taken` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `survey_ID` int(11) DEFAULT NULL,
+  PRIMARY KEY (`form_id`),
+  KEY `form_ownerID` (`form_ownerID`)
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `survey_forms`
@@ -451,12 +514,16 @@ INSERT INTO `survey_forms` (`form_id`, `form_ownerID`, `form_taken`, `survey_ID`
 -- Table structure for table `survey_maxcount`
 --
 
-CREATE TABLE `survey_maxcount` (
-  `survey_id` int(11) UNSIGNED NOT NULL,
+DROP TABLE IF EXISTS `survey_maxcount`;
+CREATE TABLE IF NOT EXISTS `survey_maxcount` (
+  `survey_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   `survey_ownerID` int(11) UNSIGNED DEFAULT NULL,
   `survey_maxattemp` int(11) DEFAULT NULL,
-  `survey_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `survey_date` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`survey_id`),
+  UNIQUE KEY `survey_ownerID_2` (`survey_ownerID`),
+  KEY `survey_ownerID` (`survey_ownerID`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `survey_maxcount`
@@ -464,7 +531,7 @@ CREATE TABLE `survey_maxcount` (
 
 INSERT INTO `survey_maxcount` (`survey_id`, `survey_ownerID`, `survey_maxattemp`, `survey_date`) VALUES
 (1, 1, 2, '2018-05-01 07:08:27'),
-(2, 3, 0, '2018-05-04 17:42:35'),
+(2, 3, 2, '2022-01-18 16:53:41'),
 (3, 6, 2, '2018-02-18 16:00:00'),
 (4, 18, 0, '2018-03-17 04:57:57'),
 (5, 19, 2, '2018-03-07 17:46:58'),
@@ -477,13 +544,16 @@ INSERT INTO `survey_maxcount` (`survey_id`, `survey_ownerID`, `survey_maxattemp`
 -- Table structure for table `survey_question1`
 --
 
-CREATE TABLE `survey_question1` (
-  `survey_qID` int(11) UNSIGNED NOT NULL,
+DROP TABLE IF EXISTS `survey_question1`;
+CREATE TABLE IF NOT EXISTS `survey_question1` (
+  `survey_qID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   `row` int(11) DEFAULT NULL,
   `col1` varchar(50) DEFAULT NULL,
   `col2` varchar(50) DEFAULT NULL,
-  `survey_formID` int(11) UNSIGNED DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `survey_formID` int(11) UNSIGNED DEFAULT NULL,
+  PRIMARY KEY (`survey_qID`),
+  KEY `survey_formID` (`survey_formID`)
+) ENGINE=InnoDB AUTO_INCREMENT=106 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `survey_question1`
@@ -602,12 +672,15 @@ INSERT INTO `survey_question1` (`survey_qID`, `row`, `col1`, `col2`, `survey_for
 -- Table structure for table `survey_question2`
 --
 
-CREATE TABLE `survey_question2` (
-  `survey_qID` int(11) UNSIGNED NOT NULL,
+DROP TABLE IF EXISTS `survey_question2`;
+CREATE TABLE IF NOT EXISTS `survey_question2` (
+  `survey_qID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   `survey_row1` int(11) DEFAULT NULL,
   `survey_col1` varchar(50) DEFAULT 'no',
-  `survey_formID` int(11) UNSIGNED DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `survey_formID` int(11) UNSIGNED DEFAULT NULL,
+  PRIMARY KEY (`survey_qID`),
+  KEY `survey_formID` (`survey_formID`)
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `survey_question2`
@@ -656,13 +729,16 @@ INSERT INTO `survey_question2` (`survey_qID`, `survey_row1`, `survey_col1`, `sur
 -- Table structure for table `survey_question3`
 --
 
-CREATE TABLE `survey_question3` (
-  `survey_qID` int(11) NOT NULL,
+DROP TABLE IF EXISTS `survey_question3`;
+CREATE TABLE IF NOT EXISTS `survey_question3` (
+  `survey_qID` int(11) NOT NULL AUTO_INCREMENT,
   `row` int(11) DEFAULT NULL,
   `col1` varchar(1) DEFAULT '0',
   `col2` varchar(1) DEFAULT '0',
-  `survey_formID` int(11) UNSIGNED DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `survey_formID` int(11) UNSIGNED DEFAULT NULL,
+  PRIMARY KEY (`survey_qID`),
+  KEY `survey_formID` (`survey_formID`)
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `survey_question3`
@@ -704,12 +780,15 @@ INSERT INTO `survey_question3` (`survey_qID`, `row`, `col1`, `col2`, `survey_for
 -- Table structure for table `survey_question4`
 --
 
-CREATE TABLE `survey_question4` (
-  `survey_qID` int(11) UNSIGNED NOT NULL,
+DROP TABLE IF EXISTS `survey_question4`;
+CREATE TABLE IF NOT EXISTS `survey_question4` (
+  `survey_qID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   `row1` int(11) DEFAULT NULL,
   `col1` varchar(1) DEFAULT '0',
-  `survey_formID` int(11) UNSIGNED DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `survey_formID` int(11) UNSIGNED DEFAULT NULL,
+  PRIMARY KEY (`survey_qID`),
+  KEY `survey_formID` (`survey_formID`)
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `survey_question4`
@@ -765,11 +844,14 @@ INSERT INTO `survey_question4` (`survey_qID`, `row1`, `col1`, `survey_formID`) V
 -- Table structure for table `survey_question5`
 --
 
-CREATE TABLE `survey_question5` (
-  `survey_qID` int(11) UNSIGNED NOT NULL,
+DROP TABLE IF EXISTS `survey_question5`;
+CREATE TABLE IF NOT EXISTS `survey_question5` (
+  `survey_qID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   `ans` varchar(5) DEFAULT NULL,
-  `survey_formID` int(11) UNSIGNED DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `survey_formID` int(11) UNSIGNED DEFAULT NULL,
+  PRIMARY KEY (`survey_qID`),
+  KEY `survey_formID` (`survey_formID`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `survey_question5`
@@ -790,12 +872,15 @@ INSERT INTO `survey_question5` (`survey_qID`, `ans`, `survey_formID`) VALUES
 -- Table structure for table `survey_question6`
 --
 
-CREATE TABLE `survey_question6` (
-  `survey_qID` int(11) UNSIGNED NOT NULL,
+DROP TABLE IF EXISTS `survey_question6`;
+CREATE TABLE IF NOT EXISTS `survey_question6` (
+  `survey_qID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   `ans` varchar(10) DEFAULT NULL,
   `survey_formID` int(11) UNSIGNED DEFAULT NULL,
-  `job` varchar(250) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `job` varchar(250) DEFAULT NULL,
+  PRIMARY KEY (`survey_qID`),
+  KEY `survey_formID` (`survey_formID`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `survey_question6`
@@ -816,11 +901,14 @@ INSERT INTO `survey_question6` (`survey_qID`, `ans`, `survey_formID`, `job`) VAL
 -- Table structure for table `survey_question7`
 --
 
-CREATE TABLE `survey_question7` (
-  `survey_qID` int(11) UNSIGNED NOT NULL,
+DROP TABLE IF EXISTS `survey_question7`;
+CREATE TABLE IF NOT EXISTS `survey_question7` (
+  `survey_qID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   `survey_ans` varchar(1) DEFAULT '0',
-  `survey_formID` int(11) UNSIGNED DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `survey_formID` int(11) UNSIGNED DEFAULT NULL,
+  PRIMARY KEY (`survey_qID`),
+  KEY `survey_formID` (`survey_formID`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `survey_question7`
@@ -841,12 +929,15 @@ INSERT INTO `survey_question7` (`survey_qID`, `survey_ans`, `survey_formID`) VAL
 -- Table structure for table `survey_question8`
 --
 
-CREATE TABLE `survey_question8` (
-  `survey_qID` int(11) UNSIGNED NOT NULL,
+DROP TABLE IF EXISTS `survey_question8`;
+CREATE TABLE IF NOT EXISTS `survey_question8` (
+  `survey_qID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   `row1` int(11) DEFAULT NULL,
   `col1` varchar(50) DEFAULT NULL,
-  `survey_formID` int(11) UNSIGNED DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `survey_formID` int(11) UNSIGNED DEFAULT NULL,
+  PRIMARY KEY (`survey_qID`),
+  KEY `survey_formID` (`survey_formID`)
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `survey_question8`
@@ -890,27 +981,29 @@ INSERT INTO `survey_question8` (`survey_qID`, `row1`, `col1`, `survey_formID`) V
 -- Table structure for table `survey_questionnaire`
 --
 
-CREATE TABLE `survey_questionnaire` (
-  `survey_qID` int(11) UNSIGNED NOT NULL,
+DROP TABLE IF EXISTS `survey_questionnaire`;
+CREATE TABLE IF NOT EXISTS `survey_questionnaire` (
+  `survey_qID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   `survey_ID` int(11) UNSIGNED DEFAULT NULL,
-  `question` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `question` varchar(255) NOT NULL,
+  PRIMARY KEY (`survey_qID`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `survey_questionnaire`
 --
 
 INSERT INTO `survey_questionnaire` (`survey_qID`, `survey_ID`, `question`) VALUES
-(1, 1, 'sagutan mo to'),
-(2, 1, 'asdasdasdasd'),
-(3, 1, 'xxxxxxxxxxxxxxxxxxxx'),
-(4, 1, '44444'),
-(5, 1, 'xxxxxx'),
-(6, 1, 'zzzzzzzz'),
-(7, 1, '545646'),
-(8, 2, '1'),
-(9, 2, 'hey'),
-(10, 2, '123123123123');
+(1, 1, 'What does HTML stand for?'),
+(2, 1, 'Who is making the Web standards?'),
+(3, 1, 'Choose the correct HTML element for the largest heading:'),
+(4, 1, 'What is the correct HTML element for inserting a line break?'),
+(5, 1, 'What is the correct HTML for adding a background color?'),
+(6, 1, 'Choose the correct HTML element to define important text'),
+(7, 1, 'Choose the correct HTML element to define emphasized text'),
+(8, 2, 'What is the correct HTML for creating a hyperlink?'),
+(9, 2, 'What is the correct HTML element for inserting a line break?'),
+(10, 2, 'Choose the correct HTML element for the largest heading:');
 
 -- --------------------------------------------------------
 
@@ -918,13 +1011,16 @@ INSERT INTO `survey_questionnaire` (`survey_qID`, `survey_ID`, `question`) VALUE
 -- Table structure for table `user_account`
 --
 
-CREATE TABLE `user_account` (
-  `user_ID` int(11) UNSIGNED NOT NULL,
+DROP TABLE IF EXISTS `user_account`;
+CREATE TABLE IF NOT EXISTS `user_account` (
+  `user_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   `user_level` int(11) UNSIGNED DEFAULT NULL,
   `user_name` varchar(25) DEFAULT NULL,
-  `user_password` mediumtext,
-  `user_created` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `user_password` mediumtext DEFAULT NULL,
+  `user_created` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`user_ID`),
+  KEY `user_level` (`user_level`)
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user_account`
@@ -932,18 +1028,18 @@ CREATE TABLE `user_account` (
 
 INSERT INTO `user_account` (`user_ID`, `user_level`, `user_name`, `user_password`, `user_created`) VALUES
 (0, 3, 'unregister', 'unregister', '2018-02-04 12:20:56'),
-(1, 1, '201310656', 'M8+Cpt+zltZs3QpomFLRjEFCGvI0VGC+jjJzXH32Mtw=', '2017-10-24 22:08:39'),
+(1, 1, '201310656', 'M8+Cpt+zltZs3QpomFLRjEFCGvI0VGC+jjJzXH32Mtw=', '2022-01-16 23:01:50'),
 (3, 3, 'admin', 'QrUgcNdRjaE74hfEIeThKa/RaqA9N/KpBI+X7VeiyfE=', '2017-09-06 02:23:49'),
-(4, 2, 'teacher', 'EubGHmBLzl/vo4QaEmMmq+4VBNihTeZ5V4ob1H/u0IY=', '2018-02-23 07:40:23'),
-(6, 2, 'daaa1', 'nmJlYI9M3qXXfMBP75rfDTf9c9s0Jq8ZiEdlRCxtmB4=', '2018-02-07 16:04:01'),
-(7, 2, 'teacher', '6Bgzqn4mnCPjx432mpfOVbU87Mi3sy29KRe8A1l+2X0=', '2018-02-23 12:03:49'),
-(8, 2, 'wazhing', 'URjLyLIMsc9I0ZW7XvIK3mgelVSCKSw1n7HpVV9w1/s=', '2018-02-24 15:15:10'),
-(17, 2, 'z1', 'nLe8cKSpGGeDLKRpMNgQUIYGtrDwaVOny7JFE7V8BK0=', '2018-03-03 16:27:06'),
-(18, 1, '123', 'swHPJ7q+RfGnh4kp774FrzOW/hnKWeRhBNhK0xS/YtM=', '2018-03-05 14:22:21'),
-(19, 1, '123456', 'swHPJ7q+RfGnh4kp774FrzOW/hnKWeRhBNhK0xS/YtM=', '2018-03-07 17:46:58'),
-(20, 2, 'zxc123', 'swHPJ7q+RfGnh4kp774FrzOW/hnKWeRhBNhK0xS/YtM=', '2018-03-07 17:59:38'),
-(21, 1, '201478545', 'r40tXLqSv9m/peVnAhDM+o7JSqE0qbz7S04PNk3qTi4=', '2018-03-17 09:55:10'),
-(22, 1, '201310184', 'r40tXLqSv9m/peVnAhDM+o7JSqE0qbz7S04PNk3qTi4=', '2018-03-17 09:59:09');
+(4, 2, 'teacher', '6Bgzqn4mnCPjx432mpfOVbU87Mi3sy29KRe8A1l+2X0=', '2022-01-18 16:24:43'),
+(6, 2, 'xching321', '6Bgzqn4mnCPjx432mpfOVbU87Mi3sy29KRe8A1l+2X0=', '2022-01-18 16:24:41'),
+(7, 2, 'teacher1', '6Bgzqn4mnCPjx432mpfOVbU87Mi3sy29KRe8A1l+2X0=', '2022-01-18 16:24:47'),
+(8, 2, 'wazhing', '6Bgzqn4mnCPjx432mpfOVbU87Mi3sy29KRe8A1l+2X0=', '2022-01-18 16:24:49'),
+(17, 2, 'chen32', '6Bgzqn4mnCPjx432mpfOVbU87Mi3sy29KRe8A1l+2X0=', '2022-01-18 16:24:51'),
+(18, 1, '201310655', 'M8+Cpt+zltZs3QpomFLRjEFCGvI0VGC+jjJzXH32Mtw=', '2022-01-18 16:24:10'),
+(19, 1, '201478543', 'M8+Cpt+zltZs3QpomFLRjEFCGvI0VGC+jjJzXH32Mtw=', '2022-01-18 16:24:16'),
+(20, 2, 'zxc123', '6Bgzqn4mnCPjx432mpfOVbU87Mi3sy29KRe8A1l+2X0=', '2022-01-18 16:24:53'),
+(21, 1, '201478545', 'M8+Cpt+zltZs3QpomFLRjEFCGvI0VGC+jjJzXH32Mtw=', '2022-01-18 16:23:56'),
+(22, 1, '201310184', 'M8+Cpt+zltZs3QpomFLRjEFCGvI0VGC+jjJzXH32Mtw=', '2022-01-18 16:23:59');
 
 -- --------------------------------------------------------
 
@@ -951,8 +1047,9 @@ INSERT INTO `user_account` (`user_ID`, `user_level`, `user_name`, `user_password
 -- Table structure for table `user_admin_detail`
 --
 
-CREATE TABLE `user_admin_detail` (
-  `admin_ID` int(11) UNSIGNED NOT NULL,
+DROP TABLE IF EXISTS `user_admin_detail`;
+CREATE TABLE IF NOT EXISTS `user_admin_detail` (
+  `admin_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   `admin_userID` int(11) UNSIGNED DEFAULT NULL,
   `admin_img` varchar(250) DEFAULT 'temp.gif',
   `admin_fName` varchar(100) DEFAULT NULL,
@@ -965,15 +1062,18 @@ CREATE TABLE `user_admin_detail` (
   `admin_contact` varchar(11) DEFAULT NULL,
   `admin_civilStat` int(11) UNSIGNED DEFAULT NULL,
   `admin_secretquestion` varchar(250) DEFAULT NULL,
-  `admin_secretanswer` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `admin_secretanswer` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`admin_ID`),
+  KEY `admin_userID` (`admin_userID`),
+  KEY `admin_civilStat` (`admin_civilStat`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user_admin_detail`
 --
 
 INSERT INTO `user_admin_detail` (`admin_ID`, `admin_userID`, `admin_img`, `admin_fName`, `admin_mName`, `admin_lName`, `admin_address`, `admin_status`, `admin_gender`, `admin_dob`, `admin_contact`, `admin_civilStat`, `admin_secretquestion`, `admin_secretanswer`) VALUES
-(1, 3, '123123.jpg', 'admin', 'admin', 'admin', 'zxczxczxc', 'register', 'M', '0000-00-00', '09169158798', 1, '', '');
+(1, 3, '14925321_10157945054465556_5238769171882821447_n.jpg', 'admin', 'admin', 'admin', 'my adress', 'register', 'M', '1997-01-17', '09169158798', 1, '', '');
 
 -- --------------------------------------------------------
 
@@ -981,10 +1081,12 @@ INSERT INTO `user_admin_detail` (`admin_ID`, `admin_userID`, `admin_img`, `admin
 -- Table structure for table `user_level`
 --
 
-CREATE TABLE `user_level` (
-  `level_ID` int(11) UNSIGNED NOT NULL,
-  `level_name` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+DROP TABLE IF EXISTS `user_level`;
+CREATE TABLE IF NOT EXISTS `user_level` (
+  `level_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `level_name` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`level_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user_level`
@@ -1002,15 +1104,20 @@ INSERT INTO `user_level` (`level_ID`, `level_name`) VALUES
 -- Table structure for table `user_notification`
 --
 
-CREATE TABLE `user_notification` (
-  `notif_ID` int(11) UNSIGNED NOT NULL,
+DROP TABLE IF EXISTS `user_notification`;
+CREATE TABLE IF NOT EXISTS `user_notification` (
+  `notif_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   `notif_typeID` int(11) UNSIGNED DEFAULT NULL,
   `notif_topicID` int(11) UNSIGNED DEFAULT NULL,
   `notif_userID` int(11) UNSIGNED DEFAULT NULL,
   `notif_receiverID` int(11) UNSIGNED DEFAULT NULL,
-  `notif_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `notif_state` int(11) UNSIGNED DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `notif_date` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `notif_state` int(11) UNSIGNED DEFAULT NULL,
+  PRIMARY KEY (`notif_ID`),
+  KEY `notif_topicID` (`notif_topicID`),
+  KEY `notif_userID` (`notif_userID`),
+  KEY `notif_receiverID` (`notif_receiverID`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user_notification`
@@ -1018,7 +1125,9 @@ CREATE TABLE `user_notification` (
 
 INSERT INTO `user_notification` (`notif_ID`, `notif_typeID`, `notif_topicID`, `notif_userID`, `notif_receiverID`, `notif_date`, `notif_state`) VALUES
 (3, NULL, NULL, NULL, NULL, '2018-02-23 16:49:20', NULL),
-(4, 3, 15, 4, 1, '2018-03-03 15:35:39', 0);
+(4, 3, 15, 4, 1, '2018-03-03 15:35:39', 0),
+(5, 3, 15, 3, 1, '2022-01-16 22:07:24', 0),
+(6, 3, 17, 4, 3, '2022-01-17 18:41:02', 0);
 
 -- --------------------------------------------------------
 
@@ -1026,9 +1135,11 @@ INSERT INTO `user_notification` (`notif_ID`, `notif_typeID`, `notif_topicID`, `n
 -- Table structure for table `user_notif_state`
 --
 
-CREATE TABLE `user_notif_state` (
-  `status_ID` int(11) UNSIGNED NOT NULL,
-  `status_Desc` varchar(11) DEFAULT NULL
+DROP TABLE IF EXISTS `user_notif_state`;
+CREATE TABLE IF NOT EXISTS `user_notif_state` (
+  `status_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `status_Desc` varchar(11) DEFAULT NULL,
+  PRIMARY KEY (`status_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -1037,9 +1148,11 @@ CREATE TABLE `user_notif_state` (
 -- Table structure for table `user_notif_type`
 --
 
-CREATE TABLE `user_notif_type` (
-  `type_ID` int(11) UNSIGNED NOT NULL,
-  `type_Name` varchar(50) DEFAULT NULL
+DROP TABLE IF EXISTS `user_notif_type`;
+CREATE TABLE IF NOT EXISTS `user_notif_type` (
+  `type_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `type_Name` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`type_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -1048,8 +1161,9 @@ CREATE TABLE `user_notif_type` (
 -- Table structure for table `user_student_detail`
 --
 
-CREATE TABLE `user_student_detail` (
-  `student_ID` int(11) NOT NULL,
+DROP TABLE IF EXISTS `user_student_detail`;
+CREATE TABLE IF NOT EXISTS `user_student_detail` (
+  `student_ID` int(11) NOT NULL AUTO_INCREMENT,
   `student_userID` int(11) UNSIGNED DEFAULT NULL,
   `student_img` varchar(250) DEFAULT 'temp.gif',
   `student_IDNumber` int(11) UNSIGNED DEFAULT NULL,
@@ -1066,15 +1180,21 @@ CREATE TABLE `user_student_detail` (
   `student_department` int(11) UNSIGNED DEFAULT NULL,
   `student_status` varchar(10) DEFAULT 'unregister',
   `student_secretquestion` varchar(250) DEFAULT NULL,
-  `student_secretanswer` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `student_secretanswer` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`student_ID`),
+  KEY `student_department` (`student_department`),
+  KEY `student_userID` (`student_userID`),
+  KEY `student_civilStat` (`student_civilStat`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user_student_detail`
 --
 
 INSERT INTO `user_student_detail` (`student_ID`, `student_userID`, `student_img`, `student_IDNumber`, `student_fName`, `student_mName`, `student_lName`, `student_address`, `student_civilStat`, `student_dob`, `student_gender`, `student_contact`, `student_admission`, `student_year_grad`, `student_department`, `student_status`, `student_secretquestion`, `student_secretanswer`) VALUES
-(1, 1, 'temp.gif', 201310656, 'asd', 'asd', 'asdasd', 'asd321', 1, NULL, 'M', '21', '2018-03-06', '2018-03-30', 1, 'unregister', NULL, NULL);
+(1, 1, 'download.png', 201310656, 'Student', 'S', 'Student', 'address', 1, NULL, 'M', '9064125773', '2018-03-06', '2018-03-30', 1, 'unregister', NULL, NULL),
+(2, 21, 'download.png', 201310656, 'Student', 'S', 'Student', 'address', 1, NULL, 'M', '9064125773', '2018-03-06', '2018-03-30', 1, 'unregister', NULL, NULL),
+(3, 22, 'download.png', 201310656, 'Student', 'S', 'Student', 'address', 1, NULL, 'M', '9064125773', '2018-03-06', '2018-03-30', 1, 'unregister', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1082,8 +1202,9 @@ INSERT INTO `user_student_detail` (`student_ID`, `student_userID`, `student_img`
 -- Table structure for table `user_teacher_detail`
 --
 
-CREATE TABLE `user_teacher_detail` (
-  `teacher_ID` int(11) UNSIGNED NOT NULL,
+DROP TABLE IF EXISTS `user_teacher_detail`;
+CREATE TABLE IF NOT EXISTS `user_teacher_detail` (
+  `teacher_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   `teacher_userID` int(11) UNSIGNED DEFAULT NULL,
   `teacher_img` varchar(250) DEFAULT 'temp.gif',
   `teacher_facultyID` int(11) UNSIGNED DEFAULT NULL,
@@ -1098,17 +1219,23 @@ CREATE TABLE `user_teacher_detail` (
   `teacher_department` int(11) UNSIGNED DEFAULT NULL,
   `teacher_status` varchar(10) DEFAULT 'unregister',
   `teacher_secretquestion` varchar(250) DEFAULT NULL,
-  `teacher_secretanswer` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `teacher_secretanswer` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`teacher_ID`),
+  UNIQUE KEY `teacher_facultyID` (`teacher_facultyID`),
+  KEY `teacher_userID` (`teacher_userID`),
+  KEY `teacher_department` (`teacher_department`),
+  KEY `teacher_civilStat` (`teacher_civilStat`)
+) ENGINE=InnoDB AUTO_INCREMENT=145 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user_teacher_detail`
 --
 
 INSERT INTO `user_teacher_detail` (`teacher_ID`, `teacher_userID`, `teacher_img`, `teacher_facultyID`, `teacher_fName`, `teacher_mName`, `teacher_lName`, `teacher_gender`, `teacher_dob`, `teacher_contact`, `teacher_address`, `teacher_civilStat`, `teacher_department`, `teacher_status`, `teacher_secretquestion`, `teacher_secretanswer`) VALUES
-(130, 8, 'temp.gif', 68, 'sarada', '', 'uchiha', 'F', '2018-01-28', '123123', '123123', 1, 2, 'register', '', ''),
-(140, 17, 'temp.gif', 54, 'z', 'z', 'z', 'M', '0004-08-05', '85', 'z', 1, 1, 'register', '', ''),
-(142, 20, 'temp.gif', 654, 'asd', 'asd', 'asd', 'M', '1689-09-01', '654', 'asd', 1, 1, 'register', '', '');
+(130, 8, 'temp.gif', 68, 'teacher 1', 't', 'teacher 1', 'F', '2018-01-28', '123123', '123123', 1, 2, 'register', '', ''),
+(140, 17, 'temp.gif', 54, 'teacher 2', 't', 'teacher 2', 'M', '0004-08-05', '85', 'z', 1, 1, 'register', '', ''),
+(142, 20, 'temp.gif', 654, 'teacher 3', 't', 'teacher 3', 'M', '1689-09-01', '654', 'asd', 1, 1, 'register', '', ''),
+(144, 4, 'temp.gif', 67, 'teacher', 't', 'teacher', 'F', '2018-01-28', '123123', '123123', 1, 2, 'register', '', '');
 
 -- --------------------------------------------------------
 
@@ -1116,500 +1243,23 @@ INSERT INTO `user_teacher_detail` (`teacher_ID`, `teacher_userID`, `teacher_img`
 -- Table structure for table `view_counter`
 --
 
-CREATE TABLE `view_counter` (
-  `view_ID` int(11) UNSIGNED NOT NULL,
+DROP TABLE IF EXISTS `view_counter`;
+CREATE TABLE IF NOT EXISTS `view_counter` (
+  `view_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   `view_topicID` int(11) UNSIGNED DEFAULT NULL,
-  `view_count` int(11) DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `view_count` int(11) DEFAULT 0,
+  PRIMARY KEY (`view_ID`),
+  KEY `view_topicID` (`view_topicID`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `view_counter`
 --
 
 INSERT INTO `view_counter` (`view_ID`, `view_topicID`, `view_count`) VALUES
-(3, 15, 16),
-(4, 16, 6),
-(5, 17, 6);
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `cvsu_college`
---
-ALTER TABLE `cvsu_college`
-  ADD PRIMARY KEY (`colleges_ID`);
-
---
--- Indexes for table `cvsu_course`
---
-ALTER TABLE `cvsu_course`
-  ADD PRIMARY KEY (`course_ID`),
-  ADD KEY `course_departmentID` (`course_departmentID`);
-
---
--- Indexes for table `cvsu_department`
---
-ALTER TABLE `cvsu_department`
-  ADD PRIMARY KEY (`department_ID`),
-  ADD KEY `department_collegeID` (`department_collegeID`);
-
---
--- Indexes for table `forum_comment`
---
-ALTER TABLE `forum_comment`
-  ADD PRIMARY KEY (`comment_ID`),
-  ADD KEY `comment_topicID` (`comment_topicID`),
-  ADD KEY `comment_userID` (`comment_userID`);
-
---
--- Indexes for table `forum_comment_reply`
---
-ALTER TABLE `forum_comment_reply`
-  ADD PRIMARY KEY (`comment_reply_ID`),
-  ADD KEY `comment_reply_parentID` (`comment_reply_parentID`),
-  ADD KEY `comment_reply_userID` (`comment_reply_userID`),
-  ADD KEY `comment_reply_topicID` (`comment_reply_topicID`);
-
---
--- Indexes for table `forum_topic`
---
-ALTER TABLE `forum_topic`
-  ADD PRIMARY KEY (`topic_ID`),
-  ADD KEY `post_owner_id` (`post_owner_id`);
-
---
--- Indexes for table `marital_status`
---
-ALTER TABLE `marital_status`
-  ADD PRIMARY KEY (`ID`);
-
---
--- Indexes for table `message_send`
---
-ALTER TABLE `message_send`
-  ADD PRIMARY KEY (`message_ID`),
-  ADD KEY `message_threadID` (`message_threadID`),
-  ADD KEY `message_receiver` (`message_receiver`);
-
---
--- Indexes for table `message_send_state`
---
-ALTER TABLE `message_send_state`
-  ADD PRIMARY KEY (`state_ID`),
-  ADD KEY `state_msgID` (`state_msgID`),
-  ADD KEY `state_readerID` (`state_readerID`);
-
---
--- Indexes for table `message_thread`
---
-ALTER TABLE `message_thread`
-  ADD PRIMARY KEY (`thread_ID`);
-
---
--- Indexes for table `message_thread_participant`
---
-ALTER TABLE `message_thread_participant`
-  ADD PRIMARY KEY (`participant_ID`),
-  ADD KEY `participant_threadID` (`participant_threadID`),
-  ADD KEY `participant_userID` (`participant_userID`);
-
---
--- Indexes for table `suggested_job`
---
-ALTER TABLE `suggested_job`
-  ADD PRIMARY KEY (`job_ID`),
-  ADD KEY `job_Course` (`job_Course`);
-
---
--- Indexes for table `survey`
---
-ALTER TABLE `survey`
-  ADD PRIMARY KEY (`survey_ID`);
-
---
--- Indexes for table `survey_answer`
---
-ALTER TABLE `survey_answer`
-  ADD PRIMARY KEY (`a_ID`);
-
---
--- Indexes for table `survey_answer_other`
---
-ALTER TABLE `survey_answer_other`
-  ADD PRIMARY KEY (`ao_ID`);
-
---
--- Indexes for table `survey_anweroptions`
---
-ALTER TABLE `survey_anweroptions`
-  ADD PRIMARY KEY (`survey_aID`);
-
---
--- Indexes for table `survey_forms`
---
-ALTER TABLE `survey_forms`
-  ADD PRIMARY KEY (`form_id`),
-  ADD KEY `form_ownerID` (`form_ownerID`);
-
---
--- Indexes for table `survey_maxcount`
---
-ALTER TABLE `survey_maxcount`
-  ADD PRIMARY KEY (`survey_id`),
-  ADD UNIQUE KEY `survey_ownerID_2` (`survey_ownerID`),
-  ADD KEY `survey_ownerID` (`survey_ownerID`);
-
---
--- Indexes for table `survey_question1`
---
-ALTER TABLE `survey_question1`
-  ADD PRIMARY KEY (`survey_qID`),
-  ADD KEY `survey_formID` (`survey_formID`);
-
---
--- Indexes for table `survey_question2`
---
-ALTER TABLE `survey_question2`
-  ADD PRIMARY KEY (`survey_qID`),
-  ADD KEY `survey_formID` (`survey_formID`);
-
---
--- Indexes for table `survey_question3`
---
-ALTER TABLE `survey_question3`
-  ADD PRIMARY KEY (`survey_qID`),
-  ADD KEY `survey_formID` (`survey_formID`);
-
---
--- Indexes for table `survey_question4`
---
-ALTER TABLE `survey_question4`
-  ADD PRIMARY KEY (`survey_qID`),
-  ADD KEY `survey_formID` (`survey_formID`);
-
---
--- Indexes for table `survey_question5`
---
-ALTER TABLE `survey_question5`
-  ADD PRIMARY KEY (`survey_qID`),
-  ADD KEY `survey_formID` (`survey_formID`);
-
---
--- Indexes for table `survey_question6`
---
-ALTER TABLE `survey_question6`
-  ADD PRIMARY KEY (`survey_qID`),
-  ADD KEY `survey_formID` (`survey_formID`);
-
---
--- Indexes for table `survey_question7`
---
-ALTER TABLE `survey_question7`
-  ADD PRIMARY KEY (`survey_qID`),
-  ADD KEY `survey_formID` (`survey_formID`);
-
---
--- Indexes for table `survey_question8`
---
-ALTER TABLE `survey_question8`
-  ADD PRIMARY KEY (`survey_qID`),
-  ADD KEY `survey_formID` (`survey_formID`);
-
---
--- Indexes for table `survey_questionnaire`
---
-ALTER TABLE `survey_questionnaire`
-  ADD PRIMARY KEY (`survey_qID`);
-
---
--- Indexes for table `user_account`
---
-ALTER TABLE `user_account`
-  ADD PRIMARY KEY (`user_ID`),
-  ADD KEY `user_level` (`user_level`);
-
---
--- Indexes for table `user_admin_detail`
---
-ALTER TABLE `user_admin_detail`
-  ADD PRIMARY KEY (`admin_ID`),
-  ADD KEY `admin_userID` (`admin_userID`),
-  ADD KEY `admin_civilStat` (`admin_civilStat`);
-
---
--- Indexes for table `user_level`
---
-ALTER TABLE `user_level`
-  ADD PRIMARY KEY (`level_ID`);
-
---
--- Indexes for table `user_notification`
---
-ALTER TABLE `user_notification`
-  ADD PRIMARY KEY (`notif_ID`),
-  ADD KEY `notif_topicID` (`notif_topicID`),
-  ADD KEY `notif_userID` (`notif_userID`),
-  ADD KEY `notif_receiverID` (`notif_receiverID`);
-
---
--- Indexes for table `user_notif_state`
---
-ALTER TABLE `user_notif_state`
-  ADD PRIMARY KEY (`status_ID`);
-
---
--- Indexes for table `user_notif_type`
---
-ALTER TABLE `user_notif_type`
-  ADD PRIMARY KEY (`type_ID`);
-
---
--- Indexes for table `user_student_detail`
---
-ALTER TABLE `user_student_detail`
-  ADD PRIMARY KEY (`student_ID`),
-  ADD KEY `student_department` (`student_department`),
-  ADD KEY `student_userID` (`student_userID`),
-  ADD KEY `student_civilStat` (`student_civilStat`);
-
---
--- Indexes for table `user_teacher_detail`
---
-ALTER TABLE `user_teacher_detail`
-  ADD PRIMARY KEY (`teacher_ID`),
-  ADD UNIQUE KEY `teacher_facultyID` (`teacher_facultyID`),
-  ADD KEY `teacher_userID` (`teacher_userID`),
-  ADD KEY `teacher_department` (`teacher_department`),
-  ADD KEY `teacher_civilStat` (`teacher_civilStat`);
-
---
--- Indexes for table `view_counter`
---
-ALTER TABLE `view_counter`
-  ADD PRIMARY KEY (`view_ID`),
-  ADD KEY `view_topicID` (`view_topicID`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `cvsu_college`
---
-ALTER TABLE `cvsu_college`
-  MODIFY `colleges_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `cvsu_course`
---
-ALTER TABLE `cvsu_course`
-  MODIFY `course_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `cvsu_department`
---
-ALTER TABLE `cvsu_department`
-  MODIFY `department_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `forum_comment`
---
-ALTER TABLE `forum_comment`
-  MODIFY `comment_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `forum_comment_reply`
---
-ALTER TABLE `forum_comment_reply`
-  MODIFY `comment_reply_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `forum_topic`
---
-ALTER TABLE `forum_topic`
-  MODIFY `topic_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
-
---
--- AUTO_INCREMENT for table `marital_status`
---
-ALTER TABLE `marital_status`
-  MODIFY `ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `message_send`
---
-ALTER TABLE `message_send`
-  MODIFY `message_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `message_send_state`
---
-ALTER TABLE `message_send_state`
-  MODIFY `state_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `message_thread`
---
-ALTER TABLE `message_thread`
-  MODIFY `thread_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `message_thread_participant`
---
-ALTER TABLE `message_thread_participant`
-  MODIFY `participant_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `suggested_job`
---
-ALTER TABLE `suggested_job`
-  MODIFY `job_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
-
---
--- AUTO_INCREMENT for table `survey`
---
-ALTER TABLE `survey`
-  MODIFY `survey_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
--- AUTO_INCREMENT for table `survey_answer`
---
-ALTER TABLE `survey_answer`
-  MODIFY `a_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
-
---
--- AUTO_INCREMENT for table `survey_answer_other`
---
-ALTER TABLE `survey_answer_other`
-  MODIFY `ao_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
---
--- AUTO_INCREMENT for table `survey_anweroptions`
---
-ALTER TABLE `survey_anweroptions`
-  MODIFY `survey_aID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
-
---
--- AUTO_INCREMENT for table `survey_forms`
---
-ALTER TABLE `survey_forms`
-  MODIFY `form_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
-
---
--- AUTO_INCREMENT for table `survey_maxcount`
---
-ALTER TABLE `survey_maxcount`
-  MODIFY `survey_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT for table `survey_question1`
---
-ALTER TABLE `survey_question1`
-  MODIFY `survey_qID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
-
---
--- AUTO_INCREMENT for table `survey_question2`
---
-ALTER TABLE `survey_question2`
-  MODIFY `survey_qID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
-
---
--- AUTO_INCREMENT for table `survey_question3`
---
-ALTER TABLE `survey_question3`
-  MODIFY `survey_qID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
-
---
--- AUTO_INCREMENT for table `survey_question4`
---
-ALTER TABLE `survey_question4`
-  MODIFY `survey_qID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
-
---
--- AUTO_INCREMENT for table `survey_question5`
---
-ALTER TABLE `survey_question5`
-  MODIFY `survey_qID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT for table `survey_question6`
---
-ALTER TABLE `survey_question6`
-  MODIFY `survey_qID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT for table `survey_question7`
---
-ALTER TABLE `survey_question7`
-  MODIFY `survey_qID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT for table `survey_question8`
---
-ALTER TABLE `survey_question8`
-  MODIFY `survey_qID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
-
---
--- AUTO_INCREMENT for table `survey_questionnaire`
---
-ALTER TABLE `survey_questionnaire`
-  MODIFY `survey_qID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
--- AUTO_INCREMENT for table `user_account`
---
-ALTER TABLE `user_account`
-  MODIFY `user_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
-
---
--- AUTO_INCREMENT for table `user_admin_detail`
---
-ALTER TABLE `user_admin_detail`
-  MODIFY `admin_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `user_level`
---
-ALTER TABLE `user_level`
-  MODIFY `level_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `user_notification`
---
-ALTER TABLE `user_notification`
-  MODIFY `notif_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT for table `user_notif_state`
---
-ALTER TABLE `user_notif_state`
-  MODIFY `status_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `user_notif_type`
---
-ALTER TABLE `user_notif_type`
-  MODIFY `type_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `user_student_detail`
---
-ALTER TABLE `user_student_detail`
-  MODIFY `student_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `user_teacher_detail`
---
-ALTER TABLE `user_teacher_detail`
-  MODIFY `teacher_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=143;
-
---
--- AUTO_INCREMENT for table `view_counter`
---
-ALTER TABLE `view_counter`
-  MODIFY `view_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+(3, 15, 23),
+(4, 16, 13),
+(5, 17, 15);
 
 --
 -- Constraints for dumped tables

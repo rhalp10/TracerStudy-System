@@ -1,5 +1,5 @@
 <?php 
-$con = mysqli_connect('localhost','root','','tracerdata') or die("ERROR");
+$con = mysqli_connect('localhost','root','','tracerdata',3307) or die("ERROR");
 
 $post_ID = $_REQUEST['post_ID'];
 if (isset($_POST['submit_updatetopic'])) {

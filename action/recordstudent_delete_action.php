@@ -1,6 +1,6 @@
 <?php 
 // Establishing Connection with Server by passing server_name, user_id and password as a parameter
-$con = mysqli_connect('localhost','root','','tracerdata') or die("ERROR");
+require('../db.php');
 $studentID = $_REQUEST['studentID'];
 $verfy_sql = mysqli_query($con,"SELECT * FROM `user_student_detail` WHERE student_ID = '$studentID'");
 $verfy_qry = mysqli_fetch_array($verfy_sql);

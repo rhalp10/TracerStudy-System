@@ -1,4 +1,3 @@
-
 <?php 
 include('session.php'); 
 include('db.php');
@@ -91,19 +90,21 @@ while($rowCount = mysqli_fetch_array($jobCount)){
 
 
 <!DOCTYPE html>
-<html>  
-  <head>
+<html>
+
+<head>
     <?php include('meta.php');?>
     <?php include('style_css.php');?>
     <title>Dashboard</title>
-  </head>
-        <body class=" menu-affix">
-            <div class="bg-dark dk" id="wrap">
-                <div id="top">
-                    <?php include ('top_navbar.php');?>
-                </div>
-                <!-- /#top -->
-                    <?php  
+</head>
+
+<body class=" menu-affix">
+    <div class="bg-dark dk" id="wrap">
+        <div id="top">
+            <?php include ('top_navbar.php');?>
+        </div>
+        <!-- /#top -->
+        <?php  
                     if ($login_level == '1')
                     {
                         include('sidebar_student.php');
@@ -119,37 +120,40 @@ while($rowCount = mysqli_fetch_array($jobCount)){
                     else
                     {
                     }
-                    ?>                    
-                      <!-- /#left -->
-                <div id="content">
+                    ?>
+        <!-- /#left -->
+        <div id="content">
 
-                    <div class="outer">
-                        <header class="head">
-                            <div class="main-bar">
-                            <ol class="breadcrumb">
-                              <li class="breadcrumb-item active"> Dashboard</li>
-                            </ol>
-                            </div>
-                            <!-- /.main-bar -->
-                        </header>
+            <div class="outer">
+                <header class="head">
+                    <div class="main-bar">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item active"> Dashboard</li>
+                        </ol>
+                    </div>
+                    <!-- /.main-bar -->
+                </header>
 
-                        <div class="inner bg-light lter">
-                            <center><h1>Welcome</h1></center>
-                            <hr>
-                            <?php 
+                <div class="inner bg-light lter">
+                    <center>
+                        <h1>Welcome</h1>
+                    </center>
+                    <hr>
+                    <?php 
                               if ($userType == "teacher" || $userType == "admin" ) {
                                
                               }
                               else{
                                 ?>
-                            <button type="button" class="btn btn-info btn-sm pull-right" data-toggle="modal" data-target="#myModal">Suggested Job</button>
-                                <?php
+                    <button type="button" class="btn btn-info btn-sm pull-right" data-toggle="modal"
+                        data-target="#myModal">Suggested Job</button>
+                    <?php
                               }
                             ?>
-                            <div id="canvas-holder">
-                                    <canvas id="chart-area" />
-                                </div>
-                            <!-- <div <?PHP 
+                    <div id="canvas-holder">
+                        <canvas id="chart-area" />
+                    </div>
+                    <!-- <div <?PHP 
                             if ($userType == "teacher" OR $userType == "admin" ) {
                                     echo "class='col-sm-12'";
                                 }
@@ -193,28 +197,26 @@ inner join suggested_job sj ON cd.department_ID = sj.job_ID
                                    <?php
                                 }
                                 ?> -->
-                                
-                                
-                            </div>
-                        </div>
 
-                        <!-- /.inner -->
-                    </div>
-                    <!-- /.outer -->
+
                 </div>
-                <!-- /#content -->
-
-                    <!-- /#right -->
             </div>
 
-            <!-- /#wrap -->
-            <?php include('footer.php');?>
-            <!-- /#footer -->
-            <?php include ('script.php');?>    
+            <!-- /.inner -->
+        </div>
+        <!-- /.outer -->
+    </div>
+    <!-- /#content -->
 
-            <script type="text/javascript">
- 
-   
+    <!-- /#right -->
+    </div>
+
+    <!-- /#wrap -->
+    <?php include('footer.php');?>
+    <!-- /#footer -->
+    <?php include ('script.php');?>
+
+    <script type="text/javascript">
     var config = {
         type: 'pie',
         data: {
@@ -223,29 +225,28 @@ inner join suggested_job sj ON cd.department_ID = sj.job_ID
  $jencode_jcount 
                 ?>,
                 backgroundColor: [
-                    window.chartColors.red,
-                    window.chartColors.orange,
-                    window.chartColors.blue,
-                ]
- // backgroundColor: palette('tol', myData.length).map(function(hex) {
- //        return '#' + hex;
- //      })
-  // backgroundColor: fillPattern
-                ,
+                        window.chartColors.red,
+                        window.chartColors.orange,
+                        window.chartColors.blue,
+                    ]
+                    // backgroundColor: palette('tol', myData.length).map(function(hex) {
+                    //        return '#' + hex;
+                    //      })
+                    // backgroundColor: fillPattern
+                    ,
                 label: 'Dataset 1'
             }],
-            labels: 
-                <?php echo 
+            labels: <?php echo 
  $jencode_title 
                 ?>
-            
+
         },
         options: {
-           title: {
-             display: true,
-             text: 'Job Chart'
-           }
-         }
+            title: {
+                display: true,
+                text: 'Job Chart'
+            }
+        }
     };
     window.onload = function() {
 
@@ -253,68 +254,66 @@ inner join suggested_job sj ON cd.department_ID = sj.job_ID
         window.myPie = new Chart(ctx, config);
     };
     </script>
-    
-        </body>
+
+</body>
 
 </html>
 
 <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
+    <div class="modal-dialog">
 
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Suggested Job</h4>
-      </div>
-      <div class="modal-body">
-        <script type="text/javascript">
-            $(document).ready(function() {
-                var dataTable = $('#zzz').DataTable();
-                } );
-        </script>
-        <table  id="zzz" class="table table-bordered table-advance table-hover">
-                                    <thead>
-                                            <b>SUGGESTED COMPATIBLE JOB FOR YOU</b>
-                                        
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>
-                                            </th>
-                                            <th>
-                                            </th>
-                                            <th>
-                                            </th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                <?php 
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Suggested Job</h4>
+            </div>
+            <div class="modal-body">
+                <script type="text/javascript">
+                // $(document).ready(function() {
+                //     var dataTable = $('#zzz').DataTable();
+                // });
+                </script>
+                <table class="table table-bordered table-advance table-hover" id="zzz">
+                    <thead>
+                        <b>SUGGESTED COMPATIBLE JOB FOR YOU</b>
+
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>
+                            </th>
+                            <th>
+                            </th>
+                            <th>
+                            </th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        <?php 
                                 $sj = mysqli_query($con,"SELECT sj.job_Title FROM `suggested_job` sj,user_student_detail usd
-WHERE usd.student_userID = '$login_id' AND job_Course = usd.student_department
-ORDER by rand() LIMIT 25");
+                                WHERE usd.student_userID = '$login_id' AND job_Course = usd.student_department
+                                ORDER by rand() LIMIT 25");
                                 
-                                while ($sj1 = mysqli_fetch_array($sj)){
-                                    
-                                    ?>
-                                    <tr>
-                                        <td><?php echo $sj1['job_Title']?></td>
-                                        <td><?php echo $sj1['job_Title']?></td>
-                                        <td><?php echo $sj1['job_Title']?></td>
-                                    </tr>
-                                    <?php
+                                while ($sj1 = mysqli_fetch_array($sj)){    
+                          ?>
+                        <tr>
+                            <td><?php echo $sj1['job_Title']?></td>
+                            <td><?php echo $sj1['job_Title']?></td>
+                            <td><?php echo $sj1['job_Title']?></td>
+                        </tr>
+                        <?php
                                 }
                                 ?>
-                                    </tbody>
-                                </table>
-                                <table></table>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
+                    </tbody>
+                </table>
+                <table></table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
     </div>
-
-  </div>
 </div>
-

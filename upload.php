@@ -68,9 +68,11 @@ if (isset($_POST['submit']))
             }
             else
             {
-        
-
-                unlink('assets/img/profile_img/'.$data_img);
+                // $path = 'assets/img/profile_img/'.$data_img;
+                // if(file_exists($path)){
+                //     chown($path,666);
+                //     unlink($path);
+                // } 
                 if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
                     $imgName = $_FILES["fileToUpload"]["name"];
                     $query = "UPDATE `user_".$user_type."_detail` SET `".$user_type."_img` = '$imgName' WHERE `".$user_type."_userID` =".$data_id." ";

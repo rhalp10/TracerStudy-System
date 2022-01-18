@@ -1,5 +1,5 @@
 <?php 
-	$con = mysqli_connect('localhost','root','','tracerdata') or die("ERROR");
+	require('../db.php');
 	if (isset($_POST['submit-signup_student']))
 	{
 		// Define $username and $password

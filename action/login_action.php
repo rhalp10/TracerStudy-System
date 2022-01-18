@@ -34,7 +34,8 @@ if (isset($_POST['submit-teacher'])) {
 
 function login(){
 
-			$con = mysqli_connect('localhost','root','','tracerdata') or die("ERROR");
+			
+			require('db.php');
 			// Define $username and $password
 			$username=$_POST['username'];
 			$password=$_POST['password'];

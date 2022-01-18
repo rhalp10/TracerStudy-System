@@ -49,7 +49,7 @@ http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet/less" type="text/css" href="assets/less/theme.less">
 
 <script src="assets/js/less.js"></script>
-<script src="assets/lib/chart-master/dist/Chart.bundle.js"></script>
+<script src="assets/lib/chart-master/dist/Chart.bundle.js"></script> 
 <script src="assets/lib/chart-master/samples/utils.js"></script>
 <!-- 
 <script src="sweetalert-master/sweetalert.min.js"></script>

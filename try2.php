@@ -129,7 +129,7 @@ ORDER  BY sq.survey_qid ");
 <form class="form-inline" method='get'  target="_blank" action="assets/lib/FPDF/print" >
   <div class="form-group">
        
-        <select name="category" id="category" onchange="showCategory(this.value)">
+        <select class="form-control" name="category" id="category" onchange="showCategory(this.value)">
         <option value="accountregister" >ACCOUNT REGISTER</option>
         <option value="accountununregister" >ACCOUNT UNREGISTER</option>
         <?php 

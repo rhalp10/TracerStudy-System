@@ -2,7 +2,7 @@
 
 // Establishing Connection with Server by passing server_name, user_id and password as a parameter
 include('../session.php'); 
-$con = mysqli_connect('localhost','root','','tracerdata') or die("ERROR");
+require('../db.php');
 // requested post data id
 $request_ID = $_REQUEST['request_ID'];
 $request_ID = stripslashes($request_ID);

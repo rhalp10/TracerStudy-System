@@ -1,5 +1,5 @@
 <?php 
-	$con = mysqli_connect('localhost','root','','tracerdata') or die("ERROR");
+	require('../db.php');
 	if (isset($_POST['Submit'])) {
 		 $teacherID = $_REQUEST['teacherID'];
 		// Defining post variable names 

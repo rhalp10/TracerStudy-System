@@ -2,7 +2,7 @@
 
 ini_set('display_errors', 1);
 ini_set('error_reporting', E_ERROR);
-$con = mysqli_connect('localhost','root','','tracerdata') or die("ERROR");
+require('../db.php');
 //requested owner id
 $ownerID = $_REQUEST['ownerID'];
 $ownerID = stripcslashes($ownerID);

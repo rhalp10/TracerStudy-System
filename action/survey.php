@@ -1,5 +1,5 @@
 <?php 
-$con = mysqli_connect('localhost','root','','tracerdata') or die("ERROR");
+require('../db.php');
 session_start(); 
 if (isset($_POST['add-survey'])) {
 
@@ -14,7 +14,7 @@ if (isset($_POST['update-surveyName'])) {
 	$surveyname = $_POST['surveyname'];
 	mysqli_query($con,"UPDATE `survey` SET `survey_name` = '$surveyname' WHERE `survey`.`survey_ID` = $id;");
 	echo "<script>alert('Succesfully Updated !');
-		window.location='../try1.php';
+		window.location='../survey_mng.php';
 	</script>";
 }
 if (isset($_POST['delete-survey'])) {
